@@ -1,0 +1,101 @@
+<div id="doingController">
+    <div class="callout">
+        <div class="clearfix">
+            <h3 class="float-left">Undone homework:</h3>
+            <div class="switch float-right">
+                <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch" />
+                <label class="switch-paddle" for="exampleSwitch">
+                    <span class="show-for-sr">Show all</span>
+                </label>
+            </div>
+            <h5 class="float-right">Show all:</h5>
+        </div>
+
+        <table class="hover stack">
+            <thead>
+                <tr v-for="home in homeworks">
+                    <th width="5"></th>
+                    <th width="90">Homework</th>
+                    <th width="55">Due Date</th>
+                    <th width="55">Created on</th>
+                    <th width="150">Descritpiton</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr v-for="home in homeworks">
+                    <td>
+                        <span class="label info"><i class="fi-widget"></i></span>
+                        <span class="label success"><i class="fi-check"></i></span>
+                    </td>
+                    <td>{{home.getName()}}</td>
+                    <td>{{home.getDueDate().toDateString()}}</td>
+                    <td>{{home.getCreateDate().toDateString()}}</td>
+                    <td>{{home.getDescription()}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="grid-x grid-margin-x ">
+        <div style="height: 300px;" class="callout cell medium-6  primary">
+            <label><h5>Session name:</h5>
+                <input type="text" placeholder="Name">
+            </label>
+            <div class="text-center">
+                <span class="label success clicky" v-on:click="play()"><i style="font-size: 3rem;width: 50px;" class=" fi-play"></i></span>
+                <span class="label alert clicky" v-on:click="stop()"><i style="font-size: 3rem;width: 50px;" class="fi-stop "></i></span>
+                <span class="label info clicky" v-on:click="pause()"><i style="font-size: 3rem;width: 50px;" class="fi-pause "></i></span>
+            </div>
+            <h2>Time:{{time}}</h2>
+            <h2 v-if="pausesCheck">Next pause in:{{nextPause}}</h2>
+        </div>
+        <div class="callout cell medium-6 success">
+            <label><h5>Pause intereval: 30 Minutes</h5>
+            </label>
+            <label>
+                <h5 >Pauses on/off:</h5>
+                <section class="switch" style="display: inline;">
+                    <input class="switch-input" id="pauses" v-model="pausesCheck" type="checkbox" name="exampleSwitch"/>
+                    <label class="switch-paddle" for="pauses">
+                      <span class="show-for-sr">Pauses</span>
+                    </label>
+            </section>
+            </label>
+        </div>
+    </div>
+
+    <div class="callout  warning">
+        <div class="grid-x grid-margin-x">
+            <div class="cell medium-1">Light:</div>
+            <div class=" cell medium-10  ">
+                <div class="info progress">
+                    <div class="progress-meter" style="width: 50%">
+                        <p class="progress-meter-text">50%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-x grid-margin-x">
+            <div class="cell medium-1">Noise:</div>
+            <div class=" cell medium-10  ">
+                <div class="success progress">
+                    <div class="progress-meter" style="width: 50%">
+                        <p class="progress-meter-text">50%</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="grid-x grid-margin-x">
+            <div class="cell medium-1">Movement:</div>
+            <div class=" cell medium-10  ">
+                <div class="warning progress">
+                    <div class="progress-meter" style="width: 50%">
+                        <p class="progress-meter-text">50%</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

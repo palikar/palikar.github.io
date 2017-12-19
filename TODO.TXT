@@ -1,0 +1,17 @@
+Till Christas:
+     *Homeworks - /class, /service and basic /adding and /removing from the page, listing in the table
+                - /create homework through a modal or thorugh the page
+     *Notes - /class, *service, managing through the page,
+            - creations through modal
+   
+     *The quick actions - just open moals and do the action done
+     
+-------------------done     
+
+New Stuff: 
+    this week section
+    the table section - selection, delete, check(setting up)
+    the timinig section - basic button functionality
+
+
+

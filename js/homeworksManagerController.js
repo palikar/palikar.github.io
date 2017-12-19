@@ -1,0 +1,110 @@
+import {
+    homeworkService
+} from './homeworkService.js'
+
+
+var homeworkManagerController_;
+
+function homeworkManagerController() {
+
+    homeworkManagerController_ = new Vue({
+        el: '#homeworkManagement',
+        data: {
+            homeworks: [],
+            selectedHomework: null,
+            message: "From homeworks!",
+            newHomeworkName: "",
+            newHomeworkDesc: "",
+            newHomeworkType: "",
+            newHomeworkDueDate: "",
+            homeworkName: "",
+            homeworkDesc: "",
+            homeworkType: "",
+            homeworkDueDate: ""
+        },
+
+        methods: {
+            homeworkSelected(id) {
+                this.selectedHomework = homeworkService.getHomework(id);
+                this.homeworkName = this.selectedHomework.getName();
+                this.homeworkDesc = this.selectedHomework.getDescription();
+                this.homeworkType = this.selectedHomework.getType();
+                this.homeworkDueDate = this.selectedHomework.getDueDate().toDateString();
+            },
+            newHomework() {
+
+            },
+            updateHomework(id) {
+                var values = {};
+                values.name = this.homeworkName;
+                values.desc = this.homeworkDesc;
+                values.type = this.homeworkType;
+                values.dueDate = $("#datePickHomework").datepicker('getDate');
+
+                this.selectedHomework.setName(values.name);
+                this.selectedHomework.setDescription(values.desc);
+                this.selectedHomework.setType(values.type);
+                this.selectedHomework.setDueDate(values.dueDate);
+
+            },
+            save() {
+
+                for (var i = 0; i < this.homeworks.length; i++) {
+                    var homework = this.homeworks[i];
+
+                    var values = {};
+                    values.name = homework.getName();
+                    values.desc = homework.getDescription();
+                    values.type = homework.getType();
+                    values.dueDate = $("#datePickHomework").datepicker('getDate');
+                    values.done = homework.isDone();
+
+                    homeworkService.update(homework.getId(), values);
+                }
+
+            },
+
+            setDone(id, value) {
+                for (var i = 0; i < this.homeworks.length; i++) {
+                    if (this.homeworks[i].getId() == id) {
+                        this.homeworks.setDone(value);
+                        homeworkService.saveHomeworks();
+                    }
+                }
+            },
+
+            remove(id) {
+                for (var i = 0; i < this.homeworks.length; i++) {
+                    if (this.homeworks[i].getId() == id) {
+                        this.homeworks.splice(i, 1);
+                        homeworkService.saveHomeworks();
+                    }
+                }
+
+            },
+            createHomework() {
+                homeworkService.createHomework(
+                    this.newHomeworkName,
+                    this.newHomeworkDesc,
+                    this.newHomeworkType,
+                    this.newHomeworkDuedate);
+                this.newHomeworkName = "";
+                this.newHomeworkDesc = "";
+                this.newHomeworkType = "";
+                this.newHomeworkDueDate = "";
+                this.homeworks = homeworkService.getAllHomeworks();
+            }
+
+        },
+
+        created: function () {
+            this.homeworks = homeworkService.getAllHomeworks();
+        }
+    });
+
+
+}
+
+export {
+    homeworkManagerController
+};

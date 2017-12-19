@@ -1,0 +1,14 @@
+.hovery:hover {
+    background-color: aliceblue;
+}
+
+.clicky:hover {
+    cursor: pointer;
+    background-color: aliceblue;
+}
+
+.clicky:active {
+    cursor: pointer;
+    background-color: aquamarine;
+    transform: translatetranslateYscale(5);
+}

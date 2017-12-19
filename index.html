@@ -1,0 +1,108 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/foundation-icons.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+
+
+
+    <div class="off-canvas-wrapper">
+        <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+            <!--          Similar to the first column of the big layout-->
+
+            <div>
+                <div class="title-bar" style="height: 30px">
+                    <div class="title-bar-left">
+                        <i class="menu-icon"></i> <span class="title-bar-title">Quick Actions</span>
+                    </div>
+                </div>
+                <div class="callout">
+                    <button type="button" class="small expanded button" data-open="newHomeSide">New Homework</button>
+                    <button type="button" class="small expanded button" data-open="newNoteSide">New Note</button>
+                </div>
+            </div>
+
+
+
+            <div id="notificationController">
+                <div class="title-bar" style="height: 30px">
+                    <div class="title-bar-left">
+                        <i class="menu-icon"></i> <span class="title-bar-title">Due this Week</span>
+                    </div>
+                    <div class="title-bar-center">
+                        <small><a>All</a></small>
+                    </div>
+                </div>
+                <div class="callout" style="padding: 2px;">
+                    <ul style="list-style: none">
+                        <li>
+                            <div v-for="not in notifications" class="label secondary">{{not.text}}</div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="off-canvas-content" data-off-canvas-content>
+            <div class="grid-x grid-padding-x ">
+                <div w3-include-html="sidePanel.html" class="cell medium-2 hide-for-small-only"> </div>
+
+
+                <div class="cell medium-10 small-12">
+
+
+
+
+                    <ul class="tabs" data-tabs id="example-tabs">
+                        <div class="grid-x">
+                            <div class="cell small-2 text-center show-for-small-only "><a data-toggle="offCanvasLeft"><span style="font-size: 1.6rem;" class="fi-list medium"></span></a></div>
+                            <li class="cell medium-6 small-5 tabs-title is-active"><a href="#panel1" class="text-center" aria-selected="true">Write</a></li>
+                            <li class="tabs-title cell small-5 medium-6"><a class="text-center" href="#panel2">Do</a></li>
+                        </div>
+                    </ul>
+
+
+
+                    <div class="tabs-content" data-tabs-content="example-tabs">
+                        <div class="tabs-panel is-active" id="panel1">
+                            <div w3-include-html="do.html"></div>
+                        </div>
+                        <div class="tabs-panel" id="panel2">
+                            <div w3-include-html="writing.html"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/jquery-ui.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/vendor/w3.js"></script>
+    <script src="js/vendor/vue.js"></script>
+    <script src="build/main.bundle.js"></script>
+    <script>
+        $("#datepicker").datepicker();
+
+    </script>
+</body>
+
+</html>

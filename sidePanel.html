@@ -1,0 +1,77 @@
+<hr>
+<!--                    Menu-->
+<ul class="menu  simple icons icon-top">
+    <li class="is-active"><a><i class="fi-home"></i><span>Home</span></a></li>
+    <li><a><i class="fi-info"></i> <span>Info</span></a></li>
+    <li><a><i class="fi-widget"></i> <span>Settings</span></a></li>
+
+</ul>
+<hr>
+<!--                    Notifications-->
+
+
+<!--                    This week-->
+<div class="notificationController">
+    <div class="title-bar" style="height: 30px">
+        <div class="title-bar-left">
+            <i class="menu-icon"></i> <span class="title-bar-title">Due this Week</span>
+        </div>
+        <div class="title-bar-center">
+            <small><a>All</a></small>
+        </div>
+    </div>
+    <div class="callout" style="padding: 2px;">
+        <ul style="list-style: none">
+            <li>
+                <div v-for="not in notifications" class="label secondary">{{not.text}}</div>
+            </li>
+
+        </ul>
+
+    </div>
+</div>
+<!--                    Quick Action-->
+<div>
+    <div class="title-bar" style="height: 30px">
+        <div class="title-bar-left">
+            <i class="menu-icon"></i> <span class="title-bar-title">Quick Actions</span>
+        </div>
+    </div>
+    <div class="callout">
+        <button type="button" class="small expanded button" data-open="newHomeSide">New Homework</button>
+        <button type="button" class="small expanded button" data-open="newNoteSide">New Note</button>
+    </div>
+</div>
+
+<div class="reveal" id="newHomeSide" data-reveal>
+    <h1>New homework.</h1>
+    <hr>
+    <label>Homework name:
+        <input type="text" id="nameQuick" placeholder="Name"/>
+    </label>
+    <label>
+       Due date:
+     <input  class="datepicker" id="dateQuick"   type="date" >
+    </label>
+    <button class="button expanded success" id="newHomeQuick">Ok</button>
+    <button class="close-button" data-close id="closeQuick" aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="reveal" id="newNoteSide" data-reveal>
+    <h1>New Note.</h1>
+    <hr>
+    <label>
+        Note name:                           
+        <input type="text"  id="noteNameQuick" placeholder="Name"/>
+   </label>
+    <label>
+       Text:
+          <textarea id="noteTextQuick"  rows="7" placeholder="Type text here..."></textarea>
+    </label>
+    <button class="button expanded success" id="newNoteQuick">Ok</button>
+    <button class="close-button" data-close id="closeNoteQuick" aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
