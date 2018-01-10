@@ -4,12 +4,16 @@
     <div id="homeworkManagement" class="grid-x grid-padding-x grid-margin-x">
 
         <div class="callout primary cell medium-6 ">
-            <h4>Homework</h4>
+            <h4 style="display: inline">Homework</h4>
+            <label class="float-right" style="font-size: 1.4rem; display: inline">Done:
+                       <input type="checkbox"  style="font-size: 2rem" on:click="switchHome(homework.getId())">
+            </label>
             <div class="grid-x grid-padding-x">
                 <div class="medium-6 cell">
                     <label>Homework name:
                       <input v-on:keyup="updateHomework(selectedHomework.getId())" type="text" v-model="homeworkName" placeholder="Name"/>
                     </label>
+
                 </div>
                 <div class="medium-6 cell">
                     <label>Homework type:
@@ -43,6 +47,7 @@
                         <i style="font-size: 2rem;cursor:pointer;" v-on:click="homeworkSelected(homework.getId())" class="float-left fi-arrow-left"></i>
                         <h5 style="font-size: 2rem" class="float-left">{{homework.getName()}}</h5>
                         <i style="font-size: 2rem;cursor:pointer;" v-on:click="remove(homework.getId())" class="float-right fi-page-remove"></i>
+
                     </div>
                 </div>
                 <hr style="margin: 0px;">
@@ -77,7 +82,7 @@
             <div data-reveal class="reveal" id="addNoteModal" w3-include-html="addNoteModal.html"></div>
             <hr>
 
-            <div v-for="note in allNotes" class="hovery card" style="width: 300px; display: inline-block;">
+            <div v-for="note in allNotes" class="hovery card" style="width: 300px; display: inline-block; margin: 5px;">
                 <div class="card-divider">
                     <h4>{{note.getName()}} <small>{{homeworks[note.getHomeWorkId()].getName()}}</small></h4>
                 </div>

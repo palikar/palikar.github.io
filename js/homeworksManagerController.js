@@ -40,7 +40,10 @@ function homeworkManagerController() {
                 values.desc = this.homeworkDesc;
                 values.type = this.homeworkType;
                 values.dueDate = $("#datePickHomework").datepicker('getDate');
-
+                if (values.name == "") {
+                    this.homeworkName = this.selectedHomework.getName();
+                    values.name = this.homeworkName;
+                }
                 this.selectedHomework.setName(values.name);
                 this.selectedHomework.setDescription(values.desc);
                 this.selectedHomework.setType(values.type);
@@ -78,16 +81,25 @@ function homeworkManagerController() {
                     if (this.homeworks[i].getId() == id) {
                         this.homeworks.splice(i, 1);
                         homeworkService.saveHomeworks();
+                        this.homeworkName = "";
+                        this.homeworkDesc = "";
+                        this.homeworkType = "";
+                        this.homeworkDueDate = "";
                     }
                 }
 
             },
             createHomework() {
+
+                if (this.newHomeworkName == "") {
+                    return;
+                }
+
                 homeworkService.createHomework(
                     this.newHomeworkName,
                     this.newHomeworkDesc,
                     this.newHomeworkType,
-                    this.newHomeworkDuedate);
+                    new Date());
                 this.newHomeworkName = "";
                 this.newHomeworkDesc = "";
                 this.newHomeworkType = "";
