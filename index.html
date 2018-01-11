@@ -42,12 +42,17 @@
                         <small><a>All</a></small>
                     </div>
                 </div>
-                <div class="callout" style="padding: 2px;">
+                <div class="callout" style="padding: 2px;overflow-x: scroll;height: 150px">
                     <ul style="list-style: none">
-                        <li>
-                            <div v-for="not in notifications" class="label secondary">{{not.text}}</div>
-                        </li>
+                        <li v-for="not in notifications" @click="showInfo(not)">
+                            <div data-open="notInfo" v-if="not.important" style="padding: 2px; cursor: pointer" class="label alert">
+                                {{not.text}}
+                            </div>
 
+                            <div data-open="notInfo" v-else style="padding: 2px; cursor: pointer" class="label primary">
+                                {{not.text}}
+                            </div>
+                        </li>
                     </ul>
 
                 </div>

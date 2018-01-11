@@ -26,14 +26,19 @@ class NotificationService {
 
         for (var i = 0; i < this.homeworks.length; ++i) {
             var home = Date.parse(this.homeworks[i].getDueDate());
-
+            if (this.homeworks[i].isDone())
+                continue;
             if (today <= home && home <= nextWeek) {
                 console.log("found");
+
+
+                var imp = this.homeworks[i].getType() == "Long term";
+
                 this.notifications.push({
-                    text: "Homework",
-                    date: "Some date!",
-                    text: "you got to do this",
-                    id: "the id of the homework"
+                    date: this.homeworks[i].getDueDate(),
+                    homework: this.homeworks[i].getName(),
+                    text: "Homework is due this week!",
+                    important: imp
 
                 })
             }

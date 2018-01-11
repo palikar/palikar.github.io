@@ -584,6 +584,9 @@ function notesManagerController() {
                 $("#titleNoteModal").html("New note");
                 $("#titleNoteModal").attr("idnote", '-1');
 
+                $("#noteNameField").val("");
+                $("#noteTextField").val("");
+
                 this.refreshHomeworklist();
             },
             removeNote: function removeNote(id) {
@@ -648,7 +651,9 @@ function homeworkManagerController() {
             homeworkName: "",
             homeworkDesc: "",
             homeworkType: "",
-            homeworkDueDate: ""
+            homeworkDueDate: "",
+            selectedHome: false,
+            homeworkChecked: false
         },
 
         methods: {
@@ -658,6 +663,7 @@ function homeworkManagerController() {
                 this.homeworkDesc = this.selectedHomework.getDescription();
                 this.homeworkType = this.selectedHomework.getType();
                 this.homeworkDueDate = this.selectedHomework.getDueDate().toDateString();
+                this.homeworkChecked = this.selectedHomework.isDone();
             },
             newHomework: function newHomework() {},
             updateHomework: function updateHomework(id) {
@@ -676,7 +682,7 @@ function homeworkManagerController() {
                 this.selectedHomework.setDueDate(values.dueDate);
             },
             save: function save() {
-
+                if (this.selectedHomework) this.selectedHomework.setDueDate($("#datePickHomework").datepicker('getDate'));
                 for (var i = 0; i < this.homeworks.length; i++) {
                     var homework = this.homeworks[i];
 
@@ -684,21 +690,23 @@ function homeworkManagerController() {
                     values.name = homework.getName();
                     values.desc = homework.getDescription();
                     values.type = homework.getType();
-                    values.dueDate = $("#datePickHomework").datepicker('getDate');
+                    //values.dueDate = $("#datePickHomework").datepicker('getDate');
+                    values.dueDate = homework.getDueDate();
                     values.done = homework.isDone();
 
                     _homeworkService.homeworkService.update(homework.getId(), values);
                 }
             },
-            setDone: function setDone(id, value) {
-                for (var i = 0; i < this.homeworks.length; i++) {
-                    if (this.homeworks[i].getId() == id) {
-                        this.homeworks.setDone(value);
-                        _homeworkService.homeworkService.saveHomeworks();
-                    }
+            switchHome: function switchHome(home) {
+
+                console.log("switching!");
+                if (home) {
+                    home.setDone(!home.isDone());
+                    this.save();
                 }
             },
             remove: function remove(id) {
+                this.selectedHomewor = null;
                 for (var i = 0; i < this.homeworks.length; i++) {
                     if (this.homeworks[i].getId() == id) {
                         this.homeworks.splice(i, 1);
@@ -707,6 +715,8 @@ function homeworkManagerController() {
                         this.homeworkDesc = "";
                         this.homeworkType = "";
                         this.homeworkDueDate = "";
+                        this.selected = false;
+                        this.homeworkChecked = false;
                     }
                 }
             },
@@ -755,7 +765,9 @@ function doingService() {
         el: '#doingController',
         data: {
             homeworks: [],
+            showAll: false,
             selectedHomework: null,
+            currentHomework: "",
             time: "00:00:00",
             nextPause: "",
             running: false,
@@ -839,28 +851,48 @@ function doingService() {
                 if (this.pausesCheck) {
                     this.nextPause = hours + ":" + minutes + ":" + seconds;
                 }
+            },
+            load: function load() {
+                this.homeworks = [];
+                for (var i = 0; i < _homeworkService.homeworkService.getAllHomeworks().length; i++) {
+                    if (!_homeworkService.homeworkService.getAllHomeworks()[i].isDone() || this.showAll) {
+                        this.homeworks.push(_homeworkService.homeworkService.getAllHomeworks()[i]);
+                    }
+                }
+            },
+            showAllClicked: function showAllClicked() {
+                this.showAll = !this.showAll;
+                this.load();
+            },
+            select: function select(home) {
+                console.log("sadasd");
+                this.currentHomework = home.getName();
+            },
+            setupSensors: function setupSensors() {
+
+                window.addEventListener("devicelight", function (event) {
+                    var luminosity = event.value;
+
+                    if (luminosity < 100) {
+                        //dim
+                    } else if (100 < luminosity && luminosity < 1000) {
+                        //normal
+                    } else {
+                            //too much
+                        }
+                });
+
+                if (!!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia)) {
+                    // Good to go!
+                } else {
+                    alert('getUserMedia() is not supported in your browser');
+                }
             }
         },
         created: function created() {
-            this.homeworks = _homeworkService.homeworkService.getAllHomeworks();
+            this.load();
 
-            window.addEventListener("devicelight", function (event) {
-                var luminosity = event.value;
-
-                if (luminosity < 100) {
-                    //dim
-                } else if (100 < luminosity && luminosity < 1000) {
-                    //normal
-                } else {
-                        //too much
-                    }
-            });
-
-            if (!!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia)) {
-                // Good to go!
-            } else {
-                alert('getUserMedia() is not supported in your browser');
-            }
+            this.setupSensors();
         }
     });
 }
@@ -889,39 +921,49 @@ function notificationManagerController() {
     notificationManagerController_ = new Vue({
         el: 'div.notificationController',
         data: {
-            notifications: []
+            notifications: [],
+            $: $
 
         },
 
-        methods: {},
+        methods: {
+            showInfo: function showInfo(not) {
+                $("#notificationMsg").html("The due date of the '" + not.homework + "' homework on " + $.datepicker.formatDate('dd-mm-yy', not.date));
+            }
+        },
 
         created: function created() {
             _notificationManager.notificationService.update();
             this.notifications = _notificationManager.notificationService.getAllNotifications();
 
-            //            window.setInterval(function () {
-            //                notificationService.update();
-            //                this.notifications = notificationService.getAllNotifications();
-            //            }, 60 * 1000);
+            window.setInterval(function () {
+                _notificationManager.notificationService.update();
+                this.notifications = _notificationManager.notificationService.getAllNotifications();
+            }, 60 * 1000);
         }
     });
-    notificationManagerController_ = new Vue({
+    notificationManagerController_2 = new Vue({
         el: '#notificationController',
         data: {
-            notifications: []
+            notifications: [],
+            $: $
 
         },
 
-        methods: {},
+        methods: {
+            showInfo: function showInfo(not) {
+                $("#notificationMsg").html("The due date of the '" + not.homework + "' homework on " + $.datepicker.formatDate('dd-mm-yy', not.date));
+            }
+        },
 
         created: function created() {
             _notificationManager.notificationService.update();
             this.notifications = _notificationManager.notificationService.getAllNotifications();
 
-            //            window.setInterval(function () {
-            //                notificationService.update();
-            //                this.notifications = notificationService.getAllNotifications();
-            //            }, 60 * 1000);
+            window.setInterval(function () {
+                _notificationManager.notificationService.update();
+                this.notifications = _notificationManager.notificationService.getAllNotifications();
+            }, 60 * 1000);
         }
     });
 }
@@ -943,8 +985,6 @@ exports.notificationService = undefined;
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _homeworkService = __webpack_require__(0);
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -976,15 +1016,19 @@ var NotificationService = function () {
 
             for (var i = 0; i < this.homeworks.length; ++i) {
                 var home = Date.parse(this.homeworks[i].getDueDate());
-
+                if (this.homeworks[i].isDone()) continue;
                 if (today <= home && home <= nextWeek) {
-                    var _notifications$push;
-
                     console.log("found");
-                    this.notifications.push((_notifications$push = {
-                        text: "Homework",
-                        date: "Some date!"
-                    }, _defineProperty(_notifications$push, "text", "you got to do this"), _defineProperty(_notifications$push, "id", "the id of the homework"), _notifications$push));
+
+                    var imp = this.homeworks[i].getType() == "Long term";
+
+                    this.notifications.push({
+                        date: this.homeworks[i].getDueDate(),
+                        homework: this.homeworks[i].getName(),
+                        text: "Homework is due this week!",
+                        important: imp
+
+                    });
                 }
             }
         }

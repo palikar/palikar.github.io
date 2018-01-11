@@ -20,7 +20,9 @@ function homeworkManagerController() {
             homeworkName: "",
             homeworkDesc: "",
             homeworkType: "",
-            homeworkDueDate: ""
+            homeworkDueDate: "",
+            selectedHome: false,
+            homeworkChecked: false
         },
 
         methods: {
@@ -30,6 +32,7 @@ function homeworkManagerController() {
                 this.homeworkDesc = this.selectedHomework.getDescription();
                 this.homeworkType = this.selectedHomework.getType();
                 this.homeworkDueDate = this.selectedHomework.getDueDate().toDateString();
+                this.homeworkChecked = this.selectedHomework.isDone();
             },
             newHomework() {
 
@@ -51,7 +54,8 @@ function homeworkManagerController() {
 
             },
             save() {
-
+                if (this.selectedHomework)
+                    this.selectedHomework.setDueDate($("#datePickHomework").datepicker('getDate'));
                 for (var i = 0; i < this.homeworks.length; i++) {
                     var homework = this.homeworks[i];
 
@@ -59,7 +63,8 @@ function homeworkManagerController() {
                     values.name = homework.getName();
                     values.desc = homework.getDescription();
                     values.type = homework.getType();
-                    values.dueDate = $("#datePickHomework").datepicker('getDate');
+                    //values.dueDate = $("#datePickHomework").datepicker('getDate');
+                    values.dueDate = homework.getDueDate();
                     values.done = homework.isDone();
 
                     homeworkService.update(homework.getId(), values);
@@ -67,16 +72,18 @@ function homeworkManagerController() {
 
             },
 
-            setDone(id, value) {
-                for (var i = 0; i < this.homeworks.length; i++) {
-                    if (this.homeworks[i].getId() == id) {
-                        this.homeworks.setDone(value);
-                        homeworkService.saveHomeworks();
-                    }
+            switchHome(home) {
+
+                console.log("switching!");
+                if (home) {
+                    home.setDone(!home.isDone());
+                    this.save();
                 }
+
             },
 
             remove(id) {
+                this.selectedHomewor = null;
                 for (var i = 0; i < this.homeworks.length; i++) {
                     if (this.homeworks[i].getId() == id) {
                         this.homeworks.splice(i, 1);
@@ -85,6 +92,8 @@ function homeworkManagerController() {
                         this.homeworkDesc = "";
                         this.homeworkType = "";
                         this.homeworkDueDate = "";
+                        this.selected = false;
+                        this.homeworkChecked = false;
                     }
                 }
 

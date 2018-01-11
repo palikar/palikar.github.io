@@ -44,6 +44,9 @@ function notesManagerController() {
                 $("#titleNoteModal").html("New note");
                 $("#titleNoteModal").attr("idnote", '-1');
 
+                $("#noteNameField").val("");
+                $("#noteTextField").val("");
+
                 this.refreshHomeworklist();
 
             },

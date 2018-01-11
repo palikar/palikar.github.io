@@ -11,7 +11,9 @@ function doingService() {
         el: '#doingController',
         data: {
             homeworks: [],
+            showAll: false,
             selectedHomework: null,
+            currentHomework: "",
             time: "00:00:00",
             nextPause: "",
             running: false,
@@ -100,30 +102,51 @@ function doingService() {
 
 
 
+            },
+            load() {
+                this.homeworks = [];
+                for (var i = 0; i < homeworkService.getAllHomeworks().length; i++) {
+                    if (!homeworkService.getAllHomeworks()[i].isDone() || this.showAll) {
+                        this.homeworks.push(homeworkService.getAllHomeworks()[i]);
+                    }
+                }
+
+            },
+            showAllClicked() {
+                this.showAll = !this.showAll;
+                this.load();
+            },
+            select(home) {
+                console.log("sadasd");
+                this.currentHomework = home.getName();
+            },
+            setupSensors() {
+
+                window.addEventListener("devicelight", function (event) {
+                    var luminosity = event.value;
+
+                    if (luminosity < 100) {
+                        //dim
+                    } else if (100 < luminosity && luminosity < 1000) {
+                        //normal
+                    } else {
+                        //too much
+                    }
+                });
+
+                if (!!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+                        navigator.mozGetUserMedia || navigator.msGetUserMedia)) {
+                    // Good to go!
+                } else {
+                    alert('getUserMedia() is not supported in your browser');
+                }
             }
         },
         created: function () {
-            this.homeworks = homeworkService.getAllHomeworks();
+            this.load();
 
 
-            window.addEventListener("devicelight", function (event) {
-                var luminosity = event.value;
-
-                if (luminosity < 100) {
-                    //dim
-                } else if (100 < luminosity && luminosity < 1000) {
-                    //normal
-                } else {
-                    //too much
-                }
-            });
-
-            if (!!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-                    navigator.mozGetUserMedia || navigator.msGetUserMedia)) {
-                // Good to go!
-            } else {
-                alert('getUserMedia() is not supported in your browser');
-            }
+            this.setupSensors();
 
 
 

@@ -6,7 +6,7 @@
         <div class="callout primary cell medium-6 ">
             <h4 style="display: inline">Homework</h4>
             <label class="float-right" style="font-size: 1.4rem; display: inline">Done:
-                       <input type="checkbox"  style="font-size: 2rem" on:click="switchHome(homework.getId())">
+                <input type="checkbox"  style="font-size: 2rem" @click="switchHome(selectedHomework)" v-model="homeworkChecked">
             </label>
             <div class="grid-x grid-padding-x">
                 <div class="medium-6 cell">
@@ -18,8 +18,8 @@
                 <div class="medium-6 cell">
                     <label>Homework type:
                   <select v-on:change="updateHomework(selectedHomework.getId())" v-model="homeworkType">
-                    <option value="husker">Urgent</option>
-                    <option value="starbuck">Long term</option>
+                    <option value="Urgent">Urgent</option>
+                    <option value="Long term">Long term</option>
                   </select>
                     </label>
                 </div>
@@ -30,7 +30,7 @@
             </label>
             <label>
                 Due date:
-                <input v-model="homeworkDueDate" id="datePickHomework"  class="datepicker"  type="date" >
+                <input v-model="homeworkDueDate" v-on:change="updateHomework(selectedHomework.getId())" id="datePickHomework"  class="datepicker"  type="date" >
             </label>
             <hr>
             <button type="button" v-on:click="save()" class="success button expanded">Save</button>
@@ -46,6 +46,7 @@
                     <div class="clearfix hovery">
                         <i style="font-size: 2rem;cursor:pointer;" v-on:click="homeworkSelected(homework.getId())" class="float-left fi-arrow-left"></i>
                         <h5 style="font-size: 2rem" class="float-left">{{homework.getName()}}</h5>
+                        <i style="font-size: 2rem;" class="float-left fi-check" v-if="homework.isDone()"></i>
                         <i style="font-size: 2rem;cursor:pointer;" v-on:click="remove(homework.getId())" class="float-right fi-page-remove"></i>
 
                     </div>

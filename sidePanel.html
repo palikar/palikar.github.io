@@ -9,26 +9,7 @@
 <!--                    Notifications-->
 
 
-<!--                    This week-->
-<div class="notificationController">
-    <div class="title-bar" style="height: 30px">
-        <div class="title-bar-left">
-            <i class="menu-icon"></i> <span class="title-bar-title">Due this Week</span>
-        </div>
-        <div class="title-bar-center">
-            <small><a>All</a></small>
-        </div>
-    </div>
-    <div class="callout" style="padding: 2px;">
-        <ul style="list-style: none">
-            <li>
-                <div v-for="not in notifications" class="label secondary">{{not.text}}</div>
-            </li>
 
-        </ul>
-
-    </div>
-</div>
 <!--                    Quick Action-->
 <div>
     <div class="title-bar" style="height: 30px">
@@ -41,6 +22,31 @@
         <button type="button" class="small expanded button" data-open="newNoteSide">New Note</button>
     </div>
 </div>
+<!--                    This week-->
+<div class="notificationController">
+    <div class="title-bar" style="height: 30px">
+        <div class="title-bar-left">
+            <i class="menu-icon"></i> <span class="title-bar-title">Due this Week</span>
+        </div>
+        <div class="title-bar-center">
+
+        </div>
+    </div>
+    <div class="callout" style="padding: 2px;overflow-x: scroll;height: 175px">
+        <ul style="list-style: none">
+            <li v-for="not in notifications" @click="showInfo(not)">
+                <div data-open="notInfo" v-if="not.important" style="padding: 2px; cursor: pointer" class="label alert">
+                    {{not.text}}
+                </div>
+
+                <div data-open="notInfo" v-else style="padding: 2px; cursor: pointer" class="label primary">
+                    {{not.text}}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
 
 <div class="reveal" id="newHomeSide" data-reveal>
     <h1>New homework.</h1>
@@ -70,6 +76,15 @@
           <textarea id="noteTextQuick"  rows="7" placeholder="Type text here..."></textarea>
     </label>
     <button class="button expanded success" id="newNoteQuick">Ok</button>
+    <button class="close-button" data-close id="closeNoteQuick" aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="reveal tiny" id="notInfo" data-reveal>
+    <h3>Notification Info</h3>
+    <hr>
+    <h5 id="notificationMsg"></h5>
     <button class="close-button" data-close id="closeNoteQuick" aria-label="Close modal" type="button">
         <span aria-hidden="true">&times;</span>
     </button>

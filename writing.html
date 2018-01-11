@@ -3,7 +3,7 @@
         <div class="clearfix">
             <h3 class="float-left">Undone homework:</h3>
             <div class="switch float-right">
-                <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch" />
+                <input class="switch-input" id="exampleSwitch" v-on:click="showAllClicked()" type="checkbox" name="exampleSwitch" />
                 <label class="switch-paddle" for="exampleSwitch">
                     <span class="show-for-sr">Show all</span>
                 </label>
@@ -13,7 +13,7 @@
 
         <table class="hover stack">
             <thead>
-                <tr v-for="home in homeworks">
+                <tr>
                     <th width="5"></th>
                     <th width="90">Homework</th>
                     <th width="55">Due Date</th>
@@ -23,15 +23,19 @@
             </thead>
             <tbody>
 
-                <tr v-for="home in homeworks">
-                    <td>
-                        <span class="label info"><i class="fi-widget"></i></span>
-                        <span class="label success"><i class="fi-check"></i></span>
-                    </td>
-                    <td>{{home.getName()}}</td>
-                    <td>{{home.getDueDate().toDateString()}}</td>
-                    <td>{{home.getCreateDate().toDateString()}}</td>
-                    <td>{{home.getDescription()}}</td>
+                <tr v-for="home in homeworks" @click="select(home)">
+                    <section>
+                        <td>
+                            <span class="clicky label success"><i class="fi-check"></i></span>
+                        </td>
+                        <td>
+                            {{home.getName()}}
+                            <span v-if="home.isDone()" class="success"><i class="fi-check"></i></span>
+                        </td>
+                        <td>{{home.getDueDate().toDateString()}}</td>
+                        <td>{{home.getCreateDate().toDateString()}}</td>
+                        <td>{{home.getDescription()}}</td>
+                    </section>
                 </tr>
             </tbody>
         </table>
@@ -41,7 +45,7 @@
             <label><h5>Session name:</h5>
                 <input type="text" placeholder="Name">
             </label>
-            <h5>Homework:</h5>
+            <h5>Homework:{{currentHomework}}</h5>
             <div class="text-center">
                 <span class="label success clicky" v-on:click="play()"><i style="font-size: 3rem;width: 50px;" class=" fi-play"></i></span>
                 <span class="label alert clicky" v-on:click="stop()"><i style="font-size: 3rem;width: 50px;" class="fi-stop "></i></span>
