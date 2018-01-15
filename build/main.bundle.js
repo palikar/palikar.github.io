@@ -895,7 +895,7 @@ function doingService() {
                     this.accVal = event.acceleration.x;
 
                     var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
-                    this.accArr.pusj(sum);
+                    this.accArr.push(sum);
 
                     if (this.accArr.length < 10) {
                         return;
