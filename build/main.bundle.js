@@ -776,7 +776,9 @@ function doingService() {
             paused: false,
             extra: 0,
             elapsed: 0,
-            pausesCheck: true
+            pausesCheck: true,
+            accArr: [],
+            accVal: 0
         },
 
         methods: {
@@ -881,6 +883,29 @@ function doingService() {
                             //too much
                         }
                 });
+
+                window.ondevicemotion = function (event) {
+                    var x = event.acceleration.x;
+                    var y = event.acceleration.y;
+                    var z = event.acceleration.z;
+
+                    var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
+                    this.accArr.pusj(sum);
+
+                    if (this.accArr.length < 10) {
+                        return;
+                    }
+                    var allSum = 0;
+                    for (var i = 0; i < this.accArr.length; i++) {
+                        allSum += this.accArr[i];
+                    }
+                    allSum /= this.accArr.length;
+                    var avg = Math.ceil(avg * 10000) / 10000;
+
+                    this.accArr = [];
+
+                    this.accVal = avg;
+                };
 
                 if (!!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia)) {
                     // Good to go!

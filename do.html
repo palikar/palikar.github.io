@@ -1,104 +1,108 @@
-<div>
-    <h3>Managing homeworks <small>Create homeworks, notes to them and set due dates here</small></h3>
-    <hr>
-    <div id="homeworkManagement" class="grid-x grid-padding-x grid-margin-x">
-
-        <div class="callout primary cell medium-6 ">
-            <h4 style="display: inline">Homework</h4>
-            <label class="float-right" style="font-size: 1.4rem; display: inline">Done:
-                <input type="checkbox"  style="font-size: 2rem" @click="switchHome(selectedHomework)" v-model="homeworkChecked">
-            </label>
-            <div class="grid-x grid-padding-x">
-                <div class="medium-6 cell">
-                    <label>Homework name:
-                      <input v-on:keyup="updateHomework(selectedHomework.getId())" type="text" v-model="homeworkName" placeholder="Name"/>
-                    </label>
-
-                </div>
-                <div class="medium-6 cell">
-                    <label>Homework type:
-                  <select v-on:change="updateHomework(selectedHomework.getId())" v-model="homeworkType">
-                    <option value="Urgent">Urgent</option>
-                    <option value="Long term">Long term</option>
-                  </select>
-                    </label>
-                </div>
+<div id="doingController">
+    <div class="callout">
+        <div class="clearfix">
+            <h3 class="float-left">Undone homework:</h3>
+            <div class="switch float-right">
+                <input class="switch-input" id="exampleSwitch" v-on:click="showAllClicked()" type="checkbox" name="exampleSwitch" />
+                <label class="switch-paddle" for="exampleSwitch">
+                    <span class="show-for-sr">Show all</span>
+                </label>
             </div>
-            <label>
-              Description:
-              <textarea v-on:keyup="updateHomework(selectedHomework.getId())" v-model="homeworkDesc" rows="7" placeholder="None"></textarea>
-            </label>
-            <label>
-                Due date:
-                <input v-model="homeworkDueDate" v-on:change="updateHomework(selectedHomework.getId())" id="datePickHomework"  class="datepicker"  type="date" >
-            </label>
-            <hr>
-            <button type="button" v-on:click="save()" class="success button expanded">Save</button>
-            <button type="button" v-on:click="remove(selectedHomework.getId())" class="alert button expanded">Delete</button>
-
+            <h5 class="float-right">Show all:</h5>
         </div>
-        <div class="callout primary cell medium-6 ">
 
-            <div style="overflow-y: scroll; height: 500px;">
-                <h4>Homework list</h4>
-                <div v-for="homework in homeworks">
-                    <hr style="margin: 0px;">
-                    <div class="clearfix hovery">
-                        <i style="font-size: 2rem;cursor:pointer;" v-on:click="homeworkSelected(homework.getId())" class="float-left fi-arrow-left"></i>
-                        <h5 style="font-size: 2rem" class="float-left">{{homework.getName()}}</h5>
-                        <i style="font-size: 2rem;" class="float-left fi-check" v-if="homework.isDone()"></i>
-                        <i style="font-size: 2rem;cursor:pointer;" v-on:click="remove(homework.getId())" class="float-right fi-page-remove"></i>
+        <div style="height: 275px;overflow-y: scroll">
+            <table class="hover stack">
+                <thead>
+                    <tr>
+                        <th width="5"></th>
+                        <th width="90">Homework</th>
+                        <th width="55">Due Date</th>
+                        <th width="55">Created on</th>
+                        <th width="150">Descritpiton</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                    </div>
-                </div>
-                <hr style="margin: 0px;">
-            </div>
-            <hr>
-            <div style="height: 50px;">
-                <div class="input-group">
-                    <span class="input-group-label">New Homework</span>
-                    <input class="input-group-field" v-on:keyup.13="createHomework()" v-model="newHomeworkName" type="url">
-                    <div class="input-group-button">
-                        <button class="button" v-on:click="createHomework()">Add</button>
-                    </div>
-                </div>
-            </div>
-
-
+                    <tr v-for="home in homeworks" @click="select(home)">
+                        <section>
+                            <td>
+                                <span class="clicky label success"><i class="fi-check"></i></span>
+                            </td>
+                            <td>
+                                {{home.getName()}}
+                                <span v-if="home.isDone()" class="success"><i class="fi-check"></i></span>
+                            </td>
+                            <td>{{home.getDueDate().toDateString()}}</td>
+                            <td>{{home.getCreateDate().toDateString()}}</td>
+                            <td>{{home.getDescription()}}</td>
+                        </section>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <hr>
-
-
-    <h3>Notes <small>Randon writings of yours</small></h3>
-    <div class="callout" style="height: 90vh; overflow-y: scroll;">
-
-        <div id="notesManagement">
-
-            <div class="input-group float-left" style="width: 600px">
-                <span class="input-group-label">Name filter: </span>
-                <input class="input-group-field" type="text">
+    <div class="grid-x grid-margin-x ">
+        <div style="height: 330px;" class="callout cell medium-6  primary">
+            <label><h5>Session name:</h5>
+                <input type="text" placeholder="Name">
+            </label>
+            <h5>Homework:{{currentHomework}}</h5>
+            <div class="text-center">
+                <span class="label success clicky" v-on:click="play()"><i style="font-size: 3rem;width: 50px;" class=" fi-play"></i></span>
+                <span class="label alert clicky" v-on:click="stop()"><i style="font-size: 3rem;width: 50px;" class="fi-stop "></i></span>
+                <span class="label info clicky" v-on:click="pause()"><i style="font-size: 3rem;width: 50px;" class="fi-pause "></i></span>
             </div>
-            <button type="button" class="button float-right" data-open="addNoteModal" v-on:click="newNote()">New</button>
-            <div data-reveal class="reveal" id="addNoteModal" w3-include-html="addNoteModal.html"></div>
-            <hr>
+            <h2>Time:{{time}}</h2>
+            <h2 v-if="pausesCheck">Next pause in:{{nextPause}}</h2>
+        </div>
+        <div class="callout cell medium-6 success">
+            <label><h5>Pause intereval: 30 Minutes</h5>
+            </label>
+            <label>
+                <h5 >Pauses on/off:</h5>
+                <section class="switch" style="display: inline;">
+                    <input class="switch-input" id="pauses" v-model="pausesCheck" type="checkbox" name="exampleSwitch"/>
+                    <label class="switch-paddle" for="pauses">
+                      <span class="show-for-sr">Pauses</span>
+                    </label>
+            </section>
+            </label>
+        </div>
+    </div>
 
-            <div v-for="note in allNotes" class="hovery card" style="width: 300px; display: inline-block; margin: 5px;">
-                <div class="card-divider">
-                    <h4>{{note.getName()}} <small>{{homeworks[note.getHomeWorkId()].getName()}}</small></h4>
-                </div>
-                <div class="text-center card-image">
-                    <img src="res/text-icon.png" height="128px" width="128px">
-                </div>
-                <div class="card-section">
-                    <hr>
-                    <p class="text-truncate">{{note.getText()}}</p>
-                    <hr>
-                    <i style="font-size: 2rem;cursor: pointer" v-on:click="removeNote(note.getId())" class="float-right fi-trash"></i>
-                    <button type="button" v-on:click="editNote(note)" data-open="addNoteModal" class="primary button">Open</button>
+    <div class="callout  warning">
+        <div class="grid-x grid-margin-x">
+            <div class="cell medium-1">Light:</div>
+            <div class=" cell medium-10  ">
+                <div class="info progress">
+                    <div class="progress-meter" style="width: 50%">
+                        <p class="progress-meter-text">50%</p>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="grid-x grid-margin-x">
+            <div class="cell medium-1">Noise:</div>
+            <div class=" cell medium-10  ">
+                <div class="success progress">
+                    <div class="progress-meter" style="width: 50%">
+                        <p class="progress-meter-text">50%</p>
+                    </div>
+                </div>
+            </div>
 
+        </div>
+        <div class="grid-x grid-margin-x">
+            <div class="cell medium-1">Movement:{{accVal}}</div>
+            <div class=" cell medium-10  ">
+                <div class="warning progress">
+                    <div class="progress-meter" style="width: 50%">
+                        <p class="progress-meter-text">50%</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
