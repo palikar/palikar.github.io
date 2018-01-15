@@ -185,6 +185,12 @@ function doingService() {
             this.load();
 
 
+            window.addEventListener('devicemotion', function (event) {
+                $('#accTxt').html(event.acceleration.x);
+
+            }, false);
+
+
             this.setupSensors();
 
 
