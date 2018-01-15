@@ -885,7 +885,7 @@ function doingService() {
                 });
 
                 console.log("Acc:");
-                window.ondevicemotion = function (event) {
+                window.addEventListener('devicemotion', function (event) {
                     var x = event.accelerationIncludingGravity.x;
                     var y = event.acceleration.y;
                     var z = event.acceleration.z;
@@ -910,7 +910,7 @@ function doingService() {
 
                     //this.accVal = avg;
 
-                };
+                });
 
                 if (!!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia)) {
                     // Good to go!
