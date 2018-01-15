@@ -141,6 +141,7 @@ function doingService() {
                     var x = event.acceleration.x;
                     var y = event.acceleration.y;
                     var z = event.acceleration.z;
+                    console.log(x);
 
                     this.accVal = x;
 
