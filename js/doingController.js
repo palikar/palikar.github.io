@@ -136,7 +136,7 @@ function doingService() {
                     }
                 });
 
-                console.log("Acc:");
+                $('#accTxt').html = "Acc:";
                 window.addEventListener('devicemotion', function (event) {
 
                     var x = event.acceleration.x;
