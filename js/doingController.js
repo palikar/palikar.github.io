@@ -145,6 +145,7 @@ function doingService() {
                     console.log(x);
 
                     this.accVal = event.acceleration.x;
+                    $('#accTxt').html = event.acceleration.x
 
                     var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
                     this.accArr.push(sum);
