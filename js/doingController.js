@@ -138,12 +138,13 @@ function doingService() {
 
                 console.log("Acc:");
                 window.addEventListener('devicemotion', function (event) {
+
                     var x = event.acceleration.x;
                     var y = event.acceleration.y;
                     var z = event.acceleration.z;
                     console.log(x);
 
-                    this.accVal = x;
+                    this.accVal = event.acceleration.x;
 
                     var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
                     this.accArr.pusj(sum);
