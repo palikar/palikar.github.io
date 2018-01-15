@@ -924,9 +924,10 @@ function doingService() {
         created: function created() {
             this.load();
 
-            window.addEventListener('devicemotion', function (event) {
+            /*window.addEventListener('devicemotion', function (event) {
                 $('#accTxt').html(event.acceleration.x);
-            }, false);
+            
+            }, false);*/
 
             this.setupSensors();
         }
