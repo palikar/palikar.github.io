@@ -142,6 +142,8 @@ function doingService() {
                     var y = event.acceleration.y;
                     var z = event.acceleration.z;
 
+                    this.accVal = x;
+
                     var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
                     this.accArr.pusj(sum);
 
