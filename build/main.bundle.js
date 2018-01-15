@@ -907,7 +907,8 @@ function doingService() {
 
                     this.accArr = [];
 
-                    this.accVal = avg;
+                    //this.accVal = avg;
+
                 };
 
                 if (!!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia)) {

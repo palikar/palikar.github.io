@@ -159,7 +159,7 @@ function doingService() {
 
                     this.accArr = [];
 
-                    this.accVal = avg;
+                    //this.accVal = avg;
 
 
 
