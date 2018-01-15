@@ -886,7 +886,7 @@ function doingService() {
 
                 console.log("Acc:");
                 window.ondevicemotion = function (event) {
-                    var x = event.acceleration.x;
+                    var x = event.accelerationIncludingGravity.x;
                     var y = event.acceleration.y;
                     var z = event.acceleration.z;
                     console.log(x);
