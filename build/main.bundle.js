@@ -884,6 +884,7 @@ function doingService() {
                         }
                 });
 
+                console.log("Acc:");
                 window.ondevicemotion = function (event) {
                     var x = event.acceleration.x;
                     var y = event.acceleration.y;
