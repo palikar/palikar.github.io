@@ -142,9 +142,8 @@ function doingService() {
                     var x = event.acceleration.x;
                     var y = event.acceleration.y;
                     var z = event.acceleration.z;
-                    console.log(x);
 
-                    this.accVal = event.acceleration.x;
+
                     //$('#accTxt').html(event.acceleration.x);
 
                     var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
@@ -162,7 +161,7 @@ function doingService() {
 
                     this.accArr = [];
 
-                    //this.accVal = avg;
+                    this.accVal = avg.toFixed(3);
 
 
 
