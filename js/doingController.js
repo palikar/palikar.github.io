@@ -138,7 +138,7 @@ function doingService() {
 
                 console.log("Acc:");
                 window.addEventListener('devicemotion', function (event) {
-                    var x = event.accelerationIncludingGravity.x;
+                    var x = event.acceleration.x;
                     var y = event.acceleration.y;
                     var z = event.acceleration.z;
                     console.log(x);
@@ -164,7 +164,7 @@ function doingService() {
 
 
 
-                });
+                }, false);
 
 
 
