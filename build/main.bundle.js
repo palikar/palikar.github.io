@@ -919,10 +919,11 @@ function doingService() {
                     allSum += this.accArr[i];
                 }
                 allSum /= that.accArr.length;
-                var avg = Math.ceil(avg * 1000) / 1000;
+                var avg = Math.ceil(avg * 100) / 100;
 
                 that.accArr = [];
 
+                $("#accObj").style.width = avg.toFixed(3) * 100 + '%';
                 that.accVal = avg.toFixed(3);
             }, false);
 
