@@ -897,6 +897,7 @@ function doingService() {
         created: function created() {
             this.load();
 
+            var that = this;
             window.addEventListener('devicemotion', function (event) {
 
                 var x = event.acceleration.x;
@@ -906,23 +907,23 @@ function doingService() {
                 //$('#accTxt').html(event.acceleration.x);
 
                 var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
-                this.accVal = sum;
+                that.accVal = sum;
                 $("#accTxt").html(sum.toFixed(3));
-                this.accArr.push(sum);
+                that.accArr.push(sum);
 
-                if (this.accArr.length < 10) {
+                if (that.accArr.length < 10) {
                     return;
                 }
                 var allSum = 0;
-                for (var i = 0; i < this.accArr.length; i++) {
+                for (var i = 0; i < that.accArr.length; i++) {
                     allSum += this.accArr[i];
                 }
-                allSum /= this.accArr.length;
+                allSum /= that.accArr.length;
                 var avg = Math.ceil(avg * 1000) / 1000;
 
-                this.accArr = [];
+                that.accArr = [];
 
-                this.accVal = avg.toFixed(3);
+                that.accVal = avg.toFixed(3);
             }, false);
 
             this.setupSensors();
