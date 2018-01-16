@@ -182,7 +182,7 @@ function doingService() {
 
                 that.accArr = [];
 
-                $("#accObj").css("width", (avg.toFixed(3) * 100 + '%'));
+                $('#accObj').css("width", (avg.toFixed(3) * 100 + ' %'));
                 that.accVal = avg.toFixed(3);
 
 
