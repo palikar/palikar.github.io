@@ -169,7 +169,6 @@ function doingService() {
 
                 var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
                 that.accVal = sum;
-                $("#accTxt").html(sum.toFixed(3));
                 that.accArr.push(sum);
 
                 if (that.accArr.length < 1000) {
