@@ -155,6 +155,7 @@ function doingService() {
         created: function () {
             this.load();
 
+
             var that = this;
             window.addEventListener('devicemotion', function (event) {
 
@@ -178,13 +179,13 @@ function doingService() {
                     allSum += this.accArr[i];
                 }
                 allSum /= that.accArr.length;
-                var avg = Math.ceil(avg * 100) / 100;
+                var avg = Math.ceil(avg * 1000) / 1000;
 
                 that.accArr = [];
 
-                $('#accObj').css("width", (avg.toFixed(3) * 100));
                 that.accVal = avg.toFixed(3);
-
+                var perc = (accVal * 80).toFixed(0);
+                $('#accObj').width(perc + '%');
 
 
             }, false);
