@@ -910,7 +910,7 @@ function doingService() {
                 var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
                 that.accArr.push(sum);
 
-                if (that.accArr.length < 100) {
+                if (that.accArr.length < 50) {
                     return;
                 }
                 var allSum = 0;
@@ -918,7 +918,7 @@ function doingService() {
                     allSum += that.accArr[i];
                 }
                 allSum /= that.accArr.length;
-                allSum /= 100;
+                allSum /= 50;
 
                 that.accVal = allSum.toFixed(3);
                 that.perc = (allSum * 80.0).toFixed(1);
