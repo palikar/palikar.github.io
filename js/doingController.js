@@ -170,7 +170,7 @@ function doingService() {
                 var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
                 that.accArr.push(sum);
 
-                if (that.accArr.length < 10) {
+                if (that.accArr.length < 100) {
                     return;
                 }
                 var allSum = 0;
@@ -178,7 +178,7 @@ function doingService() {
                     allSum += that.accArr[i];
                 }
                 allSum /= that.accArr.length;
-                //allSum *= 10;
+                allSum /= 10;
 
 
                 that.accVal = allSum.toFixed(3);
