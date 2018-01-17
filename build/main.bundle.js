@@ -910,7 +910,7 @@ function doingService() {
                 var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
                 that.accArr.push(sum);
 
-                if (that.accArr.length < 13) {
+                if (that.accArr.length < 20) {
                     return;
                 }
                 var allSum = 0;
