@@ -908,7 +908,6 @@ function doingService() {
                 //$('#accTxt').html(event.acceleration.x);
 
                 var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
-                that.accVal = sum;
                 that.accArr.push(sum);
 
                 if (that.accArr.length < 100000) {
