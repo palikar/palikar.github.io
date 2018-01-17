@@ -919,7 +919,7 @@ function doingService() {
                 }
                 allSum /= that.accArr.length;
 
-                that.accVal = allSum.toFixed(3);
+                that.accVal = allSum.toFixed(3) * 10;
                 that.perc = (accVal * 80.0).toFixed(1);
                 $('#accObj').css('width', that.perc + '%');
 
