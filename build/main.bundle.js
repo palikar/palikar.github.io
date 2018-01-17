@@ -918,14 +918,12 @@ function doingService() {
                     allSum += that.accArr[i];
                 }
                 allSum /= that.accArr.length;
-                var avg = Math.ceil(allSum * 1000) / 1000;
+
+                that.accVal = allSum.toFixed(3);
+                that.perc = (accVal * 80.0).toFixed(1);
+                $('#accObj').css('width', that.perc + '%');
 
                 that.accArr = [];
-
-                that.perc = allSum.toFixed(3);
-                that.accVal = avg;
-                //that.perc = (accVal * 80.0).toFixed(1);
-                $('#accObj').css('width', that.perc + '%');
             }, false);
 
             this.setupSensors();
