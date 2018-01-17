@@ -178,7 +178,7 @@ function doingService() {
                     allSum += that.accArr[i];
                 }
                 allSum /= that.accArr.length;
-                allSum /= 10;
+                allSum /= 100;
 
 
                 that.accVal = allSum.toFixed(3);
