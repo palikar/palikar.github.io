@@ -911,7 +911,7 @@ function doingService() {
                 that.accVal = sum;
                 that.accArr.push(sum);
 
-                if (that.accArr.length < 1000) {
+                if (that.accArr.length < 10000) {
                     return;
                 }
                 var allSum = 0;
@@ -924,7 +924,7 @@ function doingService() {
                 that.accArr = [];
 
                 that.accVal = Number.parseFloat(avg).toFixed(3);
-                that.perc = (accVal * 80).toFixed(0);
+                that.perc = (accVal * 80.0).toFixed(1);
                 $('#accObj').width(that.perc + '%');
             }, false);
 
