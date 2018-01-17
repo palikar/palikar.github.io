@@ -175,7 +175,7 @@ function doingService() {
                 }
                 var allSum = 0;
                 for (var i = 0; i < that.accArr.length; i++) {
-                    allSum += this.accArr[i];
+                    allSum += that.accArr[i];
                 }
                 allSum /= that.accArr.length;
                 var avg = Math.ceil(avg * 1000) / 1000;
