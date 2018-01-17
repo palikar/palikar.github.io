@@ -25,7 +25,8 @@ function doingService() {
             pausesCheck: true,
             accArr: [],
             accVal: 0,
-            perc: 0
+            lux: 0,
+            percLux: 0
         },
 
         methods: {
@@ -125,26 +126,6 @@ function doingService() {
             },
             setupSensors() {
 
-                window.addEventListener("devicelight", function (event) {
-                    var luminosity = event.value;
-
-                    if (luminosity < 100) {
-                        //dim
-                    } else if (100 < luminosity && luminosity < 1000) {
-                        //normal
-                    } else {
-                        //too much
-                    }
-                });
-
-                //$('#accTxt').html("Acc:");
-
-
-
-
-
-
-
                 if (!!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
                         navigator.mozGetUserMedia || navigator.msGetUserMedia)) {
                     // Good to go!
@@ -188,6 +169,14 @@ function doingService() {
                 that.accArr = [];
 
             }, false);
+
+
+            window.addEventListener("devicelight", function (event) {
+                var val = event.value;
+                that.lux = val;
+                that.percLux = val;
+                $('#luxObj').css('width', that.percLux + '%');
+            });
 
 
 

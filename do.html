@@ -73,11 +73,11 @@
 
     <div class="callout  warning">
         <div class="grid-x grid-margin-x">
-            <div class="cell medium-1">Light:</div>
+            <div class="cell medium-1">Light:{{lux}} lux</div>
             <div class=" cell medium-10  ">
                 <div class="info progress">
                     <div class="progress-meter" style="width: 50%">
-                        <p class="progress-meter-text">50%</p>
+                        <p class="progress-meter-text" id="luxObj">{{percLux}}</p>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
         </div>
 
         <div class="grid-x grid-margin-x">
-            <div class="cell medium-1" id=""> Movement:</div>
+            <div class="cell medium-1" id=""> Vibrations:</div>
             <div class=" cell medium-10  ">
                 <div class="warning progress">
                     <div class="progress-meter" style="text-align: right" id="accObj" style="width: 50%">
