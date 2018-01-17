@@ -910,7 +910,7 @@ function doingService() {
                 var sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
                 that.accArr.push(sum);
 
-                if (that.accArr.length < 10) {
+                if (that.accArr.length < 13) {
                     return;
                 }
                 var allSum = 0;
@@ -918,10 +918,11 @@ function doingService() {
                     allSum += that.accArr[i];
                 }
                 allSum /= that.accArr.length;
-                allSum /= 2;
+                allSum /= 3;
 
                 that.accVal = allSum.toFixed(3);
                 that.perc = (allSum * 80.0).toFixed(1);
+                that.perc = that.perc > 100 ? 100 : that.perc;
                 $('#accObj').css('width', that.perc + '%');
 
                 that.accArr = [];
