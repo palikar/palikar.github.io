@@ -174,7 +174,7 @@ function doingService() {
             window.addEventListener("devicelight", function (event) {
                 var val = event.value;
                 that.lux = val;
-                that.percLux = val;
+                that.percLux = val > 100 ? 100 : val;
                 $('#luxObj').css('width', that.percLux + '%');
             });
 
