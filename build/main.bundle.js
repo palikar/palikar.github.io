@@ -918,9 +918,10 @@ function doingService() {
                     allSum += that.accArr[i];
                 }
                 allSum /= that.accArr.length;
+                allSum *= 10;
 
-                that.accVal = allSum.toFixed(3) * 10;
-                that.perc = (accVal * 80.0).toFixed(1);
+                that.accVal = allSum.toFixed(3);
+                that.perc = (allSum * 80.0).toFixed(0);
                 $('#accObj').css('width', that.perc + '%');
 
                 that.accArr = [];
