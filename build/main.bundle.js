@@ -922,7 +922,7 @@ function doingService() {
 
                 that.accVal = (allSum * 80.0).toFixed(1);
                 that.accVal = that.accVal > 100 ? 100 : that.accVal;
-                $('#accObj').css('width', that.perc + '%');
+                $('#accObj').css('width', that.accVal + '%');
 
                 that.accArr = [];
             }, false);
