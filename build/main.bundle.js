@@ -922,8 +922,9 @@ function doingService() {
 
                 that.accArr = [];
 
-                that.accVal = Number.parseFloat(avg).toFixed(3);
-                that.perc = (accVal * 80.0).toFixed(1);
+                that.perc = allSum;
+                that.accVal = avg;
+                //that.perc = (accVal * 80.0).toFixed(1);
                 $('#accObj').css('width', that.perc + '%');
             }, false);
 
