@@ -1,7 +1,7 @@
 <div id="doingController">
     <div class="callout">
         <div class="clearfix">
-            <h3 class="float-left">Undone homework:</h3>
+            <h3 class="float-left"><span class="fi-info" style="font-size: 1.7rem"></span> Undone homework:</h3>
             <div class="switch float-right">
                 <input class="switch-input" id="exampleSwitch" v-on:click="showAllClicked()" type="checkbox" name="exampleSwitch" />
                 <label class="switch-paddle" for="exampleSwitch">
@@ -44,7 +44,8 @@
     </div>
     <div class="grid-x grid-margin-x ">
         <div style="height: 330px;" class="callout cell medium-6  primary">
-            <label><h5>Session name:</h5>
+
+            <label><h5><span class="fi-info" style="font-size: 1.7rem"></span> Session name:</h5>
                 <input type="text" placeholder="Name">
             </label>
             <h5>Homework:{{currentHomework}}</h5>
@@ -57,7 +58,7 @@
             <h2 v-if="pausesCheck">Next pause in:{{nextPause}}</h2>
         </div>
         <div class="callout cell medium-6 success">
-            <label><h5>Pause intereval: 30 Minutes</h5>
+            <label><h5><span class="fi-info" style="font-size: 1.7rem"></span> Pause intereval: 30 Minutes</h5>
             </label>
             <label>
                 <h5 >Pauses on/off:</h5>
@@ -67,16 +68,20 @@
                       <span class="show-for-sr">Pauses</span>
                     </label>
             </section>
+            <h3><small>It's very important to take breaks during studying. Studeis show that the brain has only the capability to focus on a certain thing for 20-30 minutes</small>
+            </h3>
             </label>
         </div>
     </div>
 
     <div class="callout  warning">
-        <div class="grid-x grid-margin-x">
-            <div class="cell medium-1">
-                <p>Light: {{lux}}lux</p>
+        <h4>Environment monitor <span class="fi-info" style="font-size: 1.7rem"></span></h4>
+        <hr>
+        <div id="lightSec" style="visibility: hidden" class="grid-x grid-margin-x">
+            <div class="cell medium-2">
+                <p>Light: {{lux}} lux</p>
             </div>
-            <div class=" cell medium-10  ">
+            <div class=" cell medium-9  ">
                 <div class="info progress">
                     <div class="progress-meter" id="luxObj" style="width: 50%">
                         <p class="progress-meter-text">{{percLux}}%</p>
@@ -84,21 +89,19 @@
                 </div>
             </div>
         </div>
-        <div class="grid-x grid-margin-x">
-            <div class="cell medium-1">Noise:</div>
-            <div class=" cell medium-10  ">
+        <div id="noiseSec" style="visibility: hidden" class="grid-x grid-margin-x">
+            <div class="cell medium-2">Noise: {{volume}}%</div>
+            <div class=" cell medium-9  ">
                 <div class="success progress">
-                    <div class="progress-meter" style="width: 50%">
-                        <p class="progress-meter-text">%</p>
+                    <div class="progress-meter" id="noiseLevel" style="width: 50%">
+                        <p class="progress-meter-text">{{volume}}%</p>
                     </div>
                 </div>
             </div>
-
         </div>
-
-        <div class="grid-x grid-margin-x">
-            <div class="cell medium-1" id=""> Vibrations:</div>
-            <div class=" cell medium-10  ">
+        <div id="vibeSec" style="visibility: hidden" class="grid-x grid-margin-x">
+            <div class="cell medium-2" id=""> Vibrations: {{accVal}} </div>
+            <div class=" cell medium-9  ">
                 <div class="warning progress">
                     <div class="progress-meter" style="text-align: right" id="accObj" style="width: 50%">
                         <p class="progress-meter-text">{{accVal}}%</p>

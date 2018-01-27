@@ -4,6 +4,9 @@ import {
 
 
 var doingService_;
+var audioContext = null;
+var meter = null;
+var mediaStreamSource = null;
 
 function doingService() {
 
@@ -26,7 +29,8 @@ function doingService() {
             accArr: [],
             accVal: 0,
             lux: 0,
-            percLux: 0
+            percLux: 0,
+            volume: 0
         },
 
         methods: {
@@ -49,6 +53,8 @@ function doingService() {
                 }
                 this.start = new Date().getTime();
                 this.running = true;
+                this.interval = mediaStreamSource = audioContext.createMediaStreamSource(stream);
+
                 this.interval = window.setInterval(this.update, 1000);
                 this.nextPauseTime = 30 * 60 * 1000;
             },
@@ -126,12 +132,6 @@ function doingService() {
             },
             setupSensors() {
 
-                if (!!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-                        navigator.mozGetUserMedia || navigator.msGetUserMedia)) {
-                    // Good to go!
-                } else {
-                    alert('getUserMedia() is not supported in your browser');
-                }
             }
         },
         created: function () {
@@ -140,7 +140,7 @@ function doingService() {
 
             var that = this;
             window.addEventListener('devicemotion', function (event) {
-
+                $("#vibeSec").css("visibility", "visible");
                 var x = event.acceleration.x;
                 var y = event.acceleration.y;
                 var z = event.acceleration.z;
@@ -176,7 +176,48 @@ function doingService() {
                 that.lux = val;
                 that.percLux = val > 100 ? 100 : val;
                 $('#luxObj').css('width', that.percLux + '%');
+                $("#lightSec").css("visibility", "visible");
             });
+
+
+            window.AudioContext = window.AudioContext || window.webkitAudioContext;
+            navigator.getUserMedia =
+                navigator.getUserMedia ||
+                navigator.webkitGetUserMedia ||
+                navigator.mozGetUserMedia;
+            audioContext = new AudioContext();
+            navigator.getUserMedia({
+                    "audio": {
+                        "mandatory": {
+                            "googEchoCancellation": "false",
+                            "googAutoGainControl": "false",
+                            "googNoiseSuppression": "false",
+                            "googHighpassFilter": "false"
+                        },
+                        "optional": []
+                    },
+                },
+                function (stream) {
+                    mediaStreamSource = audioContext.createMediaStreamSource(stream);
+                    // createAudioMeter(audioContext,clipLevel,averaging,clipLag);
+                    meter = createAudioMeter(audioContext, 0.5, 0.95);
+                    mediaStreamSource.connect(meter);
+
+                    $("#noiseSec").css("visibility", "visible");
+
+                    window.setInterval(function () {
+
+                        var percent = 100 * (meter.volume * 10);
+                        percent = percent > 100 ? 100 : percent;
+                        that.volume = percent.toFixed(0);
+                        $('#noiseLevel').css('width', percent + '%');
+
+                    }, 100);
+
+                },
+                function () {
+                    //error hanlding
+                });
 
 
 
