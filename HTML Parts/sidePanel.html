@@ -1,0 +1,105 @@
+<hr>
+<!--                    Menu-->
+<ul class="menu  simple icons icon-top">
+    <li class="is-active"><a><i class="fi-home"></i><span>Home</span></a></li>
+    <li><a data-open="appInfo"><i class="fi-info"></i> <span>Info</span></a></li>
+
+</ul>
+<hr>
+<!--                    Notifications-->
+
+
+
+<!--                    Quick Action-->
+<div>
+    <div class="title-bar" style="height: 30px">
+        <div class="title-bar-left">
+            <i class="menu-icon"></i> <span class="title-bar-title"><span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="Here you can either create new note or new homework with simple click on one of the buttons." style="font-size: 1.7rem"></span>Quick Actions</span>
+        </div>
+    </div>
+    <div class="callout">
+        <button type="button" class="small expanded button" data-open="newHomeSide">New Homework</button>
+        <button type="button" class="small expanded button" data-open="newNoteSide">New Note</button>
+    </div>
+</div>
+<!--                    This week-->
+<div class="title-bar" style="height: 30px">
+    <div class="title-bar-left">
+        <i class="menu-icon"></i> <span class="title-bar-title"><span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="This list shows you the homework that have due date in less than a week away form the current day" style="font-size: 1.7rem"></span> Due this Week</span>
+    </div>
+    <div class="title-bar-center">
+
+    </div>
+</div>
+<div class="notificationController">
+    <div class="callout" style="padding: 2px;overflow-x: scroll;height: 175px">
+        <ul style="list-style: none">
+            <li v-for="not in notifications" @click="showInfo(not)">
+                <div data-open="notInfo" v-if="not.important" style="padding: 2px; cursor: pointer" class="label alert">
+                    {{not.text}}
+                </div>
+
+                <div data-open="notInfo" v-else style="padding: 2px; cursor: pointer" class="label primary">
+                    {{not.text}}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="reveal" id="newHomeSide" data-reveal>
+    <h1>New homework.</h1>
+    <hr>
+    <label>Homework name:
+        <input type="text" id="nameQuick" placeholder="Name"/>
+    </label>
+    <label>
+       Due date:
+     <input  class="datepicker" id="dateQuick"   type="date" >
+    </label>
+    <button class="button expanded success" id="newHomeQuick">Ok</button>
+    <button class="close-button" data-close id="closeQuick" aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="reveal" id="newNoteSide" data-reveal>
+    <h1>New Note.</h1>
+    <hr>
+    <label>
+        Note name:                           
+        <input type="text"  id="noteNameQuick" placeholder="Name"/>
+   </label>
+    <label>
+       Text:
+          <textarea id="noteTextQuick"  rows="7" placeholder="Type text here..."></textarea>
+    </label>
+    <button class="button expanded success" id="newNoteQuick">Ok</button>
+    <button class="close-button" data-close id="closeNoteQuick" aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="reveal tiny" id="notInfo" data-reveal>
+    <h3>Notification Info</h3>
+    <hr>
+    <h5 id="notificationMsg"></h5>
+    <button class="close-button" data-close id="closeNoteQuick" aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="reveal " id="appInfo" data-reveal>
+    <h3>Information about the web application and it's purpose</h3>
+    <hr>
+    <h4>What is it all about</h4>
+    <p style="text-align: justify">This is a web application(i.e. Website) that help you organize and keep your track of your homework, write them effectively and in a effective manner. In the first tab of the application you can mange your homeworks, create new ones and set the given parameters and attributes of your homeworks. Each homework has it's name, subject and due date. The application will notify you automatically when the due date of a given homework is in less than a one week away. You can mark homeworks as done or undone so you can have an idea of what is to be done and what is already done. You can see the list with all of your homeworks in the first part of the the first tab. Underneath there is a section of the application where you can create short text notes to acompany your homeworks. Each note is assiated with a different homework. Those shor text notes are saved in your browser and can be viewed later.</p>
+    <p style="text-align: justify">
+
+        The other tab is a little more interesting and exciting. Here on the top you see yet again a list of your homeworks but this time they are put into table (how different, I know, designing genius I am!). You can choose whether you want too see all of your homeworks or only the undone ones. Under this there is a section with a simple countdown functionality. When you start doing some of your homeworks you can enter a message (Session name) that will be displayed so you can don't forget and better concentrated what are you doing in the current time. When you hit the start button a time is going to start counting backward from thirty minutes. This is the time where you should concentrated yourself and do some work on your homeworks. Remember - you have to be productive for the whole duration of the time. After that you are allowed to take a short brake. Watch a youtube video or something. After that...just repeat the process. The section underneath is your environment monitor. Depending on the device you are using the application will use different sensors and tell you what the exact conditions of your surroundings. If said conditions are not appropriate for working - a feed back will be given. Don't work in bad conditions!!!</p>
+
+    <button class="close-button" data-close id="closeNoteQuick" aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+    </button>
+</div>

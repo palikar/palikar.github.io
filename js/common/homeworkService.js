@@ -1,6 +1,6 @@
 import {
     Homework
-} from './homework.js'
+} from '../common/homework.js'
 
 
 class HomeworkService {

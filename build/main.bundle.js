@@ -270,7 +270,7 @@ var noteService = exports.noteService = new NoteService();
 "use strict";
 
 
-var _notesManagement = __webpack_require__(1);
+var _notesService = __webpack_require__(1);
 
 var _homeworkService = __webpack_require__(0);
 
@@ -289,16 +289,16 @@ w3.includeHTML(function () {
         var name = $("#noteNameField").val();
         var homework = $("#noteHomeworkSelection option:selected").val();
         var text = $("#noteTextField").val();
-
+        notesManagerControllernotesManagerControllernotesManagerControllernotesManagerControllernotesManagerController;
         if ($("#titleNoteModal").attr("idnote") != "-1") {
             var id = $("#titleNoteModal").attr("idnote");
-            _notesManagement.noteService.update(id, {
+            _notesService.noteService.update(id, {
                 name: name,
                 text: text,
                 homework: homework
             });
         } else {
-            _notesManagement.noteService.createNote(name, homework, text);
+            _notesService.noteService.createNote(name, homework, text);
         }
 
         $("#noteCloseBtn").click();
@@ -322,7 +322,7 @@ w3.includeHTML(function () {
         var name = $("#noteNameQuick").val();
         var text = $("#noteTextQuick").val();
 
-        _notesManagement.noteService.createNote(name, -1, text);
+        _notesService.noteService.createNote(name, -1, text);
 
         $("#closeNoteQuick").click();
 
@@ -334,8 +334,8 @@ w3.includeHTML(function () {
     //        e.datepicker()
     //    }
 
-    $(document).foundation();
 
+    Vue.config.ignoredElements = ['info'];
     (0, _notesManagerController.notesManagerController)();
     (0, _homeworksManagerController.homeworkManagerController)();
     (0, _doingController.doingService)();
@@ -344,6 +344,8 @@ w3.includeHTML(function () {
     $(".datepicker").datepicker({
         dateFormat: "D M dd yy"
     });
+
+    $(document).foundation();
 });
 
 /***/ }),
@@ -546,7 +548,7 @@ exports.notesManagerController = undefined;
 
 var _homeworkService = __webpack_require__(0);
 
-var _notesManagement = __webpack_require__(1);
+var _notesService = __webpack_require__(1);
 
 var notesManagerController_;
 
@@ -590,7 +592,7 @@ function notesManagerController() {
                 this.refreshHomeworklist();
             },
             removeNote: function removeNote(id) {
-                _notesManagement.noteService.remove(id);
+                _notesService.noteService.remove(id);
             },
             editNote: function editNote(note) {
                 $("#titleNoteModal").html("Edit note");
@@ -604,7 +606,7 @@ function notesManagerController() {
             }
         },
         created: function created() {
-            this.allNotes = _notesManagement.noteService.getAllNotes();
+            this.allNotes = _notesService.noteService.getAllNotes();
             var homeworks = _homeworkService.homeworkService.getAllHomeworks();
             for (var i = 0; i < homeworks.length; i++) {
                 this.homeworks[homeworks[i].getId()] = homeworks[i];
@@ -807,11 +809,8 @@ function doingService() {
                 }
                 this.start = new Date().getTime();
                 this.running = true;
-                this.interval = mediaStreamSource = audioContext.createMediaStreamSource(stream);
 
-                // Create a new volume meter and connect it.
-                meter = createAudioMeter(audioContext);
-                mediaStreamSource.connect(meter);
+                this.interval = window.setInterval(this.update, 1000);
                 this.nextPauseTime = 30 * 60 * 1000;
             },
             pause: function pause() {

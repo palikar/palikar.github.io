@@ -1,6 +1,6 @@
 import {
     notificationService
-} from './notificationManager.js'
+} from './common/notificationManager.js'
 
 
 

@@ -1,6 +1,6 @@
 import {
     homeworkService
-} from './homeworkService.js'
+} from '../common/homeworkService.js'
 
 
 var doingService_;
@@ -53,7 +53,6 @@ function doingService() {
                 }
                 this.start = new Date().getTime();
                 this.running = true;
-                this.interval = mediaStreamSource = audioContext.createMediaStreamSource(stream);
 
                 this.interval = window.setInterval(this.update, 1000);
                 this.nextPauseTime = 30 * 60 * 1000;

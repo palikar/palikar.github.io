@@ -1,6 +1,6 @@
 import {
     Note
-} from './note.js'
+} from '../common/note.js'
 
 class NoteService {
 

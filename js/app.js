@@ -1,30 +1,28 @@
 import {
     noteService
-} from './notesManagement.js'
+} from './common/notesService.js'
 import {
     homeworkService
-} from './homeworkService.js'
+} from './common/homeworkService.js'
 
 import {
     notesManagerController
-} from './notesManagerController.js'
+} from './writing/notesManagerController.js'
 
 
 import {
     homeworkManagerController
-} from './homeworksManagerController.js'
+} from './writing/homeworksManagerController.js'
 
 
 import {
     doingService
-} from './doingController.js'
+} from './doing/doingController.js'
 
 
 import {
     notificationManagerController
 } from './notificationController.js'
-
-
 
 
 
@@ -37,7 +35,7 @@ w3.includeHTML(function () {
         var name = $("#noteNameField").val();
         var homework = $("#noteHomeworkSelection option:selected").val();
         var text = $("#noteTextField").val();
-
+        notesManagerControllernotesManagerControllernotesManagerControllernotesManagerControllernotesManagerController
         if ($("#titleNoteModal").attr("idnote") != "-1") {
             var id = $("#titleNoteModal").attr("idnote");
             noteService.update(id, {
@@ -87,9 +85,9 @@ w3.includeHTML(function () {
     //        e.datepicker()
     //    }
 
-    $(document).foundation();
 
 
+    Vue.config.ignoredElements = ['info'];
     notesManagerController();
     homeworkManagerController();
     doingService();
@@ -99,4 +97,7 @@ w3.includeHTML(function () {
     $(".datepicker").datepicker({
         dateFormat: "D M dd yy"
     });
+
+    $(document).foundation();
+
 });

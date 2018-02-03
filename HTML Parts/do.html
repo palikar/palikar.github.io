@@ -1,7 +1,8 @@
 <div id="doingController">
     <div class="callout">
         <div class="clearfix">
-            <h3 class="float-left"><span class="fi-info" style="font-size: 1.7rem"></span> Undone homework:</h3>
+            <h3 class="float-left">
+                <span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="This is yet another list of your homework os you can easily see what must be done while working on a session. You can decide whether you want to see all homeworks or just the undone ones." style="font-size: 1.7rem"></span>Undone homework:</h3>
             <div class="switch float-right">
                 <input class="switch-input" id="exampleSwitch" v-on:click="showAllClicked()" type="checkbox" name="exampleSwitch" />
                 <label class="switch-paddle" for="exampleSwitch">
@@ -45,7 +46,7 @@
     <div class="grid-x grid-margin-x ">
         <div style="height: 330px;" class="callout cell medium-6  primary">
 
-            <label><h5><span class="fi-info" style="font-size: 1.7rem"></span> Session name:</h5>
+            <label><h5><span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="This is the section that helps you stay concentrated during your work. Once you start the timer you have to contention to work till it hits zero. Only then you can do something else. Having the timer in front of your eyes will force you to think about how you have to stay productive in those 30 minutes. Writing down the name of your study session and selection homework will further help your concentration." style="font-size: 1.7rem"></span>  Session name:</h5>
                 <input type="text" placeholder="Name">
             </label>
             <h5>Homework:{{currentHomework}}</h5>
@@ -58,7 +59,7 @@
             <h2 v-if="pausesCheck">Next pause in:{{nextPause}}</h2>
         </div>
         <div class="callout cell medium-6 success">
-            <label><h5><span class="fi-info" style="font-size: 1.7rem"></span> Pause intereval: 30 Minutes</h5>
+            <label><h5><span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="This is here to remind you that during studying you also have to take quick brakes to refresh your brain and not to put too much strain on your mind. If you wish you can also hide the timer till your next break and just skip it but we don't recommend that!" style="font-size: 1.7rem"></span>  Pause intereval: 30 Minutes</h5>
             </label>
             <label>
                 <h5 >Pauses on/off:</h5>
@@ -68,14 +69,14 @@
                       <span class="show-for-sr">Pauses</span>
                     </label>
             </section>
-            <h3><small>It's very important to take breaks during studying. Studeis show that the brain has only the capability to focus on a certain thing for 20-30 minutes</small>
+            <h3><small>It's very important to take breaks during studying. Studeis show that the brain has only the capability to focus on a certain thing for 20-30 minutes</small>sadsadsadsadsads
             </h3>
             </label>
         </div>
     </div>
 
     <div class="callout  warning">
-        <h4>Environment monitor <span class="fi-info" style="font-size: 1.7rem"></span></h4>
+        <h4>Environment monitor <span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="This is the monitor that allows you to quantify the conditions around you. It's purpose is to help you find better spot for your studying activities so that you can be productive effectively. There are monitors for light, noise and vibrations but depending on your current device not everything may be available to you." style="font-size: 1.7rem"></span> </h4>
         <hr>
         <div id="lightSec" style="visibility: hidden" class="grid-x grid-margin-x">
             <div class="cell medium-2">

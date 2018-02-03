@@ -1,6 +1,6 @@
 import {
     homeworkService
-} from './homeworkService.js'
+} from '../common/homeworkService.js'
 
 
 

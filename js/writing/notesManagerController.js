@@ -1,9 +1,9 @@
 import {
     homeworkService
-} from './homeworkService.js'
+} from '../common/homeworkService.js'
 import {
     noteService
-} from './notesManagement.js'
+} from '../common/notesService.js'
 
 
 
