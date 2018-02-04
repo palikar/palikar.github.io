@@ -28,14 +28,18 @@ import {
 
 w3.includeHTML(function () {
 
-
+    Vue.config.ignoredElements = ['info'];
+    notesManagerController();
+    homeworkManagerController();
+    doingService();
+    notificationManagerController();
 
     $("#newNoteButton").click(function (e) {
 
         var name = $("#noteNameField").val();
         var homework = $("#noteHomeworkSelection option:selected").val();
         var text = $("#noteTextField").val();
-        notesManagerControllernotesManagerControllernotesManagerControllernotesManagerControllernotesManagerController
+
         if ($("#titleNoteModal").attr("idnote") != "-1") {
             var id = $("#titleNoteModal").attr("idnote");
             noteService.update(id, {
@@ -61,8 +65,6 @@ w3.includeHTML(function () {
 
         $("#nameQuick").val("");
         $("#dateQuick").val("");
-
-
     });
 
     $("#newNoteQuick").click(function (e) {
@@ -76,22 +78,7 @@ w3.includeHTML(function () {
 
         $("#noteNameQuick").val("");
         $("#noteTextQuick").val("");
-
-
     });
-
-
-    //    for (var e in $(".datepicker")) {
-    //        e.datepicker()
-    //    }
-
-
-
-    Vue.config.ignoredElements = ['info'];
-    notesManagerController();
-    homeworkManagerController();
-    doingService();
-    notificationManagerController();
 
 
     $(".datepicker").datepicker({

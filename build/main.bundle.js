@@ -284,12 +284,18 @@ var _notificationController = __webpack_require__(8);
 
 w3.includeHTML(function () {
 
+    Vue.config.ignoredElements = ['info'];
+    (0, _notesManagerController.notesManagerController)();
+    (0, _homeworksManagerController.homeworkManagerController)();
+    (0, _doingController.doingService)();
+    (0, _notificationController.notificationManagerController)();
+
     $("#newNoteButton").click(function (e) {
 
         var name = $("#noteNameField").val();
         var homework = $("#noteHomeworkSelection option:selected").val();
         var text = $("#noteTextField").val();
-        notesManagerControllernotesManagerControllernotesManagerControllernotesManagerControllernotesManagerController;
+
         if ($("#titleNoteModal").attr("idnote") != "-1") {
             var id = $("#titleNoteModal").attr("idnote");
             _notesService.noteService.update(id, {
@@ -329,17 +335,6 @@ w3.includeHTML(function () {
         $("#noteNameQuick").val("");
         $("#noteTextQuick").val("");
     });
-
-    //    for (var e in $(".datepicker")) {
-    //        e.datepicker()
-    //    }
-
-
-    Vue.config.ignoredElements = ['info'];
-    (0, _notesManagerController.notesManagerController)();
-    (0, _homeworksManagerController.homeworkManagerController)();
-    (0, _doingController.doingService)();
-    (0, _notificationController.notificationManagerController)();
 
     $(".datepicker").datepicker({
         dateFormat: "D M dd yy"
@@ -668,7 +663,8 @@ function homeworkManagerController() {
                 this.homeworkChecked = this.selectedHomework.isDone();
             },
             newHomework: function newHomework() {},
-            updateHomework: function updateHomework(id) {
+            updateHomework: function updateHomework(homework) {
+                if (!homework) return;
                 var values = {};
                 values.name = this.homeworkName;
                 values.desc = this.homeworkDesc;
@@ -700,17 +696,16 @@ function homeworkManagerController() {
                 }
             },
             switchHome: function switchHome(home) {
-
-                console.log("switching!");
                 if (home) {
                     home.setDone(!home.isDone());
                     this.save();
                 }
             },
-            remove: function remove(id) {
-                this.selectedHomewor = null;
+            remove: function remove(homework) {
+                if (!homework) return;
+                this.selectedHomework = null;
                 for (var i = 0; i < this.homeworks.length; i++) {
-                    if (this.homeworks[i].getId() == id) {
+                    if (this.homeworks[i].getId() == homework.getId()) {
                         this.homeworks.splice(i, 1);
                         _homeworkService.homeworkService.saveHomeworks();
                         this.homeworkName = "";
@@ -876,7 +871,6 @@ function doingService() {
                 this.load();
             },
             select: function select(home) {
-                console.log("sadasd");
                 this.currentHomework = home.getName();
             },
             setupSensors: function setupSensors() {}
@@ -1079,10 +1073,7 @@ var NotificationService = function () {
                 var home = Date.parse(this.homeworks[i].getDueDate());
                 if (this.homeworks[i].isDone()) continue;
                 if (today <= home && home <= nextWeek) {
-                    console.log("found");
-
                     var imp = this.homeworks[i].getType() == "Long term";
-
                     this.notifications.push({
                         date: this.homeworks[i].getDueDate(),
                         homework: this.homeworks[i].getName(),

@@ -12,13 +12,13 @@
             <div class="grid-x grid-padding-x">
                 <div class="medium-6 cell">
                     <label>Homework name:
-                      <input v-on:keyup="updateHomework(selectedHomework.getId())" type="text" v-model="homeworkName" placeholder="Name"/>
+                      <input v-on:keyup="updateHomework(selectedHomework)" type="text" v-model="homeworkName" placeholder="Name"/>
                     </label>
 
                 </div>
                 <div class="medium-6 cell">
-                    <label>Homework type:
-                  <select v-on:change="updateHomework(selectedHomework.getId())" v-model="homeworkType">
+                    <label>Homework type:<span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="This is just onother attrubute of a homework entry that helps you stay organised. Urgent is for homework that should be done in a relatively timely mannener. Long term is for more prolonged, project-like homeworks that are spaced out in time." style="font-size: 1.0rem"></span>
+                  <select v-on:change="updateHomework(selectedHomework)" v-model="homeworkType">
                     <option value="Urgent">Urgent</option>
                     <option value="Long term">Long term</option>
                   </select>
@@ -27,28 +27,29 @@
             </div>
             <label>
               Description:
-              <textarea v-on:keyup="updateHomework(selectedHomework.getId())" v-model="homeworkDesc" rows="7" placeholder="None"></textarea>
+              <textarea v-on:keyup="updateHomework(selectedHomework)" v-model="homeworkDesc" rows="7" placeholder="None"></textarea>
             </label>
             <label>
                 Due date:
-                <input v-model="homeworkDueDate" v-on:change="updateHomework(selectedHomework.getId())" id="datePickHomework"  class="datepicker"  type="date" >
+                <input v-model="homeworkDueDate" v-on:change="updateHomework(selectedHomework)" id="datePickHomework"  class="datepicker"  type="date" >
             </label>
             <hr>
+            <span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="Be sure to click this button when you want to save the changes that you make to a selected homework." style="font-size: 1.3rem"></span>
             <button type="button" v-on:click="save()" class="success button expanded">Save</button>
-            <button type="button" v-on:click="remove(selectedHomework.getId())" class="alert button expanded">Delete</button>
-
+            <button type="button" v-on:click="remove(selectedHomework)" class="alert button expanded">Delete</button>
         </div>
         <div class="callout primary cell medium-6 ">
 
             <div style="overflow-y: scroll; height: 500px;">
-                <h4>Homework list</h4>
+                <h4>Homework list
+                    <span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="This is the list with your homeworks. The arrow on the left selects the homework and the document symbol on the right deletes the entry." style="font-size: 1.3rem"></span></h4>
                 <div v-for="homework in homeworks">
                     <hr style="margin: 0px;">
                     <div class="clearfix hovery">
                         <i style="font-size: 2rem;cursor:pointer;" v-on:click="homeworkSelected(homework.getId())" class="float-left fi-arrow-left"></i>
                         <h5 style="font-size: 2rem" class="float-left">{{homework.getName()}}</h5>
                         <i style="font-size: 2rem;" class="float-left fi-check" v-if="homework.isDone()"></i>
-                        <i style="font-size: 2rem;cursor:pointer;" v-on:click="remove(homework.getId())" class="float-right fi-page-remove"></i>
+                        <i style="font-size: 2rem;cursor:pointer;" v-on:click="remove(homework)" class="float-right fi-page-remove"></i>
 
                     </div>
                 </div>
@@ -81,7 +82,7 @@
                 <input class="input-group-field" type="text">
             </div>
             <button type="button" class="button float-right" data-open="addNoteModal" v-on:click="newNote()">New</button>
-            <div data-reveal class="reveal" id="addNoteModal" w3-include-html="addNoteModal.html"></div>
+            <div data-reveal class="reveal" id="addNoteModal" w3-include-html="HTML Parts/addNoteModal.html"></div>
             <hr>
 
             <div v-for="note in allNotes" class="hovery card" style="width: 300px; display: inline-block; margin: 5px;">

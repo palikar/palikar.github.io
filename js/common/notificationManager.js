@@ -29,11 +29,7 @@ class NotificationService {
             if (this.homeworks[i].isDone())
                 continue;
             if (today <= home && home <= nextWeek) {
-                console.log("found");
-
-
                 var imp = this.homeworks[i].getType() == "Long term";
-
                 this.notifications.push({
                     date: this.homeworks[i].getDueDate(),
                     homework: this.homeworks[i].getName(),

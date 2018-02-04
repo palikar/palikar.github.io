@@ -3,6 +3,7 @@
         <div class="clearfix">
             <h3 class="float-left">
                 <span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="This is yet another list of your homework os you can easily see what must be done while working on a session. You can decide whether you want to see all homeworks or just the undone ones." style="font-size: 1.7rem"></span>Undone homework:</h3>
+
             <div class="switch float-right">
                 <input class="switch-input" id="exampleSwitch" v-on:click="showAllClicked()" type="checkbox" name="exampleSwitch" />
                 <label class="switch-paddle" for="exampleSwitch">
@@ -10,6 +11,7 @@
                 </label>
             </div>
             <h5 class="float-right">Show all:</h5>
+            <span class="float-right fi-refresh clicky" style="font-size: 1.7rem" @click="load()"></span>
         </div>
 
         <div style="height: 275px;overflow-y: scroll">
@@ -69,7 +71,7 @@
                       <span class="show-for-sr">Pauses</span>
                     </label>
             </section>
-            <h3><small>It's very important to take breaks during studying. Studeis show that the brain has only the capability to focus on a certain thing for 20-30 minutes</small>sadsadsadsadsads
+            <h3><small>It's very important to take breaks during studying. Studeis show that the brain has only the capability to focus on a certain thing for 20-30 minutes</small>
             </h3>
             </label>
         </div>

@@ -37,7 +37,9 @@ function homeworkManagerController() {
             newHomework() {
 
             },
-            updateHomework(id) {
+            updateHomework(homework) {
+                if (!homework)
+                    return;
                 var values = {};
                 values.name = this.homeworkName;
                 values.desc = this.homeworkDesc;
@@ -73,8 +75,6 @@ function homeworkManagerController() {
             },
 
             switchHome(home) {
-
-                console.log("switching!");
                 if (home) {
                     home.setDone(!home.isDone());
                     this.save();
@@ -82,10 +82,12 @@ function homeworkManagerController() {
 
             },
 
-            remove(id) {
-                this.selectedHomewor = null;
+            remove(homework) {
+                if (!homework)
+                    return;
+                this.selectedHomework = null;
                 for (var i = 0; i < this.homeworks.length; i++) {
-                    if (this.homeworks[i].getId() == id) {
+                    if (this.homeworks[i].getId() == homework.getId()) {
                         this.homeworks.splice(i, 1);
                         homeworkService.saveHomeworks();
                         this.homeworkName = "";

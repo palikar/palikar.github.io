@@ -126,7 +126,6 @@ function doingService() {
                 this.load();
             },
             select(home) {
-                console.log("sadasd");
                 this.currentHomework = home.getName();
             },
             setupSensors() {
