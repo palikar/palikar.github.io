@@ -296,6 +296,11 @@ w3.includeHTML(function () {
         var homework = $("#noteHomeworkSelection option:selected").val();
         var text = $("#noteTextField").val();
 
+        if (!name.trim()) {
+            $("#noteCloseBtn").click();
+            return;
+        }
+
         if ($("#titleNoteModal").attr("idnote") != "-1") {
             var id = $("#titleNoteModal").attr("idnote");
             _notesService.noteService.update(id, {
@@ -314,6 +319,11 @@ w3.includeHTML(function () {
 
         var name = $("#nameQuick").val();
         var date = $("#dateQuick").datepicker('getDate');
+
+        if (!name.trim()) {
+            $("#closeQuick").click();
+            return;
+        }
 
         _homeworkService.homeworkService.createHomework(name, "", "Urgent", date);
 
