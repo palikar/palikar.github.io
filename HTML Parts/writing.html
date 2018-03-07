@@ -47,7 +47,7 @@
                     <hr style="margin: 0px;">
                     <div class="clearfix hovery">
                         <i style="font-size: 2rem;cursor:pointer;" v-on:click="homeworkSelected(homework.getId())" class="float-left fi-arrow-left"></i>
-                        <h5 style="font-size: 2rem" class="float-left">{{homework.getName()}}</h5>
+                        <h5 style="font-size: 2rem" class="float-left text-truncate">{{homework.getName()}}</h5>
                         <i style="font-size: 2rem;" class="float-left fi-check" v-if="homework.isDone()"></i>
                         <i style="font-size: 2rem;cursor:pointer;" v-on:click="remove(homework)" class="float-right fi-page-remove"></i>
 
@@ -87,7 +87,7 @@
 
             <div v-for="note in allNotes" class="hovery card" style="width: 300px; display: inline-block; margin: 5px;">
                 <div class="card-divider">
-                    <h4>{{note.getName()}} <small>{{homeworks[note.getHomeWorkId()].getName()}}</small></h4>
+                    <h4 class="text-truncate">{{note.getName()}} <small>{{homeworks[note.getHomeWorkId()].getName()}}</small></h4>
                 </div>
                 <div class="text-center card-image">
                     <img src="res/text-icon.png" height="128px" width="128px">
