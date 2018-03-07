@@ -46,21 +46,10 @@
         </div>
     </div>
     <div class="grid-x grid-margin-x ">
-        <div style="height: 330px;" class="callout cell medium-6  primary">
 
-            <label><h5><span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="This is the section that helps you stay concentrated during your work. Once you start the timer you have to contention to work till it hits zero. Only then you can do something else. Having the timer in front of your eyes will force you to think about how you have to stay productive in those 30 minutes. Writing down the name of your study session and selection homework will further help your concentration." style="font-size: 1.7rem"></span>  Session name:</h5>
-                <input type="text" placeholder="Name">
-            </label>
-            <h5>Homework:{{currentHomework}}</h5>
-            <div class="text-center">
-                <span class="label success clicky" v-on:click="play()"><i style="font-size: 3rem;width: 50px;" class=" fi-play"></i></span>
-                <span class="label alert clicky" v-on:click="stop()"><i style="font-size: 3rem;width: 50px;" class="fi-stop "></i></span>
-                <span class="label info clicky" v-on:click="pause()"><i style="font-size: 3rem;width: 50px;" class="fi-pause "></i></span>
-            </div>
-            <h2>Time:{{time}}</h2>
-            <h2 v-if="pausesCheck">Next pause in:{{nextPause}}</h2>
-        </div>
-        <div class="callout cell medium-6 success">
+
+
+        <div class="callout cell small-order-1 medium-order-2 medium-6 success">
             <label><h5><span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="This is here to remind you that during studying you also have to take quick brakes to refresh your brain and not to put too much strain on your mind. If you wish you can also hide the timer till your next break and just skip it but we don't recommend that!" style="font-size: 1.7rem"></span>  Pause intereval: 30 Minutes</h5>
             </label>
             <label>
@@ -74,6 +63,21 @@
             <h3><small>It's very important to take breaks during studying. Studeis show that the brain has only the capability to focus on a certain thing for 20-30 minutes</small>
             </h3>
             </label>
+        </div>
+
+
+        <div style="height: 330px;" class="callout cell small-order-2 medium-order-1 medium-6  primary">
+            <label><h5><span data-tooltip aria-haspopup="true" class="fi-info has-tip" data-disable-hover="false" tabindex="1" title="This is the section that helps you stay concentrated during your work. Once you start the timer you have to contention to work till it hits zero. Only then you can do something else. Having the timer in front of your eyes will force you to think about how you have to stay productive in those 30 minutes. Writing down the name of your study session and selection homework will further help your concentration." style="font-size: 1.7rem"></span>  Session name:</h5>
+                <input type="text" placeholder="Name">
+            </label>
+            <h5>Homework:{{currentHomework}}</h5>
+            <div class="text-center">
+                <span class="label success clicky" v-on:click="play()"><i style="font-size: 3rem;width: 50px;" class=" fi-play"></i></span>
+                <span class="label alert clicky" v-on:click="stop()"><i style="font-size: 3rem;width: 50px;" class="fi-stop "></i></span>
+                <span class="label info clicky" v-on:click="pause()"><i style="font-size: 3rem;width: 50px;" class="fi-pause "></i></span>
+            </div>
+            <h2>Time:{{time}}</h2>
+            <h2 v-if="pausesCheck">Next pause in:{{nextPause}}</h2>
         </div>
     </div>
 
