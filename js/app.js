@@ -91,7 +91,10 @@ w3.includeHTML(function () {
     });
 
 
-    $(".datepicker").datepicker({
+    $("#datePickHomework").datepicker({
+        dateFormat: "D M dd yy"
+    });
+    $("#dateQuick").datepicker({
         dateFormat: "D M dd yy"
     });
 
