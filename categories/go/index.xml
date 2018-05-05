@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Go on Yet Another Personal Site</title>
+    <title>Go on SA Dev</title>
     <link>/categories/go/</link>
-    <description>Recent content in Go on Yet Another Personal Site</description>
+    <description>Recent content in Go on SA Dev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Apr 2018 00:00:00 +0000</lastBuildDate>
@@ -17,6 +17,15 @@
       <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/posts/post1/</guid>
+      <description>Abstract  item itme itme  this is abosolutely insane!</description>
+    </item>
+    
+    <item>
+      <title>Post 1</title>
+      <link>/projects/post1/</link>
+      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/post1/</guid>
       <description>Abstract  item itme itme  this is abosolutely insane!</description>
     </item>
     
