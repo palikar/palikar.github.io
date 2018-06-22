@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SA Dev</title>
-    <link>/</link>
+    <link>https://palikar.github.io/</link>
     <description>Recent content on SA Dev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Jun 2018 00:00:00 +0200</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://palikar.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Post 1</title>
-      <link>/posts/post1/</link>
-      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/post1/</guid>
-      <description>Abstract  item itme itme  this is abosolutely insane!</description>
-    </item>
-    
-    <item>
-      <title>Post 1</title>
-      <link>/projects/post1/</link>
-      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/post1/</guid>
-      <description>Abstract  item itme itme  this is abosolutely insane!</description>
-    </item>
     
     <item>
       <title>About</title>
-      <link>/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://palikar.github.io/about/</link>
+      <pubDate>Thu, 07 Jun 2018 00:00:00 +0200</pubDate>
       
-      <guid>/about/</guid>
-      <description>Aliquam erat volutpat. Nunc eleifend leo vitae magna. In id erat non orci commodo lobortis. Proin neque massa, cursus ut, gravida ut, lobortis eget, lacus. Sed diam. Praesent fermentum tempor tellus. Nullam tempus. Mauris ac felis vel velit tristique imperdiet. Donec at pede. Etiam vel neque nec dui dignissim bibendum. Vivamus id enim. Phasellus neque orci, porta a, aliquet quis, semper a, massa. Phasellus purus. Pellentesque tristique imperdiet tortor. Nam euismod tellus id erat.</description>
+      <guid>https://palikar.github.io/about/</guid>
+      <description>My assigned character I was born a human and I&amp;rsquo;m supposed to live on the planet till my body gives up and it&amp;rsquo;s no longer suitable for sustaining the social construct that one would call &amp;ldquo;life&amp;rdquo;&amp;hellip;or at least I am said so. I reserve my right to have speculations about this whole &amp;ldquo;dying&amp;rdquo;-thing. I popped in existance in the alsmost ex-soviet republic of Bulgaria where I&amp;rsquo;ve spend good portion of my development into a fully fledged and normally functioning humanoid.</description>
+    </item>
+    
+    <item>
+      <title>Something controversial</title>
+      <link>https://palikar.github.io/posts/test_post/</link>
+      <pubDate>Thu, 07 Jun 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/test_post/</guid>
+      <description>First point Nullam eu ante vel est convallis dignissim. Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio. Nunc porta vulputate tellus. Nunc rutrum turpis sed pede. Sed bibendum. Aliquam posuere. Nunc aliquet, augue nec adipiscing interdum, lacus tellus malesuada massa, quis varius mi purus non odio. Pellentesque condimentum, magna ut suscipit hendrerit, ipsum augue ornare nulla, non luctus diam neque sit amet urna.</description>
+    </item>
+    
+    <item>
+      <title>Something controversial</title>
+      <link>https://palikar.github.io/projects/test_post/</link>
+      <pubDate>Thu, 07 Jun 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/projects/test_post/</guid>
+      <description>First point Nullam eu ante vel est convallis dignissim. Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio. Nunc porta vulputate tellus. Nunc rutrum turpis sed pede. Sed bibendum. Aliquam posuere. Nunc aliquet, augue nec adipiscing interdum, lacus tellus malesuada massa, quis varius mi purus non odio. Pellentesque condimentum, magna ut suscipit hendrerit, ipsum augue ornare nulla, non luctus diam neque sit amet urna.</description>
     </item>
     
   </channel>

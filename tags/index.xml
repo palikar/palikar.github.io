@@ -2,32 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on SA Dev</title>
-    <link>/tags/</link>
+    <link>https://palikar.github.io/tags/</link>
     <description>Recent content in Tags on SA Dev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://palikar.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Dev</title>
-      <link>/tags/dev/</link>
-      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/dev/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go</title>
-      <link>/tags/go/</link>
-      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/go/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>
