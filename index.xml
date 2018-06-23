@@ -6,7 +6,7 @@
     <description>Recent content on SA Dev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jun 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 15 Jun 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,19 @@
     <item>
       <title>About</title>
       <link>https://palikar.github.io/about/</link>
-      <pubDate>Thu, 07 Jun 2018 00:00:00 +0200</pubDate>
+      <pubDate>Fri, 15 Jun 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/about/</guid>
       <description>My assigned character I was born a human and I&amp;rsquo;m supposed to live on the planet till my body gives up and it&amp;rsquo;s no longer suitable for sustaining the social construct that one would call &amp;ldquo;life&amp;rdquo;&amp;hellip;or at least I am said so. I reserve my right to have speculations about this whole &amp;ldquo;dying&amp;rdquo;-thing. I popped in existance in the alsmost ex-soviet republic of Bulgaria where I&amp;rsquo;ve spend good portion of my development into a fully fledged and normally functioning humanoid.</description>
+    </item>
+    
+    <item>
+      <title>Github commits&#39; emails change</title>
+      <link>https://palikar.github.io/posts/github_history_repair/</link>
+      <pubDate>Fri, 22 Jun 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/github_history_repair/</guid>
+      <description>Abstract You know that Contributions panel on your Github profile page. Let&amp;rsquo;s face it, developers these day take much pride when they can show their consistent work and progress of their own/forked repositories&amp;hellip;even when some of their commits are nothing more than a implementations of a single function. Said panel is clear indication to you, future employee or members of your &amp;lsquo;coding community&amp;rsquo; that you are pretty much a big deal with a good work ethic.</description>
     </item>
     
     <item>
