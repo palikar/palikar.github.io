@@ -21,21 +21,21 @@
     </item>
     
     <item>
+      <title>C&#43;&#43; Template Specialization</title>
+      <link>https://palikar.github.io/posts/cpp_template_specialization/</link>
+      <pubDate>Fri, 22 Jun 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/cpp_template_specialization/</guid>
+      <description>Abstract C++ is awesome! I am starting stong here but it&amp;rsquo;s really is. When experienced (and crazy) enough one can implement everything and the same one can do it icredibaly efficient at run time(cuz who cares how much work does the compiler do for us, amirite?). I can rant about how c++ is the best and all of the great features of the language but for this article I would constraint myself to one partzicular(but rather big) - template metaprogramming!</description>
+    </item>
+    
+    <item>
       <title>Github commits&#39; emails change</title>
       <link>https://palikar.github.io/posts/github_history_repair/</link>
       <pubDate>Fri, 22 Jun 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/posts/github_history_repair/</guid>
       <description>Abstract You know that Contributions panel on your Github profile page. Let&amp;rsquo;s face it, developers these day take much pride when they can show their consistent work and progress of their own/forked repositories&amp;hellip;even when some of their commits are nothing more than a implementations of a single function. Said panel is clear indication to you, future employee or members of your &amp;lsquo;coding community&amp;rsquo; that you are pretty much a big deal with a good work ethic.</description>
-    </item>
-    
-    <item>
-      <title>Something controversial</title>
-      <link>https://palikar.github.io/posts/test_post/</link>
-      <pubDate>Thu, 07 Jun 2018 00:00:00 +0200</pubDate>
-      
-      <guid>https://palikar.github.io/posts/test_post/</guid>
-      <description>First point Nullam eu ante vel est convallis dignissim. Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio. Nunc porta vulputate tellus. Nunc rutrum turpis sed pede. Sed bibendum. Aliquam posuere. Nunc aliquet, augue nec adipiscing interdum, lacus tellus malesuada massa, quis varius mi purus non odio. Pellentesque condimentum, magna ut suscipit hendrerit, ipsum augue ornare nulla, non luctus diam neque sit amet urna.</description>
     </item>
     
   </channel>

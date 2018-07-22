@@ -13,18 +13,13 @@
   </url>
   
   <url>
+    <loc>https://palikar.github.io/posts/cpp_template_specialization/</loc>
+    <lastmod>2018-07-22T19:23:37+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://palikar.github.io/posts/github_history_repair/</loc>
     <lastmod>2018-07-22T16:38:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/posts/test_post/</loc>
-    <lastmod>2018-06-08T00:33:43+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/projects/test_post/</loc>
-    <lastmod>2018-06-08T00:34:35+02:00</lastmod>
   </url>
   
   <url>
@@ -41,12 +36,6 @@
   <url>
     <loc>https://palikar.github.io/posts/</loc>
     <lastmod>2018-07-22T18:51:23+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/projects/</loc>
-    <lastmod>2018-06-08T00:34:35+02:00</lastmod>
     <priority>0</priority>
   </url>
   
