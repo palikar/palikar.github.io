@@ -6,10 +6,19 @@
     <description>Recent content in Github on SA Dev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 Jun 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 Jun 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/categories/github/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Emacs windows resizing</title>
+      <link>https://palikar.github.io/posts/emacs_framer/</link>
+      <pubDate>Fri, 29 Jun 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/emacs_framer/</guid>
+      <description>Abstract Recently I&amp;rsquo;ve been introduced to the concept of a tiling windows manger. One key feature that caught my attention is how you can quickly resize your different windows and create your desired windows configuration with just a few executions of some keybindings. That got me wonder how it would really cool if I also have that in Emacs. I googled something like &amp;ldquo;resize emacs windows&amp;rdquo; but didn&amp;rsquo;t really (I didn&amp;rsquo;t want really) find package that can do that.</description>
+    </item>
     
     <item>
       <title>Github commits&#39; emails change</title>

@@ -154,65 +154,47 @@
 <h2 id="proper-github-configuration">Proper github configuration</h2>
 
 <p>In order to avoid the problem for the future, you have two options. You can set your name and email address manually for each repository you are working on. Just go in the repository&rsquo;s folder and set the <code>user.name</code> and <code>user.email</code> fields like:</p>
-
-<pre><code class="language-sh">git config user.name 'Stanislav Arnaudov'
-git config user.emial 'email_adress@somewhere.org'
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git config user.name <span style="color:#4070a0">&#39;Stanislav Arnaudov&#39;</span>
+git config user.emial <span style="color:#4070a0">&#39;email_adress@somewhere.org&#39;</span></code></pre></div>
 <p>This sets the name and the email on a repository &lsquo;local&rsquo; level. After that each commit will have those name and email address. If you want to set global name and email address for your system and not worry about each individual repo, you would have to edit(create if you don&rsquo;t have the file) your <code>~/.gitconfig</code> file. Somewhere in there you should have something like</p>
-
-<pre><code class="language-sh">[user]
-        name = Stanislav Arnaudov
-        email = email_adress@somewhere.org
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#666">[</span>user<span style="color:#666">]</span>
+        <span style="color:#bb60d5">name</span> <span style="color:#666">=</span> Stanislav Arnaudov
+        <span style="color:#bb60d5">email</span> <span style="color:#666">=</span> email_adress@somewhere.org</code></pre></div>
 <p>This sets the name and email globally and every commit made on your system will have the proper fields. On git hub, you can see the raw path of a commit with <code>https://github.com/&lt;user_name&gt;/&lt;repo&gt;/commict/&lt;commit_id&gt;.patch</code>. On this page you could inspect the commit and see exactly which email address is associated with it.</p>
 
 <h2 id="fixing-the-your-repositories">Fixing the your repositories</h2>
 
 <p>But of course, so far we&rsquo;ve only prevented the problem of occurring in the future. You probably want to know how do we actually fix the previous &lsquo;damage&rsquo;. This section describes that&hellip;and my approach of tackling it. <br /> First, some of my experiments and findings. The thing about git repos - everything is stored in that nifty <code>.git</code> folder. Every delta, every branch, every everything. So, I supposed that if I go there and start changing things, I could probably could change the email address of past commits. If you run <em>grep</em> in your repository</p>
-
-<pre><code class="language-sh">grep -r &quot;arnaud@localhost.localdomain&quot; ./.git
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">grep -r <span style="color:#4070a0">&#34;arnaud@localhost.localdomain&#34;</span> ./.git</code></pre></div>
 <p>you get all the occurrences of your &lsquo;wrong&rsquo; email in your commits&hellip;or everywhere else for that matter. Ok, so if you change those github probably will notice and everything will be OK, right? So, I run <em><a href="https://en.wikipedia.org/wiki/Sed">sed</a></em> in conjunction with <em>find</em> like:</p>
-
-<pre><code class="language-sh">find ./.git/ -type f -exec sed 's/arnaud@scc-wkit-clxa-23-139.scc.kit.edu/email_adress@somewhere.org/' -i {} +;
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">find ./.git/ -type f -exec sed <span style="color:#4070a0">&#39;s/arnaud@scc-wkit-clxa-23-139.scc.kit.edu/email_adress@somewhere.org/&#39;</span> -i <span style="color:#666">{}</span> +;</code></pre></div>
 <p>This find every regular file in the <em>.git</em> folder and runs <code>sed 's/arnaud@localhost.localdomain/email_adress@somewhere.org/' -i</code> on it. With the expression in the quotation marks <em>sed</em> replaces everything that matches <code>arnaud@localhost.localdomain</code> with <code>email_adress@somewhere.org</code>. The <code>-i</code> means &ldquo;inplace&rdquo; so be careful when running <em>sed</em> like that because you may break something. So I do that and then push onto github&hellip;and nothing happens. The thing is <code>git push</code> the things &ldquo;in&rdquo; your repo and kinda is disregarding of changes in <code>.git</code>. In some cases, git may refuse to make the push crying &ldquo;histories don&rsquo;t match&rdquo;(or something). In those case one would have to call push as</p>
-
-<pre><code class="language-sh">git push --force
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git push --force</code></pre></div>
 <p>which overwrites &lsquo;everything&rsquo; in the github repo. So I do that and&hellip;.again, this didn&rsquo;t work. When I expected the commits in the repository on github my profile picture still wasn&rsquo;t there. I am not sure what the reason for that is although I was pretty sure I would change at least <em>something</em> while messing with the <em>.git</em> folder. <br /> Here I will stop rambling and boring you with my &ldquo;personal experience&rdquo; and just give you the solution.</p>
 
 <h3 id="the-right-solution">The right solution</h3>
 
 <p>After some more research I found <a href="https://help.github.com/articles/changing-author-info/">this help page</a> on github. I guess the problem is actually not uncommon. The page describers the whole process of &ldquo;re-authoring&rdquo; your commit history. They even provide a script that could be run in a bare repository(one only for pushing and pulling from) that changes everything. Something to not - the provided script must be given old(wrong) and new(right one) email to re-placed. This is done because while preforming the &ldquo;hack&rdquo; on a shared repo where not one but a few developers have commits. Of course you don&rsquo;t really want to overwrite the email of someone else. <br /> BUT&hellip;in my repos I had commits also made from my university&rsquo;s network and the emails of those were completely other beasts. Therefore I change the script a little bit and wrote an extra supplementary script that does absolutely everything. If you want to automate the whole process, copy this:</p>
-
-<pre><code class="language-sh">#!/bin/bash
-
-echo &quot;Cloning repo...&quot;
-git clone --bare $1 new_repo
-cd ./new_repo
-echo &quot;Running reindex script...&quot;
-git filter-branch --env-filter '
-CORRECT_NAME=&quot;&lt;user name&gt;&quot;
-CORRECT_EMAIL=&quot;&lt;user email&gt;&quot;
-export GIT_COMMITTER_NAME=&quot;$CORRECT_NAME&quot;
-export GIT_COMMITTER_EMAIL=&quot;$CORRECT_EMAIL&quot;
-export GIT_AUTHOR_NAME=&quot;$CORRECT_NAME&quot;
-export GIT_AUTHOR_EMAIL=&quot;$CORRECT_EMAIL&quot;
-' --tag-name-filter cat -- --branches --tags
-echo &quot;Hard-pushing to origin...&quot;
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#007020">#!/bin/bash
+</span><span style="color:#007020"></span>
+<span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;Cloning repo...&#34;</span>
+git clone --bare <span style="color:#bb60d5">$1</span> new_repo
+<span style="color:#007020">cd</span> ./new_repo
+<span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;Running reindex script...&#34;</span>
+git filter-branch --env-filter <span style="color:#4070a0">&#39;
+</span><span style="color:#4070a0">CORRECT_NAME=&#34;&lt;user name&gt;&#34;
+</span><span style="color:#4070a0">CORRECT_EMAIL=&#34;&lt;user email&gt;&#34;
+</span><span style="color:#4070a0">export GIT_COMMITTER_NAME=&#34;$CORRECT_NAME&#34;
+</span><span style="color:#4070a0">export GIT_COMMITTER_EMAIL=&#34;$CORRECT_EMAIL&#34;
+</span><span style="color:#4070a0">export GIT_AUTHOR_NAME=&#34;$CORRECT_NAME&#34;
+</span><span style="color:#4070a0">export GIT_AUTHOR_EMAIL=&#34;$CORRECT_EMAIL&#34;
+</span><span style="color:#4070a0">&#39;</span> --tag-name-filter cat -- --branches --tags
+<span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;Hard-pushing to origin...&#34;</span>
 git config --global credential.helper cache
-git push --force --tags origin 'refs/heads/*'
-cd ..
-echo &quot;Deleting folder...&quot;
-rm -rf new_repo
-</code></pre>
-
+git push --force --tags origin <span style="color:#4070a0">&#39;refs/heads/*&#39;</span>
+<span style="color:#007020">cd</span> ..
+<span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;Deleting folder...&#34;</span>
+rm -rf new_repo</code></pre></div>
 <p>in a <code>.sh</code> file, adjust the <code>&lt;user_name&gt;</code> and <code>&lt;user email&gt;</code> fields with your name and email and run the script like <code>./file.sh https://github/&lt;user&gt;/&lt;repo&gt;.git</code> This will:</p>
 
 <ol>
@@ -222,7 +204,7 @@ rm -rf new_repo
 <li>Deletes the newly created folder.</li>
 </ol>
 
-<p>At the end everything is as it was but all of the commits in the repo will have the email that was in the script. <br /> <span class="underline">Note:</span> This will create a file in your home directory with name .git-credentials and it will contain your github username and password. I do this so I can use <code>git config --global credential.helper cache</code> which removes the necessity of typing your name and pass on every commit.(Yes, I know, I should set up the ssh thing, shut up) <strong>Caution:</strong> My script changes the committer&rsquo;s emails and names of <span class="underline"><strong>ALL</strong></span> commits. If you run the script on a repo with several developers. This could potentially and most likely will cause some people to be angry with you&hellip;and rightfully so. I mean, you just ruined someone&rsquo;s <em>Contributions</em> panel&hellip;how would you like that if done to you. <br /> And there you have it. With your newly acquired knowledge you could transform your <em>Contributions</em> panel form this: <img src="/ox-hugo/panel_bad.png" alt="" /> to this. <img src="/ox-hugo/pane_good.png" alt="" /> And you know, the ultimate bragging writes are yours!</p>
+<p>At the end everything is as it was but all of the commits in the repo will have the email that was in the script. <br /> <span class="underline">Note:</span> This will create a file in your home directory with name .git-credentials and it will contain your github username and password. I do this so I can use <code>git config --global credential.helper cache</code> which removes the necessity of typing your name and pass on every commit.(Yes, I know, I should set up the ssh thing, shut up) <strong>Caution:</strong> My script changes the committer&rsquo;s emails and names of <span class="underline"><strong>ALL</strong></span> commits. If you run the script on a repo with several developers. This could potentially and most likely will cause some people to be angry with you&hellip;and rightfully so. I mean, you just ruined someone&rsquo;s <em>Contributions</em> panel&hellip;how would you like that if done to you. <br /> And there you have it. With your newly acquired knowledge you could transform your <em>Contributions</em> panel form this: <img src="/ox-hugo/panel_bad.png" alt="" /> to this. <img src="/ox-hugo/pane_good.png" alt="" /> And you know, the ultimate bragging rights are yours!</p>
 
 </div>
             <div class="footer">

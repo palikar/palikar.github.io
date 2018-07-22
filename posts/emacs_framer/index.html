@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en-us" class="wf-firasans-n4-active wf-active">
+	<head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    <meta name="generator" content="Hugo 0.40.1" />
+    
+    <title>Emacs windows resizing &middot; SA Dev</title>
+    <meta content="Emacs windows resizing - SA Dev" property="og:title">
+    <meta content=" - A short description of a solution to a github related problem with the email addresses associated with a commit historys" property="og:description">
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="https://palikar.github.io/css/print.css" media="print">
+    <link rel="stylesheet" href="https://palikar.github.io/css/poole.css">
+    <link rel="stylesheet" href="https://palikar.github.io/css/hyde.css">
+    <!-- Font-Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <!-- highlight.js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <!-- Customised CSS -->
+    <link rel="stylesheet" href="https://palikar.github.io/css/custom.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+
+	</head>
+    <body>
+        <div class="sidebar">
+	<div class="container text-center sidebar-sticky">
+		<div class="sidebar-about text-center">
+			<a href="https://palikar.github.io/"><h1 class="brand">SA Dev</h1></a>
+			 <img src="/img/profile.jpg" alt="Author Image" class="img-circle headshot center"> 
+			<p class="lead">
+				 Develompent, CS, AI and whatever my little heart desires 
+			</p>
+		</div>
+		
+<div>
+	<ul class="sidebar-nav">
+		
+		
+				<li>
+					<a href="/"> <span>Home</span></a>
+				</li>
+				<li>
+					<a href="/about/"> <span>About</span></a>
+				</li>
+				<li>
+					<a href="/posts/"> <span>Blog Posts</span></a>
+				</li>
+				<li>
+					<a href="/projects/"> <span>Projects</span></a>
+				</li>
+				<li>
+					<a href="/categories/"> <span>Categories</span></a>
+				</li>
+		</li>
+	</ul>
+</div>
+
+        <p>
+		<section class="row text-center">
+	
+	<a href="https://twitter.com/palikar22"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	&nbsp;<a href="https://facebook.com/stanislav.ts"><i class="fab fa-facebook-f"></i></a>
+	
+	
+	&nbsp;<a href="https://github.com/palikar"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	&nbsp;<a href="mailto:stanislav_ts@abv.bg"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+        </p>
+		<p class="copyright">&copy; 2018 Stanislav Arnaudov.
+        <a href="https://creativecommons.org/licenses/by/4.0">Some Rights Reserved</a>.<br/>Built with <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+        </p>
+	</div>
+	<div>
+	</div>
+</div>
+
+        <div class="content container">
+            <div class="post">
+  <h1>Emacs windows resizing</h1>
+  
+  <div class="col-sm-12 col-md-12">
+    <span class="text-left post-date meta">
+            
+       
+        <i class="fas fa-calendar-alt"></i> Jun 29, 2018
+      
+      
+        
+        
+            in
+            
+            
+                <a class="meta" href="/categories/github">GITHUB</a>
+                
+            
+        
+      
+      
+      
+      <br/>
+      <i class="fas fa-clock"></i> 9 min read 
+      </span>  
+  </div>    
+  
+  
+
+<h2 id="abstract">Abstract</h2>
+
+<p>Recently I&rsquo;ve been introduced to the concept of a <a href="https://en.wikipedia.org/wiki/Tiling_window_manager">tiling windows manger</a>. One key feature that caught my attention is how you can quickly resize your different windows and create your desired windows configuration with just a few executions of some keybindings. That got me wonder how it would really cool if I also have that in Emacs. I googled something like &ldquo;resize emacs windows&rdquo; but didn&rsquo;t really (I didn&rsquo;t want really) find package that can do that. So, of course, I used this as an excuse to write a very simple package that would help me achieve what I want - quickly resizing Emacs&rsquo; windows - and in the process would teach me same new things about Emacs Lisp programming. <br /> Oh yeah, and by the way, I created whole minor Emacs mode for the job. Yes, maybe it is a little bit of a overkill to create a whole mode for this but hey, new knowledge about Emacs and Emacs Lisp never hurts now, does it.</p>
+
+<h2 id="the-existing-way">The existing way</h2>
+
+<p>Before you jump at me, screaming that such functionality already exist in Emacs and theirs no need of a whole new minor mode - yes, I know. Or&hellip; I found eventually&hellip; after I&rsquo;ve already implemented my thing. Again, Emacs Lisp experience - <strong>always good</strong>! <br /> If you want to take the easy road, there are several nice functions that already exist.</p>
+
+<ul>
+<li><code>enlarge-window</code> grows your current window vertically and it&rsquo;s bind to <code>C-x ^</code> by default.</li>
+<li><code>enlarge-window-horizontally</code> does the same thing but horizontally(shocking, I know) with default keybinding <code>C-x }</code></li>
+</ul>
+
+<p>There are also the functions <code>shrink-window</code> and <code>shrink-window-horizontally</code> for making the window smaller in the desired dimension. They latter one is bind to <code>C-x {</code> and the former is surprisingly not bind by default. You can find more about resizing <a href="https://www.emacswiki.org/emacs/WindowResize">at the official wiki page</a>. <br /> With all that and setting up of some simple keybindings, you can quickly create your desired windows configuration from the comfort of your keyboard. Maybe something like this: <img src="/ox-hugo/emacs_windows-config.png" alt="" /></p>
+
+<h2 id="the-my-way">The &ldquo;my way&rdquo;</h2>
+
+<p>So, if you are interested in Emacs programming, you can have this section as a gentle introduction to mode writing. <br /></p>
+
+<h3 id="mode-definition">Mode definition</h3>
+
+<p>We start of with defining couple of things that we will need for our new minor mode whose definition comes in right after. Each mode deserves its own <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Group-Definitions.html">group</a>. You know, the name of you give while you call <code>customize-group</code> when you want to configure some new package that you&rsquo;ve downloaded. Our group will be used to house the one custom that we have. Group definition is really easy with the macro <strong>defgroup</strong>. It&rsquo;s basically a one liner:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defgroup</span> <span style="color:#bb60d5">framer</span> <span style="color:#60add5">nil</span> <span style="color:#4070a0">&#34;Custom variables for framer-mode&#34;</span>)</code></pre></div>
+<p>&ldquo;framer&rdquo; is the name, the second argument is a list of the customs that are in the group but it&rsquo;s more convenient to define them later by specifying the group that each custom belong to. The third argument is a string that will be displayed near the top while customizing the package&rsquo;s customs. <em>Note:</em> Customs are the configurable options of a given package in Emacs. Emacs makes it really easy to write such customizable variables that later can be configured by the user of your package. <br /> After the group we need a <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Keymap-Basics.html#Keymap-Basics">keymap</a> for our mode. In it we&rsquo;ll define all the keybindings that will be activated when the mode is active. Definition is again relatively straight forward:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defconst</span> <span style="color:#bb60d5">framer-mode-map</span>
+  (<span style="color:#007020">let</span>
+      (
+       (<span style="color:#bb60d5">map</span> (<span style="color:#06287e">make-keymap</span>))
+       )
+    (<span style="color:#06287e">define-key</span> <span style="color:#bb60d5">map</span> (<span style="color:#bb60d5">kbd</span> <span style="color:#4070a0">&#34;S-&lt;up&gt;&#34;</span>) <span style="color:#517918">&#39;framer-increase-height</span>)
+    (<span style="color:#06287e">define-key</span> <span style="color:#bb60d5">map</span> (<span style="color:#bb60d5">kbd</span> <span style="color:#4070a0">&#34;S-&lt;down&gt;&#34;</span>) <span style="color:#517918">&#39;framer-decrease-height</span>)
+    (<span style="color:#06287e">define-key</span> <span style="color:#bb60d5">map</span> (<span style="color:#bb60d5">kbd</span> <span style="color:#4070a0">&#34;S-&lt;right&gt;&#34;</span>) <span style="color:#517918">&#39;framer-increase-width</span>)
+    (<span style="color:#06287e">define-key</span> <span style="color:#bb60d5">map</span> (<span style="color:#bb60d5">kbd</span> <span style="color:#4070a0">&#34;S-&lt;left&gt;&#34;</span>) <span style="color:#517918">&#39;framer-decrease-width</span>)
+    <span style="color:#bb60d5">map</span>)
+  <span style="color:#4070a0">&#34;Keymap for Framer minor mode.&#34;</span>)</code></pre></div>
+<p>The map is defined in a variable named <strong>framer-mode-map</strong>. The actual keymap creation is done with the function <code>make-keymap</code>. After that, in the body of the <strong>let</strong>-block we define the individual keybinding in the keymap and which functions they call. We haven&rsquo;t defined the functions (<strong>framer-increase-height</strong>, &hellip;) yet but don&rsquo;t worry. <br /> At this point we are ready to define our mode. As many other packages, we&rsquo;ll actually define two modes:</p>
+
+<ul>
+<li>one global that will take effect in the whole &ldquo;Emacs process&rdquo;</li>
+<li>and one that will only affect the current buffer.</li>
+</ul>
+
+<p>The actual definition is pretty ease and is done through the macro <strong>define-minor-mode</strong>. The definitions of out two modes:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(<span style="color:#007020">define-minor-mode</span> <span style="color:#bb60d5">framer-mode</span>
+  <span style="color:#4070a0">&#34;Mode that enables manual control over emacs frames&#39; sizes.&#34;</span>
+  <span style="color:#007020">:lighter</span> <span style="color:#4070a0">&#34; Framer&#34;</span>
+  <span style="color:#007020">:keymap</span> <span style="color:#bb60d5">framer-mode-map</span>
+  <span style="color:#007020">:group</span> <span style="color:#517918">&#39;framer</span>)
+
+(<span style="color:#007020">define-minor-mode</span> <span style="color:#bb60d5">global-framer-mode</span>
+  <span style="color:#4070a0">&#34;Mode that enables manual control over emacs frames&#39; sizes.&#34;</span>
+  <span style="color:#007020">:lighter</span> <span style="color:#4070a0">&#34; Framer&#34;</span>
+  <span style="color:#007020">:keymap</span> <span style="color:#bb60d5">framer-mode-map</span>
+  <span style="color:#007020">:global</span> <span style="color:#60add5">t</span>
+  <span style="color:#007020">:group</span> <span style="color:#517918">&#39;framer</span>)</code></pre></div>
+<p>Here we use the already defined group and keymap and we pass them to the appropriate key-word attributes - <strong>: group</strong> and <strong>keymap</strong> respectively. What is pass to &ldquo;:lighter&rdquo; is the thing that will be displayed in the modeline while the mode is active. Be sure to have that leading space or the text of your mode will be &ldquo;glued&rdquo; to the text of the previous mode in the modeline. <strong>:global</strong> indicates of the mode is global or not(yes, I bet you needed that explanation). <br /> For more information on how to write modes for Emacs, check out <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Defining-Minor-Modes.html">this</a> page from the official documentation. <br /> Ok, one last thing before we actually define out functions for resizing - we&rsquo;ll create one custom that will indicate how big is the resizing gap with which we&rsquo;ll be changing the size of the windows. The name of it will be appropriately <strong>resizing-step</strong>, it&rsquo;ll have default value of 50 and it will be integer.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defcustom</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#40a070">50</span>
+  <span style="color:#4070a0">&#34;The amount with which the dimmension of the current windows will be decreased/increased.&#34;</span>
+  <span style="color:#007020">:type</span> <span style="color:#517918">&#39;integer</span>
+  <span style="color:#007020">:group</span> <span style="color:#517918">&#39;framer</span>)
+<span style="color:#bb60d5">The</span> <span style="color:#bb60d5">doc</span> <span style="color:#06287e">string</span> <span style="color:#bb60d5">in</span> <span style="color:#bb60d5">he</span> <span style="color:#bb60d5">beginning</span> <span style="color:#bb60d5">is</span> <span style="color:#bb60d5">what</span> <span style="color:#bb60d5">will</span> <span style="color:#bb60d5">displayed</span> <span style="color:#bb60d5">to</span> <span style="color:#bb60d5">the</span> <span style="color:#bb60d5">user</span> <span style="color:#bb60d5">in</span> <span style="color:#bb60d5">customization</span> <span style="color:#bb60d5">buffer</span> <span style="color:#bb60d5">near</span> <span style="color:#bb60d5">the</span> <span style="color:#bb60d5">name</span> <span style="color:#bb60d5">of</span> <span style="color:#bb60d5">the</span> <span style="color:#bb60d5">custom.</span>
+<span style="color:#bb60d5">\\</span>
+<span style="color:#bb60d5">And</span> <span style="color:#bb60d5">we</span> <span style="color:#bb60d5">that</span> <span style="color:#bb60d5">we</span> <span style="color:#bb60d5">are</span> <span style="color:#bb60d5">ready</span> <span style="color:#bb60d5">with</span> <span style="color:#bb60d5">me</span> <span style="color:#bb60d5">minor</span> <span style="color:#bb60d5">mode</span> <span style="color:#bb60d5">boilerplate.</span> <span style="color:#bb60d5">Now</span> <span style="color:#007020">let</span><span style="color:#517918">&#39;s</span> <span style="color:#06287e">get</span> <span style="color:#bb60d5">to</span> <span style="color:#bb60d5">the</span> <span style="color:#bb60d5">actuall</span> <span style="color:#bb60d5">problem.</span></code></pre></div>
+<h3 id="core-functions-definition">Core functions definition</h3>
+
+<p>There are couple of handy functions in Emacs that make the resizing of windows easy. We&rsquo;ll use them and make them tiny bit smarter. Those functions are <code>window-resizable</code> and <code>window-resize</code> (documentation <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Resizing-Windows.html">here</a>). The first one checks if the resizing is possible and the second one does the actual resizing. I figured that is a good idea always to check if the resizing is allowed before calling <code>windows-resize</code>. So, resizing in width will look like:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+        (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>))</code></pre></div>
+<p>The first argument is the windows to be resized - if nil, the current windows will be considered. The second argument is obvious, the third whather the resizing is vertical or horizontal - t for horizontal, nil for vertical. The last <code>t</code> indicates that the given amount is in pixels. <br /> As said, we want to make the resizing smart and intuitive while doing is with arrow keys. This means that we with the same arrow must either shrink or grow the window depending on weather it is on the top or on the bottom of other windows. Put simply - we want the size of the window to change in the direction we are pointing with the pressed arrow. So, the question becomes, how do we figure out where is the selected window. <br /> In a script from <a href="https://www.emacswiki.org/emacs/MathiasDahl">Mathias Dahl</a> I&rsquo;ve found those two nifty convenience functions that can tell you where the current window is located with respect to he other ones. For example, weather the window oi on the left, right or in the middle, between two other windows. The functions are:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defun</span> <span style="color:#bb60d5">win-resize-left-or-right</span> ()
+  <span style="color:#4070a0">&#34;Figure out if the current window is to the left, right or in the middle.&#34;</span>
+  (<span style="color:#007020">let*</span> ((<span style="color:#bb60d5">win-edges</span> (<span style="color:#06287e">window-edges</span>))
+	 (<span style="color:#bb60d5">this-window-x-min</span> (<span style="color:#06287e">nth</span> <span style="color:#40a070">0</span> <span style="color:#bb60d5">win-edges</span>))
+	 (<span style="color:#bb60d5">this-window-x-max</span> (<span style="color:#06287e">nth</span> <span style="color:#40a070">2</span> <span style="color:#bb60d5">win-edges</span>))
+	 (<span style="color:#bb60d5">fr-width</span> (<span style="color:#bb60d5">frame-width</span>)))
+    (<span style="color:#007020">cond</span>
+     ((<span style="color:#06287e">eq</span> <span style="color:#40a070">0</span> <span style="color:#bb60d5">this-window-x-min</span>) <span style="color:#4070a0">&#34;left&#34;</span>)
+     ((<span style="color:#06287e">eq</span> (<span style="color:#06287e">+</span> <span style="color:#bb60d5">fr-width</span> <span style="color:#40a070">2</span>) <span style="color:#bb60d5">this-window-x-max</span>) <span style="color:#4070a0">&#34;right&#34;</span>)
+     (<span style="color:#60add5">t</span> <span style="color:#4070a0">&#34;mid&#34;</span>))))
+
+(<span style="color:#007020">defun</span> <span style="color:#bb60d5">win-resize-top-or-bot</span> ()
+  <span style="color:#4070a0">&#34;Figure out if the current window is on top, bottom or in the middle.&#34;</span>
+  (<span style="color:#007020">let*</span> ((<span style="color:#bb60d5">win-edges</span> (<span style="color:#06287e">window-edges</span>))
+	 (<span style="color:#bb60d5">this-window-y-min</span> (<span style="color:#06287e">nth</span> <span style="color:#40a070">1</span> <span style="color:#bb60d5">win-edges</span>))
+	 (<span style="color:#bb60d5">this-window-y-max</span> (<span style="color:#06287e">nth</span> <span style="color:#40a070">3</span> <span style="color:#bb60d5">win-edges</span>))
+	 (<span style="color:#bb60d5">fr-height</span> (<span style="color:#bb60d5">frame-height</span>)))
+    (<span style="color:#007020">cond</span>
+     ((<span style="color:#06287e">eq</span> <span style="color:#40a070">0</span> <span style="color:#bb60d5">this-window-y-min</span>) <span style="color:#4070a0">&#34;top&#34;</span>)
+     ((<span style="color:#06287e">eq</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">fr-height</span> <span style="color:#40a070">1</span>) <span style="color:#bb60d5">this-window-y-max</span>) <span style="color:#4070a0">&#34;bot&#34;</span>)
+     (<span style="color:#60add5">t</span> <span style="color:#4070a0">&#34;mid&#34;</span>))))</code></pre></div>
+<p>With <code>win-resize-left-or-right</code> the implementations of <code>framer-decrease-width</code> and <code>framer-increase-width</code> become clear. For decreasing the width of the window, we first check where we are currently and depending on the location we grow or shrink the window. Remember out keymap. There we grow the width with the left arrow so</p>
+
+<ul>
+<li>if on the right, we grow because the left arrow points in the &ldquo;growing direction&rdquo;</li>
+<li>if on the left, we shrink for the exact opposite reason</li>
+<li>if in the middle, we treat the window as it is on the right. Trust me, it makes sense if done this way.</li>
+</ul>
+
+<p>For <code>framer-decrease-width</code> we do the exact opposite thing. There we were shrinking we grow and vice-versa. <br /> We perform the checks in a simple <strong>cond</strong> block and with that we have:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defun</span> <span style="color:#bb60d5">framer-increase-width</span> ()
+  <span style="color:#4070a0">&#34;Make the current frame smaller in width.&#34;</span>
+  (<span style="color:#007020">interactive</span>)
+  (<span style="color:#007020">cond</span>
+   ((<span style="color:#06287e">equal</span> <span style="color:#4070a0">&#34;right&#34;</span> (<span style="color:#bb60d5">win-resize-left-or-right</span>))
+    (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+        (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))
+   ((<span style="color:#06287e">equal</span> <span style="color:#4070a0">&#34;left&#34;</span> (<span style="color:#bb60d5">win-resize-left-or-right</span>))
+    (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+        (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))
+   (<span style="color:#60add5">t</span> (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+          (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))))
+
+(<span style="color:#007020">defun</span> <span style="color:#bb60d5">framer-decrease-width</span> ()
+  <span style="color:#4070a0">&#34;Make the current frame smaller in width.&#34;</span>
+  (<span style="color:#007020">interactive</span>)
+  (<span style="color:#007020">cond</span>
+   ((<span style="color:#06287e">equal</span> <span style="color:#4070a0">&#34;right&#34;</span> (<span style="color:#bb60d5">win-resize-left-or-right</span>))
+    (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+        (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))
+   ((<span style="color:#06287e">equal</span> <span style="color:#4070a0">&#34;left&#34;</span> (<span style="color:#bb60d5">win-resize-left-or-right</span>))
+    (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+        (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))
+   (<span style="color:#60add5">t</span> (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+          (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))))</code></pre></div>
+<p><code>framer-increase-height</code> and <code>framer-increase-height</code> more or less the same way.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defun</span> <span style="color:#bb60d5">framer-increase-height</span> ()
+  <span style="color:#4070a0">&#34;Make the current frame smaller in width.&#34;</span>
+  (<span style="color:#007020">interactive</span>)
+  (<span style="color:#007020">cond</span>
+   ((<span style="color:#06287e">equal</span> <span style="color:#4070a0">&#34;top&#34;</span> (<span style="color:#bb60d5">win-resize-top-or-bot</span>))
+    (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+        (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))
+   ((<span style="color:#06287e">equal</span> <span style="color:#4070a0">&#34;bot&#34;</span> (<span style="color:#bb60d5">win-resize-top-or-bot</span>))
+    (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+        (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))
+   (<span style="color:#60add5">t</span> (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+          (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))
+   )
+  )
+
+(<span style="color:#007020">defun</span> <span style="color:#bb60d5">framer-decrease-height</span> ()
+  <span style="color:#4070a0">&#34;Make the current frame smaller in width.&#34;</span>
+  (<span style="color:#007020">interactive</span>)
+  (<span style="color:#007020">cond</span>
+   ((<span style="color:#06287e">equal</span> <span style="color:#4070a0">&#34;top&#34;</span> (<span style="color:#bb60d5">win-resize-top-or-bot</span>))
+    (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+        (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))
+   ((<span style="color:#06287e">equal</span> <span style="color:#4070a0">&#34;bot&#34;</span> (<span style="color:#bb60d5">win-resize-top-or-bot</span>))
+    (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+        (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> (<span style="color:#06287e">-</span> <span style="color:#bb60d5">resizing-step</span>) <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))
+   (<span style="color:#60add5">t</span> (<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+          (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))
+   )
+  )</code></pre></div>
+<p><br /> And there you have it, reinventing the wheel in timely wasteful manner. <span class="underline">Awesome</span>, aqmirite!</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://nullprogram.com/blog/2013/02/06/">How to Make an Emacs Minor Mode</a> - good starting point if you want to extend your Emacs with some custom minor modes.</li>
+</ul>
+
+</div>
+            <div class="footer">
+                <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script type="text/javascript">
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+</script>
+
+
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+      (function () {
+            
+            
+            
+            if (location.hostname === "localhost" || 
+            	location.hostname === "127.0.0.1" || 
+            	location.hostname === "") {
+                return;
+			}
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            var disqus_shortname = 'palikar-github-io';
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(
+                  dsq);
+      })();
+</script>
+
+<noscript>
+	Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      
+
+            </div>
+        </div>
+        
+                
+    </body>
+</html>
