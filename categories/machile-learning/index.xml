@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machile Learning on SA Dev</title>
+    <link>https://palikar.github.io/categories/machile-learning/</link>
+    <description>Recent content in Machile Learning on SA Dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Jul 2018 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://palikar.github.io/categories/machile-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Notes on learning Pandas</title>
+      <link>https://palikar.github.io/posts/pandas_notes/</link>
+      <pubDate>Fri, 13 Jul 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/pandas_notes/</guid>
+      <description>For transperanty sake - those are my notes while learning about pandas from this tutorial. At times this here is just copy paste from it, at other it&amp;rsquo;s my own thoughts and explanations. This is meant to be a condensed version of the tutorial more or less just for me. If you found it useful though&amp;hellip;.well, good ofor you, I guess.
+
+Abstract Basic pandas is a Python package providing fast, flexible, and expressive data structures designed to make working with &amp;ldquo;relationaHeterogeneous datal&amp;rdquo; or &amp;ldquo;labeled&amp;rdquo; data both easy and intuitive.</description>
+    </item>
+    
+  </channel>
+</rss>
