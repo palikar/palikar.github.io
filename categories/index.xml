@@ -6,9 +6,19 @@
     <description>Recent content in Categories on SA Dev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 27 Jul 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>https://palikar.github.io/categories/c&#43;&#43;/</link>
+      <pubDate>Fri, 27 Jul 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/categories/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Github</title>
@@ -22,7 +32,7 @@
     <item>
       <title>Machile Learning</title>
       <link>https://palikar.github.io/categories/machile-learning/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0200</pubDate>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/categories/machile-learning/</guid>
       <description></description>

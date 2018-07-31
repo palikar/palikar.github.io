@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Projects on SA Dev</title>
-    <link>https://palikar.github.io/projects/</link>
-    <description>Recent content in Projects on SA Dev</description>
+    <title>C&#43;&#43; on SA Dev</title>
+    <link>https://palikar.github.io/categories/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on SA Dev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 27 Jul 2018 00:00:00 +0200</lastBuildDate>
     
-	<atom:link href="https://palikar.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://palikar.github.io/categories/c++/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C&#43;&#43; things to think about while programming</title>
+      <link>https://palikar.github.io/posts/cpp_tips/</link>
+      <pubDate>Fri, 27 Jul 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/cpp_tips/</guid>
+      <description>Abstract C++ is hard! C++ is even harder when you want to write good code. There are a lot of things to think about when your write C++ code and if you don&amp;rsquo;t think about them, you are probable going to mess things up. Recently I found that one good book (see references) that gives 42(hehe!) concrete tips on how to be a better c++ programmer. This is my summery of sorts about the contents of said book.</description>
+    </item>
     
     <item>
       <title>C&#43;&#43; things to think about while programming</title>

@@ -6,20 +6,31 @@
     <description>Recent content in Posts on SA Dev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Jul 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 27 Jul 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Notes on learning Pandas</title>
+      <title>C&#43;&#43; things to think about while programming</title>
+      <link>https://palikar.github.io/posts/cpp_tips/</link>
+      <pubDate>Fri, 27 Jul 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/cpp_tips/</guid>
+      <description>Abstract C++ is hard! C++ is even harder when you want to write good code. There are a lot of things to think about when your write C++ code and if you don&amp;rsquo;t think about them, you are probable going to mess things up. Recently I found that one good book (see references) that gives 42(hehe!) concrete tips on how to be a better c++ programmer. This is my summery of sorts about the contents of said book.</description>
+    </item>
+    
+    <item>
+      <title>Notes on learning Numpy</title>
       <link>https://palikar.github.io/posts/pandas_notes/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0200</pubDate>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/posts/pandas_notes/</guid>
-      <description>For transperanty sake - those are my notes while learning about pandas from this tutorial. At times this here is just copy paste from it, at other it&amp;rsquo;s my own thoughts and explanations. This is meant to be a condensed version of the tutorial more or less just for me. If you found it useful though&amp;hellip;.well, good ofor you, I guess.
+      <description>My note while reading this. More or less copy paste, Take with a grain of salt&amp;hellip;or sugar.
 
-Abstract Basic pandas is a Python package providing fast, flexible, and expressive data structures designed to make working with &amp;ldquo;relationaHeterogeneous datal&amp;rdquo; or &amp;ldquo;labeled&amp;rdquo; data both easy and intuitive.</description>
+Abstract NumPy is a Python package. It stands for &amp;lsquo;Numerical Python&amp;rsquo;. It is a library consisting of multidimensional array objects and a collection of routines for processing of array. From the officials:
+ NumPy is the fundamental package for scientific computing with Python. It contains among other things:
+ a powerful N-dimensional array object sophisticated (broadcasting) functions tools for integrating C/C++ and Fortran code useful linear algebra, Fourier transform, and random number capabilities  Besides its obvious scientific uses, NumPy can also be used as an efficient multi-dimensional container of generic data.</description>
     </item>
     
     <item>

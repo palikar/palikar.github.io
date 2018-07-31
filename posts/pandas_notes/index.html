@@ -2,37 +2,37 @@
 <html lang="en-us" class="wf-firasans-n4-active wf-active">
 	<head>
     <link href="http://gmpg.org/xfn/11" rel="profile">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Enable responsiveness on mobile devices -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    
-    
-    <meta name="generator" content="Hugo 0.40.1" />
-    
-    <title>Notes on learning Pandas &middot; SA Dev</title>
-    <meta content="Notes on learning Pandas - SA Dev" property="og:title">
-    <meta content=" - My notes on pandas when I started looking at the library" property="og:description">
-    <!-- CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
-    <link rel="stylesheet" href="https://palikar.github.io/css/print.css" media="print">
-    <link rel="stylesheet" href="https://palikar.github.io/css/poole.css">
-    <link rel="stylesheet" href="https://palikar.github.io/css/hyde.css">
-    <!-- Font-Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-    <!-- highlight.js-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-    <!-- Customised CSS -->
-    <link rel="stylesheet" href="https://palikar.github.io/css/custom.css">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- Icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-    <link rel="shortcut icon" href="/favicon.png">
-    
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+
+<meta name="generator" content="Hugo 0.40.1" />
+
+<title>Notes on learning Numpy &middot; SA Dev</title>
+<meta content="Notes on learning Numpy - SA Dev" property="og:title">
+<meta content=" - My notes on numpy when I started looking at the library" property="og:description">
+<!-- CSS -->
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
+<link rel="stylesheet" href="https://palikar.github.io/css/print.css" media="print">
+<link rel="stylesheet" href="https://palikar.github.io/css/poole.css">
+<link rel="stylesheet" href="https://palikar.github.io/css/hyde.css">
+<!-- Font-Awesome -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+<!-- highlight.js-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+<!-- Customised CSS -->
+<link rel="stylesheet" href="https://palikar.github.io/css/custom.css">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<!-- Icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="/favicon.png">
+
 
 	</head>
     <body>
@@ -102,13 +102,13 @@
 
         <div class="content container">
             <div class="post">
-  <h1>Notes on learning Pandas</h1>
+  <h1>Notes on learning Numpy</h1>
   
   <div class="col-sm-12 col-md-12">
     <span class="text-left post-date meta">
             
        
-        <i class="fas fa-calendar-alt"></i> Jul 13, 2018
+        <i class="fas fa-calendar-alt"></i> Jul 20, 2018
       
       
         
@@ -124,7 +124,7 @@
       
       
       <br/>
-      <i class="fas fa-clock"></i> 19 min read 
+      <i class="fas fa-clock"></i> 8 min read 
       </span>  
   </div>    
   
@@ -133,881 +133,409 @@
 <div class="NOTES">
   <div></div>
 
-<p>For transperanty sake - those are my notes while learning about <em>pandas</em> from <a href="https://www.tutorialspoint.com/python_pandas/index.htm%20">this</a> tutorial. At times this here is just copy paste from it, at other it&rsquo;s my own thoughts and explanations. This is meant to be a condensed version of the tutorial more or less just for me. If you found it useful though&hellip;.well, good ofor you, I guess.</p>
+<p>My note while reading <a href="https://www.tutorialspoint.com/numpy/index.htm">this</a>. More or less copy paste, Take with a grain of salt&hellip;or sugar.</p>
 
 <p></div></p>
 
 <h2 id="abstract">Abstract</h2>
 
-<h3 id="basic">Basic</h3>
-
-<p><strong>pandas</strong> is a Python package providing fast, flexible, and expressive data structures designed to make working with &ldquo;relationaHeterogeneous datal&rdquo; or &ldquo;labeled&rdquo; data both easy and intuitive. It aims to be the fundamental high-level building block for doing practical, <strong>real world</strong> data analysis in Python. Additionally, it has the broader goal of becoming the most powerful and flexible open source data analysis / manipulation tool available in any language. It is already well on its way toward this goal. <br /> It&rsquo;s lika a data-base-like objects to deal with your data.</p>
-
-<ul>
-<li>data could be loaded form <em>.csv</em> files and be written again</li>
-<li>some basic statistical analysis is possible</li>
-</ul>
-
-<h3 id="features">Features</h3>
-
-<p>A short list of features as advertised on the official site of <em>pandas</em>.</p>
-
-<ul>
-<li>Fast and efficient DataFrame object with default and customized indexing.</li>
-<li>Tools for loading data into in-memory data objects from different file formats.</li>
-<li>Data alignment and integrated handling of missing data.</li>
-<li>Reshaping and pivoting of date sets.</li>
-<li>Label-based slicing, indexing and subsetting of large data sets.</li>
-<li>Columns from a data structure can be deleted or inserted.</li>
-<li>Group by data for aggregation and transformations.</li>
-<li>High performance merging and joining of data.</li>
-<li>Time Series functionality.</li>
-</ul>
-
-<h3 id="tl-dr">Tl;DR</h3>
-
-<p>Managing data in structures and easly manipulating the data.</p>
-
-<h2 id="contents">Contents</h2>
-
-<h2 id="basic-structures">Basic Structures</h2>
-
-<h3 id="dataframe">DataFrame</h3>
-
-<p>It&rsquo;s like a table in RDB.</p>
-
-<ul>
-<li>Columns are atributes</li>
-<li>Rows are the actuall data</li>
-<li>Indecies are the lables for each row</li>
-</ul>
-
-<p>This is the most common onject when dealing with data and using <em>pandas</em>. The data in the object is heterogeneous, the shape and the size are mutable. The last part means that the models you build in one object that contains data can easly(ish) be transformed into another model(by model I mean the way your data is structured- names and count of columns(atributes), indexing of the rows, type of the data inside). <br /> Basic construction of DataFrame object is as follows:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">pandas.DataFrame( data, index, columns, dtype, copy)</code></pre></div>
-<ul>
-<li><strong>data</strong> - ndarray, series, map, lists, dict, constants..etc. The raw data that will be stored in the DataFame. This could be for example a list of lists. In this case the &lsquo;inner&rsquo; lists will become the columns and the column-names will be given through <strong>columns</strong>. The number of the columns must be the same as the number of inner lists</li>
-<li><strong>index</strong> - the &lsquo;names&rsquo; of the rows. Usually just an index (0,1,2,3&hellip;.). The size of this must be the count of the entries in the dataset</li>
-<li><strong>columns</strong> - the names of the columns</li>
-<li>&hellip; - the other ones are none of our concern</li>
-</ul>
-
-<p>Some of the constructions:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">panda</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
-
-
-data <span style="color:#666">=</span> [[<span style="color:#4070a0">&#39;Alex&#39;</span>,<span style="color:#40a070">10</span>],[<span style="color:#4070a0">&#39;Bob&#39;</span>,<span style="color:#40a070">12</span>],[<span style="color:#4070a0">&#39;Clarke&#39;</span>,<span style="color:#40a070">13</span>]]
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(
-    data,
-    columns<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;Name&#39;</span>,<span style="color:#4070a0">&#39;Age&#39;</span>])
-
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(
-    np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">10</span>, <span style="color:#40a070">3</span>),
-    columns <span style="color:#666">=</span> [<span style="color:#4070a0">&#39;col1&#39;</span>,<span style="color:#4070a0">&#39;col2&#39;</span>,<span style="color:#4070a0">&#39;col3&#39;</span>]
-)
-
-data <span style="color:#666">=</span> {
-    <span style="color:#4070a0">&#39;Name&#39;</span>:[<span style="color:#4070a0">&#39;Tom&#39;</span>, <span style="color:#4070a0">&#39;Jack&#39;</span>, <span style="color:#4070a0">&#39;Steve&#39;</span>, <span style="color:#4070a0">&#39;Ricky&#39;</span>],
-    <span style="color:#4070a0">&#39;Age&#39;</span>:[<span style="color:#40a070">28</span>,<span style="color:#40a070">34</span>,<span style="color:#40a070">29</span>,<span style="color:#40a070">42</span>]
-}
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(data)
-
-data <span style="color:#666">=</span> {<span style="color:#4070a0">&#39;Name&#39;</span>:[<span style="color:#4070a0">&#39;Tom&#39;</span>, <span style="color:#4070a0">&#39;Jack&#39;</span>, <span style="color:#4070a0">&#39;Steve&#39;</span>, <span style="color:#4070a0">&#39;Ricky&#39;</span>],<span style="color:#4070a0">&#39;Age&#39;</span>:[<span style="color:#40a070">28</span>,<span style="color:#40a070">34</span>,<span style="color:#40a070">29</span>,<span style="color:#40a070">42</span>]}
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(data, index<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;rank1&#39;</span>,<span style="color:#4070a0">&#39;rank2&#39;</span>,<span style="color:#4070a0">&#39;rank3&#39;</span>,<span style="color:#4070a0">&#39;rank4&#39;</span>])
-
-
-d <span style="color:#666">=</span> {<span style="color:#4070a0">&#39;one&#39;</span> : pd<span style="color:#666">.</span>Series([<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">3</span>], index<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;a&#39;</span>, <span style="color:#4070a0">&#39;b&#39;</span>, <span style="color:#4070a0">&#39;c&#39;</span>]),
-      <span style="color:#4070a0">&#39;two&#39;</span> : pd<span style="color:#666">.</span>Series([<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">3</span>, <span style="color:#40a070">4</span>], index<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;a&#39;</span>, <span style="color:#4070a0">&#39;b&#39;</span>, <span style="color:#4070a0">&#39;c&#39;</span>, <span style="color:#4070a0">&#39;d&#39;</span>])}
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(d)</code></pre></div>
-<p>All of the constructions are pretty intuitive and easy to understand. The thing to remember - all of the possible way that you can construct <em>DataFrame</em>. <br /> The column slections is just as easy:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#4070a0">&#39;column_name&#39;</span>] <span style="color:#60a0b0;font-style:italic"># return an Series containing the data in the respective column</span></code></pre></div>
-<p>Adding of columns is possible:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"> <span style="color:#60a0b0;font-style:italic">#Adding a new column by passing as Series</span>
-df[<span style="color:#4070a0">&#39;new&#39;</span>]<span style="color:#666">=</span>pd<span style="color:#666">.</span>Series([<span style="color:#40a070">10</span>,<span style="color:#40a070">20</span>,<span style="color:#40a070">30</span>],index<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;a&#39;</span>,<span style="color:#4070a0">&#39;b&#39;</span>,<span style="color:#4070a0">&#39;c&#39;</span>])
-<span style="color:#007020;font-weight:bold">print</span> df</code></pre></div>
-<p>as well as deletion:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">del</span> df[<span style="color:#4070a0">&#39;important&#39;</span>]</code></pre></div>
-<p>Sellection of rows either by index or by lable (the thing that was in the <strong>index</strong> attribute in the constructor)</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df<span style="color:#666">.</span>loc[<span style="color:#4070a0">&#39;b&#39;</span>]  <span style="color:#60a0b0;font-style:italic"># by lable</span>
-df<span style="color:#666">.</span>iloc[<span style="color:#40a070">2</span>]   <span style="color:#60a0b0;font-style:italic"># by index</span>
-df[<span style="color:#40a070">2</span>:<span style="color:#40a070">4</span>]      <span style="color:#60a0b0;font-style:italic"># splicing</span></code></pre></div>
-<p>Appending rows to an existing <em>DataFrame</em></p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame([[<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>], [<span style="color:#40a070">3</span>, <span style="color:#40a070">4</span>]], columns <span style="color:#666">=</span> [<span style="color:#4070a0">&#39;a&#39;</span>,<span style="color:#4070a0">&#39;b&#39;</span>])
-df2 <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame([[<span style="color:#40a070">5</span>, <span style="color:#40a070">6</span>], [<span style="color:#40a070">7</span>, <span style="color:#40a070">8</span>]], columns <span style="color:#666">=</span> [<span style="color:#4070a0">&#39;a&#39;</span>,<span style="color:#4070a0">&#39;b&#39;</span>])
-
-df <span style="color:#666">=</span> df<span style="color:#666">.</span>append(df2)</code></pre></div>
-<h3 id="serries">Serries</h3>
-
-<p>Series is a one-dimensional labeled array capable of holding data of any type (integer, string, float, python objects, etc.). The axis labels are collectively called index. Construction:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">pandas.Series( data, index, dtype, copy)</code></pre></div>
-<p>The same thing as the <em>DataFrame</em>! Some examples:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">data <span style="color:#666">=</span> np<span style="color:#666">.</span>array([<span style="color:#4070a0">&#39;a&#39;</span>,<span style="color:#4070a0">&#39;b&#39;</span>,<span style="color:#4070a0">&#39;c&#39;</span>,<span style="color:#4070a0">&#39;d&#39;</span>])
-s <span style="color:#666">=</span> pd<span style="color:#666">.</span>Series(data,index<span style="color:#666">=</span>[<span style="color:#40a070">100</span>,<span style="color:#40a070">101</span>,<span style="color:#40a070">102</span>,<span style="color:#40a070">103</span>])
-
-data <span style="color:#666">=</span> {<span style="color:#4070a0">&#39;a&#39;</span> : <span style="color:#40a070">0.</span>, <span style="color:#4070a0">&#39;b&#39;</span> : <span style="color:#40a070">1.</span>, <span style="color:#4070a0">&#39;c&#39;</span> : <span style="color:#40a070">2.</span>}
-s <span style="color:#666">=</span> pd<span style="color:#666">.</span>Series(data)
-
-<span style="color:#007020;font-weight:bold">print</span> s[<span style="color:#40a070">0</span>]
-
-<span style="color:#007020;font-weight:bold">print</span> s[<span style="color:#40a070">1</span>:<span style="color:#40a070">3</span>]
-
-<span style="color:#007020;font-weight:bold">print</span> s[<span style="color:#666">-</span><span style="color:#40a070">3</span>:] <span style="color:#60a0b0;font-style:italic"># the last three elements</span></code></pre></div>
-<h3 id="datapanel">DataPanel</h3>
-
-<p>From what I undertand, this is not widely used and I don&rsquo;t think I need it for my project so&hellip;fuck it. <span class="underline">Skip!!!</span></p>
-
-<h2 id="basic-usage">Basic usage</h2>
-
-<h3 id="dataframe-basic-function">DataFrame basic function</h3>
-
-<p>The most useful functions of the DataFrame-class</p>
-
-<ul>
-<li>T : Transposes rows and columns.</li>
-<li>axes : eturns a list with the row axis labels and column axis labels as the only members.</li>
-<li>dtypes: Returns the dtypes in this object.</li>
-<li>empty : True if NDFrame is entirely empty [no items]; if any of the axes are of length 0.</li>
-<li>ndim : umber of axes / array dimensions. This is just two</li>
-<li>shape : Returns a tuple representing the dimensionality of the DataFrame. The first element is the number of rows, the second - the number of attributes</li>
-<li>size : umber of elements in the NDFrame.</li>
-<li>values: Numpy representation of NDFrame.</li>
-<li>head(): Returns the first n rows. Could be used as <code>df.head(n)/df.tail(n)</code> to get the first/last <strong>n</strong> elements.</li>
-<li>tail(): Returns last n rows.</li>
-</ul>
-
-<h3 id="basic-statistics">Basic statistics</h3>
-
-<p>A bunch of simple &lsquo;statistical&rsquo; functions can be applied on the colums of a DataFrame object. Those include:</p>
-
-<ul>
-<li>count() : Number of non-null observations</li>
-<li>sum() : Sum of values</li>
-<li>mean() : Mean of Values</li>
-<li>median() : Median of Values</li>
-<li>mode() : Mode of values</li>
-<li>std() : Standard Deviation of the Values</li>
-<li>min() : Minimum Value</li>
-<li>max() : Maximum Value</li>
-<li>abs() : Absolute Value</li>
-<li>prod() : Product of Values</li>
-<li>cumsum() : Cumulative Sum</li>
-<li>cumprod() : Cumulative Product</li>
-</ul>
-
-<p>An example that demonstrates some of these:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
-
-<span style="color:#60a0b0;font-style:italic">#Create a Dictionary of series</span>
-d <span style="color:#666">=</span> {<span style="color:#4070a0">&#39;Name&#39;</span>:pd<span style="color:#666">.</span>Series([<span style="color:#4070a0">&#39;Tom&#39;</span>,<span style="color:#4070a0">&#39;James&#39;</span>,<span style="color:#4070a0">&#39;Ricky&#39;</span>,<span style="color:#4070a0">&#39;Vin&#39;</span>,<span style="color:#4070a0">&#39;Steve&#39;</span>,<span style="color:#4070a0">&#39;Smith&#39;</span>,<span style="color:#4070a0">&#39;Jack&#39;</span>,
-   <span style="color:#4070a0">&#39;Lee&#39;</span>,<span style="color:#4070a0">&#39;David&#39;</span>,<span style="color:#4070a0">&#39;Gasper&#39;</span>,<span style="color:#4070a0">&#39;Betina&#39;</span>,<span style="color:#4070a0">&#39;Andres&#39;</span>]),
-   <span style="color:#4070a0">&#39;Age&#39;</span>:pd<span style="color:#666">.</span>Series([<span style="color:#40a070">25</span>,<span style="color:#40a070">26</span>,<span style="color:#40a070">25</span>,<span style="color:#40a070">23</span>,<span style="color:#40a070">30</span>,<span style="color:#40a070">29</span>,<span style="color:#40a070">23</span>,<span style="color:#40a070">34</span>,<span style="color:#40a070">40</span>,<span style="color:#40a070">30</span>,<span style="color:#40a070">51</span>,<span style="color:#40a070">46</span>]),
-   <span style="color:#4070a0">&#39;Rating&#39;</span>:pd<span style="color:#666">.</span>Series([<span style="color:#40a070">4.23</span>,<span style="color:#40a070">3.24</span>,<span style="color:#40a070">3.98</span>,<span style="color:#40a070">2.56</span>,<span style="color:#40a070">3.20</span>,<span style="color:#40a070">4.6</span>,<span style="color:#40a070">3.8</span>,<span style="color:#40a070">3.78</span>,<span style="color:#40a070">2.98</span>,<span style="color:#40a070">4.80</span>,<span style="color:#40a070">4.10</span>,<span style="color:#40a070">3.65</span>])}
-
-<span style="color:#60a0b0;font-style:italic">#Create a DataFrame</span>
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(d)
-<span style="color:#007020;font-weight:bold">print</span> df<span style="color:#666">.</span>mean()
-<span style="color:#007020;font-weight:bold">print</span> df[<span style="color:#4070a0">&#39;Age&#39;</span>]<span style="color:#666">.</span>mean()
-<span style="color:#007020;font-weight:bold">print</span> df[<span style="color:#4070a0">&#39;Age&#39;</span>]<span style="color:#666">.</span><span style="color:#007020">min</span>()
-<span style="color:#007020;font-weight:bold">print</span> df[<span style="color:#4070a0">&#39;Age&#39;</span>]<span style="color:#666">.</span><span style="color:#007020">max</span>()
-<span style="color:#007020;font-weight:bold">print</span> df[<span style="color:#4070a0">&#39;Age&#39;</span>]<span style="color:#666">.</span>std()</code></pre></div>
-<p>There exists also a <code>describe</code> function that shows summurized information about the data in the <em>DataFrame</em>. This includes <strong>mean</strong>, <strong>std</strong> and <strong>IQR</strong> values. The function excludes the textual columns and looks only at the numeric columns. <strong>include</strong> is the argument which is used to pass necessary information regarding what columns need to be considered for summarizing. It can be:</p>
-
-<ul>
-<li><strong>object</strong> − Summarizes String columns</li>
-<li><strong>number</strong> − Summarizes Numeric columns</li>
-<li><strong>all</strong> − Summarizes all columns together</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
-
-<span style="color:#60a0b0;font-style:italic">#Create a Dictionary of series</span>
-d <span style="color:#666">=</span> {<span style="color:#4070a0">&#39;Name&#39;</span>:pd<span style="color:#666">.</span>Series([<span style="color:#4070a0">&#39;Tom&#39;</span>,<span style="color:#4070a0">&#39;James&#39;</span>,<span style="color:#4070a0">&#39;Ricky&#39;</span>,<span style="color:#4070a0">&#39;Vin&#39;</span>,<span style="color:#4070a0">&#39;Steve&#39;</span>,<span style="color:#4070a0">&#39;Smith&#39;</span>,<span style="color:#4070a0">&#39;Jack&#39;</span>,
-   <span style="color:#4070a0">&#39;Lee&#39;</span>,<span style="color:#4070a0">&#39;David&#39;</span>,<span style="color:#4070a0">&#39;Gasper&#39;</span>,<span style="color:#4070a0">&#39;Betina&#39;</span>,<span style="color:#4070a0">&#39;Andres&#39;</span>]),
-   <span style="color:#4070a0">&#39;Age&#39;</span>:pd<span style="color:#666">.</span>Series([<span style="color:#40a070">25</span>,<span style="color:#40a070">26</span>,<span style="color:#40a070">25</span>,<span style="color:#40a070">23</span>,<span style="color:#40a070">30</span>,<span style="color:#40a070">29</span>,<span style="color:#40a070">23</span>,<span style="color:#40a070">34</span>,<span style="color:#40a070">40</span>,<span style="color:#40a070">30</span>,<span style="color:#40a070">51</span>,<span style="color:#40a070">46</span>]),
-   <span style="color:#4070a0">&#39;Rating&#39;</span>:pd<span style="color:#666">.</span>Series([<span style="color:#40a070">4.23</span>,<span style="color:#40a070">3.24</span>,<span style="color:#40a070">3.98</span>,<span style="color:#40a070">2.56</span>,<span style="color:#40a070">3.20</span>,<span style="color:#40a070">4.6</span>,<span style="color:#40a070">3.8</span>,<span style="color:#40a070">3.78</span>,<span style="color:#40a070">2.98</span>,<span style="color:#40a070">4.80</span>,<span style="color:#40a070">4.10</span>,<span style="color:#40a070">3.65</span>])}
-
-<span style="color:#60a0b0;font-style:italic">#Create a DataFrame</span>
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(d)
-<span style="color:#007020;font-weight:bold">print</span> df<span style="color:#666">.</span>describe()</code></pre></div>
-<p>This gives us:</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Age</th>
-<th>Rating</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>count</td>
-<td>12.000000</td>
-<td>12.000000</td>
-</tr>
-
-<tr>
-<td>mean</td>
-<td>31.833333</td>
-<td>3.743333</td>
-</tr>
-
-<tr>
-<td>std</td>
-<td>9.232682</td>
-<td>0.661628</td>
-</tr>
-
-<tr>
-<td>min</td>
-<td>23.000000</td>
-<td>2.560000</td>
-</tr>
-
-<tr>
-<td>25%</td>
-<td>25.000000</td>
-<td>3.230000</td>
-</tr>
-
-<tr>
-<td>50%</td>
-<td>29.500000</td>
-<td>3.790000</td>
-</tr>
-
-<tr>
-<td>75%</td>
-<td>35.500000</td>
-<td>4.132500</td>
-</tr>
-
-<tr>
-<td>max</td>
-<td>51.000000</td>
-<td>4.800000</td>
-</tr>
-</tbody>
-</table>
-
-<p>..ok, kinda. The table is from me and I am kinda showing off&hellip;so yeah.</p>
-
-<h2 id="applying-functions-on-data-in-dataframe">Applying Functions on data in <em>DataFrame</em></h2>
-
-<p>There are a few way that we can transform a <em>DataFrame</em> into another one by applying a map-like functions on the data. Depending on our needs we have the following options:</p>
-
-<ul>
-<li><strong>pipe()</strong> - Table wise Function Application:</li>
-<li><strong>apply()</strong> - Row or Column Wise Function Application</li>
-<li><strong>applymap()</strong> - Element wise Function Application</li>
-</ul>
-
-<h3 id="piping">Piping</h3>
-
-<p>From the oficial documentation:</p>
+<p>NumPy is a Python package. It stands for &lsquo;Numerical Python&rsquo;. It is a library consisting of multidimensional array objects and a collection of routines for processing of array. <br /> From the officials:</p>
 
 <blockquote>
-<p>Use .pipe when chaining together functions that expect Series, DataFrames or GroupBy objects</p>
+<p>NumPy is the fundamental package for scientific computing with Python. It contains among other things:</p>
+
+<ul>
+<li>a powerful N-dimensional array object</li>
+<li>sophisticated (broadcasting) functions</li>
+<li>tools for integrating C/C++ and Fortran code</li>
+<li>useful linear algebra, Fourier transform, and random number capabilities</li>
+</ul>
+
+<p>Besides its obvious scientific uses, NumPy can also be used as an efficient multi-dimensional container of generic data. Arbitrary data-types can be defined. This allows NumPy to seamlessly and speedily integrate with a wide variety of databases.</p>
 </blockquote>
 
-<p>From what I understand - One would used that when applying a bunch of functions on all elements of /DataFrame/(or whatever) while still having the possability that the applied functions takes more than just one argument. For example, let&rsquo;s add two to every elemnt in DataFrame through a adder functions that just adds its two arguments.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+<p>In layman&rsquo;s terms (according to me) - better python-arrays with native C-code under the hood so that everything is blazingly fast. Easy array generation, generation of ranges, intervals and distributions of random numbers in some interval. Conveniently iterating over ranges and the generated arrays. <em>Numpy</em> also provides some basic/advanced statistical functions. Linear Algebra is also something that is already built in.</p>
 
-<span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">adder</span>(ele1,ele2):
-   <span style="color:#007020;font-weight:bold">return</span> ele1<span style="color:#666">+</span>ele2
+<p>Installation:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">pip3 install numpy</code></pre></div>
+<h2 id="ndarray">Ndarray</h2>
 
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">5</span>,<span style="color:#40a070">3</span>),columns<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;col1&#39;</span>,<span style="color:#4070a0">&#39;col2&#39;</span>,<span style="color:#4070a0">&#39;col3&#39;</span>])
-df <span style="color:#666">=</span> df<span style="color:#666">.</span>pipe(adder,<span style="color:#40a070">2</span>)
-<span style="color:#007020;font-weight:bold">print</span>(df)</code></pre></div>
-<p>We can also do something like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df<span style="color:#666">.</span>pipe(foo_fun1, arg1<span style="color:#666">=</span><span style="color:#40a070">1</span>)<span style="color:#666">.</span>
-pipe(foo_fun2, arg2<span style="color:#666">=</span><span style="color:#40a070">2</span>)<span style="color:#666">.</span>
-pipe(foo_fun3, arg3<span style="color:#666">=</span><span style="color:#40a070">3</span>)</code></pre></div>
-<p>This applies the three functions one after the other while the second argument of those functions is 1, 2 and 3.</p>
+<p>The most important object defined in <em>NumPy</em> is an N-dimensional array type called <em>ndarray</em>. This is the main workhorse of the package. It describes the collection of items of the same type. Items in the collection can be accessed using a zero-based index. It&rsquo;s much better than the standard python arrays and lists. Basic construction:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">numpy.array(object, dtype = None, copy = True, order = None, subok = False, ndmin = 0)</code></pre></div>
+<ul>
+<li><strong>object</strong> - Any object exposing the array interface method returns an array, or any (nested) sequence.</li>
+<li><strong>dtype</strong> - Desired data type of array, optional</li>
+<li><strong>copy</strong> - Optional. By default (true), the object is copied</li>
+<li><strong>order</strong> - C (row major) or F (column major) or A (any) (default)</li>
+<li><strong>subok</strong> - By default, returned array forced to be a base class array. If true, sub-classes passed through</li>
+<li><strong>ndmin</strong> - Specifies minimum dimensions of resultant array</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>array([<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>])
+<span style="color:#007020;font-weight:bold">print</span>(a)
 
-<h3 id="applying">Applying</h3>
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>array([[<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>], [<span style="color:#40a070">3</span>, <span style="color:#40a070">4</span>]])
+<span style="color:#007020;font-weight:bold">print</span>(a)
 
-<p>The <strong>apply</strong> function of <em>DataFrame</em> applies function on whole columns(or rows). The given function to be applied must take one argument - Series - and return again a Series. Think of it like that - they give you a whole array of numbers, you make something with it and give back a diffetent (or not diffetent) array of the same size. An illustrative example:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>array([<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>], dtype<span style="color:#666">=</span><span style="color:#007020">complex</span>)
+<span style="color:#007020;font-weight:bold">print</span>(a)</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[1 2 3 4]
+[[1 2]
+ [3 4]]
+[1.+0.j 2.+0.j 3.+0.j 4.+0.j]</code></pre></div>
+<h2 id="data-types">Data Types</h2>
 
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">5</span>,<span style="color:#40a070">3</span>),columns<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;col1&#39;</span>,<span style="color:#4070a0">&#39;col2&#39;</span>,<span style="color:#4070a0">&#39;col3&#39;</span>])
-<span style="color:#007020;font-weight:bold">return</span> df<span style="color:#666">.</span><span style="color:#007020">apply</span>(np<span style="color:#666">.</span>mean)</code></pre></div>
-<p>Which gives us:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">col1    0.228874
-col2   -0.561032
-col3   -0.321606
-dtype: float64</code></pre></div>
-<p>Note how the <strong>np.mean</strong> return a sigle number so in the final result there is only one row - the mean of each column.</p>
-
-<h3 id="applymap">ApplyMap</h3>
-
-<p>Not all functions can be vectorized (neither the NumPy arrays which return another array nor any value), the methods applymap() on DataFrame and analogously map() on Series accept any Python function taking a single value and returning a single value. This is similar to the <strong>pipe</strong> but it&rsquo;s less flexible. It just treats the whole <em>DataFrame</em> as on big list and performes a mappint function on it. Example:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
-
-<span style="color:#60a0b0;font-style:italic"># My custom function</span>
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">5</span>,<span style="color:#40a070">3</span>),columns<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;col1&#39;</span>,<span style="color:#4070a0">&#39;col2&#39;</span>,<span style="color:#4070a0">&#39;col3&#39;</span>])
-<span style="color:#007020;font-weight:bold">return</span> df<span style="color:#666">.</span>applymap(<span style="color:#007020;font-weight:bold">lambda</span> x:x<span style="color:#666">*</span><span style="color:#40a070">100</span>)</code></pre></div>
-<p>With result:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">col1        col2        col3
-0  124.741017  -39.997356 -197.724001
-1  -83.817763   56.487720  -16.127531
-2  173.797264  187.089676  -38.871016
-3  -94.927338  -60.133882   15.271702
-4 -167.875460   83.420648 -179.131762</code></pre></div>
-<h2 id="iterating-and-sorting-over-data-in-structures">Iterating and sorting over data in structures</h2>
-
-<h3 id="iterating-dataframe">Iterating <em>DataFrame</em></h3>
-
-<p>Using a <em>DataFrame</em> object in a plane <em>for</em>-loop iterates over the names of the columns.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame({
-    <span style="color:#4070a0">&#39;A&#39;</span>: [<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>],
-    <span style="color:#4070a0">&#39;x&#39;</span>: [<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>],
-    <span style="color:#4070a0">&#39;y&#39;</span>: [<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>],
-    <span style="color:#4070a0">&#39;C&#39;</span>: [<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>],
-    <span style="color:#4070a0">&#39;D&#39;</span>: [<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>]
-    })
-
-<span style="color:#007020;font-weight:bold">for</span> col <span style="color:#007020;font-weight:bold">in</span> df:
-   <span style="color:#007020;font-weight:bold">print</span>(col)</code></pre></div>
-<p>This just prints A, B, C,&hellip;,etc.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">A
-C
-D
-x
-y</code></pre></div>
-<p>Iterating over the date in the <em>DataFrame</em> can be done in several ways:</p>
+<p>There are a lot of possible data types that are supported by <em>numpy</em>. Some of the scalar types include:</p>
 
 <ul>
-<li><strong>iteritems()</strong> − to iterate over the (key,value) pairs. Key here again is the &lsquo;index&rsquo;-name-thing that is configurable through the <strong>index</strong> in the constructor.</li>
-<li><strong>iterrows()</strong> − iterate over the rows as (index,series) pairs. Here the index is just a number.</li>
-<li><strong>itertuples()</strong> − iterate over the rows as namedtuples</li>
+<li>bool_, int_, intc, intp, int8, int16, int32, uint8. uint16, uint32</li>
+<li>float_, float16, float32, flaot64</li>
+<li>complex, complex64, complex128</li>
 </ul>
 
-<p>The most useful of the above is probably <strong>iterrows()</strong>.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+<p>The types can be encapsulated in <em>Data Type Object</em>.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">numpy.dtype(object, align, copy)</code></pre></div>
+<ul>
+<li><strong>Object</strong> − To be converted to data type object</li>
+<li><strong>Align</strong> − If true, adds padding to the field to make it similar to C-struct</li>
+<li><strong>Copy</strong> − Makes a new copy of dtype object. If false, the result is reference to builtin data type object</li>
+</ul>
 
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">4</span>,<span style="color:#40a070">3</span>),columns <span style="color:#666">=</span> [<span style="color:#4070a0">&#39;col1&#39;</span>,<span style="color:#4070a0">&#39;col2&#39;</span>,<span style="color:#4070a0">&#39;col3&#39;</span>])
-<span style="color:#007020;font-weight:bold">for</span> row_index,row <span style="color:#007020;font-weight:bold">in</span> df<span style="color:#666">.</span>iterrows():
-   <span style="color:#007020;font-weight:bold">print</span> (<span style="color:#007020">str</span>(row_index) <span style="color:#666">+</span> <span style="color:#4070a0">&#34;</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span> <span style="color:#666">+</span> <span style="color:#007020">str</span>(row))</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">0
-col1    2.117955
-col2   -0.263560
-col3   -0.600124
-Name: 0, dtype: float64
-1
-col1   -0.620081
-col2   -1.355647
-col3   -0.568608
-Name: 1, dtype: float64
-2
-col1    1.792265
-col2   -0.494137
-col3   -1.395912
-Name: 2, dtype: float64
-3
-col1   -1.189506
-col2   -0.479746
-col3    0.329728
-Name: 3, dtype: float64</code></pre></div>
-<p>To note is that the iterated <em>row</em>-objects contain information for each column so if you want to get the second column of the row:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">row.col2</code></pre></div>
-<h3 id="sorting-dataframe">Sorting <em>DataFrame</em></h3>
+<p>The object can be later used when a given function or constructor taked <em>dtype</em> argument. Those object can also create struct-like types for structured data. Think of it like defining custom struct in C++ and then creating a vector with elements of this struct.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
 
-<p>There are two possablities for sorting:</p>
+dt <span style="color:#666">=</span> np<span style="color:#666">.</span>dtype([(<span style="color:#4070a0">&#39;age&#39;</span>,np<span style="color:#666">.</span>int8),(<span style="color:#4070a0">&#39;time&#39;</span>, np<span style="color:#666">.</span>int32)])
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>array([(<span style="color:#40a070">10</span>,<span style="color:#40a070">30</span>),(<span style="color:#40a070">20</span>,<span style="color:#40a070">30</span>),(<span style="color:#40a070">30</span>,<span style="color:#40a070">30</span>)], dtype <span style="color:#666">=</span> dt)
 
-<ol>
-<li>By lable - i. e. by index</li>
-<li>By value of some column</li>
-</ol>
+<span style="color:#007020;font-weight:bold">print</span>(a)
+<span style="color:#007020;font-weight:bold">print</span>(a[<span style="color:#4070a0">&#39;age&#39;</span>])
+<span style="color:#007020;font-weight:bold">print</span>(a[<span style="color:#4070a0">&#39;time&#39;</span>])</code></pre></div>
+<p>Which yields:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[(10, 30) (20, 30) (30, 30)]
+[10 20 30]
+[30 30 30]</code></pre></div>
+<p>This way we can define map-like structure that contains a bunch of different attays, each adressable with a key. The following code defines a &lsquo;human&rsquo; data type with <em>string</em> field <em>name</em>, <em>int</em> field age, and <em>float</em> field social class.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+human <span style="color:#666">=</span> np<span style="color:#666">.</span>dtype([(<span style="color:#4070a0">&#39;name&#39;</span>, <span style="color:#4070a0">&#39;S20&#39;</span>), (<span style="color:#4070a0">&#39;age&#39;</span>, <span style="color:#4070a0">&#39;i1&#39;</span>), (<span style="color:#4070a0">&#39;social_class&#39;</span>, <span style="color:#4070a0">&#39;f4&#39;</span>)])
+<span style="color:#007020;font-weight:bold">print</span>(human)
 
-<p>The first one is useful when the data is saved out of order. By appropriately creating the index in the construction and then sorting by lable, you can load the data in memory in the right order.<br /> The two functions are:</p>
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>array([(<span style="color:#4070a0">&#39;Lenin&#39;</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">100</span>),(<span style="color:#4070a0">&#39;John&#39;</span>, <span style="color:#40a070">19</span>, <span style="color:#40a070">3.5</span>)], dtype <span style="color:#666">=</span> human)
+<span style="color:#007020;font-weight:bold">print</span>(a)</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[(&#39;name&#39;, &#39;S20&#39;), (&#39;age&#39;, &#39;i1&#39;), (&#39;social_class&#39;, &#39;&lt;f4&#39;)]
+[(b&#39;Lenin&#39;, 45, 100. ) (b&#39;John&#39;, 19,   3.5)]</code></pre></div>
+<p>This shows another important point. Each time can be specified with a single character.</p>
 
 <ul>
-<li><strong>sort_index([ascending=True/False])</strong></li>
-<li><strong>sort_values(by=col_name,[ascending=True/False])</strong></li>
+<li><strong>&lsquo;b&rsquo;</strong> − boolean</li>
+<li><strong>&lsquo;i&rsquo;</strong> − (signed) integer</li>
+<li><strong>&lsquo;u&rsquo;</strong> − unsigned integer</li>
+<li><strong>&lsquo;f&rsquo;</strong> − floating-point</li>
+<li><strong>&lsquo;c&rsquo;</strong> − complex-floating point</li>
+<li><strong>&rsquo;m&rsquo;</strong> − timedelta</li>
+<li><strong>&rsquo;M&rsquo;</strong> − datetime</li>
+<li><strong>&lsquo;O&rsquo;</strong> − (Python) objects</li>
+<li><strong>&rsquo;S&rsquo;</strong>, &lsquo;a&rsquo; − (byte-)string</li>
+<li><strong>&lsquo;U&rsquo;</strong> − Unicode</li>
+<li><strong>&lsquo;V&rsquo;</strong> − raw data (void)</li>
 </ul>
 
-<p>By default <em>ascending</em> is set to <em>True</em>. Example:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
+<h2 id="array-attributes">Array Attributes</h2>
+
+<p>Attributes, as the name implies, give us some information about a given object. In the case of <em>numpy</em>, the most important thing about an array is its <em>shape</em> and <em>ndim</em></p>
+
+<h3 id="shape-and-dimension">Shape and dimension</h3>
+
+<p><em>Shape</em> of an array is its layout in memory. Normally <em>numpy</em> represents the ndarray as a n-dimensional array in memory. This means that that the shapes is nothing more than a tupple that consists of each dimension&rsquo;s size. For example, the array <code>[1,2,3]</code> has shape <code>(3)</code>, the array <code>[[1,2],[1,2]]</code> has shape <code>(2,2)</code> because it consists of two array and each of them contains two elements.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>array([<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>])
+<span style="color:#007020;font-weight:bold">print</span>(a<span style="color:#666">.</span>shape)
+
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>array([[<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>],[<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>]])
+<span style="color:#007020;font-weight:bold">print</span>(a<span style="color:#666">.</span>shape)</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">(4,)
+(2, 4)</code></pre></div>
+<p><br /> <em>Ndim</em> of an <em>numpy</em> array on the other hand is the number of dimensions. I. e. <code>[1,2]</code> has <em>ndim</em> equal to 1, and <code>[[1,3],[1.3]]</code> has <em>ndim</em> 2</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
 <span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>arange(<span style="color:#40a070">24</span>)
+<span style="color:#007020;font-weight:bold">print</span> (a<span style="color:#666">.</span>ndim)
 
-unsorted_df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(
-    np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">10</span>,<span style="color:#40a070">2</span>),
-index<span style="color:#666">=</span>[<span style="color:#40a070">1</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">6</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">5</span>,<span style="color:#40a070">9</span>,<span style="color:#40a070">8</span>,<span style="color:#40a070">0</span>,<span style="color:#40a070">7</span>],
-    columns <span style="color:#666">=</span> [<span style="color:#4070a0">&#39;col2&#39;</span>,<span style="color:#4070a0">&#39;col1&#39;</span>]
-)
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>array([[<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>],[<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>]])
+<span style="color:#007020;font-weight:bold">print</span>(a<span style="color:#666">.</span>ndim)</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">1
+2</code></pre></div>
+<h3 id="reshaping">Reshaping</h3>
 
-sorted_index_df <span style="color:#666">=</span> unsorted_df<span style="color:#666">.</span>sort_index()
-sorted_val_df <span style="color:#666">=</span> unsorted_df<span style="color:#666">.</span>sort_values(by<span style="color:#666">=</span><span style="color:#4070a0">&#39;col2&#39;</span>)
+<p>A lot of times we want to change the basic structure of and array without changing the information in it. In such cases, the <em>reshape</em> method comes to help.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>arange(<span style="color:#40a070">24</span>)
+<span style="color:#007020;font-weight:bold">print</span>(a<span style="color:#666">.</span>ndim)
 
-<span style="color:#007020;font-weight:bold">print</span>(sorted_index_df)
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;-------------&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span>(sorted_val_df)</code></pre></div>
-<p>Output:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">       col2      col1
-0  0.562948  0.768513
-1  1.776865 -0.217141
-2 -0.040029 -2.300772
-3 -1.695105  0.294038
-4  0.163922  0.934361
-5  0.998288 -1.149822
-6 -0.641102  0.539689
-7  1.190690  0.027898
-8  0.745714  0.916117
-9  0.144558  2.581345
--------------
-       col2      col1
-3 -1.695105  0.294038
-6 -0.641102  0.539689
-2 -0.040029 -2.300772
-9  0.144558  2.581345
-4  0.163922  0.934361
-0  0.562948  0.768513
-8  0.745714  0.916117
-5  0.998288 -1.149822
-7  1.190690  0.027898
-1  1.776865 -0.217141</code></pre></div>
+<span style="color:#60a0b0;font-style:italic"># now reshape it</span>
+b <span style="color:#666">=</span> a<span style="color:#666">.</span>reshape(<span style="color:#40a070">2</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">3</span>)
+<span style="color:#007020;font-weight:bold">print</span> (b)</code></pre></div>
+<p>The elements stay the same and occupy the same memory location but the acces to them is happening in different way.** &lsquo;Size&rsquo; of an array <strong>numpy.itemsize</strong> - this array attribute returns the length of each element of array in bytes.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+x <span style="color:#666">=</span> np<span style="color:#666">.</span>array([<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>], dtype <span style="color:#666">=</span> np<span style="color:#666">.</span>int8)
+<span style="color:#007020;font-weight:bold">print</span> (x<span style="color:#666">.</span>itemsize)</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">1</code></pre></div>
+<h3 id="num-elements">Num elements</h3>
+
+<p>The attribute that eveyone has been waiting for&hellip; <strong>numpy.size</strong></p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>arange(<span style="color:#40a070">24</span>)
+<span style="color:#007020;font-weight:bold">print</span> (a<span style="color:#666">.</span>size)</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">24</code></pre></div>
 <h2 id="slicing">Slicing</h2>
 
-<p>There are some custom way slicing through data that are optimized and are the remended way of slicing data when dealing with production code.</p>
+<h3 id="basic-slicing">Basic slicing</h3>
 
-<ol>
-<li><p><strong>loc()</strong> - lable based indexing. Used as df.loc[</rows/>,</columns/>]. For <em>rows</em> and <em>columns</em> could be given pretty much everything that makes sense - single char, list of labels, slice object, boolean array..</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df<span style="color:#666">.</span>loc[[<span style="color:#4070a0">&#39;a&#39;</span>,<span style="color:#4070a0">&#39;b&#39;</span>,<span style="color:#4070a0">&#39;f&#39;</span>,<span style="color:#4070a0">&#39;h&#39;</span>],[<span style="color:#4070a0">&#39;A&#39;</span>,<span style="color:#4070a0">&#39;C&#39;</span>]]</code></pre></div></li>
+<p>Basic slicing is an extension of Python&rsquo;s basic concept of slicing to <strong>n</strong> dimensions. A Python slice object is constructed by giving start, stop, and step parameters to the built-in slice function. This slice object is passed to the array to extract a part of array.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>arange(<span style="color:#40a070">10</span>)
+b <span style="color:#666">=</span> a[<span style="color:#40a070">2</span>:<span style="color:#40a070">7</span>:<span style="color:#40a070">2</span>]
+<span style="color:#007020;font-weight:bold">print</span>(b)
+<span style="color:#007020;font-weight:bold">print</span>(a[<span style="color:#40a070">2</span>:])</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[2 4 6]
+[2 3 4 5 6 7 8 9]</code></pre></div>
+<h3 id="advanced">Advanced</h3>
 
-<li><p><strong>iloc()</strong> - index based indexing. Used the same way as <strong>loc()</strong> but just with integer indecies.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df<span style="color:#666">.</span>iloc[<span style="color:#40a070">1</span>:<span style="color:#40a070">5</span>, <span style="color:#40a070">2</span>:<span style="color:#40a070">4</span>]</code></pre></div></li>
-</ol>
+<p>This mechanism helps in selecting any arbitrary item in an array based on its Ndimensional index. Each integer array represents the number of indexes into that dimension. When the index consists of as many integer arrays as the dimensions of the target ndarray, it becomes straightforward.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
 
-<h2 id="thougher-statistics">Thougher statistics</h2>
+x <span style="color:#666">=</span> np<span style="color:#666">.</span>array([[ <span style="color:#40a070">0</span>,  <span style="color:#40a070">1</span>,  <span style="color:#40a070">2</span>],[ <span style="color:#40a070">3</span>,  <span style="color:#40a070">4</span>,  <span style="color:#40a070">5</span>],[ <span style="color:#40a070">6</span>,  <span style="color:#40a070">7</span>,  <span style="color:#40a070">8</span>],[ <span style="color:#40a070">9</span>, <span style="color:#40a070">10</span>, <span style="color:#40a070">11</span>]])
 
-<h3 id="some-functions">Some functions</h3>
+<span style="color:#007020;font-weight:bold">print</span> (<span style="color:#4070a0">&#39;Our array is:&#39;</span>)
+<span style="color:#007020;font-weight:bold">print</span> (x)
+<span style="color:#007020;font-weight:bold">print</span> (<span style="color:#4070a0">&#39;</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#39;</span>)
 
-<p>There are some useful statistical funcitons already in <em>pandas</em> that help with the understanding and analyzing the behavior of data</p>
+rows <span style="color:#666">=</span> np<span style="color:#666">.</span>array([[<span style="color:#40a070">0</span>,<span style="color:#40a070">0</span>],[<span style="color:#40a070">3</span>,<span style="color:#40a070">3</span>]])
+cols <span style="color:#666">=</span> np<span style="color:#666">.</span>array([[<span style="color:#40a070">0</span>,<span style="color:#40a070">2</span>],[<span style="color:#40a070">0</span>,<span style="color:#40a070">2</span>]])
+y <span style="color:#666">=</span> x[rows,cols]
 
-<ol>
-<li><p><strong>Percent_change</strong> -This function compares every element with its prior element and computes the change percentage.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
-s <span style="color:#666">=</span> pd<span style="color:#666">.</span>Series([<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>,<span style="color:#40a070">4</span>])
-<span style="color:#007020;font-weight:bold">print</span>(s<span style="color:#666">.</span>pct_change())
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;-----&#34;</span>)
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">5</span>, <span style="color:#40a070">2</span>))
-<span style="color:#007020;font-weight:bold">print</span> (df<span style="color:#666">.</span>pct_change())</code></pre></div></li>
-</ol>
+<span style="color:#007020;font-weight:bold">print</span> (<span style="color:#4070a0">&#39;The corner elements of this array are:&#39;</span> )
+<span style="color:#007020;font-weight:bold">print</span> (y)</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Our array is:
+[[ 0  1  2]
+ [ 3  4  5]
+ [ 6  7  8]
+ [ 9 10 11]]
 
-<p>Gives us:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">0         NaN
-1    1.000000
-2    0.500000
-3    0.333333
-4    0.250000
-5   -0.200000
-dtype: float64
------
-          0          1
-0       NaN        NaN
-1 -1.156977 -16.169034
-2  0.234270  -0.647137
-3 -3.203838  -1.043420
-4 -1.548769  -9.686350</code></pre></div>
-<p>The first row is <em>NaN</em> because ther is no previous element to copare it to.</p>
 
-<ol>
-<li><strong>Covariance</strong> - the <em>Series</em> object has a method <strong>cov</strong> to compute covariance between two objects.</li>
-</ol>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
-s1 <span style="color:#666">=</span> pd<span style="color:#666">.</span>Series(np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">10</span>))
-s2 <span style="color:#666">=</span> pd<span style="color:#666">.</span>Series(np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">10</span>))
-<span style="color:#007020;font-weight:bold">print</span> (s1<span style="color:#666">.</span>cov(s2))</code></pre></div>
-<p>Output:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">-0.23077206068332465</code></pre></div>
-<p><em>NaN</em> values are ignored automagically.</p>
+The corner elements of this array are:
+[[ 0  2]
+ [ 9 11]]</code></pre></div>
+<h4 id="boolean-array-indexing">Boolean Array Indexing</h4>
 
-<ol>
-<li><strong>Correlation</strong> - the natural follow up of course.</li>
-</ol>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
-frame <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">10</span>, <span style="color:#40a070">5</span>), columns<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;a&#39;</span>, <span style="color:#4070a0">&#39;b&#39;</span>, <span style="color:#4070a0">&#39;c&#39;</span>, <span style="color:#4070a0">&#39;d&#39;</span>, <span style="color:#4070a0">&#39;e&#39;</span>])
+<p>This type of advanced indexing is used when the resultant object is meant to be the result of Boolean operations, such as comparison operators.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
 
-<span style="color:#007020;font-weight:bold">print</span>( frame[<span style="color:#4070a0">&#39;a&#39;</span>]<span style="color:#666">.</span>corr(frame[<span style="color:#4070a0">&#39;b&#39;</span>]))
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;-------&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span>( frame<span style="color:#666">.</span>corr())</code></pre></div>
-<p>The latter table shows in each cell shows what is the correlation between the respective columns.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">0.584632830437208
--------
-          a         b         c         d         e
-a  1.000000  0.584633  0.178898 -0.199928 -0.073022
-b  0.584633  1.000000  0.045907  0.111284  0.006680
-c  0.178898  0.045907  1.000000 -0.455127  0.065576
-d -0.199928  0.111284 -0.455127  1.000000 -0.596656
-e -0.073022  0.006680  0.065576 -0.596656  1.000000</code></pre></div>
-<h3 id="window-statistics">Window statistics</h3>
+x <span style="color:#666">=</span> np<span style="color:#666">.</span>arange(<span style="color:#40a070">0</span>,<span style="color:#40a070">20</span>)
+<span style="color:#007020;font-weight:bold">print</span> (x[x<span style="color:#666">&gt;</span><span style="color:#40a070">5</span>])</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[ 6  7  8  9 10 11 12 13 14 15 16 17 18 19]</code></pre></div>
+<h2 id="broadcasting">Broadcasting</h2>
 
-<p>Some of the supported operations are:</p>
+<p>This refers to the way arithmetic operations are handled. <em>Numpy</em> is intelligent enough to perform arithmetical operations on arrays element-wise as long as the shapes of the objects are &lsquo;compatible&rsquo;.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
 
-<ol>
-<li>Rolling - Imagine a window that rolls over the data and computes &lsquo;something&rsquo; with the elements that are currently in the window. Usueall the restult is written then in the first element of the wondow. The function in use here is <strong>rolling(windows=/window_size/)</strong></li>
-</ol>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>array([<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>])
+b <span style="color:#666">=</span> np<span style="color:#666">.</span>array([<span style="color:#40a070">10</span>,<span style="color:#40a070">20</span>,<span style="color:#40a070">30</span>,<span style="color:#40a070">40</span>])
+c <span style="color:#666">=</span> a <span style="color:#666">*</span> b
+<span style="color:#007020;font-weight:bold">print</span>(c)</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[ 10  40  90 160]</code></pre></div>
+<h2 id="iterating">Iterating</h2>
 
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(
-    np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">10</span>, <span style="color:#40a070">4</span>),
-    index <span style="color:#666">=</span> pd<span style="color:#666">.</span>date_range(<span style="color:#4070a0">&#39;1/1/2000&#39;</span>, periods<span style="color:#666">=</span><span style="color:#40a070">10</span>),
-    columns <span style="color:#666">=</span> [<span style="color:#4070a0">&#39;A&#39;</span>, <span style="color:#4070a0">&#39;B&#39;</span>, <span style="color:#4070a0">&#39;C&#39;</span>, <span style="color:#4070a0">&#39;D&#39;</span>]
-)
-<span style="color:#007020;font-weight:bold">print</span> (df<span style="color:#666">.</span>rolling(window<span style="color:#666">=</span><span style="color:#40a070">3</span>)<span style="color:#666">.</span>mean())</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">                   A         B         C         D
-2000-01-01       NaN       NaN       NaN       NaN
-2000-01-02       NaN       NaN       NaN       NaN
-2000-01-03  0.448896 -0.457281 -0.320112 -0.629398
-2000-01-04  0.142268 -0.523835 -0.627615  0.228978
-2000-01-05 -0.200259 -1.242848 -0.683303 -0.575579
-2000-01-06 -0.867429 -0.211049 -0.207560  0.048380
-2000-01-07 -1.117081 -0.268690  0.053126 -0.376906
-2000-01-08 -1.117306  0.142617 -0.295222 -0.505522
-2000-01-09 -0.324298 -0.065450 -0.333431 -1.186115
-2000-01-10 -0.186834 -0.131418 -0.530804 -0.624335</code></pre></div>
-<p>The window is big 3-elements and therefore the fist two rows don&rsquo;t have the needed neighbors.</p>
+<p><strong>numpy.nditer()</strong> is your best friend. It returns and iterable (in for loop) object that can be further used to go through an array. It can also be constructed with two arrays to go through the both of them simultaneously. The array must be <strong>broadcastable</strong>. Constructing an iterator that can modify the values of an array happens through a flag in the constructor.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
 
-<ol>
-<li><p>Expanding - Calculate something for the first element, then for the first and second together, then for the first, second and third together and so on and so forth. This is done with <strong>expanding(min_periods=n)</strong>. <em>min_periods</em> shows when the computations begin (the number of rows needed in order the generated row not to be <em>NaN</em>).</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>arange(<span style="color:#40a070">0</span>, <span style="color:#40a070">60</span>, <span style="color:#40a070">5</span>)
+b <span style="color:#666">=</span> np<span style="color:#666">.</span>arange(<span style="color:#40a070">0</span>, <span style="color:#40a070">12</span>)
 
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">10</span>, <span style="color:#40a070">4</span>),
-                  index <span style="color:#666">=</span> pd<span style="color:#666">.</span>date_range(<span style="color:#4070a0">&#39;1/1/2000&#39;</span>, periods<span style="color:#666">=</span><span style="color:#40a070">10</span>),
-                  columns <span style="color:#666">=</span> [<span style="color:#4070a0">&#39;A&#39;</span>, <span style="color:#4070a0">&#39;B&#39;</span>, <span style="color:#4070a0">&#39;C&#39;</span>, <span style="color:#4070a0">&#39;D&#39;</span>])
-<span style="color:#007020;font-weight:bold">print</span>(df<span style="color:#666">.</span>expanding(min_periods<span style="color:#666">=</span><span style="color:#40a070">3</span>)<span style="color:#666">.</span>mean())</code></pre></div></li>
-</ol>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">                   A         B         C         D
-2000-01-01       NaN       NaN       NaN       NaN
-2000-01-02       NaN       NaN       NaN       NaN
-2000-01-03  1.330880 -0.758586  0.172522  0.657721
-2000-01-04  1.161148 -0.147130 -0.110188  0.473314
-2000-01-05  0.565535  0.120415 -0.038158  0.647995
-2000-01-06  0.721102  0.268228 -0.037819  0.563833
-2000-01-07  0.734176  0.232185 -0.090012  0.420967
-2000-01-08  0.681839  0.240921 -0.204159  0.223472
-2000-01-09  0.772570  0.121897  0.053970  0.105342
-2000-01-10  0.837397  0.266325  0.109070  0.280632</code></pre></div>
-<ol>
-<li><p>Exponentially moving weights - Not sure for the exact mathematics of this one, but&hellip;it averages the data in some weird way. It&rsquo;s used to get the &lsquo;general idea&rsquo; for the behaiviour of the data</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+<span style="color:#007020;font-weight:bold">for</span> num <span style="color:#007020;font-weight:bold">in</span> np<span style="color:#666">.</span>nditer(a):
+    <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#007020">str</span>(num))
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#39;</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#39;</span>)
 
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(np<span style="color:#666">.</span>random<span style="color:#666">.</span>randn(<span style="color:#40a070">10</span>, <span style="color:#40a070">4</span>),
-                  index <span style="color:#666">=</span> pd<span style="color:#666">.</span>date_range(<span style="color:#4070a0">&#39;1/1/2000&#39;</span>, periods<span style="color:#666">=</span><span style="color:#40a070">10</span>),
-                  columns <span style="color:#666">=</span> [<span style="color:#4070a0">&#39;A&#39;</span>, <span style="color:#4070a0">&#39;B&#39;</span>, <span style="color:#4070a0">&#39;C&#39;</span>, <span style="color:#4070a0">&#39;D&#39;</span>])
-<span style="color:#007020;font-weight:bold">print</span>( df<span style="color:#666">.</span>ewm(com<span style="color:#666">=</span><span style="color:#40a070">0.5</span>)<span style="color:#666">.</span>mean())</code></pre></div></li>
-</ol>
+<span style="color:#007020;font-weight:bold">for</span> a_num,b_num <span style="color:#007020;font-weight:bold">in</span> np<span style="color:#666">.</span>nditer([a,b]):
+    <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#007020">str</span>(a_num) <span style="color:#666">+</span> <span style="color:#4070a0">&#39;+&#39;</span> <span style="color:#666">+</span> <span style="color:#007020">str</span>(b_num))
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#39;</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#39;</span>)
 
-<h3 id="grouping-and-aggregating">Grouping and Aggregating</h3>
+<span style="color:#007020;font-weight:bold">for</span> num <span style="color:#007020;font-weight:bold">in</span> np<span style="color:#666">.</span>nditer(a, op_flags<span style="color:#666">=</span>[<span style="color:#4070a0">&#34;readwrite&#34;</span>]):
+    num <span style="color:#666">+=</span> <span style="color:#40a070">10</span>
+<span style="color:#007020;font-weight:bold">print</span>(a)</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+50
+55
 
-<p>In many situations the following &lsquo;pipeline&rsquo; occurs:</p>
 
-<ol>
-<li>Split and object by grouping it etries by some key</li>
-<li>Perfome some operations to get a single number for each group</li>
-<li>Combine the result into a new object</li>
-</ol>
+0+0
+5+1
+10+2
+15+3
+20+4
+25+5
+30+6
+35+7
+40+8
+45+9
+50+10
+55+11
 
-<p>The second step could have some vartiations. Maybe we can want to transform or filter the data but the genaral idea stays. Pandas offers some great functions to achieve all of this. <br /> Firstly, in order to create the groups we can use the <strong>groupby()</strong> function. It can take the name of single column or multiple ones. In the latter case, the appropriate combinations between the keys of the columns are generated. Each combinations is it&rsquo;s own group. Once the grouping object is created, the groups can be examined with <code>gr.groups</code>. The groups can also be easly iterated over. Selecting a group is also easy by specifying its key. <br /> Summarizing example:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-ipl_data <span style="color:#666">=</span> {<span style="color:#4070a0">&#39;Team&#39;</span>: [<span style="color:#4070a0">&#39;Riders&#39;</span>, <span style="color:#4070a0">&#39;Riders&#39;</span>, <span style="color:#4070a0">&#39;Devils&#39;</span>, <span style="color:#4070a0">&#39;Devils&#39;</span>, <span style="color:#4070a0">&#39;Kings&#39;</span>,
-         <span style="color:#4070a0">&#39;kings&#39;</span>, <span style="color:#4070a0">&#39;Kings&#39;</span>, <span style="color:#4070a0">&#39;Kings&#39;</span>, <span style="color:#4070a0">&#39;Riders&#39;</span>, <span style="color:#4070a0">&#39;Royals&#39;</span>, <span style="color:#4070a0">&#39;Royals&#39;</span>, <span style="color:#4070a0">&#39;Riders&#39;</span>],
-         <span style="color:#4070a0">&#39;Rank&#39;</span>: [<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">3</span>, <span style="color:#40a070">3</span>,<span style="color:#40a070">4</span> ,<span style="color:#40a070">1</span> ,<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span> , <span style="color:#40a070">4</span>,<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>],
-         <span style="color:#4070a0">&#39;Year&#39;</span>: [<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2016</span>,<span style="color:#40a070">2017</span>,<span style="color:#40a070">2016</span>,<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2017</span>],
-         <span style="color:#4070a0">&#39;Points&#39;</span>:[<span style="color:#40a070">876</span>,<span style="color:#40a070">789</span>,<span style="color:#40a070">863</span>,<span style="color:#40a070">673</span>,<span style="color:#40a070">741</span>,<span style="color:#40a070">812</span>,<span style="color:#40a070">756</span>,<span style="color:#40a070">788</span>,<span style="color:#40a070">694</span>,<span style="color:#40a070">701</span>,<span style="color:#40a070">804</span>,<span style="color:#40a070">690</span>]}
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(ipl_data)
-gr <span style="color:#666">=</span> df<span style="color:#666">.</span>groupby([<span style="color:#4070a0">&#39;Team&#39;</span>,<span style="color:#4070a0">&#39;Year&#39;</span>])
 
-<span style="color:#007020;font-weight:bold">print</span> (gr<span style="color:#666">.</span>groups)
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;------&#34;</span>)
-<span style="color:#007020;font-weight:bold">for</span> name,group <span style="color:#007020;font-weight:bold">in</span> gr:
-    <span style="color:#007020;font-weight:bold">print</span> (name)
-    <span style="color:#007020;font-weight:bold">print</span> (group)
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;-----&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span> (gr<span style="color:#666">.</span>get_group((<span style="color:#4070a0">&#39;Riders&#39;</span>, <span style="color:#40a070">2014</span>)))</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">{(&#39;Devils&#39;, 2014): Int64Index([2], dtype=&#39;int64&#39;), (&#39;Devils&#39;, 2015): Int64Index([3], dtype=&#39;int64&#39;), (&#39;Kings&#39;, 2014): Int64Index([4], dtype=&#39;int64&#39;), (&#39;Kings&#39;, 2016): Int64Index([6], dtype=&#39;int64&#39;), (&#39;Kings&#39;, 2017): Int64Index([7], dtype=&#39;int64&#39;), (&#39;Riders&#39;, 2014): Int64Index([0], dtype=&#39;int64&#39;), (&#39;Riders&#39;, 2015): Int64Index([1], dtype=&#39;int64&#39;), (&#39;Riders&#39;, 2016): Int64Index([8], dtype=&#39;int64&#39;), (&#39;Riders&#39;, 2017): Int64Index([11], dtype=&#39;int64&#39;), (&#39;Royals&#39;, 2014): Int64Index([9], dtype=&#39;int64&#39;), (&#39;Royals&#39;, 2015): Int64Index([10], dtype=&#39;int64&#39;), (&#39;kings&#39;, 2015): Int64Index([5], dtype=&#39;int64&#39;)}
-------
-(&#39;Devils&#39;, 2014)
-   Points  Rank    Team  Year
-2     863     2  Devils  2014
-(&#39;Devils&#39;, 2015)
-   Points  Rank    Team  Year
-3     673     3  Devils  2015
-(&#39;Kings&#39;, 2014)
-   Points  Rank   Team  Year
-4     741     3  Kings  2014
-(&#39;Kings&#39;, 2016)
-   Points  Rank   Team  Year
-6     756     1  Kings  2016
-(&#39;Kings&#39;, 2017)
-   Points  Rank   Team  Year
-7     788     1  Kings  2017
-(&#39;Riders&#39;, 2014)
-   Points  Rank    Team  Year
-0     876     1  Riders  2014
-(&#39;Riders&#39;, 2015)
-   Points  Rank    Team  Year
-1     789     2  Riders  2015
-(&#39;Riders&#39;, 2016)
-   Points  Rank    Team  Year
-8     694     2  Riders  2016
-(&#39;Riders&#39;, 2017)
-    Points  Rank    Team  Year
-11     690     2  Riders  2017
-(&#39;Royals&#39;, 2014)
-   Points  Rank    Team  Year
-9     701     4  Royals  2014
-(&#39;Royals&#39;, 2015)
-    Points  Rank    Team  Year
-10     804     1  Royals  2015
-(&#39;kings&#39;, 2015)
-   Points  Rank   Team  Year
-5     812     4  kings  2015
------
-   Points  Rank    Team  Year
-0     876     1  Riders  2014</code></pre></div>
-<p>Now comes the fun part. The <strong>agg()</strong> function eturns a single aggregated value for each group. It takes a function on its own that does the actual work. Many of the <em>numpy</em> functions are supported. Multiple aggregations per <strong>agg()</strong> call are also possible. To note is that <strong>agg()</strong> is usually applied to single column</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+[10 15 20 25 30 35 40 45 50 55 60 65]</code></pre></div>
+<h2 id="manipulating">Manipulating</h2>
 
-ipl_data <span style="color:#666">=</span> {<span style="color:#4070a0">&#39;Team&#39;</span>: [<span style="color:#4070a0">&#39;Riders&#39;</span>, <span style="color:#4070a0">&#39;Riders&#39;</span>, <span style="color:#4070a0">&#39;Devils&#39;</span>, <span style="color:#4070a0">&#39;Devils&#39;</span>, <span style="color:#4070a0">&#39;Kings&#39;</span>,
-                     <span style="color:#4070a0">&#39;kings&#39;</span>, <span style="color:#4070a0">&#39;Kings&#39;</span>, <span style="color:#4070a0">&#39;Kings&#39;</span>, <span style="color:#4070a0">&#39;Riders&#39;</span>, <span style="color:#4070a0">&#39;Royals&#39;</span>, <span style="color:#4070a0">&#39;Royals&#39;</span>, <span style="color:#4070a0">&#39;Riders&#39;</span>],
-            <span style="color:#4070a0">&#39;Rank&#39;</span>: [<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">3</span>, <span style="color:#40a070">3</span>,<span style="color:#40a070">4</span> ,<span style="color:#40a070">1</span> ,<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span> , <span style="color:#40a070">4</span>,<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>],
-            <span style="color:#4070a0">&#39;Year&#39;</span>: [<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2016</span>,<span style="color:#40a070">2017</span>,<span style="color:#40a070">2016</span>,<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2017</span>],
-            <span style="color:#4070a0">&#39;Points&#39;</span>:[<span style="color:#40a070">876</span>,<span style="color:#40a070">789</span>,<span style="color:#40a070">863</span>,<span style="color:#40a070">673</span>,<span style="color:#40a070">741</span>,<span style="color:#40a070">812</span>,<span style="color:#40a070">756</span>,<span style="color:#40a070">788</span>,<span style="color:#40a070">694</span>,<span style="color:#40a070">701</span>,<span style="color:#40a070">804</span>,<span style="color:#40a070">690</span>]}
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(ipl_data)
-
-grouped <span style="color:#666">=</span> df<span style="color:#666">.</span>groupby(<span style="color:#4070a0">&#39;Year&#39;</span>)
-
-<span style="color:#007020;font-weight:bold">print</span> (grouped[<span style="color:#4070a0">&#39;Points&#39;</span>]<span style="color:#666">.</span>agg(np<span style="color:#666">.</span>mean))
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;----&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span> (grouped[<span style="color:#4070a0">&#39;Points&#39;</span>]<span style="color:#666">.</span>agg([np<span style="color:#666">.</span><span style="color:#007020">sum</span>, np<span style="color:#666">.</span>mean, np<span style="color:#666">.</span>std]))</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Year
-2014    795.25
-2015    769.50
-2016    725.00
-2017    739.00
-Name: Points, dtype: float64
-----
-       sum    mean        std
-Year
-2014  3181  795.25  87.439026
-2015  3078  769.50  65.035888
-2016  1450  725.00  43.840620
-2017  1478  739.00  69.296465</code></pre></div>
-<p>Groups can be filtered with the <strong>filter()</strong> function.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
-ipl_data <span style="color:#666">=</span> {<span style="color:#4070a0">&#39;Team&#39;</span>: [<span style="color:#4070a0">&#39;Riders&#39;</span>, <span style="color:#4070a0">&#39;Riders&#39;</span>, <span style="color:#4070a0">&#39;Devils&#39;</span>, <span style="color:#4070a0">&#39;Devils&#39;</span>, <span style="color:#4070a0">&#39;Kings&#39;</span>,
-         <span style="color:#4070a0">&#39;kings&#39;</span>, <span style="color:#4070a0">&#39;Kings&#39;</span>, <span style="color:#4070a0">&#39;Kings&#39;</span>, <span style="color:#4070a0">&#39;Riders&#39;</span>, <span style="color:#4070a0">&#39;Royals&#39;</span>, <span style="color:#4070a0">&#39;Royals&#39;</span>, <span style="color:#4070a0">&#39;Riders&#39;</span>],
-         <span style="color:#4070a0">&#39;Rank&#39;</span>: [<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">3</span>, <span style="color:#40a070">3</span>,<span style="color:#40a070">4</span> ,<span style="color:#40a070">1</span> ,<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span> , <span style="color:#40a070">4</span>,<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>],
-         <span style="color:#4070a0">&#39;Year&#39;</span>: [<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2016</span>,<span style="color:#40a070">2017</span>,<span style="color:#40a070">2016</span>,<span style="color:#40a070">2014</span>,<span style="color:#40a070">2015</span>,<span style="color:#40a070">2017</span>],
-         <span style="color:#4070a0">&#39;Points&#39;</span>:[<span style="color:#40a070">876</span>,<span style="color:#40a070">789</span>,<span style="color:#40a070">863</span>,<span style="color:#40a070">673</span>,<span style="color:#40a070">741</span>,<span style="color:#40a070">812</span>,<span style="color:#40a070">756</span>,<span style="color:#40a070">788</span>,<span style="color:#40a070">694</span>,<span style="color:#40a070">701</span>,<span style="color:#40a070">804</span>,<span style="color:#40a070">690</span>]}
-df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(ipl_data)
-<span style="color:#007020;font-weight:bold">print</span>(df<span style="color:#666">.</span>groupby(<span style="color:#4070a0">&#39;Team&#39;</span>)<span style="color:#666">.</span><span style="color:#007020">filter</span>(<span style="color:#007020;font-weight:bold">lambda</span> x: <span style="color:#007020">len</span>(x) <span style="color:#666">&gt;=</span> <span style="color:#40a070">3</span>))</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">    Points  Rank    Team  Year
-0      876     1  Riders  2014
-1      789     2  Riders  2015
-4      741     3   Kings  2014
-6      756     1   Kings  2016
-7      788     1   Kings  2017
-8      694     2  Riders  2016
-11     690     2  Riders  2017</code></pre></div>
-<h2 id="concatenating">Concatenating</h2>
-
-<p>When working with a little bin more complex data like in <em>pandas</em> the concatenation can become a tricky thing. <em>pandas</em> offers a special function:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">pd.concat(objs,axis=0,join=&#39;outer&#39;,join_axes=None,ignore_index=False)</code></pre></div>
-<p>The <em>axis</em> parameter controls how the concatenation is done - either by columns or by rows(dy default).</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-one <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame({
-    <span style="color:#4070a0">&#39;Name&#39;</span>: [<span style="color:#4070a0">&#39;Alex&#39;</span>, <span style="color:#4070a0">&#39;Amy&#39;</span>, <span style="color:#4070a0">&#39;Allen&#39;</span>, <span style="color:#4070a0">&#39;Alice&#39;</span>, <span style="color:#4070a0">&#39;Ayoung&#39;</span>],
-    <span style="color:#4070a0">&#39;subject_id&#39;</span>:[<span style="color:#4070a0">&#39;sub1&#39;</span>,<span style="color:#4070a0">&#39;sub2&#39;</span>,<span style="color:#4070a0">&#39;sub4&#39;</span>,<span style="color:#4070a0">&#39;sub6&#39;</span>,<span style="color:#4070a0">&#39;sub5&#39;</span>],
-    <span style="color:#4070a0">&#39;Marks_scored&#39;</span>:[<span style="color:#40a070">98</span>,<span style="color:#40a070">90</span>,<span style="color:#40a070">87</span>,<span style="color:#40a070">69</span>,<span style="color:#40a070">78</span>]},
-                   index<span style="color:#666">=</span>[<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>])
-two <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame({
-    <span style="color:#4070a0">&#39;Name&#39;</span>: [<span style="color:#4070a0">&#39;Billy&#39;</span>, <span style="color:#4070a0">&#39;Brian&#39;</span>, <span style="color:#4070a0">&#39;Bran&#39;</span>, <span style="color:#4070a0">&#39;Bryce&#39;</span>, <span style="color:#4070a0">&#39;Betty&#39;</span>],
-    <span style="color:#4070a0">&#39;subject_id&#39;</span>:[<span style="color:#4070a0">&#39;sub2&#39;</span>,<span style="color:#4070a0">&#39;sub4&#39;</span>,<span style="color:#4070a0">&#39;sub3&#39;</span>,<span style="color:#4070a0">&#39;sub6&#39;</span>,<span style="color:#4070a0">&#39;sub5&#39;</span>],
-    <span style="color:#4070a0">&#39;Marks_scored&#39;</span>:[<span style="color:#40a070">89</span>,<span style="color:#40a070">80</span>,<span style="color:#40a070">79</span>,<span style="color:#40a070">97</span>,<span style="color:#40a070">88</span>]},
-                   index<span style="color:#666">=</span>[<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>])
-<span style="color:#007020;font-weight:bold">print</span> (pd<span style="color:#666">.</span>concat([one,two]))
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;-------&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span> (pd<span style="color:#666">.</span>concat([one,two],axis<span style="color:#666">=</span><span style="color:#40a070">1</span>))</code></pre></div>
-<ul>
-<li><p>by row</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">  Marks_scored    Name subject_id
-1            98    Alex       sub1
-2            90     Amy       sub2
-3            87   Allen       sub4
-4            69   Alice       sub6
-5            78  Ayoung       sub5
-1            89   Billy       sub2
-2            80   Brian       sub4
-3            79    Bran       sub3
-4            97   Bryce       sub6
-5            88   Betty       sub5</code></pre></div></li>
-
-<li><p>by column</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">  Marks_scored    Name subject_id  Marks_scored   Name subject_id
-1            98    Alex       sub1            89  Billy       sub2
-2            90     Amy       sub2            80  Brian       sub4
-3            87   Allen       sub4            79   Bran       sub3
-4            69   Alice       sub6            97  Bryce       sub6
-5            78  Ayoung       sub5            88  Betty       sub5</code></pre></div></li>
-</ul>
-
-<p>By concatenation new labels can be assigned to the different parts:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-one <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame({
-    <span style="color:#4070a0">&#39;Name&#39;</span>: [<span style="color:#4070a0">&#39;Alex&#39;</span>, <span style="color:#4070a0">&#39;Amy&#39;</span>, <span style="color:#4070a0">&#39;Allen&#39;</span>, <span style="color:#4070a0">&#39;Alice&#39;</span>, <span style="color:#4070a0">&#39;Ayoung&#39;</span>],
-    <span style="color:#4070a0">&#39;subject_id&#39;</span>:[<span style="color:#4070a0">&#39;sub1&#39;</span>,<span style="color:#4070a0">&#39;sub2&#39;</span>,<span style="color:#4070a0">&#39;sub4&#39;</span>,<span style="color:#4070a0">&#39;sub6&#39;</span>,<span style="color:#4070a0">&#39;sub5&#39;</span>],
-    <span style="color:#4070a0">&#39;Marks_scored&#39;</span>:[<span style="color:#40a070">98</span>,<span style="color:#40a070">90</span>,<span style="color:#40a070">87</span>,<span style="color:#40a070">69</span>,<span style="color:#40a070">78</span>]},
-                   index<span style="color:#666">=</span>[<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>])
-two <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame({
-    <span style="color:#4070a0">&#39;Name&#39;</span>: [<span style="color:#4070a0">&#39;Billy&#39;</span>, <span style="color:#4070a0">&#39;Brian&#39;</span>, <span style="color:#4070a0">&#39;Bran&#39;</span>, <span style="color:#4070a0">&#39;Bryce&#39;</span>, <span style="color:#4070a0">&#39;Betty&#39;</span>],
-    <span style="color:#4070a0">&#39;subject_id&#39;</span>:[<span style="color:#4070a0">&#39;sub2&#39;</span>,<span style="color:#4070a0">&#39;sub4&#39;</span>,<span style="color:#4070a0">&#39;sub3&#39;</span>,<span style="color:#4070a0">&#39;sub6&#39;</span>,<span style="color:#4070a0">&#39;sub5&#39;</span>],
-    <span style="color:#4070a0">&#39;Marks_scored&#39;</span>:[<span style="color:#40a070">89</span>,<span style="color:#40a070">80</span>,<span style="color:#40a070">79</span>,<span style="color:#40a070">97</span>,<span style="color:#40a070">88</span>]},
-                   index<span style="color:#666">=</span>[<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>])
-<span style="color:#007020;font-weight:bold">print</span> (pd<span style="color:#666">.</span>concat([one,two],keys<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;x&#39;</span>,<span style="color:#4070a0">&#39;y&#39;</span>],ignore_index<span style="color:#666">=</span>False))</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">     Marks_scored    Name subject_id
-x 1            98    Alex       sub1
-  2            90     Amy       sub2
-  3            87   Allen       sub4
-  4            69   Alice       sub6
-  5            78  Ayoung       sub5
-y 1            89   Billy       sub2
-  2            80   Brian       sub4
-  3            79    Bran       sub3
-  4            97   Bryce       sub6
-  5            88   Betty       sub5</code></pre></div>
-<p>Later those new keys can be used in order to distinguish from which set the row came from. <br /> Appending is also possible and it takes simple form:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">one.append(two)</code></pre></div>
-<h2 id="categories">Categories</h2>
-
-<p>A lot of times some string-fields in the data aren&rsquo;t just some random text but a repetetive and en element of some predefiened set ot possible values. Those are the categorical types of data. Something like [big, medium, small]. Categorical variables can take on only a limited, and usually fixed number of possible values. Besides the fixed length, categorical data might have an order but cannot perform numerical operation. Categorical are a <em>Pandas</em> data type. <br /> A simple example to create a <em>Series</em> object that only can contain [a, b, c]</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-s <span style="color:#666">=</span> pd<span style="color:#666">.</span>Series([<span style="color:#4070a0">&#34;a&#34;</span>,<span style="color:#4070a0">&#34;b&#34;</span>,<span style="color:#4070a0">&#34;c&#34;</span>,<span style="color:#4070a0">&#34;a&#34;</span>], dtype<span style="color:#666">=</span><span style="color:#4070a0">&#34;category&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span>(s)</code></pre></div>
-<p>This gives us:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">0    a
-1    b
-2    c
-3    a
-dtype: category
-Categories (3, object): [a, b, c]</code></pre></div>
-<p>There is also a <em>Categorical</em> object in <em>pandas</em> specifically for dealing with categorical data. The general constructor is as follows:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">pandas.Categorical(values, categories, ordered)</code></pre></div>
-<p>If <em>categories</em> aren&rsquo;t provided, they are inffered from the values. <em>ordered</em> specifies wather or not on categories is bigger or not than other.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-cat <span style="color:#666">=</span> cat<span style="color:#666">=</span>pd<span style="color:#666">.</span>Categorical(
-    [<span style="color:#4070a0">&#39;a&#39;</span>,<span style="color:#4070a0">&#39;b&#39;</span>,<span style="color:#4070a0">&#39;c&#39;</span>,<span style="color:#4070a0">&#39;a&#39;</span>,<span style="color:#4070a0">&#39;b&#39;</span>,<span style="color:#4070a0">&#39;c&#39;</span>,<span style="color:#4070a0">&#39;d&#39;</span>],
-    [<span style="color:#4070a0">&#39;c&#39;</span>, <span style="color:#4070a0">&#39;b&#39;</span>, <span style="color:#4070a0">&#39;a&#39;</span>],
-    ordered<span style="color:#666">=</span>True)
-<span style="color:#007020;font-weight:bold">print</span>(cat)</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[a, b, c, a, b, c, NaN]
-Categories (3, object): [c &lt; b &lt; a]</code></pre></div>
-<p><br /> <strong>obj.cat.categories</strong> command is used to get the categories of the object. <br /> Removing categories is also something that comes in handny and of course it&rsquo;s possibe with <em>pandas</em></p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-
-s <span style="color:#666">=</span> pd<span style="color:#666">.</span>Series([<span style="color:#4070a0">&#34;a&#34;</span>,<span style="color:#4070a0">&#34;b&#34;</span>,<span style="color:#4070a0">&#34;c&#34;</span>,<span style="color:#4070a0">&#34;a&#34;</span>], dtype<span style="color:#666">=</span><span style="color:#4070a0">&#34;category&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span> (<span style="color:#4070a0">&#34;Original object:&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span> (s)
-
-<span style="color:#007020;font-weight:bold">print</span> (<span style="color:#4070a0">&#34;After removal:&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span>( s<span style="color:#666">.</span>cat<span style="color:#666">.</span>remove_categories(<span style="color:#4070a0">&#34;a&#34;</span>))</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Original object:
-0    a
-1    b
-2    c
-3    a
-dtype: category
-Categories (3, object): [a, b, c]
-After removal:
-0    NaN
-1      b
-2      c
-3    NaN
-dtype: category
-Categories (2, object): [b, c]</code></pre></div>
-<h2 id="reading-data-from-dot-csv-files">Reading Data from <em>.csv</em>-files</h2>
-
-<p>At the beginning probably each applications loads some date from the file system or link or whatever. <em>pandas</em> provides <strong>IO API</strong> for reading data from <em>.cvs</em>-files. The two main functions for reading text files are <strong>read_csv()</strong> and <strong>read_table()</strong>. They use simillar procedures to intelligently convert tabular data into a <em>DataFrame</em> object. The general form of the functions:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">pandas.read_csv(filepath_or_buffer, sep=&#39;,&#39;, delimiter=None, header=&#39;infer&#39;,
-names=None, index_col=None, usecols=None
----------
-pandas.read_csv(filepath_or_buffer, sep=&#39;\t&#39;, delimiter=None, header=&#39;infer&#39;,
-names=None, index_col=None, usecols=None</code></pre></div>
-<p>So say our <strong>temp.cvs</strong> looks like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">S.No,Name,Age,City,Salary
-1,Tom,28,Toronto,20000
-2,Lee,32,HongKong,3000
-3,Steven,43,Bay Area,8300
-4,Ram,38,Hyderabad,3900</code></pre></div>
-<p>and represents this:</p>
+<h3 id="changing-shape">Changing shape</h3>
 
 <table>
 <thead>
 <tr>
-<th>S.No</th>
-<th>Name</th>
-<th>Age</th>
-<th>City</th>
-<th>Salary</th>
+<th>Method</th>
+<th>Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>1</td>
-<td>Tom</td>
-<td>28</td>
-<td>Toronto</td>
-<td>20000</td>
+<td><strong>reshape</strong></td>
+<td>Change shape</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>Lee</td>
-<td>32</td>
-<td>HongKong</td>
-<td>3000</td>
+<td><strong>flat</strong></td>
+<td>1D Iterator</td>
 </tr>
 
 <tr>
-<td>3</td>
-<td>Steven</td>
-<td>43</td>
-<td>Bay Area</td>
-<td>8300</td>
+<td><strong>flatten</strong></td>
+<td>Returns a new array</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>Ram</td>
-<td>38</td>
-<td>Hyderabad</td>
-<td>3900</td>
+<td><strong>revel</strong></td>
+<td>Returns a contiguous flattened array</td>
 </tr>
 </tbody>
 </table>
 
-<p>We can read this as:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
-df<span style="color:#666">=</span>pd<span style="color:#666">.</span>read_csv(<span style="color:#4070a0">&#34;temp.csv&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span>(df)</code></pre></div>
-<p>A lot of the data in <em>.cvs</em> files has a special column that specifies the index of the row. Pandas can take this into consideration:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
+<h3 id="transpose">Transpose</h3>
 
-df<span style="color:#666">=</span>pd<span style="color:#666">.</span>read_csv(<span style="color:#4070a0">&#34;temp.csv&#34;</span>,index_col<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;S.No&#39;</span>])
-<span style="color:#007020;font-weight:bold">print</span> (df)</code></pre></div>
-<p>Skipping rows can be achieved through the <em>skiprows=n</em> aegument of <strong>read_cvs()</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
 
+<tbody>
+<tr>
+<td><strong>transpose</strong></td>
+<td>Permutes the dimensions of an array</td>
+</tr>
+
+<tr>
+<td><strong>ndarray.T</strong></td>
+<td>Same as self.transpose()</td>
+</tr>
+
+<tr>
+<td><strong>rollaxis</strong></td>
+<td>Rolls the specified axis backwards</td>
+</tr>
+
+<tr>
+<td><strong>swapaxes</strong></td>
+<td>Interchanges the two axes of an array</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="joining-arrays">Joining Arrays</h3>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>concatenate</td>
+<td>Joins several arrays along an existing axes</td>
+</tr>
+
+<tr>
+<td>stack</td>
+<td>Joins several arrays along a new axes</td>
+</tr>
+
+<tr>
+<td>hstack</td>
+<td>Stacks arrays in sequence horizontally</td>
+</tr>
+
+<tr>
+<td>vstack</td>
+<td>Stacks arrays in sequence vertically</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="adding-and-removing-elements">Adding and removing elements</h3>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>append</td>
+<td>Pushes new value at the end</td>
+</tr>
+
+<tr>
+<td>insert</td>
+<td>Inserts value along a given axis before a given index</td>
+</tr>
+
+<tr>
+<td>delete</td>
+<td>Return a new array with sub-arrays along an axis deleted</td>
+</tr>
+
+<tr>
+<td>unique</td>
+<td>Finds all unique elements in an array</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="i-o">I/O</h2>
+
+<p>There are two flavors of saving/loading a <em>ndarray</em> to/from file.</p>
+
+<h3 id="dot-npy-files"><em>.npy</em> files</h3>
+
+<p>This <em>.npy</em> file stores data, shape, dtype and other information required to reconstruct the ndarray in a disk file such that the array is correctly retrieved even if the file is on another machine with different architecture. <br /> The IO is simple and is done through the functions <strong>numpy.save()</strong> and <strong>numpy.load()</strong></p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>array([<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>])
+np<span style="color:#666">.</span>save(<span style="color:#4070a0">&#39;outfile&#39;</span>,a)
+b <span style="color:#666">=</span> np<span style="color:#666">.</span>load(<span style="color:#4070a0">&#39;outfile.npy&#39;</span>)</code></pre></div>
+<h3 id="dot-txt-files"><em>.txt</em> files</h3>
+
+<p>This is just a simple, cheap and dirty way to save an array to a file &ldquo;symbolically&rdquo;. The function that come into play are <strong>numpy.savetxt()</strong> and <strong>numpy.loadtxt()</strong></p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+
+a <span style="color:#666">=</span> np<span style="color:#666">.</span>array([<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,<span style="color:#40a070">4</span>,<span style="color:#40a070">5</span>])
+np<span style="color:#666">.</span>savetxt(<span style="color:#4070a0">&#39;out.txt&#39;</span>,a)
+b <span style="color:#666">=</span> np<span style="color:#666">.</span>loadtxt(<span style="color:#4070a0">&#39;out.txt&#39;</span>)
+<span style="color:#007020;font-weight:bold">print</span>(b)</code></pre></div>
 </div>
             <div class="footer">
                 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
