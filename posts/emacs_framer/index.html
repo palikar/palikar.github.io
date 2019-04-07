@@ -8,11 +8,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
 
-<meta name="generator" content="Hugo 0.40.1" />
+<meta name="generator" content="Hugo 0.54.0" />
 
 <title>Emacs windows resizing &middot; SA Dev</title>
 <meta content="Emacs windows resizing - SA Dev" property="og:title">
-<meta content=" - A short description of a solution to a github related problem with the email addresses associated with a commit historys" property="og:description">
+<meta content=" - A short walkthrough of a Emacs package for windows resizing that I recently wrote." property="og:description">
 <!-- CSS -->
 <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
 <link rel="stylesheet" href="https://palikar.github.io/css/print.css" media="print">
@@ -92,7 +92,7 @@
 </section>
 
         </p>
-		<p class="copyright">&copy; 2018 Stanislav Arnaudov.
+		<p class="copyright">&copy; 2019 Stanislav Arnaudov.
         <a href="https://creativecommons.org/licenses/by/4.0">Some Rights Reserved</a>.<br/>Built with <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
         </p>
 	</div>
@@ -116,7 +116,7 @@
             in
             
             
-                <a class="meta" href="/categories/github">GITHUB</a>
+                <a class="meta" href="/categories/emacs">EMACS</a>
                 
             
         
@@ -132,7 +132,7 @@
 
 <h2 id="abstract">Abstract</h2>
 
-<p>Recently I&rsquo;ve been introduced to the concept of a <a href="https://en.wikipedia.org/wiki/Tiling_window_manager">tiling windows manger</a>. One key feature that caught my attention is how you can quickly resize your different windows and create your desired windows configuration with just a few executions of some keybindings. That got me wonder how it would really cool if I also have that in Emacs. I googled something like &ldquo;resize emacs windows&rdquo; but didn&rsquo;t really (I didn&rsquo;t want really) find package that can do that. So, of course, I used this as an excuse to write a very simple package that would help me achieve what I want - quickly resizing Emacs&rsquo; windows - and in the process would teach me same new things about Emacs Lisp programming. <br /> Oh yeah, and by the way, I created whole minor Emacs mode for the job. Yes, maybe it is a little bit of a overkill to create a whole mode for this but hey, new knowledge about Emacs and Emacs Lisp never hurts now, does it.</p>
+<p>Recently I&rsquo;ve been introduced to the concept of a <a href="https://en.wikipedia.org/wiki/Tiling%5Fwindow%5Fmanager">tiling windows manger</a>. One key feature that caught my attention is how you can quickly resize your different windows and create your desired windows configuration with just a few executions of some keybindings. That got me wonder how it would really cool if I also have that in Emacs. I googled something like &ldquo;resize emacs windows&rdquo; but didn&rsquo;t really (I didn&rsquo;t want really) find package that can do that. So, of course, I used this as an excuse to write a very simple package that would help me achieve what I want - quickly resizing Emacs&rsquo; windows - and in the process would teach me same new things about Emacs Lisp programming. <br /> Oh yeah, and by the way, I created whole minor Emacs mode for the job. Yes, maybe it is a little bit of a overkill to create a whole mode for this but hey, new knowledge about Emacs and Emacs Lisp never hurts now, does it.</p>
 
 <h2 id="the-existing-way">The existing way</h2>
 
@@ -151,9 +151,9 @@
 
 <h3 id="mode-definition">Mode definition</h3>
 
-<p>We start of with defining couple of things that we will need for our new minor mode whose definition comes in right after. Each mode deserves its own <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Group-Definitions.html">group</a>. You know, the name of you give while you call <code>customize-group</code> when you want to configure some new package that you&rsquo;ve downloaded. Our group will be used to house the one custom that we have. Group definition is really easy with the macro <strong>defgroup</strong>. It&rsquo;s basically a one liner:</p>
+<p>We start of with defining couple of things that we will need for our new minor mode whose definition comes in right after. Each mode deserves its own <a href="https://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Group-Definitions.html">group</a>. You know, the name of you give while you call <code>customize-group</code> when you want to configure some new package that you&rsquo;ve downloaded. Our group will be used to house the one custom that we have. Group definition is really easy with the macro <strong>defgroup</strong>. It&rsquo;s basically a one liner:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defgroup</span> <span style="color:#bb60d5">framer</span> <span style="color:#60add5">nil</span> <span style="color:#4070a0">&#34;Custom variables for framer-mode&#34;</span>)</code></pre></div>
-<p>&ldquo;framer&rdquo; is the name, the second argument is a list of the customs that are in the group but it&rsquo;s more convenient to define them later by specifying the group that each custom belong to. The third argument is a string that will be displayed near the top while customizing the package&rsquo;s customs. <em>Note:</em> Customs are the configurable options of a given package in Emacs. Emacs makes it really easy to write such customizable variables that later can be configured by the user of your package. <br /> After the group we need a <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Keymap-Basics.html#Keymap-Basics">keymap</a> for our mode. In it we&rsquo;ll define all the keybindings that will be activated when the mode is active. Definition is again relatively straight forward:</p>
+<p>&ldquo;framer&rdquo; is the name, the second argument is a list of the customs that are in the group but it&rsquo;s more convenient to define them later by specifying the group that each custom belong to. The third argument is a string that will be displayed near the top while customizing the package&rsquo;s customs. <em>Note:</em> Customs are the configurable options of a given package in Emacs. Emacs makes it really easy to write such customizable variables that later can be configured by the user of your package. <br /> After the group we need a <a href="https://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Keymap-Basics.html#Keymap-Basics">keymap</a> for our mode. In it we&rsquo;ll define all the keybindings that will be activated when the mode is active. Definition is again relatively straight forward:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defconst</span> <span style="color:#bb60d5">framer-mode-map</span>
   (<span style="color:#007020">let</span>
       (
@@ -172,7 +172,7 @@
 <li>and one that will only affect the current buffer.</li>
 </ul>
 
-<p>The actual definition is pretty ease and is done through the macro <strong>define-minor-mode</strong>. The definitions of out two modes:</p>
+<p>The actual definition is pretty easy and is done through the macro <strong>define-minor-mode</strong>. The definitions of out two modes:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(<span style="color:#007020">define-minor-mode</span> <span style="color:#bb60d5">framer-mode</span>
   <span style="color:#4070a0">&#34;Mode that enables manual control over emacs frames&#39; sizes.&#34;</span>
   <span style="color:#007020">:lighter</span> <span style="color:#4070a0">&#34; Framer&#34;</span>
@@ -185,7 +185,7 @@
   <span style="color:#007020">:keymap</span> <span style="color:#bb60d5">framer-mode-map</span>
   <span style="color:#007020">:global</span> <span style="color:#60add5">t</span>
   <span style="color:#007020">:group</span> <span style="color:#517918">&#39;framer</span>)</code></pre></div>
-<p>Here we use the already defined group and keymap and we pass them to the appropriate key-word attributes - <strong>: group</strong> and <strong>keymap</strong> respectively. What is pass to &ldquo;:lighter&rdquo; is the thing that will be displayed in the modeline while the mode is active. Be sure to have that leading space or the text of your mode will be &ldquo;glued&rdquo; to the text of the previous mode in the modeline. <strong>:global</strong> indicates of the mode is global or not(yes, I bet you needed that explanation). <br /> For more information on how to write modes for Emacs, check out <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Defining-Minor-Modes.html">this</a> page from the official documentation. <br /> Ok, one last thing before we actually define out functions for resizing - we&rsquo;ll create one custom that will indicate how big is the resizing gap with which we&rsquo;ll be changing the size of the windows. The name of it will be appropriately <strong>resizing-step</strong>, it&rsquo;ll have default value of 50 and it will be integer.</p>
+<p>Here we use the already defined group and keymap and we pass them to the appropriate key-word attributes - <strong>: group</strong> and <strong>keymap</strong> respectively. What is pass to &ldquo;:lighter&rdquo; is the thing that will be displayed in the modeline while the mode is active. Be sure to have that leading space or the text of your mode will be &ldquo;glued&rdquo; to the text of the previous mode in the modeline. <strong>:global</strong> indicates of the mode is global or not(yes, I bet you needed that explanation). <br /> For more information on how to write modes for Emacs, check out <a href="https://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Defining-Minor-Modes.html">this</a> page from the official documentation. <br /> Ok, one last thing before we actually define out functions for resizing - we&rsquo;ll create one custom that will indicate how big is the resizing gap with which we&rsquo;ll be changing the size of the windows. The name of it will be appropriately <strong>resizing-step</strong>, it&rsquo;ll have default value of 50 and it will be integer.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defcustom</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#40a070">50</span>
   <span style="color:#4070a0">&#34;The amount with which the dimmension of the current windows will be decreased/increased.&#34;</span>
   <span style="color:#007020">:type</span> <span style="color:#517918">&#39;integer</span>
@@ -195,7 +195,7 @@
 <span style="color:#bb60d5">And</span> <span style="color:#bb60d5">we</span> <span style="color:#bb60d5">that</span> <span style="color:#bb60d5">we</span> <span style="color:#bb60d5">are</span> <span style="color:#bb60d5">ready</span> <span style="color:#bb60d5">with</span> <span style="color:#bb60d5">me</span> <span style="color:#bb60d5">minor</span> <span style="color:#bb60d5">mode</span> <span style="color:#bb60d5">boilerplate.</span> <span style="color:#bb60d5">Now</span> <span style="color:#007020">let</span><span style="color:#517918">&#39;s</span> <span style="color:#06287e">get</span> <span style="color:#bb60d5">to</span> <span style="color:#bb60d5">the</span> <span style="color:#bb60d5">actuall</span> <span style="color:#bb60d5">problem.</span></code></pre></div>
 <h3 id="core-functions-definition">Core functions definition</h3>
 
-<p>There are couple of handy functions in Emacs that make the resizing of windows easy. We&rsquo;ll use them and make them tiny bit smarter. Those functions are <code>window-resizable</code> and <code>window-resize</code> (documentation <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Resizing-Windows.html">here</a>). The first one checks if the resizing is possible and the second one does the actual resizing. I figured that is a good idea always to check if the resizing is allowed before calling <code>windows-resize</code>. So, resizing in width will look like:</p>
+<p>There are couple of handy functions in Emacs that make the resizing of windows easy. We&rsquo;ll use them and make them tiny bit smarter. Those functions are <code>window-resizable</code> and <code>window-resize</code> (documentation <a href="https://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Resizing-Windows.html">here</a>). The first one checks if the resizing is possible and the second one does the actual resizing. I figured that is a good idea always to check if the resizing is allowed before calling <code>windows-resize</code>. So, resizing in width will look like:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">if</span> (<span style="color:#bb60d5">window-resizable</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
         (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>))</code></pre></div>
 <p>The first argument is the windows to be resized - if nil, the current windows will be considered. The second argument is obvious, the third whather the resizing is vertical or horizontal - t for horizontal, nil for vertical. The last <code>t</code> indicates that the given amount is in pixels. <br /> As said, we want to make the resizing smart and intuitive while doing is with arrow keys. This means that we with the same arrow must either shrink or grow the window depending on weather it is on the top or on the bottom of other windows. Put simply - we want the size of the window to change in the direction we are pointing with the pressed arrow. So, the question becomes, how do we figure out where is the selected window. <br /> In a script from <a href="https://www.emacswiki.org/emacs/MathiasDahl">Mathias Dahl</a> I&rsquo;ve found those two nifty convenience functions that can tell you where the current window is located with respect to he other ones. For example, weather the window oi on the left, right or in the middle, between two other windows. The functions are:</p>
@@ -284,7 +284,7 @@
           (<span style="color:#bb60d5">window-resize</span> <span style="color:#60add5">nil</span> <span style="color:#bb60d5">resizing-step</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)))
    )
   )</code></pre></div>
-<p><br /> And there you have it, reinventing the wheel in timely wasteful manner. <span class="underline">Awesome</span>, aqmirite!</p>
+<p><br /> And there you have it, reinventing the wheel in a timely wasteful manner. <span class="underline">Awesome</span>, amirite!</p>
 
 <h2 id="references">References</h2>
 

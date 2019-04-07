@@ -26,7 +26,16 @@
       <pubDate>Fri, 27 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/projects/cpp_tips/</guid>
-      <description>Abstract C++ is hard! C++ is even harder when you want to write good code. There are a lot of things to think about when your write C++ code and if you don&amp;rsquo;t think about them, you are probable going to mess things up. Recently I found that one good book (see references) that gives 42(hehe!) concrete tips on how to be a better c++ programmer. This is my summery of sorts about the contents of said book.</description>
+      <description>Abstract C++ is hard! C++ is even harder when you want to write a good code. There are a lot of things to think about when your write code and if you don&amp;rsquo;t think about them, you are probable going to mess things up. Recently I&amp;rsquo;ve found that one good book (see references) that gives 42 (hehe!) concrete tips on how to be a better c++ programmer. This is my summary of sorts about the contents of said book.</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; Template Specialization</title>
+      <link>https://palikar.github.io/posts/cpp_template_specialization/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/cpp_template_specialization/</guid>
+      <description>Abstract C++ is awesome! I am starting strong here but it really is. When experienced (and crazy) enough one can implement everything and the same one can do it incredibly efficient at run time (cuz who cares how much work does the compiler do for us). I can rant about how c++ is the best and all of the great features of the language but for this article I would constraint myself to one particular (but rather big) - template meta-programming!</description>
     </item>
     
   </channel>

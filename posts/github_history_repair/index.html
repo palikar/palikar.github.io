@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
 
-<meta name="generator" content="Hugo 0.40.1" />
+<meta name="generator" content="Hugo 0.54.0" />
 
 <title>Github commits&#39; emails change &middot; SA Dev</title>
 <meta content="Github commits&#39; emails change - SA Dev" property="og:title">
@@ -92,7 +92,7 @@
 </section>
 
         </p>
-		<p class="copyright">&copy; 2018 Stanislav Arnaudov.
+		<p class="copyright">&copy; 2019 Stanislav Arnaudov.
         <a href="https://creativecommons.org/licenses/by/4.0">Some Rights Reserved</a>.<br/>Built with <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
         </p>
 	</div>
@@ -132,11 +132,11 @@
 
 <h2 id="abstract">Abstract</h2>
 
-<p>You know that <em>Contributions</em> panel on your <a href="http://github.com/">Github</a> profile page. Let&rsquo;s face it, developers these day take much pride when they can show their consistent work and progress of their own/forked repositories&hellip;even when some of their commits are nothing more than a implementations of a single function. Said panel is clear indication to you, future employee or members of your &lsquo;coding community&rsquo; that you are pretty much a big deal with a good work ethic. Imagine in what of pickle of a situation you would be if for some random reason your commits don&rsquo;t show up there. This post addresses the issue of not having proper <em>git</em> configuration(<code>~/.gitconfig</code>) file on your system and commit to github with the wrong email address.</p>
+<p>You know that <em>Contributions</em> panel on your <a href="http://github.com/">Github</a> profile page. Let&rsquo;s face it, developers these day take much pride when they can show their consistent work and progress of their own/forked repositories&hellip;even when some of their commits are nothing more than a implementations of a single function. Said panel is clear indication to you, future employee or members of your &lsquo;coding community&rsquo; that you are pretty much a big deal with a good work ethic. Imagine in what of pickle of a situation you would be if for some random reason your commits don&rsquo;t show up there. This post addresses the issue of not having proper <em>git</em> configuration(<code>~/.gitconfig</code>) file on your system and commit to Github with the wrong email address.</p>
 
 <h2 id="my-problem-with-github-and-some-contributions-in-limbo">My problem with github and some contributions in limbo</h2>
 
-<p>So, yeah, I had the problem myself. I was committing things on a regular basis to github and my repositories but only a very small portion of my commits where showing in the <em>Contributions</em> panel. It took me while to notice that and I was kinda freaked about it as I thought that my &lsquo;hard work&rsquo; will forgotten and the future generations would not be able to see it. <br /> A little research(I literally just clicked on <a href="https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/">Learn how we count contributions</a>) about how github actually counts contributions and I found out that the email address of the commits must match the main email of your github account. Some other hints taken from github page about how contributions are counted:</p>
+<p>So, yeah, I had the problem myself. I was committing things on a regular basis to Github and my repositories but only a very small portion of my commits where showing in the <em>Contributions</em> panel. It took me while to notice that and I was kinda freaked about it as I thought that my &lsquo;hard work&rsquo; will forgotten and the future generations would not be able to see it. <br /> A little research(I literally just clicked on <a href="https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/">Learn how we count contributions</a>) about how github actually counts contributions and I found out that the email address of the commits must match the main email of your Github account. Some other hints taken from Github page about how contributions are counted:</p>
 
 <blockquote>
 <p>Commits will appear on your contributions graph if they meet all of the following conditions:</p>
@@ -166,11 +166,11 @@ git config user.emial <span style="color:#4070a0">&#39;email_adress@somewhere.or
 
 <p>But of course, so far we&rsquo;ve only prevented the problem of occurring in the future. You probably want to know how do we actually fix the previous &lsquo;damage&rsquo;. This section describes that&hellip;and my approach of tackling it. <br /> First, some of my experiments and findings. The thing about git repos - everything is stored in that nifty <code>.git</code> folder. Every delta, every branch, every everything. So, I supposed that if I go there and start changing things, I could probably could change the email address of past commits. If you run <em>grep</em> in your repository</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">grep -r <span style="color:#4070a0">&#34;arnaud@localhost.localdomain&#34;</span> ./.git</code></pre></div>
-<p>you get all the occurrences of your &lsquo;wrong&rsquo; email in your commits&hellip;or everywhere else for that matter. Ok, so if you change those github probably will notice and everything will be OK, right? So, I run <em><a href="https://en.wikipedia.org/wiki/Sed">sed</a></em> in conjunction with <em>find</em> like:</p>
+<p>you get all the occurrences of your &lsquo;wrong&rsquo; email in your commits&hellip;or everywhere else for that matter. OK, so if you change those github probably will notice and everything will be OK, right? So, I run <em><a href="https://en.wikipedia.org/wiki/Sed">sed</a></em> in conjunction with <em>find</em> like:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">find ./.git/ -type f -exec sed <span style="color:#4070a0">&#39;s/arnaud@scc-wkit-clxa-23-139.scc.kit.edu/email_adress@somewhere.org/&#39;</span> -i <span style="color:#666">{}</span> +;</code></pre></div>
-<p>This find every regular file in the <em>.git</em> folder and runs <code>sed 's/arnaud@localhost.localdomain/email_adress@somewhere.org/' -i</code> on it. With the expression in the quotation marks <em>sed</em> replaces everything that matches <code>arnaud@localhost.localdomain</code> with <code>email_adress@somewhere.org</code>. The <code>-i</code> means &ldquo;inplace&rdquo; so be careful when running <em>sed</em> like that because you may break something. So I do that and then push onto github&hellip;and nothing happens. The thing is <code>git push</code> the things &ldquo;in&rdquo; your repo and kinda is disregarding of changes in <code>.git</code>. In some cases, git may refuse to make the push crying &ldquo;histories don&rsquo;t match&rdquo;(or something). In those case one would have to call push as</p>
+<p>This find every regular file in the <em>.git</em> folder and runs <code>sed 's/arnaud@localhost.localdomain/email_adress@somewhere.org/' -i</code> on it. With the expression in the quotation marks <em>sed</em> replaces everything that matches <code>arnaud@localhost.localdomain</code> with <code>email_adress@somewhere.org</code>. The <code>-i</code> means &ldquo;inplace&rdquo; so be careful when running <em>sed</em> like that because you may break something. So I do that and then push onto Github, And nothing happened. The thing is <code>git push</code> the things &ldquo;in&rdquo; your repository and kinda is disregarding of changes in <code>.git</code>. In some cases, git may refuse to make the push, crying about &ldquo;histories don&rsquo;t match&rdquo; (or something). In those case one would have to call push as</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git push --force</code></pre></div>
-<p>which overwrites &lsquo;everything&rsquo; in the github repo. So I do that and&hellip;.again, this didn&rsquo;t work. When I expected the commits in the repository on github my profile picture still wasn&rsquo;t there. I am not sure what the reason for that is although I was pretty sure I would change at least <em>something</em> while messing with the <em>.git</em> folder. <br /> Here I will stop rambling and boring you with my &ldquo;personal experience&rdquo; and just give you the solution.</p>
+<p>which overwrites &lsquo;everything&rsquo; in the Github repository. So I do that and&hellip;.again, this didn&rsquo;t work. When I expected the commits in the repository on Github my profile picture still wasn&rsquo;t there. I am not sure what the reason for that is although I was pretty sure I would change at least <em>something</em> while messing with the <em>.git</em> folder. <br /> Here I will stop rambling and boring you with my &ldquo;personal experience&rdquo; and just give you the solution.</p>
 
 <h3 id="the-right-solution">The right solution</h3>
 
@@ -199,8 +199,8 @@ rm -rf new_repo</code></pre></div>
 
 <ol>
 <li>Clone the repo in new folder with name new_repo</li>
-<li>Run a slight modification of github&rsquo;s script</li>
-<li>Push the change repo on github(eventually you will be asked to give your username and password)</li>
+<li>Run a slight modification of Github&rsquo;s script</li>
+<li>Push the change repo on Github (eventually you will be asked to give your username and password)</li>
 <li>Deletes the newly created folder.</li>
 </ol>
 

@@ -17,7 +17,8 @@
       <pubDate>Fri, 15 Jun 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/about/</guid>
-      <description>My assigned character I was born a human and I&amp;rsquo;m supposed to live on the planet till my body gives up and it&amp;rsquo;s no longer suitable for sustaining the social construct that one would call &amp;ldquo;life&amp;rdquo;&amp;hellip;or at least I am said so. I reserve my right to have speculations about this whole &amp;ldquo;dying&amp;rdquo;-thing. I popped in existance in the alsmost ex-soviet republic of Bulgaria where I&amp;rsquo;ve spend good portion of my development into a fully fledged and normally functioning humanoid.</description>
+      <description>Formal CV PDF copy of my resume.
+My assigned character I was born a human and I&amp;rsquo;m supposed to live on the planet till my body gives up and it&amp;rsquo;s no longer suitable for sustaining the social construct that one would call &amp;ldquo;life&amp;rdquo;&amp;hellip;or at least I am said so. I reserve my right to have speculations about this whole &amp;ldquo;dying&amp;rdquo;-thing. I popped in existence in the almost ex-soviet republic of Bulgaria where I&amp;rsquo;ve spend good portion of my development into a fully fledged and normally functioning humanoid.</description>
     </item>
     
     <item>
@@ -35,20 +36,40 @@
       <pubDate>Fri, 27 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/projects/cpp_tips/</guid>
-      <description>Abstract C++ is hard! C++ is even harder when you want to write good code. There are a lot of things to think about when your write C++ code and if you don&amp;rsquo;t think about them, you are probable going to mess things up. Recently I found that one good book (see references) that gives 42(hehe!) concrete tips on how to be a better c++ programmer. This is my summery of sorts about the contents of said book.</description>
+      <description>Abstract C++ is hard! C++ is even harder when you want to write a good code. There are a lot of things to think about when your write code and if you don&amp;rsquo;t think about them, you are probable going to mess things up. Recently I&amp;rsquo;ve found that one good book (see references) that gives 42 (hehe!) concrete tips on how to be a better c++ programmer. This is my summary of sorts about the contents of said book.</description>
     </item>
     
     <item>
       <title>Notes on learning Numpy</title>
-      <link>https://palikar.github.io/posts/pandas_notes/</link>
+      <link>https://palikar.github.io/posts/numpy_notes/</link>
       <pubDate>Fri, 20 Jul 2018 00:00:00 +0200</pubDate>
       
-      <guid>https://palikar.github.io/posts/pandas_notes/</guid>
-      <description>My note while reading this. More or less copy paste, Take with a grain of salt&amp;hellip;or sugar.
+      <guid>https://palikar.github.io/posts/numpy_notes/</guid>
+      <description>My notes while reading this. More or less copy paste. Take with a grain of salt&amp;hellip;or sugar.
 
 Abstract NumPy is a Python package. It stands for &amp;lsquo;Numerical Python&amp;rsquo;. It is a library consisting of multidimensional array objects and a collection of routines for processing of array. From the officials:
  NumPy is the fundamental package for scientific computing with Python. It contains among other things:
  a powerful N-dimensional array object sophisticated (broadcasting) functions tools for integrating C/C++ and Fortran code useful linear algebra, Fourier transform, and random number capabilities  Besides its obvious scientific uses, NumPy can also be used as an efficient multi-dimensional container of generic data.</description>
+    </item>
+    
+    <item>
+      <title>Notes on learning Pandas</title>
+      <link>https://palikar.github.io/posts/pandas_notes/</link>
+      <pubDate>Fri, 13 Jul 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/pandas_notes/</guid>
+      <description>For transparency sake - those are my notes while learning about pandas from this tutorial. At times this here is just copy paste from it, at other it&amp;rsquo;s my own thoughts and explanations. This is meant to be a condensed version of the tutorial more or less just for me. If you found it useful though&amp;hellip;.well, good for you, I guess.
+
+Abstract Basic pandas is a Python package providing fast, flexible, and expressive data structures designed to make working with &amp;ldquo;relational Heterogeneous data&amp;rdquo; or &amp;ldquo;labeled&amp;rdquo; data both easy and intuitive.</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; Template Specialization</title>
+      <link>https://palikar.github.io/posts/cpp_template_specialization/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/cpp_template_specialization/</guid>
+      <description>Abstract C++ is awesome! I am starting strong here but it really is. When experienced (and crazy) enough one can implement everything and the same one can do it incredibly efficient at run time (cuz who cares how much work does the compiler do for us). I can rant about how c++ is the best and all of the great features of the language but for this article I would constraint myself to one particular (but rather big) - template meta-programming!</description>
     </item>
     
     <item>
@@ -58,15 +79,6 @@ Abstract NumPy is a Python package. It stands for &amp;lsquo;Numerical Python&am
       
       <guid>https://palikar.github.io/posts/emacs_framer/</guid>
       <description>Abstract Recently I&amp;rsquo;ve been introduced to the concept of a tiling windows manger. One key feature that caught my attention is how you can quickly resize your different windows and create your desired windows configuration with just a few executions of some keybindings. That got me wonder how it would really cool if I also have that in Emacs. I googled something like &amp;ldquo;resize emacs windows&amp;rdquo; but didn&amp;rsquo;t really (I didn&amp;rsquo;t want really) find package that can do that.</description>
-    </item>
-    
-    <item>
-      <title>C&#43;&#43; Template Specialization</title>
-      <link>https://palikar.github.io/posts/cpp_template_specialization/</link>
-      <pubDate>Fri, 22 Jun 2018 00:00:00 +0200</pubDate>
-      
-      <guid>https://palikar.github.io/posts/cpp_template_specialization/</guid>
-      <description>Abstract C++ is awesome! I am starting stong here but it&amp;rsquo;s really is. When experienced (and crazy) enough one can implement everything and the same one can do it icredibaly efficient at run time(cuz who cares how much work does the compiler do for us, amirite?). I can rant about how c++ is the best and all of the great features of the language but for this article I would constraint myself to one partzicular(but rather big) - template metaprogramming!</description>
     </item>
     
     <item>

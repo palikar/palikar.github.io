@@ -17,7 +17,7 @@
       <pubDate>Fri, 27 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/projects/cpp_tips/</guid>
-      <description>Abstract C++ is hard! C++ is even harder when you want to write good code. There are a lot of things to think about when your write C++ code and if you don&amp;rsquo;t think about them, you are probable going to mess things up. Recently I found that one good book (see references) that gives 42(hehe!) concrete tips on how to be a better c++ programmer. This is my summery of sorts about the contents of said book.</description>
+      <description>Abstract C++ is hard! C++ is even harder when you want to write a good code. There are a lot of things to think about when your write code and if you don&amp;rsquo;t think about them, you are probable going to mess things up. Recently I&amp;rsquo;ve found that one good book (see references) that gives 42 (hehe!) concrete tips on how to be a better c++ programmer. This is my summary of sorts about the contents of said book.</description>
     </item>
     
   </channel>

@@ -8,11 +8,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
 
-<meta name="generator" content="Hugo 0.40.1" />
+<meta name="generator" content="Hugo 0.54.0" />
 
 <title>C&#43;&#43; Template Specialization &middot; SA Dev</title>
 <meta content="C&#43;&#43; Template Specialization - SA Dev" property="og:title">
-<meta content=" - A short description of a solution to a github related problem with the email addresses associated with a commit historys" property="og:description">
+<meta content=" - Post about some template specialization of a member function in C&#43;&#43;." property="og:description">
 <!-- CSS -->
 <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
 <link rel="stylesheet" href="https://palikar.github.io/css/print.css" media="print">
@@ -92,7 +92,7 @@
 </section>
 
         </p>
-		<p class="copyright">&copy; 2018 Stanislav Arnaudov.
+		<p class="copyright">&copy; 2019 Stanislav Arnaudov.
         <a href="https://creativecommons.org/licenses/by/4.0">Some Rights Reserved</a>.<br/>Built with <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
         </p>
 	</div>
@@ -108,7 +108,7 @@
     <span class="text-left post-date meta">
             
        
-        <i class="fas fa-calendar-alt"></i> Jun 22, 2018
+        <i class="fas fa-calendar-alt"></i> Jul 6, 2018
       
       
         
@@ -116,7 +116,7 @@
             in
             
             
-                <a class="meta" href="/categories/github">GITHUB</a>
+                <a class="meta" href="/categories/c&#43;&#43;">C&#43;&#43;</a>
                 
             
         
@@ -132,13 +132,13 @@
 
 <h2 id="abstract">Abstract</h2>
 
-<p>C++ is awesome! I am starting stong here but it&rsquo;s really is. When experienced (and crazy) enough one can implement everything and the same one can do it icredibaly efficient at run time(cuz who cares how much work does the compiler do for us, amirite?). I can rant about how c++ is the best and all of the great features of the language but for this article I would constraint myself to one partzicular(but rather big) - template metaprogramming! Even more concreatly, I would like to show you a trick that I discovered myself that helped me solve one nasty problem. Yes, I admit, I am <del>probalby</del> certailty not the first one who discovers this trick <strong>BUT</strong> I promise you, I discovered it by myself and the whole prosess of discovering it was imensly satisfying. I mean&hellip;.templates <strong>are</strong> magic sometimes and I can only imagine how the people who understand them feel.</p>
+<p>C++ is awesome! I am starting strong here but it really is. When experienced (and crazy) enough one can implement everything and the same one can do it incredibly efficient at run time (cuz who cares how much work does the compiler do for us). I can rant about how c++ is the best and all of the great features of the language but for this article I would constraint myself to one particular (but rather big) - template meta-programming! Even more concretely, I would like to show you a trick that I discovered myself that helped me solve one nasty problem. Yes, I admit, I am <del>probably</del> certainty not the first one who discovers this trick <strong>BUT</strong> I promise you, I discovered it by myself and the whole process of discovering it was immensely satisfying. I mean&hellip;.templates <strong>are</strong> magic sometimes and I can only imagine how the people who understand them feel.</p>
 
 <h2 id="the-problem">The problem</h2>
 
-<p>Say you have a templated class that implements some kind of functionality and uses the type given by it&rsquo;s templete argument as some some soft of data. This probalby sound a little bit vague. A more concrete example of what I am talking about - imagine you have some class that sends some data to a server <em>somewhere</em>. The data can be std::string or int or double or some other random structure of yours. Of course the natural thing to come with that is a method <em>send(data)</em> that takes some data object of the templated type and does the <em>internal magic</em> (we don&rsquo;t care about that thou). In code everything will look something like:</p>
+<p>Say you have a templated class that implements some kind of functionality and uses the type given by it&rsquo;s template argument as some soft of data. This probably sound a little bit vague. A more concrete example of what I am talking about - imagine you have some class that sends some data to a server <em>somewhere</em>. The data can be std::string or int or double or some other random structure of yours. Of course the natural thing to come with that is a method <em>send(data)</em> that takes some data object of the templates type and does the <em>internal magic</em> (we don&rsquo;t care about that thou). In code everything will look something like:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
-<span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Sender</span>
+<span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">Sender</span>
 {
   Sender(){}
 
@@ -146,7 +146,7 @@
 
 };
 </code></pre></div>
-<p>Pretty simple, pretty stright forward. To expand our hypotetical situation, imagine now that this is not your class but someone else&rsquo;s and other people are using it in it&rsquo;s current form. So you don&rsquo;t think about it all that much and go on to use the class yourself. After some while you find out that internaly the <em>send</em> function uses a field named <em>header</em> of the type you&rsquo;ve passed to the template of the class. For example you have something like this:</p>
+<p>Pretty simple, pretty st right forward. To expand our hypothetical situation, imagine now that this is not your class but someone else&rsquo;s and other people are using it in it&rsquo;s current form. So you don&rsquo;t think about it all that much and go on to use the class yourself. After some while you find out that internaly the <em>send</em> function uses a field named <em>header</em> of the type you&rsquo;ve passed to the template of the class. For example you have something like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#007020;font-weight:bold">template</span><span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
 <span style="color:#902000">void</span> Sender<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;::</span>send(DataType data)
 {
@@ -155,10 +155,10 @@ data.header <span style="color:#666">=</span> currentTime();
 ...
 }
 </code></pre></div>
-<p>This automatically locks you to sending only structures that have a field named header(probalby also with time <em>unsigned int</em>). Not the biggest problem but again, let&rsquo;s make the situation complicated and say you have a project where you <strong>have</strong> to send a plain <em>std::string</em> to the server through this class (don&rsquo;t think about the situation too much, just roll with it and accept that I had very similar problem which I just could&rsquo;t avoid). So what do we have so far:</p>
+<p>This automatically locks you to sending only structures that have a field named header(probalby also with time <em>unsigned int</em>). Not the biggest problem but again, let&rsquo;s make the situation complicated and say you have a project where you <strong>have</strong> to send a plain <em>std::string</em> to the server through this class (don&rsquo;t think about the situation too much, just roll with it and accept that I had very similar problem which I just couldn&rsquo;t avoid). So what do we have so far:</p>
 
 <ul>
-<li>someone else&rsquo;s templated class - we are not the designers</li>
+<li>someone else&rsquo;s templates class - we are not the designers</li>
 <li>people are using it - no change of API is preferable</li>
 <li>the template argument of the class expects a field <em>header</em></li>
 <li>we <strong>have</strong> to send something without this <em>header</em> field</li>
@@ -168,9 +168,9 @@ data.header <span style="color:#666">=</span> currentTime();
 
 <h2 id="tackling-it-probably-in-the-most-terrible-way">Tackling it probably in the most terrible way</h2>
 
-<p>So, the way I did it was to add another template argument to the class - a booleand that specifies whether a <em>header</em> is used or not and then I hoped that a cn just specialize the <em>send</em> function with this new template argument set to <em>false</em> with a implementation withou use of <em>header</em>. Of course the default value of the new templete argument would be true for preserving backward compatability. The way I though it&rsquo;s gonna work as something like:</p>
+<p>So, the way I did it was to add another template argument to the class - a bool and that specifies whether a <em>header</em> is used or not and then I hoped that a cn just specialize the <em>send</em> function with this new template argument set to <em>false</em> with a implementation without use of <em>header</em>. Of course the default value of the new template argument would be true for preserving backward compatibility. The way I though it&rsquo;s gonna work as something like:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#007020;font-weight:bold">template</span><span style="color:#666">&lt;</span>DataType, <span style="color:#902000">bool</span> header <span style="color:#666">=</span> <span style="color:#007020">true</span><span style="color:#666">&gt;</span>
-<span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Sender</span>{...}
+<span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">Sender</span>{...}
 
 <span style="color:#007020;font-weight:bold">template</span><span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
 <span style="color:#902000">void</span> Sender<span style="color:#666">&lt;</span>DataType, <span style="color:#007020">false</span><span style="color:#666">&gt;::</span>send(DataType data)
@@ -189,9 +189,9 @@ data.header <span style="color:#666">=</span> currentTime();
 ...
 }
 </code></pre></div>
-<p>Seemed logical at the time but couple of problems with that. By the implemetation of the function the <em>template&lt;&hellip;&gt;</em> is for the <em>Sender</em> class not for the function. This means that that all of the template arguments in the original declarations of the class have to be present there. Also when you think about it, there is no template function there to specialize, there is a templated class and the function is part of this class. After some more googling I found out that indeed, one cannot specialize member function of a templated class on some values of the template arguments. &ldquo;Okay, so I have to specialize the entire class&rdquo; I told myself. But then I would have to essentialy have the class twice with one little difference in this one function - one version with using <em>header</em> and one without. That&rsquo;s kind of dumb. Having almost the same code twice is dumb. This is why we have abstraction after all. Abstraction! Inheritance! So, how about that. I create a new class with two templeted arguments, I inherit the old class and pass the <em>DataType</em> argument to it and based on the second template I implent <em>send</em>. Again, make the <em>bool</em> default to <em>true</em> and name the new class the <em>Sender</em> so that the existing code base doesn&rsquo;t get broken. I would have something like this:</p>
+<p>Seemed logical at the time but couple of problems with that. By the implementation of the function the <em>template&lt;&hellip;&gt;</em> is for the <em>Sender</em> class not for the function. This means that that all of the template arguments in the original declarations of the class have to be present there. Also when you think about it, there is no template function there to specialize, there is a templates class and the function is part of this class. After some more googling I found out that indeed, one cannot specialize member function of a templates class on some values of the template arguments. &ldquo;Okay, so I have to specialize the entire class&rdquo; I told myself. But then I would have to essentially have the class twice with one little difference in this one function - one version with using <em>header</em> and one without. That&rsquo;s kind of dumb. Having almost the same code twice is dumb. This is why we have abstraction after all. Abstraction! Inheritance! So, how about that. I create a new class with two templeted arguments, I inherit the old class and pass the <em>DataType</em> argument to it and based on the second template I implement <em>send</em>. Again, make the <em>bool</em> default to <em>true</em> and name the new class the <em>Sender</em> so that the existing code base doesn&rsquo;t get broken. I would have something like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
-<span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">SenderBase</span>
+<span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">SenderBase</span>
 {
   Sender(){}
 
@@ -199,10 +199,10 @@ data.header <span style="color:#666">=</span> currentTime();
 </span><span style="color:#60a0b0;font-style:italic"></span>}
 }
 templete<span style="color:#666">&lt;</span>DataType, <span style="color:#902000">bool</span> header <span style="color:#666">=</span> <span style="color:#007020">true</span><span style="color:#666">&gt;</span>
-<span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Sender</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>{}
+<span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">Sender</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>{}
 
 templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
-<span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Sender</span><span style="color:#666">&lt;</span>DataType, <span style="color:#007020">true</span><span style="color:#666">&gt;</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
+<span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">Sender</span><span style="color:#666">&lt;</span>DataType, <span style="color:#007020">true</span><span style="color:#666">&gt;</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
 {
   <span style="color:#902000">void</span> send(DataType data)
     {
@@ -214,7 +214,7 @@ templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt
 }
 
 templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
-<span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Sender</span><span style="color:#666">&lt;</span>DataType, <span style="color:#007020">false</span><span style="color:#666">&gt;</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
+<span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">Sender</span><span style="color:#666">&lt;</span>DataType, <span style="color:#007020">false</span><span style="color:#666">&gt;</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
 {
   <span style="color:#902000">void</span> send(DataType data)
     {
@@ -225,15 +225,15 @@ templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt
     }
 }
 </code></pre></div>
-<p>There, that <em>shoud</em> do it. Think about what is happening when a new object of the class gets created. If we have</p>
+<p>There, that <em>should</em> do it. Think about what is happening when a new object of the class gets created. If we have</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">Sender<span style="color:#666">&lt;</span>SomeDataType<span style="color:#666">&gt;</span> obj;
 </code></pre></div>
-<p>the second templated arguments defaults to true and the second versions gets instantiated. If, on the ohter hand, someone calls:</p>
+<p>the second templated arguments defaults to true and the second versions gets instantiated. If, on the otter hand, someone calls:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">Sender<span style="color:#666">&lt;</span>std<span style="color:#666">::</span>string, <span style="color:#007020">false</span><span style="color:#666">&gt;</span> obj;
 </code></pre></div>
-<p>the compiler generates the version withou the use of the <em>header</em> field and does not complaint because there is no such field in <em>std::string</em>. Perfect! One thing that bite me on the ass some time after I thought I &lsquo;fixed&rsquo; the class. Think about what would happen if the class uses internaly <em>send</em> for something. What happens if the client code is not the one who calls the <em>send</em> directly but the function call is made by other method that just passes the data to be send. This will be of course implemented in the base class <em>SenderBase</em> and this class sees only the emply implementaion of the <em>send</em> function. The fix is very simple if you know your language. We just make the <em>send</em> function virtual and allow the program to dispatch the right function call in runtime based of the type of the calling object. The final solution becomes:</p>
+<p>the compiler generates the version without the use of the <em>header</em> field and does not complaint because there is no such field in <em>std::string</em>. Perfect! One thing that bite me on the ass some time after I thought I &lsquo;fixed&rsquo; the class. Think about what would happen if the class uses internally <em>send</em> for something. What happens if the client code is not the one who calls the <em>send</em> directly but the function call is made by other method that just passes the data to be send. This will be of course implemented in the base class <em>SenderBase</em> and this class sees only the empty implementation of the <em>send</em> function. The fix is very simple if you know your language. We just make the <em>send</em> function virtual and allow the program to dispatch the right function call in runtime based of the type of the calling object. The final solution becomes:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
-   <span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">SenderBase</span>
+   <span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">SenderBase</span>
    {
      Sender(){}
 
@@ -241,16 +241,16 @@ templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt
    }
    }
    templete<span style="color:#666">&lt;</span>DataType, <span style="color:#902000">bool</span> header <span style="color:#666">=</span> <span style="color:#007020">true</span><span style="color:#666">&gt;</span>
-   <span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Sender</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>{}
+   <span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">Sender</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>{}
 
    templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
-   <span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Sender</span><span style="color:#666">&lt;</span>DataType, <span style="color:#007020">true</span><span style="color:#666">&gt;</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
+   <span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">Sender</span><span style="color:#666">&lt;</span>DataType, <span style="color:#007020">true</span><span style="color:#666">&gt;</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
    {
      <span style="color:#007020;font-weight:bold">virtual</span> <span style="color:#902000">void</span> send(DataType data){...}
    }
 
    templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
-   <span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Sender</span><span style="color:#666">&lt;</span>DataType, <span style="color:#007020">false</span><span style="color:#666">&gt;</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
+   <span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">Sender</span><span style="color:#666">&lt;</span>DataType, <span style="color:#007020">false</span><span style="color:#666">&gt;</span> <span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">public</span> SenderBase<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt;</span>
    {
       <span style="color:#007020;font-weight:bold">virtual</span> <span style="color:#902000">void</span> send(DataType data){...}
    }
@@ -259,9 +259,9 @@ templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt
 
 <h2 id="tackling-it-in-a-better-way">Tackling it in a better way</h2>
 
-<p>But of course, a smimpler, more streight forward solution exists. Enter <em>enable_if</em> and class templates with added caviat. I mentioned - there is no template function so no use of SFINAE on deciding which function to pick. The thing is, templete classes can have template functions as members. So, there is no reason we can&rsquo;t do something like</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#007020;font-weight:bold">template</span><span style="color:#666">&lt;</span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">DataType</span>, <span style="color:#902000">bool</span> Header <span style="color:#666">=</span> <span style="color:#007020">true</span><span style="color:#666">&gt;</span>
-<span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Sender</span>
+<p>But of course, a simpler, more straight forward solution exists. Enter <em>enable_if</em> and class templates with added caveat. I mentioned - there is no template function so no use of <a href="https://en.wikipedia.org/wiki/Substitution%5Ffailure%5Fis%5Fnot%5Fan%5Ferror">SFINAE</a> on deciding which function to pick. The thing is, template classes can have template functions as members. So, there is no reason we can&rsquo;t do something like</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#007020;font-weight:bold">template</span><span style="color:#666">&lt;</span><span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">DataType</span>, <span style="color:#902000">bool</span> Header <span style="color:#666">=</span> <span style="color:#007020">true</span><span style="color:#666">&gt;</span>
+<span style="color:#007020;font-weight:bold">class</span><span style=""> </span><span style="color:#0e84b5;font-weight:bold">Sender</span>
 {
   <span style="color:#007020;font-weight:bold">template</span><span style="color:#666">&lt;</span><span style="color:#902000">bool</span> Q <span style="color:#666">=</span> Header<span style="color:#666">&gt;</span>
   <span style="color:#007020;font-weight:bold">typename</span> std<span style="color:#666">::</span>enable_if<span style="color:#666">&lt;</span>Q, <span style="color:#902000">void</span><span style="color:#666">&gt;::</span>type send()
@@ -275,7 +275,7 @@ templete<span style="color:#666">&lt;</span>DataType<span style="color:#666">&gt
 </span><span style="color:#60a0b0;font-style:italic"></span>    };
 };
 </code></pre></div>
-<p>We again add the extra <em>header</em> template and based on it we pick one of two template functions <em>send</em>. It&rsquo;s important that they are in fact templete functions and not plain memeber functions of a templated class. Now when we instantiate the class with, one of those tow template functions is picked and compiler sees only it. Here you can even drop the <em>header</em> template parameter and work only with <em>enable_if</em> and some other template programming vodoo to detect whether DataType has field <em>header</em> or not. I&rsquo;ll leave that to you thou. Imortant note - this check has to be done though the <em>Q</em> template parameter of the functions because SFINAE applies only on it.</p>
+<p>We again add the extra <em>header</em> template and based on it we pick one of two template functions <em>send</em>. It&rsquo;s important that they are in fact template functions and not plain member functions of a templated class. Now when we instantiate the class with, one of those tow template functions is picked and compiler sees only it. Here you can even drop the <em>header</em> template parameter and work only with <em>enable_if</em> and some other template programming voodoo to detect whether DataType has field <em>header</em> or not. I&rsquo;ll leave that to you thou. Important note - this check has to be done though the <em>Q</em> template parameter of the functions because SFINAE applies only on it.</p>
 
 </div>
             <div class="footer">
