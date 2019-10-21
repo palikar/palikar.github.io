@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Machine Learning on SA Dev</title>
+    <title>machine-learning on SA</title>
     <link>https://palikar.github.io/categories/machine-learning/</link>
-    <description>Recent content in Machine Learning on SA Dev</description>
+    <description>Recent content in machine-learning on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Jul 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Train-Validation-Test split in PyTorch</title>
+      <link>https://palikar.github.io/posts/pytorch_datasplit/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/pytorch_datasplit/</guid>
+      <description>Abstract PyTorch is great! It offers tons of utilities that make every ML project a little bit less daunting. It&amp;rsquo;s easy to have your DNN-model up and running in almost no time. At the same time, the framework is still relatively unopinionated and lets you decide on the exact structure of your project. I&amp;rsquo;ve been playing around with PyTorch recently and the one thing I&amp;rsquo;ve been missing so far is to be able to create a train-validation-test split of my data in an &amp;ldquo;out of the box&amp;rdquo; manner.</description>
+    </item>
     
     <item>
       <title>Notes on learning Numpy</title>
@@ -19,7 +28,7 @@
       <guid>https://palikar.github.io/posts/numpy_notes/</guid>
       <description>My notes while reading this. More or less copy paste. Take with a grain of salt&amp;hellip;or sugar.
 
-Abstract NumPy is a Python package. It stands for &amp;lsquo;Numerical Python&amp;rsquo;. It is a library consisting of multidimensional array objects and a collection of routines for processing of array. From the officials:
+Abstract NumPy is a Python package. It stands for &amp;lsquo;Numerical Python&amp;rsquo;. It is a library consisting of multidimensional array classes and a collection of routines for processing of an array. From the officials:
  NumPy is the fundamental package for scientific computing with Python. It contains among other things:
  a powerful N-dimensional array object sophisticated (broadcasting) functions tools for integrating C/C++ and Fortran code useful linear algebra, Fourier transform, and random number capabilities  Besides its obvious scientific uses, NumPy can also be used as an efficient multi-dimensional container of generic data.</description>
     </item>
@@ -30,7 +39,7 @@ Abstract NumPy is a Python package. It stands for &amp;lsquo;Numerical Python&am
       <pubDate>Fri, 13 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/posts/pandas_notes/</guid>
-      <description>For transparency sake - those are my notes while learning about pandas from this tutorial. At times this here is just copy paste from it, at other it&amp;rsquo;s my own thoughts and explanations. This is meant to be a condensed version of the tutorial more or less just for me. If you found it useful though&amp;hellip;.well, good for you, I guess.
+      <description>For transparency&amp;rsquo;s sake - those are my notes while learning about pandas from this tutorial. At times this here is just copy-paste from it, at others, it&amp;rsquo;s my own thoughts and explanations. This is meant to be a condensed version of the tutorial more or less just for me. If you found it useful though, well, good for you, I guess.
 
 Abstract Basic pandas is a Python package providing fast, flexible, and expressive data structures designed to make working with &amp;ldquo;relational Heterogeneous data&amp;rdquo; or &amp;ldquo;labeled&amp;rdquo; data both easy and intuitive.</description>
     </item>

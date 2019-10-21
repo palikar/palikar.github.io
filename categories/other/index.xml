@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>other on SA</title>
+    <link>https://palikar.github.io/categories/other/</link>
+    <description>Recent content in other on SA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 May 2019 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://palikar.github.io/categories/other/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ABV Emails Retrieval</title>
+      <link>https://palikar.github.io/posts/abv_mails/</link>
+      <pubDate>Sat, 11 May 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/abv_mails/</guid>
+      <description>Abstract So for several years now, I&amp;rsquo;ve been fed up with the email provider that I&amp;rsquo;ve been using. I choose it - or there it was chosen for me by my dad - in my most early internet days. Because of its early inception, the email has accumulated an enormous amount of emails over the years. Currently, I have around 7000 emails. Yes, the majority of them are useless spam but I really don&amp;rsquo;t want to go over all of them and clean them up.</description>
+    </item>
+    
+  </channel>
+</rss>

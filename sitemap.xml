@@ -4,95 +4,142 @@
   
   <url>
     <loc>https://palikar.github.io/about/</loc>
-    <lastmod>2019-04-07T02:14:34+02:00</lastmod>
+    <lastmod>2019-10-21T22:16:58+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://palikar.github.io/posts/cpp_tips/</loc>
-    <lastmod>2018-08-01T01:01:52+02:00</lastmod>
+    <loc>https://palikar.github.io/posts/pytorch_datasplit/</loc>
+    <lastmod>2019-10-21T22:18:31+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/posts/abv_mails/</loc>
+    <lastmod>2019-10-21T22:18:09+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/posts/compile_time_pipeline/</loc>
+    <lastmod>2019-10-21T22:17:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/posts/cmake_structure/</loc>
+    <lastmod>2019-10-21T22:18:41+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/projects/cpp_tips/</loc>
-    <lastmod>2019-04-07T00:45:21+02:00</lastmod>
+    <lastmod>2019-10-21T22:20:24+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/posts/numpy_notes/</loc>
-    <lastmod>2019-04-07T00:51:10+02:00</lastmod>
+    <lastmod>2019-10-12T10:47:34+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/posts/pandas_notes/</loc>
-    <lastmod>2019-04-07T00:47:16+02:00</lastmod>
+    <lastmod>2019-10-12T11:27:00+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/posts/cpp_template_specialization/</loc>
-    <lastmod>2019-04-07T01:09:00+02:00</lastmod>
+    <lastmod>2019-04-21T23:00:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/posts/emacs_framer/</loc>
-    <lastmod>2019-04-07T01:00:25+02:00</lastmod>
+    <lastmod>2019-10-20T20:05:38+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/posts/github_history_repair/</loc>
-    <lastmod>2019-04-07T00:54:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/categories/c&#43;&#43;/</loc>
-    <lastmod>2018-08-01T01:01:52+02:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-10-12T00:52:35+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/categories/</loc>
-    <lastmod>2018-08-01T01:01:52+02:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-10-21T22:20:24+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://palikar.github.io/categories/emacs/</loc>
-    <lastmod>2019-04-07T01:00:25+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://palikar.github.io/tags/data-loading/</loc>
+    <lastmod>2019-10-21T22:18:31+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://palikar.github.io/categories/github/</loc>
-    <lastmod>2019-04-07T00:54:15+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://palikar.github.io/tags/machine-learning/</loc>
+    <lastmod>2019-10-21T22:18:31+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/categories/machine-learning/</loc>
-    <lastmod>2019-04-07T00:51:10+02:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-10-21T22:18:31+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/posts/</loc>
-    <lastmod>2018-08-01T01:01:52+02:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-10-21T22:18:41+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://palikar.github.io/projects/</loc>
-    <lastmod>2019-04-07T00:45:21+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://palikar.github.io/tags/python/</loc>
+    <lastmod>2019-10-21T22:18:31+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/tags/pytorch/</loc>
+    <lastmod>2019-10-21T22:18:31+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/</loc>
-    <lastmod>2019-04-07T02:14:34+02:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-10-21T22:20:24+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/tags/</loc>
-    <priority>0</priority>
+    <lastmod>2019-10-21T22:18:31+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/categories/other/</loc>
+    <lastmod>2019-10-21T22:18:09+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/categories/c&#43;&#43;/</loc>
+    <lastmod>2019-10-21T22:20:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/projects/</loc>
+    <lastmod>2019-10-21T22:20:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/categories/emacs/</loc>
+    <lastmod>2019-10-20T20:05:38+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/categories/github/</loc>
+    <lastmod>2019-10-12T00:52:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/portfolio/code_manager/</loc>
+    <lastmod>2018-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/portfolio/dera/</loc>
+    <lastmod>2018-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/portfolio/</loc>
+    <lastmod>2018-06-21T00:00:00+00:00</lastmod>
   </url>
   
 </urlset>

@@ -1,23 +1,50 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on SA Dev</title>
+    <title>Posts on SA</title>
     <link>https://palikar.github.io/posts/</link>
-    <description>Recent content in Posts on SA Dev</description>
+    <description>Recent content in Posts on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Jul 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>C&#43;&#43; things to think about while programming</title>
-      <link>https://palikar.github.io/posts/cpp_tips/</link>
-      <pubDate>Fri, 27 Jul 2018 00:00:00 +0200</pubDate>
+      <title>Train-Validation-Test split in PyTorch</title>
+      <link>https://palikar.github.io/posts/pytorch_datasplit/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://palikar.github.io/posts/cpp_tips/</guid>
-      <description>Abstract C++ is hard! C++ is even harder when you want to write good code. There are a lot of things to think about when your write C++ code and if you don&amp;rsquo;t think about them, you are probable going to mess things up. Recently I found that one good book (see references) that gives 42(hehe!) concrete tips on how to be a better c++ programmer. This is my summery of sorts about the contents of said book.</description>
+      <guid>https://palikar.github.io/posts/pytorch_datasplit/</guid>
+      <description>Abstract PyTorch is great! It offers tons of utilities that make every ML project a little bit less daunting. It&amp;rsquo;s easy to have your DNN-model up and running in almost no time. At the same time, the framework is still relatively unopinionated and lets you decide on the exact structure of your project. I&amp;rsquo;ve been playing around with PyTorch recently and the one thing I&amp;rsquo;ve been missing so far is to be able to create a train-validation-test split of my data in an &amp;ldquo;out of the box&amp;rdquo; manner.</description>
+    </item>
+    
+    <item>
+      <title>ABV Emails Retrieval</title>
+      <link>https://palikar.github.io/posts/abv_mails/</link>
+      <pubDate>Sat, 11 May 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/abv_mails/</guid>
+      <description>Abstract So for several years now, I&amp;rsquo;ve been fed up with the email provider that I&amp;rsquo;ve been using. I choose it - or there it was chosen for me by my dad - in my most early internet days. Because of its early inception, the email has accumulated an enormous amount of emails over the years. Currently, I have around 7000 emails. Yes, the majority of them are useless spam but I really don&amp;rsquo;t want to go over all of them and clean them up.</description>
+    </item>
+    
+    <item>
+      <title>Compile time pipeline in C&#43;&#43;</title>
+      <link>https://palikar.github.io/posts/compile_time_pipeline/</link>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/compile_time_pipeline/</guid>
+      <description>Abstract Recently I&amp;rsquo;ve been looking into the code of ChaiScript &amp;ndash; a scripting language written by Jason Turner that integrates seamlessly with C++. It&amp;rsquo;s a great project and you can learn a ton on parsing, general scripting language design and overall C++ from it. In its code, I&amp;rsquo;ve found several gems and idioms that I didn&amp;rsquo;t know before. Here I want to very briefly present a certain pattern that particularly caught my eye.</description>
+    </item>
+    
+    <item>
+      <title>The optimal CMake project structure.</title>
+      <link>https://palikar.github.io/posts/cmake_structure/</link>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/cmake_structure/</guid>
+      <description>Abstract I am sure that every C++ programmer has at one point struggled with CMake. There have been multiple times where when I have to start work on some C++ project, I&amp;rsquo;ve to spend a good couple of hours in thinking how should my project structure look like. It&amp;rsquo;s just such a huge hassle to think about all of your CMakeList.txt files and possible libraries and different modules and&amp;hellip; the things that may go wrong with your build system.</description>
     </item>
     
     <item>
@@ -28,7 +55,7 @@
       <guid>https://palikar.github.io/posts/numpy_notes/</guid>
       <description>My notes while reading this. More or less copy paste. Take with a grain of salt&amp;hellip;or sugar.
 
-Abstract NumPy is a Python package. It stands for &amp;lsquo;Numerical Python&amp;rsquo;. It is a library consisting of multidimensional array objects and a collection of routines for processing of array. From the officials:
+Abstract NumPy is a Python package. It stands for &amp;lsquo;Numerical Python&amp;rsquo;. It is a library consisting of multidimensional array classes and a collection of routines for processing of an array. From the officials:
  NumPy is the fundamental package for scientific computing with Python. It contains among other things:
  a powerful N-dimensional array object sophisticated (broadcasting) functions tools for integrating C/C++ and Fortran code useful linear algebra, Fourier transform, and random number capabilities  Besides its obvious scientific uses, NumPy can also be used as an efficient multi-dimensional container of generic data.</description>
     </item>
@@ -39,7 +66,7 @@ Abstract NumPy is a Python package. It stands for &amp;lsquo;Numerical Python&am
       <pubDate>Fri, 13 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/posts/pandas_notes/</guid>
-      <description>For transparency sake - those are my notes while learning about pandas from this tutorial. At times this here is just copy paste from it, at other it&amp;rsquo;s my own thoughts and explanations. This is meant to be a condensed version of the tutorial more or less just for me. If you found it useful though&amp;hellip;.well, good for you, I guess.
+      <description>For transparency&amp;rsquo;s sake - those are my notes while learning about pandas from this tutorial. At times this here is just copy-paste from it, at others, it&amp;rsquo;s my own thoughts and explanations. This is meant to be a condensed version of the tutorial more or less just for me. If you found it useful though, well, good for you, I guess.
 
 Abstract Basic pandas is a Python package providing fast, flexible, and expressive data structures designed to make working with &amp;ldquo;relational Heterogeneous data&amp;rdquo; or &amp;ldquo;labeled&amp;rdquo; data both easy and intuitive.</description>
     </item>
@@ -50,7 +77,7 @@ Abstract Basic pandas is a Python package providing fast, flexible, and expressi
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/posts/cpp_template_specialization/</guid>
-      <description>Abstract C++ is awesome! I am starting strong here but it really is. When experienced (and crazy) enough one can implement everything and the same one can do it incredibly efficient at run time (cuz who cares how much work does the compiler do for us). I can rant about how c++ is the best and all of the great features of the language but for this article I would constraint myself to one particular (but rather big) - template meta-programming!</description>
+      <description>Abstract C++ is awesome! I am starting strong here but it really is. When experienced (and crazy) enough one can implement everything and the at the same can do it incredibly efficient at run time (cuz who cares how much work does the compiler do for us). I can rant about how c++ is the best and all of its great features but for this post I will constraint myself to one particular part of C++ - template meta-programming!</description>
     </item>
     
     <item>
@@ -59,7 +86,7 @@ Abstract Basic pandas is a Python package providing fast, flexible, and expressi
       <pubDate>Fri, 29 Jun 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/posts/emacs_framer/</guid>
-      <description>Abstract Recently I&amp;rsquo;ve been introduced to the concept of a tiling windows manger. One key feature that caught my attention is how you can quickly resize your different windows and create your desired windows configuration with just a few executions of some keybindings. That got me wonder how it would really cool if I also have that in Emacs. I googled something like &amp;ldquo;resize emacs windows&amp;rdquo; but didn&amp;rsquo;t really (I didn&amp;rsquo;t want really) find package that can do that.</description>
+      <description>Abstract Recently I&amp;rsquo;ve been introduced to the concept of a tiling windows manager. One key feature that caught my attention is how you can quickly resize the different windows and create the desired windows configuration with just a few executions of some keybindings. That got me to wonder how it would cool if I also have that in Emacs. I googled something like &amp;ldquo;resize emacs windows&amp;rdquo; but didn&amp;rsquo;t really (I didn&amp;rsquo;t want really) find a package that can do that.</description>
     </item>
     
     <item>
@@ -68,7 +95,7 @@ Abstract Basic pandas is a Python package providing fast, flexible, and expressi
       <pubDate>Fri, 22 Jun 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/posts/github_history_repair/</guid>
-      <description>Abstract You know that Contributions panel on your Github profile page. Let&amp;rsquo;s face it, developers these day take much pride when they can show their consistent work and progress of their own/forked repositories&amp;hellip;even when some of their commits are nothing more than a implementations of a single function. Said panel is clear indication to you, future employee or members of your &amp;lsquo;coding community&amp;rsquo; that you are pretty much a big deal with a good work ethic.</description>
+      <description>Abstract You know that Contributions panel on your Github profile page. Let&amp;rsquo;s face it, developers these days take much pride when they can show their consistent work and progress of their own/forked repositories&amp;hellip; even when some of their commits are nothing more than an implementation of a single function. Or of course, it may be just me with that pride 😒. Said panel is a clear indication to your future employee or members of your &amp;ldquo;coding community&amp;rdquo; that you are pretty much a big deal with a good work ethic.</description>
     </item>
     
   </channel>

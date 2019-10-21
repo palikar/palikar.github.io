@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>data-loading on SA</title>
+    <link>https://palikar.github.io/tags/data-loading/</link>
+    <description>Recent content in data-loading on SA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://palikar.github.io/tags/data-loading/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Train-Validation-Test split in PyTorch</title>
+      <link>https://palikar.github.io/posts/pytorch_datasplit/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/pytorch_datasplit/</guid>
+      <description>Abstract PyTorch is great! It offers tons of utilities that make every ML project a little bit less daunting. It&amp;rsquo;s easy to have your DNN-model up and running in almost no time. At the same time, the framework is still relatively unopinionated and lets you decide on the exact structure of your project. I&amp;rsquo;ve been playing around with PyTorch recently and the one thing I&amp;rsquo;ve been missing so far is to be able to create a train-validation-test split of my data in an &amp;ldquo;out of the box&amp;rdquo; manner.</description>
+    </item>
+    
+  </channel>
+</rss>

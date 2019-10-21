@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.58.3" />
+
+    
+    
+    
+
+<title>The optimal CMake project structure. • SA</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The optimal CMake project structure."/>
+<meta name="twitter:description" content="Description of the project structure I intend to use in the future for my c&#43;&#43; projects."/>
+
+<meta property="og:title" content="The optimal CMake project structure." />
+<meta property="og:description" content="Description of the project structure I intend to use in the future for my c&#43;&#43; projects." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://palikar.github.io/posts/cmake_structure/" />
+<meta property="article:published_time" content="2019-04-10T00:00:00+02:00" />
+<meta property="article:modified_time" content="2019-10-21T22:18:41+02:00" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.90d0f32f3ac2f3a22a88a7bbaaac75fdb879222e292d054e2aa0b97826da7519.css" integrity="sha256-kNDzLzrC86IqiKe7qqx1/bh5Ii4pLQVOKqC5eCbadRk=">
+
+
+<link rel="stylesheet" href="/scss/print.e5f87aa9d406c09ad1cb0284b65f42c7e53ea92dc1fe9b6ab366bba96a1344e9.css" integrity="sha256-5fh6qdQGwJrRywKEtl9Cx&#43;U&#43;qS3B/ptqs2a7qWoTROk=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.126e7d75240acc946d34d6ccb2982ed4c394a5fe34e73e1a2119ca951bcf119d.css" integrity="sha256-Em59dSQKzJRtNNbMspgu1MOUpf405z4aIRnKlRvPEZ0=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://palikar.github.io/">SA</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="https://palikar.github.io/img/profile.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         Development, CS, AI and whatever my little heart desires 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">SA</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Home</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Blog Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/projects/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/categories/">
+						<span>Categories</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/palikar22" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://facebook.com/stanislav.ts" rel="me"><i class="fab fa-facebook-f"></i></a>
+	
+	
+	<a href="https://github.com/palikar" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/stanislav-arnaudov-37b475164" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:stanislav_ts@abv.bg" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    <article>
+  <header>
+    <h1>The optimal CMake project structure.</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Apr 10, 2019
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/c&#43;&#43;">C&#43;&#43;</a>
+              
+          
+      
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 19 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">Table of Content</label>
+    
+      <div class="toc" id="TableOfContents"></div>
+    
+  </div>
+  
+  <div class="post">
+    
+
+<h2 id="abstract">Abstract</h2>
+
+<p>I am sure that every C++ programmer has at one point struggled with <a href="https://cmake.org/">CMake</a>. There have been multiple times where when I have to start work on some C++ project, I&rsquo;ve to spend a good couple of hours in thinking how should my project structure look like. It&rsquo;s just such a huge hassle to think about all of your CMakeList.txt files and possible libraries and different modules and&hellip; the things that may go wrong with your build system. I&rsquo;ve been meaning to find a good template of a CMake project for a long time and now I think I&rsquo;ve found\created my long wanted gem. In this post, I first want to give a brief overview of my experience with CMake and the present the template project that I have finally settled with.</p>
+
+<h2 id="the-horrible-past-experience">The horrible past experience</h2>
+
+<p>I have bad memories in my early days of dealing with CMake. At the start, I had the impression that a build system should make everything as easy as possible but it seems that often this is not the case. Don&rsquo;t get me wrong. I know build systems do not solve an easy problem, but still. I quickly noticed how there are a lot of people on the internet talking about their way of doing CMake projects. It didn&rsquo;t seem that there wasn&rsquo;t <strong>the</strong> way of doing it. This is generally a good thing. Freedom and doing things <em>your</em> way! But everything comes with a cost. The cost of CMake &ndash; you have no idea what you are supposed to do at the beginning.</p>
+
+<p><br /></p>
+
+<p>My first experience with a big CMake project was while dealing with legacy code. The structure was similar to the one of <a href="https://github.com/opencv/openc">OpenCV</a>. A big CMakeList.txt file at the top lever with general project settings, a separate file with all of the libraries needed for the project and then a source directory with different modules. Each module is in a folder of its own. The structure of a module: source, include, test, and data directory; a CMakeList.txt file a the root of the module to define all executables and libraries. In all fairness, I still like the structure of the individual modules. The strange thing with the module-system was the way it did dependency resolution. Everything was done &ldquo;manually&rdquo;. It essentially was a big CMake framework that first collected info about every module, looked at the dependencies between them and the needed libraries and then build targets manually for a module by linking explicitly everything that module needed. The whole thing was implemented in a collection of complicated macros. There maps and lists and algorithms and directory traversals and everything you can imagine. The whole thing is written in CMake of course. Legacy code for the win!</p>
+
+<p><br /></p>
+
+<p>At one point I was considering building a similar system myself for my personal projects. Needless to say, that didn&rsquo;t take off. I wanted to clear up the structure and tightened it around the edges but I didn&rsquo;t have any form of success.</p>
+
+<p><br /></p>
+
+<p>I browsed some more CMake projects, I watched some talks (see <a href="https://www.youtube.com/watch?v=bsXLMQ6WgIk">Effective CMake</a> Talk by <a href="https://github.com/purpleKarrot">Daniel Pfeifer</a>) and I also tried setting up some thins myself. Nothing adequately clicked with me. CMake was still getting in the way of my C++ programming and it was making it even more painful than it already is. This went on for some while.</p>
+
+<h2 id="the-bright-new-world">The bright new world</h2>
+
+<p>Finally, a very fortunate thing happened. I watched <a href="https://www.youtube.com/watch?v=DHOlsEd0eDE">Applied Best Practices</a> and decided to check out the <a href="https://github.com/lefticus/cpp%5Fbox">repository</a>. The project is created with the idea of being a demonstration of &ldquo;doing things properly&rdquo; in C++. I can agree with this sentiment 100%! I still did some adjustments but I am still grateful that I found this project. Here I will go over the elements of the structure of the template project that I created.</p>
+
+<h3 id="conan">Conan</h3>
+
+<p><a href="https://conan.io/">Conan</a> is one of the numerous attempts to bring the &ldquo;package management world&rdquo; to C++. Package management is one of those things that modern languages just &ldquo;have by default&rdquo; but somehow C++ hasn&rsquo;t exactly caught up. For by CMake structure I wanted at least some attempt to make external dependency management a little bit easier. For this reason, I figured that Conan may be the utility to start my experimentation with &ldquo;C++ package management&rdquo;</p>
+
+<p><br /></p>
+
+<p>From Conan&rsquo;s website:</p>
+
+<blockquote>
+<p>The open-source, decentralized and multi-platform package manager to create and share all your native binaries.</p>
+</blockquote>
+
+<p>I won&rsquo;t give (because I can&rsquo;t) a comprehensive guide on Conan here. I believe this here is just enough to set you up and give you some basics of how Conan does its magic.</p>
+
+<p><br /> Conan can be installed through <a href="https://pypi.org/project/conan/">pip</a> and there is an official <a href="https://docs.conan.io/en/latest/introduction.html">get started</a> guide. Once everything is set up properly, you can write your <code>conanfile.txt</code> file in the root directory of your project. This is where all of your dependencies are defined. An example file is:</p>
+
+<pre><code class="language-conf">[requires]
+        catch2/2.4.0@bincrafters/stable
+        spdlog/1.3.1@bincrafters/stable
+        fmt/5.3.0@bincrafters/stable
+        rang/3.1.0@rang/stable
+        clara/1.1.4@bincrafters/stable
+
+
+[generators]
+        cmake
+        cmake_find_package
+</code></pre>
+
+<p>It is a <em>conf</em> file with several sections. The dependencies go in the <code>requires</code> node. Usually what to put there is defined on the page of each Conan package. The <code>generators</code> section defines exactly what Conan does and how it builds the dependencies configuration files. Different generators have different effects and use cases. As we are dealing with a CMake project, the <code>cmake</code> and <code>cmake_find_package</code> are enough. With this configuration setup, you can later include several lines of CMake code in your top-level CMakeLists.txt and just call <code>find_package(...)</code> for your dependencies. In theory at least. Sometimes things are a little bit tricky to get them running. If everything is as it is supposed to be, you can execute <code>conan install &lt;path_to_source_directory&gt;</code> in the build directory of the project and all of the dependencies will be fetched and saved in some cache on your machine.</p>
+
+<p><br /></p>
+
+<p>In my top-level CMakeLists.txt, I have the following lines:</p>
+
+<pre><code class="language-cmake"># First a conan.cmake is downloaded, if not present. This file handles all of the &quot;Conan&quot;-y things with cmake... I guess.
+if(NOT EXISTS &quot;${CMAKE_BINARY_DIR}/conan.cmake&quot;)
+    message(STATUS &quot;Downloading conan.cmake from https://github.com/conan-io/cmake-conan&quot;)
+    file(DOWNLOAD  &quot;https://raw.githubusercontent.com/conan-io/cmake-conan/master/conan.cmake&quot;
+        &quot;${CMAKE_BINARY_DIR}/conan.cmake&quot;)
+endif()
+include(${CMAKE_BINARY_DIR}/conan.cmake)
+
+# This is supposedly the minimal setup in CMake for Conan. After these lines, everything should be ready to use
+conan_check(REQUIRED)
+conan_cmake_run(
+    CONANFILE
+    conanfile.txt
+    BASIC_SETUP
+    CONAN_COMMAND
+    ${CONAN_CMD}
+    CMAKE_TARGETS
+    BUILD
+    missing)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake) # conanbuildinfo.cmake is file generated by the cmake generator.
+conan_basic_setup()
+</code></pre>
+
+<p>This sets up everything and at some later point I can just use something like:</p>
+
+<pre><code class="language-cmake">find_package(clara)
+</code></pre>
+
+<p>This includes all of the CMake targets defined for <a href="https://github.com/catchorg/Clara">Clara</a>. We can later effortlessly link agings them when defining our executable for example.</p>
+
+<h3 id="top-level-cmakelist-dot-txt">Top level CMakeList.txt</h3>
+
+<p>With Conan out of the way, I can now proceed to the pure CMake part of my project structure. At the start, I want to layout my key core design goals.</p>
+
+<ul>
+<li>Follow <a href="https://www.youtube.com/watch?v=bsXLMQ6WgIk">modern CMake guidelines</a></li>
+<li>Ease of use</li>
+<li>Modular setup</li>
+<li>Not worrying about dependencies between modules</li>
+<li>Support for testing</li>
+<li>Support for automatics documentation generation</li>
+</ul>
+
+<h4 id="folder-structure">Folder structure</h4>
+
+<p>A high-level overview of the my project structure is as follows:</p>
+
+<pre><code class="language-sh">├── cmake
+│   ├── FindGit.cmake
+│   ├── git_revision.cmake
+│   └── safeguards.cmake
+├── doc
+│   └── Doxyfile.in
+├── libs
+│   └── CMakeLists.txt
+├── src
+│   ├── module_1
+│   ├── module_2
+│   └── CMakeLists.txt
+├── templates
+│   ├── template_app_module
+│   └── template_lib_module
+├── CMakeLists.txt
+├── conanfile.txt
+├── create_new_app_module.sh
+├── create_new_lib_module.sh
+├── Doxyfile.in
+├── LICENSE
+├── Makefile
+└── README.md
+</code></pre>
+
+<p>Everything comes together at the top-level CMakeLists.txt. This is the main entry point when running <code>cmake &lt;path_to_source_directory&gt;</code>. In the <code>cmake</code> several utility CMake scripts solve several small problems like finding the git version of the host machine and preventing me to build the project inside the source file tree. The <code>Doxyfile.in</code> file contains the basic configuration setup for <a href="http://www.doxygen.nl/">Doxygen</a> which I use for generating documentation. My idea for the <code>libs</code> folder is to encapsulate the external dependencies that are not available through Conan. Of course, for some big dependencies (e.g. OpenCV) this is not really viable but it works like a charm for header-only libraries. The <code>libs/CMakeLists.txt</code> is responsible for loading the libraries in the <code>libs</code> folder. The <code>src</code> directory houses all of the individual sub-modules in separate sub-folders that are included through the <code>src/CMakeLists.txx</code> script. More on the individual modules in a minute. In <code>templates/</code> I have template visions of the two modules that the project can have &ndash; a library or an executable. I want to add a new module to the project, I can use of the scrips at top-level &ndash; <code>create_new_app_module.sh</code> or <code>create_new_lib_module.sh</code> &ndash; to generate the module easily. The <code>create_new_app_module.sh</code> looks like this:</p>
+
+<pre><code class="language-sh"># root directory of the project
+DIR=$(dirname &quot;$(readlink -f &quot;$0&quot;)&quot;)
+
+MODULE_NAME=$1
+# get the name of the project crom the CMakeLists.txt file
+PROJECT_NAME=$(grep &quot;project(\w*&quot; CMakeLists.txt -o | grep &quot;(.*&quot; -o | cut -c 2-)
+
+if [ -d $DIR/${PROJECT_NAME}/${MODULE_NAME} ]; then
+    echo &quot;The module already exists&quot;
+    exit 1
+fi
+
+# copy the template module and rename its parts
+cp -r $DIR/templates/template_app_module/ $DIR/src/
+mv $DIR/src/template_app_module/ $DIR/src/${MODULE_NAME}
+mv $DIR/src/${MODULE_NAME}/include/PROJECT/MODULE_NAME $DIR/src/${MODULE_NAME}/include/PROJECT/${MODULE_NAME}
+mv $DIR/src/${MODULE_NAME}/include/PROJECT $DIR/src/${MODULE_NAME}/include/${PROJECT_NAME}
+
+# expand 'MODULE_NAME' to the name of the module in every file of the module's folder
+find $DIR/src/${MODULE_NAME} -type f -exec sed -i &quot;s/MODULE_NAME/${MODULE_NAME}/g&quot; {} \;
+find $DIR/src/${MODULE_NAME} -type f -exec sed -i &quot;s/PROJECT_NAME/${PROJECT_NAME}/g&quot; {} \;
+
+# add the module to the 'src/CMakeLists.txt' script
+LINE=&quot;add_subdirectory(${MODULE_NAME})&quot;
+if [ ! $(grep $LINE $DIR/src/CMakeLists.txt) ]; then
+    echo ${LINE} &gt;&gt; $DIR/src/CMakeLists.txt
+fi
+</code></pre>
+
+<p>With this setup, I can simply execute <code>./create_new_app_module.sh executable_1</code> to add a new sub-module with the name &ldquo;executable_1&rdquo;.</p>
+
+<p><br /></p>
+
+<p>The <code>Makefile</code> is there just so that I can automate some of the things I do regularly in the project folder. Things like rebuilding, creating debug or release builds or cleaning all build folders.</p>
+
+<h4 id="options">Options</h4>
+
+<p>With the general folder structure, we can now go through several parts of the top-level CMakeLists.txt script.</p>
+
+<p><br /></p>
+
+<p>Near the top of the script, I have the options with which the project can be built. Those are just variables that can be true or false and enable certain conditions for the later parts of the scripts. The options are:</p>
+
+<pre><code class="language-cmake">option(ONLY_COVERAGE &quot;Build only tests necessary for coverage&quot; FALSE)
+option(LIBCPP &quot;Build with libc++&quot; FALSE)
+option(ENABLE_COVERAGE &quot;Enable coverage reporting for gcc/clang&quot; FALSE)
+option(ENABLE_ASAN &quot;Enable address sanitizer&quot; FALSE)
+option(BUILD_SHARED_LIBS &quot;Enable compilation of shared libraries&quot; FALSE)
+option(ENABLE_TESTING &quot;Enable the building of the test&quot; FALSE)
+option(ENABLE_CLANG_TIDY &quot;Enable testing with clang-tidy&quot; FALSE)
+option(ENABLE_CPPCHECK &quot;Enable testing with cppcheck&quot; FALSE)
+option(SIMPLE_BUILD &quot;Build the project as minimally as possible&quot; FALSE)
+option(BUILD_DOC &quot;Build the project's documentation&quot; ON)
+option(FORCE_COLORED_OUTPUT &quot;Always produce ANSI-colored output (GNU/Clang only).&quot; TRUE)
+option(DEBUG_LOGGING &quot;Enabling debug logging&quot; FALSE)
+</code></pre>
+
+<p>I think the help strings are pretty self-explanatory so I won&rsquo;t go over each option individually. If you see any of these variables in later snippets, just know that it can be adjusted through the way the cmake is called when building the project. The options are passed as <code>-D</code> arguments to the cmake command. For example, to build with <code>DEBUG_LOGGING</code> enabled, we must call cmake like:</p>
+
+<pre><code class="language-sh">cmake .. -DDEBUG_LOGGING=TRUE
+</code></pre>
+
+<h4 id="targets">Targets</h4>
+
+<p>Modern CMake is all about targets! The general rule of thumb is not to touch any variable in CMake (like <code>CMAKE_CXX_FLAGS</code>) directly but rather impose some requirements on a certain target. For the most part, the top-level CMakeLists.txt follows this paradigm. Targets can be defines as INTERFACE. This means that they don&rsquo;t produce any build output (neither library nor executable) but rather exist purely to be dependencies of other targets. Interface targets can be used, for example, to &ldquo;contain&rdquo; compile options. When an executable target is defined and it links against one such interface target, all of the compiler options imposed on the interface will also be imposed on the executable. This is my general idea that the CMakeLists.txt is structured around.</p>
+
+<p><br /></p>
+
+<p>At the start, there are two INTERFACE targets defined &ndash; <code>project_warnings</code> and <code>project_options</code></p>
+
+<pre><code class="language-cmake">add_library(project_warnings INTERFACE)
+add_library(project_options INTERFACE)
+</code></pre>
+
+<p><code>project_warnings</code> is meant to keep track of the flags that instruct the compiler on what warning to report on. <code>project_options</code> is for every other flag that may be passed to the compiler.</p>
+
+<h4 id="flags">Flags</h4>
+
+<p>After the definition of the targets, several checks decide on the compiler flags that are to be used. The significant parts of the &ldquo;building&rdquo; of both targets are given in the following snippets.</p>
+
+<p><br /> For starter, we make sure that we are programming in C++17. C++17 is as good as it gets and it&rsquo;s the current year so, of course, we are going to use it for every personal project.</p>
+
+<pre><code class="language-cmake">target_compile_features(project_options INTERFACE cxx_std_17)
+</code></pre>
+
+<p>If coverage is enabled for the build, we set the appropriate flags for the compiler. Notice how we are defining the options only on the targets and not in &ldquo;global scope&rdquo; through the <a href="https://cmake.org/cmake/help/latest/variable/CMAKE%5FLANG%5FFLAGS.html#variable:CMAKE%5F%253CLANG%253E%5FFLAGS">CMAKE_CXX_FLAGS</a> flag.</p>
+
+<pre><code class="language-cmake">if(ONLY_COVERAGE OR ENABLE_COVERAGE)
+    target_compile_options(project_options INTERFACE --coverage -O0 -g)
+    target_link_libraries(project_options INTERFACE --coverage)
+endif()
+</code></pre>
+
+<p>We do something similar for the address sanitizers of the compiler:</p>
+
+<pre><code class="language-cmake">if(ENABLE_ASAN)
+    target_compile_options(project_options INTERFACE -fsanitize=address)
+    target_link_libraries(project_options INTERFACE -fsanitize=address)
+endif()
+</code></pre>
+
+<p>While developing in C++, warnings are your friend. The more the better! Warnings can expose lots of tiny mistakes that you can make while writing C++ and in this sense, the compiler is your friend. As long as you tell it to report on the proper warning, of course.</p>
+
+<pre><code class="language-cmake">target_compile_options(project_warnings
+    INTERFACE
+    -Wall
+    -Wextra
+    -Wshadow
+    -Wnon-virtual-dtor
+    -Wold-style-cast
+    -Wcast-align
+    -Wunused
+    -Woverloaded-virtual
+    -Wpedantic
+    -Wconversion
+    -Wsign-conversion
+    -Wnull-dereference
+    -Wdouble-promotion
+    -Wformat=2)
+
+# some GCC specific warnings. These flags are added only if the used compiler is GCC.
+if(&quot;${CMAKE_CXX_COMPILER_ID}&quot; STREQUAL &quot;GNU&quot;)
+    target_compile_options(project_warnings
+        INTERFACE
+        -Wmisleading-indentation
+        -Wduplicated-cond
+        -Wlogical-op
+        -Wuseless-cast
+        )
+    target_link_libraries(project_options INTERFACE stdc++fs)
+endif()
+
+</code></pre>
+
+<p>A colorful output on the terminal is always useful.</p>
+
+<pre><code class="language-cmake">if (${FORCE_COLORED_OUTPUT})
+    if (&quot;${CMAKE_CXX_COMPILER_ID}&quot; STREQUAL &quot;GNU&quot;)
+        target_compile_options (project_options INTERFACE -fdiagnostics-color=always)
+    elseif (&quot;${CMAKE_CXX_COMPILER_ID}&quot; STREQUAL &quot;Clang&quot;)
+        target_compile_options (project_options INTERFACE -fcolor-diagnostics)
+    endif ()
+endif ()
+</code></pre>
+
+<h4 id="extra-tools">Extra tools</h4>
+
+<p>Other than the compiler flags, several other external tools can help you in your C++ development. Many of them can be integrated with CMake. In my project template, I have three of them.</p>
+
+<p><br /></p>
+
+<p><a href="https://ccache.dev/">CCache</a> is a compiler cache that speeds up recompilation. It is a separate program and you have to have it installed on your system. If this is the case, the following snippet will set up ccache in our build.</p>
+
+<pre><code class="language-cmake">find_program(CCACHE ccache)
+if(CCACHE)
+    set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE})
+endif()
+</code></pre>
+
+<p><br /></p>
+
+<p><a href="http://cppcheck.sourceforge.net/">Cppcheck</a> is a static analysis tool for C++ code. I can help you catch some common mistakes while programming and it even doesn&rsquo;t require you to compile your code. If you have Cppcheck on your system and you&rsquo;ve enabled it in your build, you can use it with CMake like this:</p>
+
+<pre><code class="language-cmake">if(ENABLE_CPPCHECK)
+    find_program(CPPCHECK cppcheck)
+    if(CPPCHECK)
+    set(CMAKE_CXX_CPPCHECK
+        ${CPPCHECK}
+        --suppress=syntaxError
+        --enable=all
+        --inconclusive)
+    else()
+    message(SEND_ERROR &quot;cppcheck requested but executable not found&quot;)
+    endif()
+endif()
+</code></pre>
+
+<p><br /></p>
+
+<p><a href="https://clang.llvm.org/extra/clang-tidy/">Clang-Tidy</a> is yet another tool for static analysis of C++ code. It can catch different set ot errors than cppcheck. As with the warnings, the more things the tools can tell us about our code, the better. The CMake integration is, again, possible and trivial:</p>
+
+<pre><code class="language-cmake">if(ENABLE_CLANG_TIDY)
+    find_program(CLANGTIDY clang-tidy)
+    if(CLANGTIDY)
+    set(CMAKE_CXX_CLANG_TIDY ${CLANGTIDY})
+    else()
+    message(SEND_ERROR &quot;clang-tidy requested but executable not found&quot;)
+    endif()
+endif()
+</code></pre>
+
+<h4 id="configurable-header">Configurable header</h4>
+
+<p>In some situations, in your C++ code, you&rsquo;ll need information that is available only in the CMake build. This may include build information, version of the project, <a href="https://en.wikipedia.org/wiki/Endianness">endianness</a> of the host system, a compile-time configuration of some sort, etc. Because of this, I figured out that I may need some sort of a &ldquo;global&rdquo; header file where such things are saved by CMake and accessible in the C++ code. My approach is to have the file <code>src/include/&lt;project_name&gt;/config.hpp.in</code> that will be configured by CMake and every file in the project would be able to include it. On the CMake side of the things, the code looks like this:</p>
+
+<pre><code class="language-cmake">set(PROJECT_VERSION_MAJOR 1)
+set(PROJECT_VERSION_MINOR 0)
+set(PROJECT_VERSION_PATCH 0)
+set(PROJECT_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
+...
+configure_file (
+    &quot;${PROJECT_SOURCE_DIR}/src/include/${PROJECT_NAME}/config.hpp.in&quot;
+    &quot;${PROJECT_BINARY_DIR}/src/include/${PROJECT_NAME}/config.hpp&quot;)
+
+include_directories(&quot;${PROJECT_BINARY_DIR}/src/include&quot;)
+</code></pre>
+
+<p>Using a CMake function like <code>include_directories</code> is generally a bad practice but in this case, just for once, in a &ldquo;global context&rdquo;, I am okay with it. In the <code>config.hpp.in</code> the file we can use all of the variables in the CMake environment to define whatever we want in the C++ code. To access a CMake variable, we use the <code>@&lt;VARIABLE&gt;@</code> syntax. For example, the file can look like something like:</p>
+
+<pre><code class="language-c++">#pragma once
+
+#define PROJECT_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define PROJECT_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define PROJECT_VERSION_PATCH @PROJECT_VERSION_PATCH@
+
+#define FILE_LOGGING 0
+#define CONSOLE_LOGGING 1
+#define DEBUG_LOGGING 1
+</code></pre>
+
+<h4 id="documentation-building">Documentation building</h4>
+
+<p>One of my design goals for the project structure was to be able to handle building documentation. I achieve that through a custom target. In CMake we can specify a command to be executed (in the sense on a command on the terminal) and &ldquo;bind&rdquo; is to a <a href="https://stackoverflow.com/questions/2270643/what-is-a-make-target">make target</a> in the final Makefile in the build directory. This means that at the end of the build process, I can execute something like <code>make doc</code> in the build directory to build the documentation for the project. Setting up Doxygen in CMake is not complicated. There is a package that can be included through <code>find_package</code>. This sets several CMake variables that are relevant to Doxygen. The whole setup can be done like:</p>
+
+<pre><code class="language-cmake">if(BUILD_DOC)
+    find_package(Doxygen)
+    if (DOXYGEN_FOUND)
+                SET(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/doc/Doxyfile.in)
+                SET(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+
+                configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+
+                add_custom_target(doc ALL
+                        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+                        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+                        COMMENT &quot;Buidling Doxygen documentation&quot;
+                        VERBATIM )
+    else (DOXYGEN_FOUND)
+                message(&quot;No doxygen binary found on the system.&quot;)
+                SET(${BUILD_DOC} OFF)
+    endif ()
+endif()
+</code></pre>
+
+<h4 id="summery">Summery</h4>
+
+<p>At the end of CMakeLists.txt, I&rsquo;ve created a bunch of messages that show exactly hot the project is currently being build. It just prints out the options of the build and whether or not they are active or not.</p>
+
+<pre><code class="language-cmake">message(&quot;#########################################&quot;)
+message(&quot;\t \t Summary&quot;)
+message(&quot;#########################################&quot;)
+message(&quot;Build type:       \t ${CMAKE_BUILD_TYPE}&quot;)
+message(&quot;Install prefix:   \t ${CMAKE_INSTALL_PREFIX}&quot;)
+message(&quot;Testing enabled:  \t ${ENABLE_TESTING}&quot;)
+message(&quot;Clang-tidy:       \t ${ENABLE_CLANG_TIDY}&quot;)
+message(&quot;Cppcheck:         \t ${ENABLE_CPPCHECK}&quot;)
+message(&quot;Compiler:         \t ${CMAKE_CXX_COMPILER_ID}&quot;)
+message(&quot;Sanizizers:       \t ${ENABLE_ASAN}&quot;)
+message(&quot;Shared libs:      \t ${BUILD_SHARED_LIBS}&quot;)
+message(&quot;Build libcpp:     \t ${LIBCPP}&quot;)
+message(&quot;CCache executable:\t ${CCACHE}&quot;)
+message(&quot;Building doc:     \t ${BUILD_DOC}&quot;)
+message(&quot;------------------------------------------&quot;)
+message(&quot;Version:          \t ${PROJECT_VERSION}&quot;)
+message(&quot;########################################&quot;)
+</code></pre>
+
+<h3 id="modules">Modules</h3>
+
+<p>Let&rsquo;s now look at the individual submodules and how are those organized. As said, the <code>src/CMakeLists.txt</code> script includes them all through several calls of the <code>add_subdirectory</code> function.</p>
+
+<pre><code class="language-cmake">add_subdirectory(submodule_1)
+add_subdirectory(submodule_1)
+</code></pre>
+
+<p><br /></p>
+
+<p>The folder structure of each module is the following:</p>
+
+<pre><code class="language-sh">
+</code></pre>
+
+<p>The <code>src/</code> directory is meant for the source files as well as the private headers of the module. &ldquo;Private headers&rdquo; means that those won&rsquo;t be visible outside of the project. The public headers are meant to go in the <code>include/</code> directory. There is, however, a small caveat to its subfolder structure. In order to keep everything in my project organize, so that I can keep my sanity, I prefer to include the headers files in the form of:</p>
+
+<pre><code class="language-c++">#include &quot;&lt;project_name&gt;/&lt;submodule_name&gt;/&lt;header_file&gt;&quot;
+</code></pre>
+
+<p>In my mind, this is the most &ldquo;logical&rdquo; way to include something that is somewhere in the project as there is a clear hierarchy. This can be achieved by having several subfolders in the <code>include/</code> directory. The structure at the end is:</p>
+
+<pre><code class="language-sh">
+</code></pre>
+
+<p><br /></p>
+
+<p>The CMakeLists.txt file for the modules is relatively simple. It just has to create a target (a library or executable), set up the include directories and then link it against the necessary other targets. In the top-level CMakeLists.txt, we&rsquo;ve created the two INTERFACE targets <code>project_options</code> and <code>project_warnings</code>. Those are the &ldquo;mandatory&rdquo; ones to link against and every other target can be a one from the external library and\or a different submodule of the project. The whole CMakeLists.txt file looks like:</p>
+
+<pre><code class="language-cmake"># setting up sources
+add_library(submodule_1_lib
+    src/src_file_1.cpp
+    src/src_file_2.cpp)
+
+# setting up include directories
+target_include_directories(submodule_1_lib
+    PUBLIC include
+    PRIVATE src)
+
+# linking against the desired targets
+target_link_libraries(submodule_1_lib
+    PRIVATE
+    project_options
+    project_warnings
+        PUBLIC
+        clara::calra)
+
+install(TARGETS submodule_1_lib
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}/
+    RUNTIME DESTINATION       ${CMAKE_INSTALL_BINDIR}
+    LIBRARY DESTINATION       ${CMAKE_INSTALL_LIBDIR}
+    INCLUDES DESTINATION      ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}/
+    ARCHIVE DESTINATION       ${CMAKE_INSTALL_SHAREDSTATEDIR})
+</code></pre>
+
+<p>The last call to the <code>install</code> function instructs CMake on how to construct the <em>install</em> target of the final Makefile. The function call basically makes all artifacts &ldquo;go to the right place&rdquo;. I think that the most relevant part is that the header files will be copied to the global include directory (e.g. <code>/usr/include/</code>) but the will be put inside a folder with the project&rsquo;s name. In this case, another project can include headers from this project like:</p>
+
+<pre><code class="language-c++">#include &lt;&lt;project_name&gt;/&lt;submodule_name&gt;/&lt;header_file&gt;&gt;
+</code></pre>
+
+<p>which again helps to keep things organized.</p>
+
+<h3 id="testing">Testing</h3>
+
+<p>The final aspect we have to look at is how to enable support for running C++ tests. Thankfully, CMake makes the integration incredibly easy. CMake uses <a href="https://cmake.org/cmake/help/v3.15/manual/ctest.1.html">ctest</a> to discover and run tests I write the tests themselves with <a href="https://github.com/catchorg/Catch2">Catch</a> &ndash; a header-only, test framework for unit-tests. There is a nice startup guide for Catch <a href="https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md">here</a>. The general idea is to create test executables with the help of Catch and then let ctest run them. To enable ctest support in a project its enough to call the <code>enable_testing</code> function in the top CMakeLists.txt file. In there I have:</p>
+
+<pre><code class="language-cmake">if(ENABLE_TESTING)
+    enable_testing()
+endif()
+</code></pre>
+
+<p>In the CMakeLists.txt files, I conditionally add the <code>test/</code> directory of each submodule. In there, there is a different CMakaLists.txt file that sets up the testing for the corresponding module. The script is nothing special and it is very similar to the upper-level one.</p>
+
+<pre><code class="language-cmake">
+add_executable(submodule_1_testThe final aspect we have to look at, is how to eable support for running C++ tests. Thankfully, CMake makes the integration incredibly easy. CMake uses [[https://cmake.org/cmake/help/v3.15/manual/ctest.1.html][ctest]] to discrover and run tests  I write the tests themselves with [[https://github.com/catchorg/Catch2][Catch]] -- a header-only, test framework for unit-tests. There is a nice start up guide for Catch [[https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md][here]]. The genral idea is to create test executables with the help of Catch and then let ctest run them. To enable ctest support in a project its enough to call the ~enable_testing~ function in the top CMakeLists.txt file. In there I have:
+#+BEGIN_SRC cmake
+if(ENABLE_TESTING)
+    enable_testing()
+endif()
+</code></pre>
+
+<p>In the CMakeLists.txt files I conditionally add the <code>test/</code> directrory of each submodule. In therem, there is a different CMakaLists.txt file that sets up the testing for the corresponding module. The script is nothing special and it is very similar to the upper level one.</p>
+
+<pre><code class="language-cmake">
+add_executable(submodule_1_test
+        submodule_1_test.cpp
+    ../src/src_file_1.cpp
+    ../src/src_file_2.cpp)
+
+target_include_directories(${PROJECT_NAME}_alisp_test
+    PUBLIC ../include
+    PRIVATE ../src)
+
+target_link_libraries(${PROJECT_NAME}_alisp_test
+    PRIVATE
+    project_options
+    project_warnings
+    PUBLIC
+    Catch2::Catch2)
+
+include(CTest)
+include(Catch)
+catch_discover_tests(submodule_1_test)
+</code></pre>
+
+<p>The last three lines turn this into a &ldquo;test target&rdquo;. The build will thus produce a binary that can be ran and all the tests defined in it will be executed. As ctest was enabled, the whole process boils down to executing <code>make test</code> in the build directrory of the project. submodule_1_test.cpp ../src/src_file_1.cpp ../src/src_file_2.cpp)</p>
+
+<p>target_include_directories(${PROJECT_NAME}_alisp_test PUBLIC ../include PRIVATE ../src)</p>
+
+<p>target_link_libraries(${PROJECT_NAME}_alisp_test PRIVATE project_options project_warnings PUBLIC Catch2::Catch2)</p>
+
+<p>include(CTest) include(Catch) catch_discover_tests(submodule_1_test) #+END_SRC</p>
+
+<p>The last three lines turn this into a &ldquo;test target&rdquo;. The build will thus produce a binary that can be ran and all the tests defined in it will be executed. As ctest was enabled, the whole process boils down to executing <code>make test</code> in the build directory of the project.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>So those are my two cents about CMake and project structure. I don&rsquo;t claim to have a lot of experience but I&rsquo;ve done a lot of research in the past year and a half. I&rsquo;ve looked into different projects, read the best practices, read a lot of vague tutorials on the internet and watched the relevant talks. I have thought this several times, but <span class="underline">this</span> time I really think I&rsquo;ve nailed it. I hope that I&rsquo;ve created (mostly stolen) something scalable that will serve me well in my future small to mid-size projects. Whether of not scalability should be of my concern is a completely separate matter 🙂.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li>[1] <a href="https://github.com/lefticus/cpp%5Fbox">CPP_BOX</a> is a project by <a href="https://github.com/lefticus">Jason Turner</a>.</li>
+<li>[2] <a href="https://vicrucann.github.io/tutorials/quick-cmake-doxygen/">Victoria Rudakova&rsquo;s Post</a></li>
+<li>[3] <a href="https://www.youtube.com/watch?v=bsXLMQ6WgIk">Effective CMake</a> Talk by Daniel Pfeifer</li>
+<li>[4] <a href="https://www.youtube.com/watch?v=DHOlsEd0eDE">Applied Best Practices</a> Talk by <a href="https://github.com/lefticus">Jason Turner</a></li>
+<li>[5] <a href="https://cmake.org/cmake/help/v3.15/manual/ctest.1.html">CMake&rsquo;s documentation</a></li>
+</ul>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/numpy_notes/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Notes on learning Numpy</span>
+    </a>
+    
+    
+    <a href="/posts/compile_time_pipeline/" class="navigation-next">
+      <span class="navigation-tittle">Compile time pipeline in C&#43;&#43;</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+
+    (function () {
+    if (location.hostname === "localhost" ||
+      location.hostname === "127.0.0.1" ||
+      location.hostname === "") {
+      return;
+    }
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    var disqus_shortname = 'palikar-github-io';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || 
+      document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<noscript>
+  Please enable JavaScript to view the
+  <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by
+  <span class="logo-disqus">Disqus</span>
+</a>
+
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/cmake.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/lisp.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/elisp.min.js"></script>
+            
+        
+    
+    <script type="text/javascript">
+        
+        hljs.configure({languages: ["cmake, lisp, elisp"]});
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
+
+
+    </body>
+</html>

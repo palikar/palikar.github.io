@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on SA Dev</title>
+    <title>Categories on SA</title>
     <link>https://palikar.github.io/categories/</link>
-    <description>Recent content in Categories on SA Dev</description>
+    <description>Recent content in Categories on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Jul 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>C&#43;&#43;</title>
+      <title>machine-learning</title>
+      <link>https://palikar.github.io/categories/machine-learning/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>other</title>
+      <link>https://palikar.github.io/categories/other/</link>
+      <pubDate>Sat, 11 May 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/categories/other/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>c&#43;&#43;</title>
       <link>https://palikar.github.io/categories/c&#43;&#43;/</link>
-      <pubDate>Fri, 27 Jul 2018 00:00:00 +0200</pubDate>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/categories/c&#43;&#43;/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Emacs</title>
+      <title>emacs</title>
       <link>https://palikar.github.io/categories/emacs/</link>
       <pubDate>Fri, 29 Jun 2018 00:00:00 +0200</pubDate>
       
@@ -30,20 +48,11 @@
     </item>
     
     <item>
-      <title>Github</title>
+      <title>github</title>
       <link>https://palikar.github.io/categories/github/</link>
       <pubDate>Fri, 22 Jun 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/categories/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Machine Learning</title>
-      <link>https://palikar.github.io/categories/machine-learning/</link>
-      <pubDate>Fri, 20 Jul 2018 00:00:00 +0200</pubDate>
-      
-      <guid>https://palikar.github.io/categories/machine-learning/</guid>
       <description></description>
     </item>
     

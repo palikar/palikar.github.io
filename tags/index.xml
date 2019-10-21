@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on SA Dev</title>
+    <title>Tags on SA</title>
     <link>https://palikar.github.io/tags/</link>
-    <description>Recent content in Tags on SA Dev</description>
+    <description>Recent content in Tags on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>data-loading</title>
+      <link>https://palikar.github.io/tags/data-loading/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/tags/data-loading/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine-learning</title>
+      <link>https://palikar.github.io/tags/machine-learning/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://palikar.github.io/tags/python/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pytorch</title>
+      <link>https://palikar.github.io/tags/pytorch/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/tags/pytorch/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

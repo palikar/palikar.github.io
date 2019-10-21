@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Emacs on SA Dev</title>
+    <title>emacs on SA</title>
     <link>https://palikar.github.io/categories/emacs/</link>
-    <description>Recent content in Emacs on SA Dev</description>
+    <description>Recent content in emacs on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 29 Jun 2018 00:00:00 +0200</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Fri, 29 Jun 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/posts/emacs_framer/</guid>
-      <description>Abstract Recently I&amp;rsquo;ve been introduced to the concept of a tiling windows manger. One key feature that caught my attention is how you can quickly resize your different windows and create your desired windows configuration with just a few executions of some keybindings. That got me wonder how it would really cool if I also have that in Emacs. I googled something like &amp;ldquo;resize emacs windows&amp;rdquo; but didn&amp;rsquo;t really (I didn&amp;rsquo;t want really) find package that can do that.</description>
+      <description>Abstract Recently I&amp;rsquo;ve been introduced to the concept of a tiling windows manager. One key feature that caught my attention is how you can quickly resize the different windows and create the desired windows configuration with just a few executions of some keybindings. That got me to wonder how it would cool if I also have that in Emacs. I googled something like &amp;ldquo;resize emacs windows&amp;rdquo; but didn&amp;rsquo;t really (I didn&amp;rsquo;t want really) find a package that can do that.</description>
     </item>
     
   </channel>

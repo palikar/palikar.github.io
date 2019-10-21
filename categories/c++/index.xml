@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>C&#43;&#43; on SA Dev</title>
+    <title>c&#43;&#43; on SA</title>
     <link>https://palikar.github.io/categories/c&#43;&#43;/</link>
-    <description>Recent content in C&#43;&#43; on SA Dev</description>
+    <description>Recent content in c&#43;&#43; on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Jul 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Apr 2019 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/categories/c++/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>C&#43;&#43; things to think about while programming</title>
-      <link>https://palikar.github.io/posts/cpp_tips/</link>
-      <pubDate>Fri, 27 Jul 2018 00:00:00 +0200</pubDate>
+      <title>Compile time pipeline in C&#43;&#43;</title>
+      <link>https://palikar.github.io/posts/compile_time_pipeline/</link>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://palikar.github.io/posts/cpp_tips/</guid>
-      <description>Abstract C++ is hard! C++ is even harder when you want to write good code. There are a lot of things to think about when your write C++ code and if you don&amp;rsquo;t think about them, you are probable going to mess things up. Recently I found that one good book (see references) that gives 42(hehe!) concrete tips on how to be a better c++ programmer. This is my summery of sorts about the contents of said book.</description>
+      <guid>https://palikar.github.io/posts/compile_time_pipeline/</guid>
+      <description>Abstract Recently I&amp;rsquo;ve been looking into the code of ChaiScript &amp;ndash; a scripting language written by Jason Turner that integrates seamlessly with C++. It&amp;rsquo;s a great project and you can learn a ton on parsing, general scripting language design and overall C++ from it. In its code, I&amp;rsquo;ve found several gems and idioms that I didn&amp;rsquo;t know before. Here I want to very briefly present a certain pattern that particularly caught my eye.</description>
+    </item>
+    
+    <item>
+      <title>The optimal CMake project structure.</title>
+      <link>https://palikar.github.io/posts/cmake_structure/</link>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/posts/cmake_structure/</guid>
+      <description>Abstract I am sure that every C++ programmer has at one point struggled with CMake. There have been multiple times where when I have to start work on some C++ project, I&amp;rsquo;ve to spend a good couple of hours in thinking how should my project structure look like. It&amp;rsquo;s just such a huge hassle to think about all of your CMakeList.txt files and possible libraries and different modules and&amp;hellip; the things that may go wrong with your build system.</description>
     </item>
     
     <item>
@@ -26,7 +35,7 @@
       <pubDate>Fri, 27 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/projects/cpp_tips/</guid>
-      <description>Abstract C++ is hard! C++ is even harder when you want to write a good code. There are a lot of things to think about when your write code and if you don&amp;rsquo;t think about them, you are probable going to mess things up. Recently I&amp;rsquo;ve found that one good book (see references) that gives 42 (hehe!) concrete tips on how to be a better c++ programmer. This is my summary of sorts about the contents of said book.</description>
+      <description>Abstract C++ is hard! C++ is even harder when you want to write good code. There are a lot of things to think about when you write code and if you don&amp;rsquo;t think about them, you are probably going to mess things up. Recently I&amp;rsquo;ve found that one good book (see references) that gives 42 (hehe!) concrete tips on how to be a better c++ programmer. This is my summary of sorts about the contents of said book.</description>
     </item>
     
     <item>
@@ -35,7 +44,7 @@
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/posts/cpp_template_specialization/</guid>
-      <description>Abstract C++ is awesome! I am starting strong here but it really is. When experienced (and crazy) enough one can implement everything and the same one can do it incredibly efficient at run time (cuz who cares how much work does the compiler do for us). I can rant about how c++ is the best and all of the great features of the language but for this article I would constraint myself to one particular (but rather big) - template meta-programming!</description>
+      <description>Abstract C++ is awesome! I am starting strong here but it really is. When experienced (and crazy) enough one can implement everything and the at the same can do it incredibly efficient at run time (cuz who cares how much work does the compiler do for us). I can rant about how c++ is the best and all of its great features but for this post I will constraint myself to one particular part of C++ - template meta-programming!</description>
     </item>
     
   </channel>
