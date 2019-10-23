@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://palikar.github.io/about/</loc>
-    <lastmod>2019-10-21T22:16:58+02:00</lastmod>
+    <lastmod>2019-10-21T22:29:56+02:00</lastmod>
   </url>
   
   <url>
@@ -24,7 +24,7 @@
   
   <url>
     <loc>https://palikar.github.io/posts/cmake_structure/</loc>
-    <lastmod>2019-10-21T22:18:41+02:00</lastmod>
+    <lastmod>2019-10-23T09:26:27+02:00</lastmod>
   </url>
   
   <url>
@@ -59,7 +59,7 @@
   
   <url>
     <loc>https://palikar.github.io/categories/</loc>
-    <lastmod>2019-10-21T22:20:24+02:00</lastmod>
+    <lastmod>2019-10-23T09:26:27+02:00</lastmod>
   </url>
   
   <url>
@@ -79,7 +79,7 @@
   
   <url>
     <loc>https://palikar.github.io/posts/</loc>
-    <lastmod>2019-10-21T22:18:41+02:00</lastmod>
+    <lastmod>2019-10-23T09:26:27+02:00</lastmod>
   </url>
   
   <url>
@@ -94,7 +94,7 @@
   
   <url>
     <loc>https://palikar.github.io/</loc>
-    <lastmod>2019-10-21T22:20:24+02:00</lastmod>
+    <lastmod>2019-10-23T09:26:27+02:00</lastmod>
   </url>
   
   <url>
@@ -103,13 +103,28 @@
   </url>
   
   <url>
+    <loc>https://palikar.github.io/portfolio/code_manager/</loc>
+    <lastmod>2019-05-11T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/portfolio/mflower/</loc>
+    <lastmod>2019-05-11T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://palikar.github.io/categories/other/</loc>
     <lastmod>2019-10-21T22:18:09+02:00</lastmod>
   </url>
   
   <url>
+    <loc>https://palikar.github.io/portfolio/</loc>
+    <lastmod>2019-05-11T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://palikar.github.io/categories/c&#43;&#43;/</loc>
-    <lastmod>2019-10-21T22:20:24+02:00</lastmod>
+    <lastmod>2019-10-23T09:26:27+02:00</lastmod>
   </url>
   
   <url>
@@ -125,21 +140,6 @@
   <url>
     <loc>https://palikar.github.io/categories/github/</loc>
     <lastmod>2019-10-12T00:52:35+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/portfolio/code_manager/</loc>
-    <lastmod>2018-06-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/portfolio/dera/</loc>
-    <lastmod>2018-06-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/portfolio/</loc>
-    <lastmod>2018-06-21T00:00:00+00:00</lastmod>
   </url>
   
 </urlset>
