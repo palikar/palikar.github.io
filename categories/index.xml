@@ -6,10 +6,19 @@
     <description>Recent content in Categories on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>c&#43;&#43;</title>
+      <link>https://palikar.github.io/categories/c&#43;&#43;/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/categories/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>machine-learning</title>
@@ -26,15 +35,6 @@
       <pubDate>Sat, 11 May 2019 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/categories/other/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>c&#43;&#43;</title>
-      <link>https://palikar.github.io/categories/c&#43;&#43;/</link>
-      <pubDate>Wed, 10 Apr 2019 00:00:00 +0200</pubDate>
-      
-      <guid>https://palikar.github.io/categories/c&#43;&#43;/</guid>
       <description></description>
     </item>
     

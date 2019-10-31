@@ -6,7 +6,7 @@
     <description>Recent content on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +19,15 @@
       <guid>https://palikar.github.io/about/</guid>
       <description>Formal CV A PDF of my real resume.
 My assigned character I was born a human and I&amp;rsquo;m supposed to live on the planet till my body gives up and it&amp;rsquo;s no longer suitable for sustaining the social construct that one would call &amp;ldquo;life&amp;rdquo;&amp;hellip; or at least I am said so. I reserve my right to have speculations about this whole &amp;ldquo;dying&amp;rdquo;-thing. I popped into existence in the almost ex-soviet republic of Bulgaria where I&amp;rsquo;ve spent a good portion of my development into a fully-fledged and normally functioning carbon unit.</description>
+    </item>
+    
+    <item>
+      <title>Multidimensional Array size deduction in C&#43;&#43;</title>
+      <link>https://palikar.github.io/posts/array_dim_deduction/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/posts/array_dim_deduction/</guid>
+      <description>Abstract Recently I encountered a small particularity of the C++ standard that I&amp;rsquo;ve known about previously but didn&amp;rsquo;t really care about up this point. The whole thing has to do with template type parameters. It turns out that C++ can&amp;rsquo;t deduce the type of a braced initializer. This has some funny consequences when you are designing a function that can take &amp;ldquo;everything&amp;rdquo; including arrays and you want to be able to call the function as function({1,3,4,5}).</description>
     </item>
     
     <item>

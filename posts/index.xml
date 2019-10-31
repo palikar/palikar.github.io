@@ -6,10 +6,19 @@
     <description>Recent content in Posts on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Multidimensional Array size deduction in C&#43;&#43;</title>
+      <link>https://palikar.github.io/posts/array_dim_deduction/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/posts/array_dim_deduction/</guid>
+      <description>Abstract Recently I encountered a small particularity of the C++ standard that I&amp;rsquo;ve known about previously but didn&amp;rsquo;t really care about up this point. The whole thing has to do with template type parameters. It turns out that C++ can&amp;rsquo;t deduce the type of a braced initializer. This has some funny consequences when you are designing a function that can take &amp;ldquo;everything&amp;rdquo; including arrays and you want to be able to call the function as function({1,3,4,5}).</description>
+    </item>
     
     <item>
       <title>Train-Validation-Test split in PyTorch</title>
