@@ -6,7 +6,7 @@
     <description>Recent content on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 16 Nov 2019 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +19,24 @@
       <guid>https://palikar.github.io/about/</guid>
       <description>Formal CV A PDF of my real resume.
 My assigned character I was born a human and I&amp;rsquo;m supposed to live on the planet till my body gives up and it&amp;rsquo;s no longer suitable for sustaining the social construct that one would call &amp;ldquo;life&amp;rdquo;&amp;hellip; or at least I am said so. I reserve my right to have speculations about this whole &amp;ldquo;dying&amp;rdquo;-thing. I popped into existence in the almost ex-soviet republic of Bulgaria where I&amp;rsquo;ve spent a good portion of my development into a fully-fledged and normally functioning carbon unit.</description>
+    </item>
+    
+    <item>
+      <title>Code Manager [PART 1]</title>
+      <link>https://palikar.github.io/projects/code_manager/</link>
+      <pubDate>Sat, 16 Nov 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/projects/code_manager/</guid>
+      <description>Abstract This is my personal tool now for managing my GitHub repositories, some system software that I use and pretty much everything that can be downloaded, compiled locally and then installed on a Debian based Linux system. Through this utility one can quickly download and install random things from all over the internet. I&amp;rsquo;ve always wanted some small program that would allow me to quickly bring my GitHub repositories on my local machine so I end it up writing this in my spare time.</description>
+    </item>
+    
+    <item>
+      <title>Compile-Time Graph [PART 1]</title>
+      <link>https://palikar.github.io/projects/ctgraph/</link>
+      <pubDate>Sat, 16 Nov 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/projects/ctgraph/</guid>
+      <description>Abstract CTGraph is a small C++17 project that implements a graph structure that can be used entirely at compile time. It started as just an experiment. I wanted to see just how much computation I can perform at compile time. I was heavily inspired by part of cpp_box. In there Jason Turner has managed to implement a compile-time finite state machine. I thought that Graphs are not too far off of a finite state machine so I decided to give the idea a try.</description>
     </item>
     
     <item>
@@ -132,16 +150,16 @@ Abstract Basic pandas is a Python package providing fast, flexible, and expressi
       <pubDate>Sat, 11 May 2019 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/portfolio/code_manager/</guid>
-      <description>Pellentesque dapibus suscipit ligula. Donec posuere augue in quam. Etiam vel tortor sodales tellus ultricies commodo. Suspendisse potenti. Aenean in sem ac leo mollis blandit. Donec neque quam, dignissim in, mollis nec, sagittis eu, wisi. Phasellus lacus. Etiam laoreet quam sed arcu. Phasellus at dui in ligula mollis ultricies. Integer placerat tristique nisl. Praesent augue. Fusce commodo. Vestibulum convallis, lorem a tempus semper, dui dui euismod elit, vitae placerat urna tortor vitae lacus.</description>
+      <description>A command line utility that helps me manage my git repositories as well as other programming packages.</description>
     </item>
     
     <item>
-      <title>MFlower</title>
-      <link>https://palikar.github.io/portfolio/mflower/</link>
+      <title>CTGraph</title>
+      <link>https://palikar.github.io/portfolio/ctgraph/</link>
       <pubDate>Sat, 11 May 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://palikar.github.io/portfolio/mflower/</guid>
-      <description>Written over several months. With a lot of blood, sweat, and tears.</description>
+      <guid>https://palikar.github.io/portfolio/ctgraph/</guid>
+      <description>Single header library for doing fancy things at compile-time.</description>
     </item>
     
   </channel>

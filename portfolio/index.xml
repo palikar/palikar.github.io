@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Stanislav Arnaudov on SA</title>
+    <title>Projects on SA</title>
     <link>https://palikar.github.io/portfolio/</link>
-    <description>Recent content in Stanislav Arnaudov on SA</description>
+    <description>Recent content in Projects on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 May 2019 00:00:00 +0200</lastBuildDate>
@@ -17,16 +17,16 @@
       <pubDate>Sat, 11 May 2019 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/portfolio/code_manager/</guid>
-      <description>Pellentesque dapibus suscipit ligula. Donec posuere augue in quam. Etiam vel tortor sodales tellus ultricies commodo. Suspendisse potenti. Aenean in sem ac leo mollis blandit. Donec neque quam, dignissim in, mollis nec, sagittis eu, wisi. Phasellus lacus. Etiam laoreet quam sed arcu. Phasellus at dui in ligula mollis ultricies. Integer placerat tristique nisl. Praesent augue. Fusce commodo. Vestibulum convallis, lorem a tempus semper, dui dui euismod elit, vitae placerat urna tortor vitae lacus.</description>
+      <description>A command line utility that helps me manage my git repositories as well as other programming packages.</description>
     </item>
     
     <item>
-      <title>MFlower</title>
-      <link>https://palikar.github.io/portfolio/mflower/</link>
+      <title>CTGraph</title>
+      <link>https://palikar.github.io/portfolio/ctgraph/</link>
       <pubDate>Sat, 11 May 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://palikar.github.io/portfolio/mflower/</guid>
-      <description>Written over several months. With a lot of blood, sweat, and tears.</description>
+      <guid>https://palikar.github.io/portfolio/ctgraph/</guid>
+      <description>Single header library for doing fancy things at compile-time.</description>
     </item>
     
   </channel>

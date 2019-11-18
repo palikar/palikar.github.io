@@ -6,10 +6,28 @@
     <description>Recent content in c&#43;&#43; on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 16 Nov 2019 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/categories/c++/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Code Manager [PART 1]</title>
+      <link>https://palikar.github.io/projects/code_manager/</link>
+      <pubDate>Sat, 16 Nov 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/projects/code_manager/</guid>
+      <description>Abstract This is my personal tool now for managing my GitHub repositories, some system software that I use and pretty much everything that can be downloaded, compiled locally and then installed on a Debian based Linux system. Through this utility one can quickly download and install random things from all over the internet. I&amp;rsquo;ve always wanted some small program that would allow me to quickly bring my GitHub repositories on my local machine so I end it up writing this in my spare time.</description>
+    </item>
+    
+    <item>
+      <title>Compile-Time Graph [PART 1]</title>
+      <link>https://palikar.github.io/projects/ctgraph/</link>
+      <pubDate>Sat, 16 Nov 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/projects/ctgraph/</guid>
+      <description>Abstract CTGraph is a small C++17 project that implements a graph structure that can be used entirely at compile time. It started as just an experiment. I wanted to see just how much computation I can perform at compile time. I was heavily inspired by part of cpp_box. In there Jason Turner has managed to implement a compile-time finite state machine. I thought that Graphs are not too far off of a finite state machine so I decided to give the idea a try.</description>
+    </item>
     
     <item>
       <title>Multidimensional Array size deduction in C&#43;&#43;</title>

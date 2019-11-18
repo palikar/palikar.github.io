@@ -8,6 +8,16 @@
   </url>
   
   <url>
+    <loc>https://palikar.github.io/projects/code_manager/</loc>
+    <lastmod>2019-11-18T13:32:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/projects/ctgraph/</loc>
+    <lastmod>2019-11-17T21:47:58+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://palikar.github.io/posts/array_dim_deduction/</loc>
     <lastmod>2019-10-31T12:08:47+01:00</lastmod>
   </url>
@@ -63,17 +73,27 @@
   </url>
   
   <url>
-    <loc>https://palikar.github.io/tags/c&#43;&#43;/</loc>
-    <lastmod>2019-10-31T12:08:47+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://palikar.github.io/categories/c&#43;&#43;/</loc>
-    <lastmod>2019-10-31T12:08:47+01:00</lastmod>
+    <lastmod>2019-11-18T13:32:10+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/categories/</loc>
+    <lastmod>2019-11-18T13:32:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/projects/</loc>
+    <lastmod>2019-11-18T13:32:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/</loc>
+    <lastmod>2019-11-18T13:32:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/tags/c&#43;&#43;/</loc>
     <lastmod>2019-10-31T12:08:47+01:00</lastmod>
   </url>
   
@@ -84,11 +104,6 @@
   
   <url>
     <loc>https://palikar.github.io/tags/programming/</loc>
-    <lastmod>2019-10-31T12:08:47+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/</loc>
     <lastmod>2019-10-31T12:08:47+01:00</lastmod>
   </url>
   
@@ -118,7 +133,7 @@
   </url>
   
   <url>
-    <loc>https://palikar.github.io/portfolio/mflower/</loc>
+    <loc>https://palikar.github.io/portfolio/ctgraph/</loc>
     <lastmod>2019-05-11T00:00:00+02:00</lastmod>
   </url>
   
@@ -130,11 +145,6 @@
   <url>
     <loc>https://palikar.github.io/portfolio/</loc>
     <lastmod>2019-05-11T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/projects/</loc>
-    <lastmod>2019-10-21T22:20:24+02:00</lastmod>
   </url>
   
   <url>
