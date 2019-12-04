@@ -6,7 +6,7 @@
     <description>Recent content on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Nov 2019 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 05 Dec 2019 00:12:08 +0100</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +19,15 @@
       <guid>https://palikar.github.io/about/</guid>
       <description>Formal CV A PDF of my real resume.
 My assigned character I was born a human and I&amp;rsquo;m supposed to live on the planet till my body gives up and it&amp;rsquo;s no longer suitable for sustaining the social construct that one would call &amp;ldquo;life&amp;rdquo;&amp;hellip; or at least I am said so. I reserve my right to have speculations about this whole &amp;ldquo;dying&amp;rdquo;-thing. I popped into existence in the almost ex-soviet republic of Bulgaria where I&amp;rsquo;ve spent a good portion of my development into a fully-fledged and normally functioning carbon unit.</description>
+    </item>
+    
+    <item>
+      <title>Generic Execution Around Pointer</title>
+      <link>https://palikar.github.io/posts/generic_execution_around_pointer/</link>
+      <pubDate>Thu, 05 Dec 2019 00:12:08 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/posts/generic_execution_around_pointer/</guid>
+      <description>Abstract I recently found out what the Execute-Around_Pointer idiom in C++ is. What it does is track access to a specific object. For example, when you want to observe how certain properties of an object change on each method call, you would employ the use of this idiom. Think of it like wrapping each method call for an object with additional function calls. This, for empale, is ugly code:</description>
     </item>
     
     <item>

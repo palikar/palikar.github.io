@@ -8,8 +8,13 @@
   </url>
   
   <url>
+    <loc>https://palikar.github.io/posts/generic_execution_around_pointer/</loc>
+    <lastmod>2019-12-05T00:12:08+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://palikar.github.io/projects/code_manager/</loc>
-    <lastmod>2019-11-18T13:32:10+01:00</lastmod>
+    <lastmod>2019-11-18T13:32:41+01:00</lastmod>
   </url>
   
   <url>
@@ -73,33 +78,43 @@
   </url>
   
   <url>
+    <loc>https://palikar.github.io/tags/c&#43;&#43;/</loc>
+    <lastmod>2019-12-05T00:12:08+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://palikar.github.io/categories/c&#43;&#43;/</loc>
-    <lastmod>2019-11-18T13:32:10+01:00</lastmod>
+    <lastmod>2019-12-05T00:12:08+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/categories/</loc>
-    <lastmod>2019-11-18T13:32:10+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/projects/</loc>
-    <lastmod>2019-11-18T13:32:10+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/</loc>
-    <lastmod>2019-11-18T13:32:10+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/tags/c&#43;&#43;/</loc>
-    <lastmod>2019-10-31T12:08:47+01:00</lastmod>
+    <lastmod>2019-12-05T00:12:08+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://palikar.github.io/posts/</loc>
-    <lastmod>2019-10-31T12:08:47+01:00</lastmod>
+    <lastmod>2019-12-05T00:12:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/</loc>
+    <lastmod>2019-12-05T00:12:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/tags/</loc>
+    <lastmod>2019-12-05T00:12:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/tags/templates/</loc>
+    <lastmod>2019-12-05T00:12:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://palikar.github.io/projects/</loc>
+    <lastmod>2019-11-18T13:32:41+01:00</lastmod>
   </url>
   
   <url>
@@ -108,17 +123,12 @@
   </url>
   
   <url>
-    <loc>https://palikar.github.io/tags/</loc>
-    <lastmod>2019-10-31T12:08:47+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://palikar.github.io/categories/machine-learning/</loc>
+    <loc>https://palikar.github.io/tags/machine-learning/</loc>
     <lastmod>2019-10-31T12:01:23+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://palikar.github.io/tags/machine-learning/</loc>
+    <loc>https://palikar.github.io/categories/machine-learning/</loc>
     <lastmod>2019-10-31T12:01:23+01:00</lastmod>
   </url>
   
