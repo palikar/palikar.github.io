@@ -17,19 +17,19 @@
     
     
 
-<title>Code manager • SA</title>
+<title>Alisp • SA</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Code manager"/>
-<meta name="twitter:description" content="Python appliation for managing and installing code packages."/>
+<meta name="twitter:title" content="Alisp"/>
+<meta name="twitter:description" content="Interpreted Lisp-language written in C&#43;&#43;."/>
 
-<meta property="og:title" content="Code manager" />
-<meta property="og:description" content="Python appliation for managing and installing code packages." />
+<meta property="og:title" content="Alisp" />
+<meta property="og:description" content="Interpreted Lisp-language written in C&#43;&#43;." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://palikar.github.io/portfolio/code_manager/" />
-<meta property="article:published_time" content="2019-05-11T00:00:00+02:00" />
-<meta property="article:modified_time" content="2019-05-11T00:00:00+02:00" />
+<meta property="og:url" content="https://palikar.github.io/projects/alisp/" />
+<meta property="article:published_time" content="2020-02-20T00:00:00+01:00" />
+<meta property="article:modified_time" content="2020-02-21T00:38:53+01:00" />
 
 
     
@@ -193,20 +193,30 @@
     
 <article>
   <header>
-    <h1>Code manager</h1>
+    <h1>Alisp</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> May 11, 2019
+      <i class="fas fa-calendar-alt"></i> Feb 20, 2020
     
     
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/c&#43;&#43;">C&#43;&#43;</a>
+              
+          
+      
     
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 4 min read
 </div>
 
 
@@ -224,23 +234,108 @@
   
   
   <div class="post">
-    <p>A command line utility that helps me manage my git repositories as well as other programming packages.</p>
+    
+
+<figure>
+    <img src="/ox-hugo/alisp.png"/> 
+</figure>
+
+
+<h2 id="abstract">Abstract</h2>
+
+<p>It&rsquo;s has been a long standing idea of mine to just sit down and write a language. Not a complicated one, but also not completely useless one. Alisp is the crystallization of this idea into something concrete. It is a interpreted language based on <a href="https://www.gnu.org/software/emacs/manual/html%5Fnode/eintr/">Emacs-Lisp</a> (elisp). I&rsquo;ve borrowed a lot concepts from there and syntax-wise, Alisp closely follows elisp. By now the core runtime of the language is pretty feature complete and it is possible to run simple to moderately complicated programs. Being a lisp dialect, the overall feeling of the language is functional. The syntax is &ldquo;minimal&rdquo; and once the basic concepts of s-expression evaluation are understood, it is easy to become proficient in the language.</p>
+
+<p><br /></p>
+
+<p>The project is fully open source and any one can study the code of the interpreter. When it comes to the design, I&rsquo;ve tried to keep it as simple as possible while still implementing non-trivial features that make the working with Alisp more pleasant.</p>
+
+<h2 id="design-goals">Design Goals</h2>
+
+<p>At the beginning, I didn&rsquo;t have concrete plan but as the project grew in scope, I had to come up with several general guidelines. I now have several considerations while continuing with the development. These are:</p>
+
+<ul>
+<li>Easy to add functionality &ndash; it should be relatively easy to extend the language through modules that can either be written in C++ or in Alisp itself.</li>
+<li>Access to low level memory &ndash; even though this is an interpreted language, the user should have the ability to operate on some raw memory, read and write to it, and use OS functions to manipulate it.</li>
+<li>Automatic memory management &ndash; the user should not be worrying about when are objects destroyed and deallocated from memory.</li>
+<li>Simple syntax &ndash; adding things to the syntax is not absolutely unwanted but I prefer it to work around the current syntax and do cool stuff with it, instead of trying to bodge new things.</li>
+</ul>
+
+<h2 id="features-so-far">Features so far</h2>
+
+<p>By now, I&rsquo;ve put quite the work into the language and the utilities around it, so there are lots of things that ALisp can offer. Those include but are not limited to:</p>
+
+<ul>
+<li>Language constructs - control flow, loops, variable and function declarations, local variables, lambdas, macros, math functions, etc.</li>
+<li>Importing &ndash; files are considered modules that can be imported in other files.</li>
+<li>Referring symbols in other modules</li>
+<li>REPL &ndash; Read–eval–print loop, much like the python console.</li>
+<li>Stack tracing &ndash; Printing the current stack on error.</li>
+<li>Working with lists</li>
+<li>Signal raising and handling &ndash; &ldquo;Signals&rdquo; are kind of like the exceptions in Alisp.</li>
+<li>Properties &ndash; each object has it&rsquo;s own set of properties that can store arbitrary information.</li>
+<li>Controlling certain interpreter behavior through environment variables.</li>
+<li>Several simple utility algorithms for working with lists.</li>
+<li>Files &ndash; opening, reading from, writing to and closing file handles.</li>
+<li>Memory buffers &ndash; ability to allocate arbitrary sized buffer of bytes in memory.</li>
+<li>Streams &ndash; a layer of abstraction that enables unified reading and writing form &ldquo;stuff&rdquo;</li>
+<li>Dynamically linked modules &ndash; modules can be written in C++ and linked at runtime.</li>
+<li>Prelude script &ndash; each time the interpreter is started, a script that defines several useful macros and functions is executed</li>
+</ul>
+
+<h2 id="documentation">Documentation</h2>
+
+<p>The documentation is not at all complete but there is enough to get you started <a href="https://alisp.readthedocs.io/en/latest/">here</a>. Also, check out the <a href="https://github.com/palikar/alisp">Github repository</a>. The code has its own documentation.</p>
+
+<h2 id="examples">Examples</h2>
+
+<p>Here I&rsquo;ll present several simple programs. The point is just to illustrate the syntax and prove that that there is, in fact, something that can be done with Alisp.^</p>
+
+<h3 id="hello-world">Hello world</h3>
+
+<pre><code class="language-lisp">(println &quot;Hello World form Alisp!&quot;)
+</code></pre>
+
+<h3 id="defining-variables-and-functions">Defining variables and functions</h3>
+
+<pre><code class="language-lisp">(defvar global-var-1 &quot;string&quot;)
+(defvar global-var-2 42)
+
+(defun fun (x)
+  (let ((local-var-1 &quot;val-1&quot;)
+      (local-var-2  43))
+  (println &quot;x: &quot; x)
+  (println global-var-1 &quot; -&gt; &quot; local-var-1)
+  (println (+ global-var-2 local-var-2))))
+
+(fun &quot;x&quot;)
+(fun 42)
+
+</code></pre>
+
+<h3 id="flow-control">Flow control</h3>
+
+<pre><code class="language-lisp">(defvar cnt 1)
+
+(while (&lt; cnt 100)
+  (println &quot;i: &quot; cnt)
+  (setq cnt (+ cnt 1)))
+
+(if (== cnt 100)
+    (println &quot;Count is 100&quot;)
+  (println &quot;Count is not 100!&quot;))
+
+</code></pre>
 
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/portfolio/ctgraph/" class="navigation-prev">
+    <a href="/projects/code_manager/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">CTGraph</span>
+      <span class="navigation-tittle">Code Manager [PART 1]</span>
     </a>
     
-    
-    <a href="/portfolio/alisp/" class="navigation-next">
-      <span class="navigation-tittle">Alisp</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
     
 </div>
 

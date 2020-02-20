@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SA</title>
@@ -6,7 +6,7 @@
     <description>Recent content on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Dec 2019 00:12:08 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 20 Feb 2020 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +19,15 @@
       <guid>https://palikar.github.io/about/</guid>
       <description>Formal CV A PDF of my real resume.
 My assigned character I was born a human and I&amp;rsquo;m supposed to live on the planet till my body gives up and it&amp;rsquo;s no longer suitable for sustaining the social construct that one would call &amp;ldquo;life&amp;rdquo;&amp;hellip; or at least I am said so. I reserve my right to have speculations about this whole &amp;ldquo;dying&amp;rdquo;-thing. I popped into existence in the almost ex-soviet republic of Bulgaria where I&amp;rsquo;ve spent a good portion of my development into a fully-fledged and normally functioning carbon unit.</description>
+    </item>
+    
+    <item>
+      <title>Alisp</title>
+      <link>https://palikar.github.io/projects/alisp/</link>
+      <pubDate>Thu, 20 Feb 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/projects/alisp/</guid>
+      <description>Abstract It&amp;rsquo;s has been a long standing idea of mine to just sit down and write a language. Not a complicated one, but also not completely useless one. Alisp is the crystallization of this idea into something concrete. It is a interpreted language based on Emacs-Lisp (elisp). I&amp;rsquo;ve borrowed a lot concepts from there and syntax-wise, Alisp closely follows elisp. By now the core runtime of the language is pretty feature complete and it is possible to run simple to moderately complicated programs.</description>
     </item>
     
     <item>
@@ -151,6 +160,15 @@ Abstract Basic pandas is a Python package providing fast, flexible, and expressi
       
       <guid>https://palikar.github.io/posts/github_history_repair/</guid>
       <description>Abstract You know that Contributions panel on your Github profile page. Let&amp;rsquo;s face it, developers these days take much pride when they can show their consistent work and progress of their own/forked repositories&amp;hellip; even when some of their commits are nothing more than an implementation of a single function. Or of course, it may be just me with that pride 😒. Said panel is a clear indication to your future employee or members of your &amp;ldquo;coding community&amp;rdquo; that you are pretty much a big deal with a good work ethic.</description>
+    </item>
+    
+    <item>
+      <title>Alisp</title>
+      <link>https://palikar.github.io/portfolio/alisp/</link>
+      <pubDate>Thu, 20 Feb 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/portfolio/alisp/</guid>
+      <description>Alisp is a general purpose lisp based language written in C++ over the course of several months. It comes with an interpreter, REPL environment, and several modules that comprise the standard library of the language.</description>
     </item>
     
     <item>

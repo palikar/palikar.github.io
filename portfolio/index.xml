@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on SA</title>
@@ -6,10 +6,19 @@
     <description>Recent content in Projects on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 May 2019 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 20 Feb 2020 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Alisp</title>
+      <link>https://palikar.github.io/portfolio/alisp/</link>
+      <pubDate>Thu, 20 Feb 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/portfolio/alisp/</guid>
+      <description>Alisp is a general purpose lisp based language written in C++ over the course of several months. It comes with an interpreter, REPL environment, and several modules that comprise the standard library of the language.</description>
+    </item>
     
     <item>
       <title>Code manager</title>

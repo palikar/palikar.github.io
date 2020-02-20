@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on SA</title>
@@ -6,7 +6,7 @@
     <description>Recent content in Categories on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Dec 2019 00:12:08 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 20 Feb 2020 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>c&#43;&#43;</title>
       <link>https://palikar.github.io/categories/c&#43;&#43;/</link>
-      <pubDate>Thu, 05 Dec 2019 00:12:08 +0100</pubDate>
+      <pubDate>Thu, 20 Feb 2020 00:00:00 +0100</pubDate>
       
       <guid>https://palikar.github.io/categories/c&#43;&#43;/</guid>
       <description></description>
