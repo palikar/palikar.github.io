@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    
+<html lang="en-us" prefix="og: http://ogp.me/ns#">
+  
     
 
 
@@ -13,9 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="generator" content="Hugo 0.59.1" />
 
-    
-    
-    
+
+
+
 
 <title>Generic Execution Around Pointer • SA</title>
 
@@ -29,8 +29,63 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://palikar.github.io/posts/generic_execution_around_pointer/" />
 <meta property="article:published_time" content="2019-12-05T00:12:08+01:00" />
-<meta property="article:modified_time" content="2019-12-05T00:12:08+01:00" />
+<meta property="article:modified_time" content="2020-02-21T00:41:27+01:00" />
 
+
+<title itemprop="name">Generic Execution Around Pointer | SA</title>
+<meta property="og:title" content="Generic Execution Around Pointer | SA" />
+<meta name="twitter:title" content="Generic Execution Around Pointer | SA" />
+<meta itemprop="name" content="Generic Execution Around Pointer | SA" />
+<meta name="application-name" content="Generic Execution Around Pointer | SA" />
+<meta property="og:site_name" content="" />
+
+<meta name="description" content="A set of generic classes for constructing the execution-around-pointer idiom" />
+<meta itemprop="description" content="A set of generic classes for constructing the execution-around-pointer idiom" />
+<meta property="og:description" content="A set of generic classes for constructing the execution-around-pointer idiom" />
+<meta name="twitter:description" content="A set of generic classes for constructing the execution-around-pointer idiom" />
+
+<base href="https://palikar.github.io/posts/generic_execution_around_pointer/">
+
+<link rel="canonical" href="https://palikar.github.io/posts/generic_execution_around_pointer/" itemprop="url" /> 
+<meta name="url" content="https://palikar.github.io/posts/generic_execution_around_pointer/" />
+<meta name="twitter:url" content="https://palikar.github.io/posts/generic_execution_around_pointer/" /> 
+<meta property="og:url" content="https://palikar.github.io/posts/generic_execution_around_pointer/" />
+<meta property="og:locale" content="en">
+<meta name="language" content="">
+
+
+<meta itemprop="image" content="https://palikar.github.io/" />
+<meta property="og:image" content="https://palikar.github.io/" />
+<meta name="twitter:image" content="https://palikar.github.io/" />
+<meta name="twitter:image:src" content="https://palikar.github.io/" /> 
+
+<meta property="og:updated_time" content=2020-02-21T00:41:27&#43;0100 />
+Sitemap & RSS Feed Tags
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://palikar.github.io/sitemap.xml" /> 
+
+
+
+
+
+<link rel="manifest" href="https://palikar.github.io/manifest.json" />
+
+
+<meta name="theme-color" content="#141414" /> 
+<meta name="msapplication-TileColor" content="#141414" />
+
+<meta name="keywords" content="" />
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+<meta name="HandheldFriendly" content="True" /> 
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="apple-mobile-web-app-title" content="" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-touch-fullscreen" content="yes" />
+
+<meta name="twitter:site" content="">
+<meta name="twitter:creator" content="" />
 
     
 
@@ -44,15 +99,15 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.b3b0c12be46e581537e5d3d1c4ca1fabaab21c72dcc8cb639a558c4b9a6f469e.css" integrity="sha256-s7DBK&#43;RuWBU35dPRxMofq6qyHHLcyMtjmlWMS5pvRp4=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.b3b0c12be46e581537e5d3d1c4ca1fabaab21c72dcc8cb639a558c4b9a6f469e.css" integrity="sha256-s7DBK&#43;RuWBU35dPRxMofq6qyHHLcyMtjmlWMS5pvRp4=">
 
 
-<link rel="stylesheet" href="/scss/print.e5f87aa9d406c09ad1cb0284b65f42c7e53ea92dc1fe9b6ab366bba96a1344e9.css" integrity="sha256-5fh6qdQGwJrRywKEtl9Cx&#43;U&#43;qS3B/ptqs2a7qWoTROk=" media="print">
+<link rel="stylesheet" href="https://palikar.github.io/scss/print.e5f87aa9d406c09ad1cb0284b65f42c7e53ea92dc1fe9b6ab366bba96a1344e9.css" integrity="sha256-5fh6qdQGwJrRywKEtl9Cx&#43;U&#43;qS3B/ptqs2a7qWoTROk=" media="print">
 
 
 
 
-<link rel="stylesheet" href="/scss/tocbot.126e7d75240acc946d34d6ccb2982ed4c394a5fe34e73e1a2119ca951bcf119d.css" integrity="sha256-Em59dSQKzJRtNNbMspgu1MOUpf405z4aIRnKlRvPEZ0=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.126e7d75240acc946d34d6ccb2982ed4c394a5fe34e73e1a2119ca951bcf119d.css" integrity="sha256-Em59dSQKzJRtNNbMspgu1MOUpf405z4aIRnKlRvPEZ0=">
 
 
 
@@ -62,15 +117,20 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!-- Icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://palikar.github.io/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="https://palikar.github.io/favicon.png">
     
     
 
+
+    <meta charset="utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    
 </head>
 
 
-    <body class=" ">
+  <body class=" ">
     
 <div class="sidebar">
   <div class="container ">
@@ -102,7 +162,7 @@
 		 
 			 
 				<li>
-					<a href="/">
+					<a href="https://palikar.github.io/">
 						<span>Home</span>
 					</a>
 				</li>
@@ -110,7 +170,7 @@
 		 
 			 
 				<li>
-					<a href="/portfolio/">
+					<a href="https://palikar.github.io/portfolio/">
 						<span>Portfolio</span>
 					</a>
 				</li>
@@ -118,7 +178,7 @@
 		 
 			 
 				<li>
-					<a href="/about/">
+					<a href="https://palikar.github.io/about/">
 						<span>About</span>
 					</a>
 				</li>
@@ -126,7 +186,7 @@
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="https://palikar.github.io/posts/">
 						<span>Blog Posts</span>
 					</a>
 				</li>
@@ -134,7 +194,7 @@
 		 
 			 
 				<li>
-					<a href="/projects/">
+					<a href="https://palikar.github.io/projects/">
 						<span>Projects</span>
 					</a>
 				</li>
@@ -142,7 +202,7 @@
 		 
 			 
 				<li>
-					<a href="/categories/">
+					<a href="https://palikar.github.io/categories/">
 						<span>Categories</span>
 					</a>
 				</li>
@@ -188,8 +248,8 @@
   </div>
 </div>
 
-        <div class="content container">
-            
+    <div class="content container">
+      
     
 <article>
   <header>
@@ -208,7 +268,7 @@
           in
           
           
-              <a class="badge badge-category" href="/categories/c&#43;&#43;">C&#43;&#43;</a>
+              <a class="badge badge-category" href="https://palikar.github.io/categories/c&#43;&#43;">C&#43;&#43;</a>
               
           
       
@@ -220,10 +280,10 @@
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/c&#43;&#43;">c&#43;&#43;</a>
+          <a class="badge badge-tag" href="https://palikar.github.io/tags/c&#43;&#43;">c&#43;&#43;</a>
            
       
-          <a class="badge badge-tag" href="/tags/templates">templates</a>
+          <a class="badge badge-tag" href="https://palikar.github.io/tags/templates">templates</a>
           
       
     
@@ -231,6 +291,9 @@
     <br/>
     <i class="fas fa-clock"></i> 4 min read
 </div>
+
+
+
 
 
   </header>
@@ -390,7 +453,7 @@ using VectorSizeTracker = Tracked&lt;std::vector&lt;int&gt;, SizeTracker&gt;;
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/array_dim_deduction/" class="navigation-prev">
+    <a href="https://palikar.github.io/posts/array_dim_deduction/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
       <span class="navigation-tittle">Multidimensional Array size deduction in C&#43;&#43;</span>
     </a>
@@ -437,8 +500,8 @@ using VectorSizeTracker = Tracked&lt;std::vector&lt;int&gt;, SizeTracker&gt;;
 </article>
 
 
-        </div>
-        
+    </div>
+    
     
 
 <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
@@ -489,5 +552,5 @@ using VectorSizeTracker = Tracked&lt;std::vector&lt;int&gt;, SizeTracker&gt;;
 
 
 
-    </body>
+  </body>
 </html>
