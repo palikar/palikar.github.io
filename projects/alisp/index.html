@@ -11,32 +11,32 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.70.0" />
 
 
 
 
 
-<title>Alisp • SA</title>
+<title>Alisp [PART 1] • SA</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Alisp"/>
+<meta name="twitter:title" content="Alisp [PART 1]"/>
 <meta name="twitter:description" content="Interpreted Lisp-language written in C&#43;&#43;."/>
 
-<meta property="og:title" content="Alisp" />
+<meta property="og:title" content="Alisp [PART 1]" />
 <meta property="og:description" content="Interpreted Lisp-language written in C&#43;&#43;." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://palikar.github.io/projects/alisp/" />
 <meta property="article:published_time" content="2020-02-20T00:00:00+01:00" />
-<meta property="article:modified_time" content="2020-02-21T00:41:27+01:00" />
+<meta property="article:modified_time" content="2020-05-29T01:52:19+02:00" />
 
 
-<title itemprop="name">Alisp | SA</title>
-<meta property="og:title" content="Alisp | SA" />
-<meta name="twitter:title" content="Alisp | SA" />
-<meta itemprop="name" content="Alisp | SA" />
-<meta name="application-name" content="Alisp | SA" />
+<title itemprop="name">Alisp [PART 1] | SA</title>
+<meta property="og:title" content="Alisp [PART 1] | SA" />
+<meta name="twitter:title" content="Alisp [PART 1] | SA" />
+<meta itemprop="name" content="Alisp [PART 1] | SA" />
+<meta name="application-name" content="Alisp [PART 1] | SA" />
 <meta property="og:site_name" content="" />
 
 <meta name="description" content="Interpreted Lisp-language written in C&#43;&#43;." />
@@ -59,7 +59,7 @@
 <meta name="twitter:image" content="https://palikar.github.io/" />
 <meta name="twitter:image:src" content="https://palikar.github.io/" /> 
 
-<meta property="og:updated_time" content=2020-02-21T00:41:27&#43;0100 />
+<meta property="og:updated_time" content=2020-05-29T01:52:19&#43;0200 />
 Sitemap & RSS Feed Tags
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://palikar.github.io/sitemap.xml" /> 
 
@@ -103,7 +103,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.b3b0c12be46e581537e5d3d1c4ca1fabaab21c72dcc8cb639a558c4b9a6f469e.css" integrity="sha256-s7DBK&#43;RuWBU35dPRxMofq6qyHHLcyMtjmlWMS5pvRp4=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.3c75565bab3232e478f88f766c658c19f0636d9471239f83499bd6ceac04f66c.css" integrity="sha256-PHVWW6syMuR4&#43;I92bGWMGfBjbZRxI5&#43;DSZvWzqwE9mw=">
 
 
 <link rel="stylesheet" href="https://palikar.github.io/scss/print.e5f87aa9d406c09ad1cb0284b65f42c7e53ea92dc1fe9b6ab366bba96a1344e9.css" integrity="sha256-5fh6qdQGwJrRywKEtl9Cx&#43;U&#43;qS3B/ptqs2a7qWoTROk=" media="print">
@@ -111,7 +111,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.126e7d75240acc946d34d6ccb2982ed4c394a5fe34e73e1a2119ca951bcf119d.css" integrity="sha256-Em59dSQKzJRtNNbMspgu1MOUpf405z4aIRnKlRvPEZ0=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
 
 
 
@@ -268,7 +268,7 @@ Sitemap & RSS Feed Tags
     
 <article>
   <header>
-    <h1>Alisp</h1>
+    <h1>Alisp [PART 1]</h1>
     
     
 <div class="post__meta">
@@ -282,6 +282,9 @@ Sitemap & RSS Feed Tags
       
           in
           
+          
+              <a class="badge badge-category" href="https://palikar.github.io/categories/alisp">ALISP</a>
+              •
           
               <a class="badge badge-category" href="https://palikar.github.io/categories/c&#43;&#43;">C&#43;&#43;</a>
               
@@ -312,36 +315,24 @@ Sitemap & RSS Feed Tags
   
   
   <div class="post">
-    
-
-<figure>
+    <figure>
     <img src="https://palikar.github.io/ox-hugo/alisp.png"/> 
 </figure>
 
-
 <h2 id="abstract">Abstract</h2>
-
 <p>It&rsquo;s has been a long standing idea of mine to just sit down and write a language. Not a complicated one, but also not completely useless one. Alisp is the crystallization of this idea into something concrete. It is a interpreted language based on <a href="https://www.gnu.org/software/emacs/manual/html%5Fnode/eintr/">Emacs-Lisp</a> (elisp). I&rsquo;ve borrowed a lot concepts from there and syntax-wise, Alisp closely follows elisp. By now the core runtime of the language is pretty feature complete and it is possible to run simple to moderately complicated programs. Being a lisp dialect, the overall feeling of the language is functional. The syntax is &ldquo;minimal&rdquo; and once the basic concepts of s-expression evaluation are understood, it is easy to become proficient in the language.</p>
-
-<p><br /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>The project is fully open source and any one can study the code of the interpreter. When it comes to the design, I&rsquo;ve tried to keep it as simple as possible while still implementing non-trivial features that make the working with Alisp more pleasant.</p>
-
 <h2 id="design-goals">Design Goals</h2>
-
 <p>At the beginning, I didn&rsquo;t have concrete plan but as the project grew in scope, I had to come up with several general guidelines. I now have several considerations while continuing with the development. These are:</p>
-
 <ul>
 <li>Easy to add functionality &ndash; it should be relatively easy to extend the language through modules that can either be written in C++ or in Alisp itself.</li>
 <li>Access to low level memory &ndash; even though this is an interpreted language, the user should have the ability to operate on some raw memory, read and write to it, and use OS functions to manipulate it.</li>
 <li>Automatic memory management &ndash; the user should not be worrying about when are objects destroyed and deallocated from memory.</li>
 <li>Simple syntax &ndash; adding things to the syntax is not absolutely unwanted but I prefer it to work around the current syntax and do cool stuff with it, instead of trying to bodge new things.</li>
 </ul>
-
 <h2 id="features-so-far">Features so far</h2>
-
 <p>By now, I&rsquo;ve put quite the work into the language and the utilities around it, so there are lots of things that ALisp can offer. Those include but are not limited to:</p>
-
 <ul>
 <li>Language constructs - control flow, loops, variable and function declarations, local variables, lambdas, macros, math functions, etc.</li>
 <li>Importing &ndash; files are considered modules that can be imported in other files.</li>
@@ -359,51 +350,38 @@ Sitemap & RSS Feed Tags
 <li>Dynamically linked modules &ndash; modules can be written in C++ and linked at runtime.</li>
 <li>Prelude script &ndash; each time the interpreter is started, a script that defines several useful macros and functions is executed</li>
 </ul>
-
 <h2 id="documentation">Documentation</h2>
-
 <p>The documentation is not at all complete but there is enough to get you started <a href="https://alisp.readthedocs.io/en/latest/">here</a>. Also, check out the <a href="https://github.com/palikar/alisp">Github repository</a>. The code has its own documentation.</p>
-
 <h2 id="examples">Examples</h2>
-
-<p>Here I&rsquo;ll present several simple programs. The point is just to illustrate the syntax and prove that that there is, in fact, something that can be done with Alisp.^</p>
-
+<p>Here I&rsquo;ll present several simple programs. The point is just to illustrate the syntax and prove that that there is, in fact, something that can be done with Alisp.</p>
 <h3 id="hello-world">Hello world</h3>
-
-<pre><code class="language-lisp">(println &quot;Hello World form Alisp!&quot;)
-</code></pre>
-
-<h3 id="defining-variables-and-functions">Defining variables and functions</h3>
-
-<pre><code class="language-lisp">(defvar global-var-1 &quot;string&quot;)
-(defvar global-var-2 42)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(println <span style="color:#e6db74">&#34;Hello World form Alisp!&#34;</span>)
+</code></pre></div><h3 id="defining-variables-and-functions">Defining variables and functions</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(defvar global-var-1 <span style="color:#e6db74">&#34;string&#34;</span>)
+(defvar global-var-2 <span style="color:#ae81ff">42</span>)
 
 (defun fun (x)
-  (let ((local-var-1 &quot;val-1&quot;)
-      (local-var-2  43))
-  (println &quot;x: &quot; x)
-  (println global-var-1 &quot; -&gt; &quot; local-var-1)
-  (println (+ global-var-2 local-var-2))))
+  (<span style="color:#66d9ef">let</span> ((local-var-1 <span style="color:#e6db74">&#34;val-1&#34;</span>)
+      (local-var-2  <span style="color:#ae81ff">43</span>))
+  (println <span style="color:#e6db74">&#34;x: &#34;</span> x)
+  (println global-var-1 <span style="color:#e6db74">&#34; -&gt; &#34;</span> local-var-1)
+  (println (<span style="color:#a6e22e">+</span> global-var-2 local-var-2))))
 
-(fun &quot;x&quot;)
-(fun 42)
+(fun <span style="color:#e6db74">&#34;x&#34;</span>)
+(fun <span style="color:#ae81ff">42</span>)
 
-</code></pre>
+</code></pre></div><h3 id="flow-control">Flow control</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(defvar cnt <span style="color:#ae81ff">1</span>)
 
-<h3 id="flow-control">Flow control</h3>
+(while (<span style="color:#a6e22e">&lt;</span> cnt <span style="color:#ae81ff">100</span>)
+  (println <span style="color:#e6db74">&#34;i: &#34;</span> cnt)
+  (<span style="color:#66d9ef">setq</span> cnt (<span style="color:#a6e22e">+</span> cnt <span style="color:#ae81ff">1</span>)))
 
-<pre><code class="language-lisp">(defvar cnt 1)
+(<span style="color:#66d9ef">if</span> (== cnt <span style="color:#ae81ff">100</span>)
+    (println <span style="color:#e6db74">&#34;Count is 100&#34;</span>)
+  (println <span style="color:#e6db74">&#34;Count is not 100!&#34;</span>))
 
-(while (&lt; cnt 100)
-  (println &quot;i: &quot; cnt)
-  (setq cnt (+ cnt 1)))
-
-(if (== cnt 100)
-    (println &quot;Count is 100&quot;)
-  (println &quot;Count is not 100!&quot;))
-
-</code></pre>
-
+</code></pre></div>
   </div>
   
 
@@ -414,6 +392,11 @@ Sitemap & RSS Feed Tags
       <span class="navigation-tittle">Code Manager [PART 1]</span>
     </a>
     
+    
+    <a href="https://palikar.github.io/projects/alisp_2/" class="navigation-next">
+      <span class="navigation-tittle">Alisp [PART 2]</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 

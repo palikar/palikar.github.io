@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>alisp on SA</title>
+    <link>https://palikar.github.io/categories/alisp/</link>
+    <description>Recent content in alisp on SA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 May 2020 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://palikar.github.io/categories/alisp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Alisp [PART 2]</title>
+      <link>https://palikar.github.io/projects/alisp_2/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/projects/alisp_2/</guid>
+      <description>Abstract In this post, I want to give a little more details on how Alisp can build from sources. ALisp is an interpreted language I&amp;rsquo;ve developed in C++. Over the last half a year, the project has become quite big (currently around 24K LOC) and thus the build process is so trivial as in the beginning. In the process of development, I&amp;rsquo;ve added numerous options for how the code can be compiled and all of those can be confusing at times.</description>
+    </item>
+    
+    <item>
+      <title>Alisp [PART 1]</title>
+      <link>https://palikar.github.io/projects/alisp/</link>
+      <pubDate>Thu, 20 Feb 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://palikar.github.io/projects/alisp/</guid>
+      <description>Abstract It&amp;rsquo;s has been a long standing idea of mine to just sit down and write a language. Not a complicated one, but also not completely useless one. Alisp is the crystallization of this idea into something concrete. It is a interpreted language based on Emacs-Lisp (elisp). I&amp;rsquo;ve borrowed a lot concepts from there and syntax-wise, Alisp closely follows elisp. By now the core runtime of the language is pretty feature complete and it is possible to run simple to moderately complicated programs.</description>
+    </item>
+    
+  </channel>
+</rss>

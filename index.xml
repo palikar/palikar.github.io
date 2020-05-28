@@ -6,7 +6,7 @@
     <description>Recent content on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Feb 2020 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 15 Jun 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -22,7 +22,16 @@ My assigned character I was born a human and I&amp;rsquo;m supposed to live on t
     </item>
     
     <item>
-      <title>Alisp</title>
+      <title>Alisp [PART 2]</title>
+      <link>https://palikar.github.io/projects/alisp_2/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/projects/alisp_2/</guid>
+      <description>Abstract In this post, I want to give a little more details on how Alisp can build from sources. ALisp is an interpreted language I&amp;rsquo;ve developed in C++. Over the last half a year, the project has become quite big (currently around 24K LOC) and thus the build process is so trivial as in the beginning. In the process of development, I&amp;rsquo;ve added numerous options for how the code can be compiled and all of those can be confusing at times.</description>
+    </item>
+    
+    <item>
+      <title>Alisp [PART 1]</title>
       <link>https://palikar.github.io/projects/alisp/</link>
       <pubDate>Thu, 20 Feb 2020 00:00:00 +0100</pubDate>
       
@@ -36,7 +45,8 @@ My assigned character I was born a human and I&amp;rsquo;m supposed to live on t
       <pubDate>Thu, 05 Dec 2019 00:12:08 +0100</pubDate>
       
       <guid>https://palikar.github.io/posts/generic_execution_around_pointer/</guid>
-      <description>Abstract I recently found out what the Execute-Around_Pointer idiom in C++ is. What it does is track access to a specific object. For example, when you want to observe how certain properties of an object change on each method call, you would employ the use of this idiom. Think of it like wrapping each method call for an object with additional function calls. This, for empale, is ugly code:</description>
+      <description>Abstract I recently found out what the Execute-Around_Pointer idiom in C++ is. What it does is track access to a specific object. For example, when you want to observe how certain properties of an object change on each method call, you would employ the use of this idiom. Think of it like wrapping each method call for an object with additional function calls. This, for empale, is ugly code:
+std::vector&amp;lt;int&amp;gt; vec{1,2,3,4}; std::cout &amp;lt;&amp;lt; std::size(vec) vec.</description>
     </item>
     
     <item>
@@ -118,7 +128,6 @@ My assigned character I was born a human and I&amp;rsquo;m supposed to live on t
       
       <guid>https://palikar.github.io/posts/numpy_notes/</guid>
       <description>My notes while reading this. More or less copy paste. Take with a grain of salt&amp;hellip;or sugar.
-
 Abstract NumPy is a Python package. It stands for &amp;lsquo;Numerical Python&amp;rsquo;. It is a library consisting of multidimensional array classes and a collection of routines for processing of an array. From the officials:
  NumPy is the fundamental package for scientific computing with Python. It contains among other things:
  a powerful N-dimensional array object sophisticated (broadcasting) functions tools for integrating C/C++ and Fortran code useful linear algebra, Fourier transform, and random number capabilities  Besides its obvious scientific uses, NumPy can also be used as an efficient multi-dimensional container of generic data.</description>
@@ -131,7 +140,6 @@ Abstract NumPy is a Python package. It stands for &amp;lsquo;Numerical Python&am
       
       <guid>https://palikar.github.io/posts/pandas_notes/</guid>
       <description>For transparency&amp;rsquo;s sake - those are my notes while learning about pandas from this tutorial. At times this here is just copy-paste from it, at others, it&amp;rsquo;s my own thoughts and explanations. This is meant to be a condensed version of the tutorial more or less just for me. If you found it useful though, well, good for you, I guess.
-
 Abstract Basic pandas is a Python package providing fast, flexible, and expressive data structures designed to make working with &amp;ldquo;relational Heterogeneous data&amp;rdquo; or &amp;ldquo;labeled&amp;rdquo; data both easy and intuitive.</description>
     </item>
     

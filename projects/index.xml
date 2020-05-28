@@ -6,13 +6,22 @@
     <description>Recent content in Projects on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Feb 2020 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2020 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Alisp</title>
+      <title>Alisp [PART 2]</title>
+      <link>https://palikar.github.io/projects/alisp_2/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/projects/alisp_2/</guid>
+      <description>Abstract In this post, I want to give a little more details on how Alisp can build from sources. ALisp is an interpreted language I&amp;rsquo;ve developed in C++. Over the last half a year, the project has become quite big (currently around 24K LOC) and thus the build process is so trivial as in the beginning. In the process of development, I&amp;rsquo;ve added numerous options for how the code can be compiled and all of those can be confusing at times.</description>
+    </item>
+    
+    <item>
+      <title>Alisp [PART 1]</title>
       <link>https://palikar.github.io/projects/alisp/</link>
       <pubDate>Thu, 20 Feb 2020 00:00:00 +0100</pubDate>
       

@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.70.0" />
 
 
 
@@ -103,7 +103,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.b3b0c12be46e581537e5d3d1c4ca1fabaab21c72dcc8cb639a558c4b9a6f469e.css" integrity="sha256-s7DBK&#43;RuWBU35dPRxMofq6qyHHLcyMtjmlWMS5pvRp4=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.3c75565bab3232e478f88f766c658c19f0636d9471239f83499bd6ceac04f66c.css" integrity="sha256-PHVWW6syMuR4&#43;I92bGWMGfBjbZRxI5&#43;DSZvWzqwE9mw=">
 
 
 <link rel="stylesheet" href="https://palikar.github.io/scss/print.e5f87aa9d406c09ad1cb0284b65f42c7e53ea92dc1fe9b6ab366bba96a1344e9.css" integrity="sha256-5fh6qdQGwJrRywKEtl9Cx&#43;U&#43;qS3B/ptqs2a7qWoTROk=" media="print">
@@ -111,7 +111,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.126e7d75240acc946d34d6ccb2982ed4c394a5fe34e73e1a2119ca951bcf119d.css" integrity="sha256-Em59dSQKzJRtNNbMspgu1MOUpf405z4aIRnKlRvPEZ0=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
 
 
 
@@ -312,119 +312,73 @@ Sitemap & RSS Feed Tags
   
   
   <div class="post">
-    
-
-<h2 id="abstract">Abstract</h2>
-
+    <h2 id="abstract">Abstract</h2>
 <p>CTGraph is a small C++17 project that implements a graph structure that can be used entirely at compile time. It started as just an experiment. I wanted to see just how much computation I can perform at compile time. I was heavily inspired by part of <a href="https://github.com/lefticus/cpp%5Fbox"><code>cpp_box</code></a>. In there <a href="https://github.com/lefticus">Jason Turner</a> has managed to implement a compile-time <a href="https://github.com/lefticus/cpp%5Fbox/blob/master/include/cpp%5Fbox/state%5Fmachine.hpp">finite state machine</a>. I thought that Graphs are not too far off of a finite state machine so I decided to give the idea a try. I spend several days setting up the project and now it is a fully-fledged single header library. I still have not found any practical uses for CTGraph but for now, I am mainly developing it with educational propose. That is, I can discover a ton about C++ by programming smilingly useless things in it.</p>
-
-<p><br /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>For more information as well as the source code, check out the <a href="https://github.com/palikar/ctgraph">GitHub page</a> of the project.</p>
-
 <h2 id="design-goals">Design goals</h2>
-
 <p>The project isn&rsquo;t exactly serious but I&rsquo;ve still defined several general guidelines around which I should design everything.</p>
-
 <ul>
 <li>Header only &ndash; the library mus be usable through the inclusion of a single header</li>
 <li>C++17 &ndash; once the header file of CTGraph is included, the source file must be compiled with C++17.</li>
 <li>Usable in constexpr context (mostly) &ndash; if all of the information is available at compile time, the functions of CTGraph should be able to produce their result also at compile-time. This is not that easy to pull off so I would allow myself a little bit of leniency here.</li>
 <li>Usable in const context (fully) &ndash; once the graph is defined, it should be fully usable through a const qualified reference to the object. This should be possible because the graph can&rsquo;t be changed once defined so there is no reason for any method of the graph to modify the underlying structure.</li>
 </ul>
-
 <h2 id="features-so-far">Features so far</h2>
-
 <h3 id="basic-graph-definition">Basic graph definition</h3>
-
 <p>CTGraph requires the vertices of graph to be defines as a enumeration. For example, we can define the possible vertices like:</p>
-
-<pre><code class="language-c++">enum class NodeTypes
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NodeTypes</span>
 {
-    UNKNOWN = 0,
-    NODE_1 = 1,
-    NODE_2 = 2,
-    NODE_3 = 3,
-    NODE_4 = 4,
-    NODE_5 = 5,
-    NODE_6 = 6,
-    NODE_7 = 7
+    UNKNOWN <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
+    NODE_1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,
+    NODE_2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>,
+    NODE_3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>,
+    NODE_4 <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>,
+    NODE_5 <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>,
+    NODE_6 <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>,
+    NODE_7 <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
 };
-</code></pre>
-
-<p>After that the definition of a graph is straight forward:</p>
-
-<pre><code class="language-c++">using namespace ctgraph;
-static constexpr auto graph = Graph{Node{NodeTypes::NODE_1, NodeTypes::NODE_2, NodeTypes::NODE_3},
-                                    Node{NodeTypes::NODE_2, NodeTypes::NODE_3, NodeTypes::NODE_4},
-                                    Node{NodeTypes::NODE_3, NodeTypes::NODE_4},
-                                    Node{NodeTypes::NODE_4},
-                                    Node{NodeTypes::NODE_5, NodeTypes::NODE_6, NodeTypes::NODE_7}};
-</code></pre>
-
-<p>A <code>Graph</code> is defined through several <code>Node</code> objects. The semantics of the constructor of <code>Node</code> are <code>Node{&lt;vertex&gt;, [&lt;follower&gt;]}</code>. The first argument is the vertex to be added to the graph and the following vertices are the direct followers of the first one. To be noted is that only the vertices that come as a first argument of the <code>Node</code> constructor are considered &ldquo;in&rdquo; the graph. In the example, the will contain <code>NODE_1</code>, <code>NODE_2</code>, <code>NODE_3</code>, <code>NODE_4</code> and <code>NODE_5</code> as vertices but not <code>NODE_6</code> and <code>NODE_7</code>.</p>
-
-<p><br /></p>
-
-<p>The snippet defines the following graph: <img src="https://palikar.github.io/ox-hugo/example_graph.png" alt="" /></p>
-
+</code></pre></div><p>After that the definition of a graph is straight forward:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> ctgraph;
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">auto</span> graph <span style="color:#f92672">=</span> Graph{Node{NodeTypes<span style="color:#f92672">::</span>NODE_1, NodeTypes<span style="color:#f92672">::</span>NODE_2, NodeTypes<span style="color:#f92672">::</span>NODE_3},
+                                    Node{NodeTypes<span style="color:#f92672">::</span>NODE_2, NodeTypes<span style="color:#f92672">::</span>NODE_3, NodeTypes<span style="color:#f92672">::</span>NODE_4},
+                                    Node{NodeTypes<span style="color:#f92672">::</span>NODE_3, NodeTypes<span style="color:#f92672">::</span>NODE_4},
+                                    Node{NodeTypes<span style="color:#f92672">::</span>NODE_4},
+                                    Node{NodeTypes<span style="color:#f92672">::</span>NODE_5, NodeTypes<span style="color:#f92672">::</span>NODE_6, NodeTypes<span style="color:#f92672">::</span>NODE_7}};
+</code></pre></div><p>A <code>Graph</code> is defined through several <code>Node</code> objects. The semantics of the constructor of <code>Node</code> are <code>Node{&lt;vertex&gt;, [&lt;follower&gt;]}</code>. The first argument is the vertex to be added to the graph and the following vertices are the direct followers of the first one. To be noted is that only the vertices that come as a first argument of the <code>Node</code> constructor are considered &ldquo;in&rdquo; the graph. In the example, the will contain <code>NODE_1</code>, <code>NODE_2</code>, <code>NODE_3</code>, <code>NODE_4</code> and <code>NODE_5</code> as vertices but not <code>NODE_6</code> and <code>NODE_7</code>.</p>
+<p><!-- raw HTML omitted --></p>
+<p>The snippet defines the following graph: <img src="https://palikar.github.io/ox-hugo/example_graph.png" alt=""></p>
 <h3 id="accessing-node">Accessing node</h3>
-
 <p>You can access the <em>nth</em> vertex through the <code>get_node&lt;n&gt;</code> method</p>
-
-<pre><code class="language-c++">constexpr auto node_0 = graph.get_node&lt;0&gt;(); // NodeTypes::NODE_1
-</code></pre>
-
-<h3 id="size-of-the-graph">Size of the graph</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">auto</span> node_0 <span style="color:#f92672">=</span> graph.get_node<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span>(); <span style="color:#75715e">// NodeTypes::NODE_1
+</span></code></pre></div><h3 id="size-of-the-graph">Size of the graph</h3>
 <p>The number of vertices in the graph:</p>
-
-<pre><code class="language-c++">constexpr auto size = graph.size(); // 5
-</code></pre>
-
-<h3 id="checking-if-vertex-is-in-the-graph">Checking if vertex is in the graph</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">auto</span> size <span style="color:#f92672">=</span> graph.size(); <span style="color:#75715e">// 5
+</span></code></pre></div><h3 id="checking-if-vertex-is-in-the-graph">Checking if vertex is in the graph</h3>
 <p>The method <code>contains</code> can be used with any of the nodes define in the original enumeration:</p>
-
-<pre><code class="language-c++">constexpr bool is_node_4 = graph.contains(NodeTypes::NODE_4) // true
-constexpr bool is_node_7 = graph.contains(NodeTypes::NODE_7) // false
-</code></pre>
-
-<h3 id="checking-if-two-vertices-are-adjacent">Checking if two vertices are adjacent</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">bool</span> is_node_4 <span style="color:#f92672">=</span> graph.contains(NodeTypes<span style="color:#f92672">::</span>NODE_4) <span style="color:#75715e">// true
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">bool</span> is_node_7 <span style="color:#f92672">=</span> graph.contains(NodeTypes<span style="color:#f92672">::</span>NODE_7) <span style="color:#75715e">// false
+</span></code></pre></div><h3 id="checking-if-two-vertices-are-adjacent">Checking if two vertices are adjacent</h3>
 <p>Two node &ndash; <code>n_1</code> and <code>n_2</code> &ndash; are adjacent if and only if there is an edge <code>n_1 -&gt; n_2</code>.</p>
-
-<pre><code class="language-c++">constexpr bool edge_2_3 = graph.adjacent(NodeTypes::NODE_2, NodeTypes::NODE_3) //true
-constexpr bool edge_1_4 = graph.adjacent(NodeTypes::NODE_1, NodeTypes::NODE_4) //false
-</code></pre>
-
-<h3 id="accessing-successors-of-a-vertex">Accessing successors of a vertex</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">bool</span> edge_2_3 <span style="color:#f92672">=</span> graph.adjacent(NodeTypes<span style="color:#f92672">::</span>NODE_2, NodeTypes<span style="color:#f92672">::</span>NODE_3) <span style="color:#75715e">//true
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">bool</span> edge_1_4 <span style="color:#f92672">=</span> graph.adjacent(NodeTypes<span style="color:#f92672">::</span>NODE_1, NodeTypes<span style="color:#f92672">::</span>NODE_4) <span style="color:#75715e">//false
+</span></code></pre></div><h3 id="accessing-successors-of-a-vertex">Accessing successors of a vertex</h3>
 <p>Accessing the nth successor of vertex can be done with the <code>successor&lt;n&gt;(node)</code> method:</p>
-
-<pre><code class="language-c++">constexpr auto node_1_succesor_0 = graph.successor&lt;0&gt;(NodeTypes::NODE_1);
-</code></pre>
-
-<p>Successors can also be accessed through a pointer <code>ptr</code> to the first one as well as their count <code>c</code>. It is guaranteed that the next <code>c</code> elements after <code>ptr</code> will be the successors of the given node:</p>
-
-<pre><code class="language-c++">constexpr auto num_succ = graph.count(NodeTypes::NODE_1); // 2
-static constexpr auto ptr_succ = graph.followers(NodeTypes::NODE_1);
-// *ptr_succ[0] == NodeTypes::NODE_2
-// *ptr_succ[1] == NodeTypes::NODE_3
-// *ptr_succ[3] - undefined behavior
-</code></pre>
-
-<p><br /></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">auto</span> node_1_succesor_0 <span style="color:#f92672">=</span> graph.successor<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span>(NodeTypes<span style="color:#f92672">::</span>NODE_1);
+</code></pre></div><p>Successors can also be accessed through a pointer <code>ptr</code> to the first one as well as their count <code>c</code>. It is guaranteed that the next <code>c</code> elements after <code>ptr</code> will be the successors of the given node:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">auto</span> num_succ <span style="color:#f92672">=</span> graph.count(NodeTypes<span style="color:#f92672">::</span>NODE_1); <span style="color:#75715e">// 2
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">auto</span> ptr_succ <span style="color:#f92672">=</span> graph.followers(NodeTypes<span style="color:#f92672">::</span>NODE_1);
+<span style="color:#75715e">// *ptr_succ[0] == NodeTypes::NODE_2
+</span><span style="color:#75715e">// *ptr_succ[1] == NodeTypes::NODE_3
+</span><span style="color:#75715e">// *ptr_succ[3] - undefined behavior
+</span></code></pre></div><p><!-- raw HTML omitted --></p>
 <p>There is also a convince function that return both the count and the pointer:</p>
-
-<pre><code class="language-c++">const auto[count, ptr] = get_successors(graph, NodeTypes::NODE_1);
-// count == 2
-// *ptr_succ[0] == NodeTypes::NODE_2
-// *ptr_succ[1] == NodeTypes::NODE_3
-// *ptr_succ[3] - undefined behavior
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span>[count, ptr] <span style="color:#f92672">=</span> get_successors(graph, NodeTypes<span style="color:#f92672">::</span>NODE_1);
+<span style="color:#75715e">// count == 2
+</span><span style="color:#75715e">// *ptr_succ[0] == NodeTypes::NODE_2
+</span><span style="color:#75715e">// *ptr_succ[1] == NodeTypes::NODE_3
+</span><span style="color:#75715e">// *ptr_succ[3] - undefined behavior
+</span></code></pre></div>
   </div>
   
 

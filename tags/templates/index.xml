@@ -17,7 +17,8 @@
       <pubDate>Thu, 05 Dec 2019 00:12:08 +0100</pubDate>
       
       <guid>https://palikar.github.io/posts/generic_execution_around_pointer/</guid>
-      <description>Abstract I recently found out what the Execute-Around_Pointer idiom in C++ is. What it does is track access to a specific object. For example, when you want to observe how certain properties of an object change on each method call, you would employ the use of this idiom. Think of it like wrapping each method call for an object with additional function calls. This, for empale, is ugly code:</description>
+      <description>Abstract I recently found out what the Execute-Around_Pointer idiom in C++ is. What it does is track access to a specific object. For example, when you want to observe how certain properties of an object change on each method call, you would employ the use of this idiom. Think of it like wrapping each method call for an object with additional function calls. This, for empale, is ugly code:
+std::vector&amp;lt;int&amp;gt; vec{1,2,3,4}; std::cout &amp;lt;&amp;lt; std::size(vec) vec.</description>
     </item>
     
   </channel>

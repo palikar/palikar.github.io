@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.70.0" />
 
 
 
@@ -103,7 +103,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.b3b0c12be46e581537e5d3d1c4ca1fabaab21c72dcc8cb639a558c4b9a6f469e.css" integrity="sha256-s7DBK&#43;RuWBU35dPRxMofq6qyHHLcyMtjmlWMS5pvRp4=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.3c75565bab3232e478f88f766c658c19f0636d9471239f83499bd6ceac04f66c.css" integrity="sha256-PHVWW6syMuR4&#43;I92bGWMGfBjbZRxI5&#43;DSZvWzqwE9mw=">
 
 
 <link rel="stylesheet" href="https://palikar.github.io/scss/print.e5f87aa9d406c09ad1cb0284b65f42c7e53ea92dc1fe9b6ab366bba96a1344e9.css" integrity="sha256-5fh6qdQGwJrRywKEtl9Cx&#43;U&#43;qS3B/ptqs2a7qWoTROk=" media="print">
@@ -111,7 +111,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.126e7d75240acc946d34d6ccb2982ed4c394a5fe34e73e1a2119ca951bcf119d.css" integrity="sha256-Em59dSQKzJRtNNbMspgu1MOUpf405z4aIRnKlRvPEZ0=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
 
 
 
@@ -325,144 +325,112 @@ Sitemap & RSS Feed Tags
   
   
   <div class="post">
-    
-
-<h2 id="abstract">Abstract</h2>
-
+    <h2 id="abstract">Abstract</h2>
 <p>I recently found out what the <a href="https://en.wikibooks.org/wiki/More%5FC%252B%252B%5FIdioms/Execute-Around%5FPointer">Execute-Around_Pointer</a> idiom in C++ is. What it does is track access to a specific object. For example, when you want to observe how certain properties of an object change on each method call, you would employ the use of this idiom. Think of it like wrapping each method call for an object with additional function calls. This, for empale, is ugly code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>};
 
-<pre><code class="language-c++">std::vector&lt;int&gt; vec{1,2,3,4};
+std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>size(vec)
+vec.push_back(<span style="color:#ae81ff">5</span>);
+std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>size(vec)
 
-std::cout &lt;&lt; std::size(vec)
-vec.push_back(5);
-std::cout &lt;&lt; std::size(vec)
-
-std::cout &lt;&lt; std::size(vec)
-vec.push_back(6);
-std::cout &lt;&lt; std::size(vec)
-</code></pre>
-
-<p>With the <code>Execute-Around_Pointer</code> you can &ldquo;prettify&rdquo; this pattern by constructing a special &ldquo;tracer&rdquo; object that internally keeps a reference to the vector. The underlying object is then accessed through the <code>-&gt;</code> operator. The code then can become:</p>
-
-<pre><code class="language-c++">std::vector&lt;int&gt; vec{1,2,3,4};
+std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>size(vec)
+vec.push_back(<span style="color:#ae81ff">6</span>);
+std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>size(vec)
+</code></pre></div><p>With the <code>Execute-Around_Pointer</code> you can &ldquo;prettify&rdquo; this pattern by constructing a special &ldquo;tracer&rdquo; object that internally keeps a reference to the vector. The underlying object is then accessed through the <code>-&gt;</code> operator. The code then can become:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>};
 VecotSizeTracer vec_tracer{vec};
-vec_tracer-&gt;push_back(5);
-vec_tracer-&gt;push_back(6);
-</code></pre>
-
-<p>On the wiki <a href="https://en.wikibooks.org/wiki/More%5FC%252B%252B%5FIdioms/Execute-Around%5FPointer">page</a> there is a similar example. The implementation there is, however, non-genric and does not use any templated code. I decided to write several classes that realize the logic of the idiom. Those can be then used to quickly construct different tracers for different types of types.</p>
-
+vec_tracer<span style="color:#f92672">-&gt;</span>push_back(<span style="color:#ae81ff">5</span>);
+vec_tracer<span style="color:#f92672">-&gt;</span>push_back(<span style="color:#ae81ff">6</span>);
+</code></pre></div><p>On the wiki <a href="https://en.wikibooks.org/wiki/More%5FC%252B%252B%5FIdioms/Execute-Around%5FPointer">page</a> there is a similar example. The implementation there is, however, non-genric and does not use any templated code. I decided to write several classes that realize the logic of the idiom. Those can be then used to quickly construct different tracers for different types of types.</p>
 <h2 id="making-it-generic">Making it generic</h2>
-
 <h3 id="iterating-over-tuple">Iterating over tuple</h3>
-
 <p>First off, we&rsquo;ll need one utility method. Namely, <code>for_each</code> for iterating over a tuple. Weirdly enough, there is no such method in the standard library. It&rsquo;s not that hard to implement something ourselves though:</p>
-
-<pre><code class="language-c++">template&lt;std::size_t I = 0, typename FuncT, typename... Tp&gt;
-inline std::enable_if_t&lt;I == sizeof...(Tp), void&gt;
-for_each(std::tuple&lt;Tp...&gt; &amp;, FuncT)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>size_t I <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">typename</span> FuncT, <span style="color:#66d9ef">typename</span>... Tp<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">inline</span> std<span style="color:#f92672">::</span>enable_if_t<span style="color:#f92672">&lt;</span>I <span style="color:#f92672">==</span> <span style="color:#66d9ef">sizeof</span>...(Tp), <span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span>
+for_each(std<span style="color:#f92672">::</span>tuple<span style="color:#f92672">&lt;</span>Tp...<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>, FuncT)
 { }
 
-template&lt;std::size_t I = 0, typename FuncT, typename... Tp&gt;
-inline std::enable_if_t&lt;I &lt; sizeof...(Tp), void&gt;
-for_each(std::tuple&lt;Tp...&gt;&amp; t, FuncT &amp;&amp; f)
+<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>size_t I <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">typename</span> FuncT, <span style="color:#66d9ef">typename</span>... Tp<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">inline</span> std<span style="color:#f92672">::</span>enable_if_t<span style="color:#f92672">&lt;</span>I <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">sizeof</span>...(Tp), <span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span>
+for_each(std<span style="color:#f92672">::</span>tuple<span style="color:#f92672">&lt;</span>Tp...<span style="color:#f92672">&gt;&amp;</span> t, FuncT <span style="color:#f92672">&amp;&amp;</span> f)
 {
-    f(std::get&lt;I&gt;(t));
-    for_each&lt;I + 1, FuncT, Tp...&gt;(t, std::forward&lt;FuncT&gt;(f));
+    f(std<span style="color:#f92672">::</span>get<span style="color:#f92672">&lt;</span>I<span style="color:#f92672">&gt;</span>(t));
+    for_each<span style="color:#f92672">&lt;</span>I <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, FuncT, Tp...<span style="color:#f92672">&gt;</span>(t, std<span style="color:#f92672">::</span>forward<span style="color:#f92672">&lt;</span>FuncT<span style="color:#f92672">&gt;</span>(f));
 };
 
-</code></pre>
-
-<p>Special thanks to <a href="https://stackoverflow.com/a/6894436">this</a> StackOverflow answer. The function just recursively loops over the tuple by keeping track of the current index in the <code>I</code> template parameter. The recursion is terminated when <code>I</code> is equal to the size of the tuple. If you&rsquo;ve programmed in Haskel, this should not be too hard for you.</p>
-
+</code></pre></div><p>Special thanks to <a href="https://stackoverflow.com/a/6894436">this</a> StackOverflow answer. The function just recursively loops over the tuple by keeping track of the current index in the <code>I</code> template parameter. The recursion is terminated when <code>I</code> is equal to the size of the tuple. If you&rsquo;ve programmed in Haskel, this should not be too hard for you.</p>
 <h3 id="the-proxy-class">The proxy class</h3>
-
 <p>Next, we need that class that can keep a pointer to an object as well as several other objects that will be notified when the pointer is accessed.</p>
-
-<pre><code class="language-c++">template&lt;typename T, typename...Tracker&gt;
-struct proxy
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T, <span style="color:#66d9ef">typename</span>...Tracker<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">proxy</span>
 {
-public:
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 
-    proxy(T&amp; obj, Tracker &amp;&amp; ... track) :
-        m_obj(&amp;obj),
-        m_track(std::forward&lt;decltype(track)&gt;(track)...)
+    proxy(T<span style="color:#f92672">&amp;</span> obj, Tracker <span style="color:#f92672">&amp;&amp;</span> ... track) <span style="color:#f92672">:</span>
+        m_obj(<span style="color:#f92672">&amp;</span>obj),
+        m_track(std<span style="color:#f92672">::</span>forward<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">decltype</span>(track)<span style="color:#f92672">&gt;</span>(track)...)
     {
         (track.before(obj), ...);
     }
 
-    ~proxy()
+    <span style="color:#f92672">~</span>proxy()
     {
-        detail::for_each(m_track, [&amp;](auto&amp; tracker){tracker.after(*m_obj);});
+        detail<span style="color:#f92672">::</span>for_each(m_track, [<span style="color:#f92672">&amp;</span>](<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> tracker){tracker.after(<span style="color:#f92672">*</span>m_obj);});
     }
 
-    T* operator -&gt;() { return m_obj;}
-private:
-    T* m_obj;
-    std::tuple&lt;Tracker ...&gt; m_track;
+    T<span style="color:#f92672">*</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">-&gt;</span>() { <span style="color:#66d9ef">return</span> m_obj;}
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    T<span style="color:#f92672">*</span> m_obj;
+    std<span style="color:#f92672">::</span>tuple<span style="color:#f92672">&lt;</span>Tracker ...<span style="color:#f92672">&gt;</span> m_track;
 };
-</code></pre>
-
-<p>The pointer is stored in the <code>m_obj</code> member. The notified objects are stored in the <code>m_track</code> tuple. Those can be of different types but must implement a <code>before</code> and a <code>after</code> method. The <code>before</code> methods of each object will be called before any operation on the object pointed by <code>m_obj</code> is performed, and the <code>after</code> method &ndash; after. We call the <code>after</code> method in the destructor by using our <code>for_each</code> function that we previously implemented. In the constructor, I&rsquo;ve simply used <a href="https://arne-mertz.de/2016/11/more-variadic-templates/">pack expansion</a>.</p>
-
+</code></pre></div><p>The pointer is stored in the <code>m_obj</code> member. The notified objects are stored in the <code>m_track</code> tuple. Those can be of different types but must implement a <code>before</code> and a <code>after</code> method. The <code>before</code> methods of each object will be called before any operation on the object pointed by <code>m_obj</code> is performed, and the <code>after</code> method &ndash; after. We call the <code>after</code> method in the destructor by using our <code>for_each</code> function that we previously implemented. In the constructor, I&rsquo;ve simply used <a href="https://arne-mertz.de/2016/11/more-variadic-templates/">pack expansion</a>.</p>
 <h3 id="the-tracer">The Tracer</h3>
-
 <p>Now we have every that we need to write the final tracer class:</p>
-
-<pre><code class="language-c++">template&lt;typename T, typename ...Tracker&gt;
-class Tracked : public Tracker ...
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T, <span style="color:#66d9ef">typename</span> ...Tracker<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Tracked</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Tracker ...
 {
-  public :
-    explicit Tracked(T&amp; obj) : m_obj(obj)
+  <span style="color:#66d9ef">public</span> <span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">explicit</span> Tracked(T<span style="color:#f92672">&amp;</span> obj) <span style="color:#f92672">:</span> m_obj(obj)
     {}
 
-    detail::proxy&lt;T, Tracker...&gt; operator -&gt;() {
-        return detail::proxy&lt;T, Tracker...&gt;(m_obj, static_cast&lt;Tracker&gt;(*this)...);
+    detail<span style="color:#f92672">::</span>proxy<span style="color:#f92672">&lt;</span>T, Tracker...<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">-&gt;</span>() {
+        <span style="color:#66d9ef">return</span> detail<span style="color:#f92672">::</span>proxy<span style="color:#f92672">&lt;</span>T, Tracker...<span style="color:#f92672">&gt;</span>(m_obj, <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>Tracker<span style="color:#f92672">&gt;</span>(<span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>)...);
     }
 
-  private :
-    T&amp; m_obj;
+  <span style="color:#66d9ef">private</span> <span style="color:#f92672">:</span>
+    T<span style="color:#f92672">&amp;</span> m_obj;
 
 };
-</code></pre>
-
-<p>On construction, the <code>Tracked</code> class takes the object that needs to be traced as well as several types &ndash; the <code>Tracker</code> variadic template argument. The <code>Tracker</code> class will be derived from each of the passed in types. This means that it will &ldquo;have&rdquo; all of the methods defined by the <code>Tracker</code> types. In the overload of the <code>-&gt;</code> operator, we create a proxy object with the underlying object and statically cast version of the <code>this</code> object with each of the given <code>Tracker</code> types. This is possible because we&rsquo;ve derived the <code>Tracked</code> from each of those types.</p>
-
+</code></pre></div><p>On construction, the <code>Tracked</code> class takes the object that needs to be traced as well as several types &ndash; the <code>Tracker</code> variadic template argument. The <code>Tracker</code> class will be derived from each of the passed in types. This means that it will &ldquo;have&rdquo; all of the methods defined by the <code>Tracker</code> types. In the overload of the <code>-&gt;</code> operator, we create a proxy object with the underlying object and statically cast version of the <code>this</code> object with each of the given <code>Tracker</code> types. This is possible because we&rsquo;ve derived the <code>Tracked</code> from each of those types.</p>
 <h3 id="usage">Usage</h3>
-
 <p>With our defined classes, we can realize the logic of the Execute-Around-Pointer idiom in an easy manner. For example, if we want to track the size of a vector we can write something like:</p>
-
-<pre><code class="language-c++">// class with before and after methods
-class SizeTracker
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// class with before and after methods
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SizeTracker</span>
 {
-    public:
-    static void before(std::vector&lt;int&gt;&amp; vec) {
-        std::cout &lt;&lt; &quot;Size Before:&quot; &lt;&lt; std::size(vec) &lt;&lt; &quot;\n&quot;;
+    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> before(std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> vec) {
+        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Size Before:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>size(vec) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
     }
 
-    static void after(std::vector&lt;int&gt;&amp; vec) {
-        std::cout &lt;&lt; &quot;Size After:&quot; &lt;&lt; std::size(vec) &lt;&lt; &quot;\n&quot;;
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">after</span>(std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> vec) {
+        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Size After:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>size(vec) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
     }
 };
 
-// tracker type for vector of ints.
-using VectorSizeTracker = Tracked&lt;std::vector&lt;int&gt;, SizeTracker&gt;;
-</code></pre>
-
-<p>With this, we can rewrite the example that I gave at the beginning of the post.</p>
-
-<pre><code class="language-c++">int main()
+<span style="color:#75715e">// tracker type for vector of ints.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> VectorSizeTracker <span style="color:#f92672">=</span> Tracked<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>, SizeTracker<span style="color:#f92672">&gt;</span>;
+</code></pre></div><p>With this, we can rewrite the example that I gave at the beginning of the post.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
 {
-    std::vector&lt;int&gt; vec{1,2,3,4};
+    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>};
     VectorSizeTracker vec_track{vec};
 
-    vec_track-&gt;push_back(5);
-    vec_track-&gt;push_back(6);
+    vec_track<span style="color:#f92672">-&gt;</span>push_back(<span style="color:#ae81ff">5</span>);
+    vec_track<span style="color:#f92672">-&gt;</span>push_back(<span style="color:#ae81ff">6</span>);
 
-    return 0;
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
-</code></pre>
-
+</code></pre></div>
   </div>
   
 

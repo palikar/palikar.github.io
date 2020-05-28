@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en-us" prefix="og: http://ogp.me/ns#">
+  
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.70.0" />
+
+
+
+
+
+<title>Alisp [PART 2] • SA</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Alisp [PART 2]"/>
+<meta name="twitter:description" content="Building Alisp from source"/>
+
+<meta property="og:title" content="Alisp [PART 2]" />
+<meta property="og:description" content="Building Alisp from source" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://palikar.github.io/projects/alisp_2/" />
+<meta property="article:published_time" content="2020-05-27T00:00:00+02:00" />
+<meta property="article:modified_time" content="2020-05-29T01:52:19+02:00" />
+
+
+<title itemprop="name">Alisp [PART 2] | SA</title>
+<meta property="og:title" content="Alisp [PART 2] | SA" />
+<meta name="twitter:title" content="Alisp [PART 2] | SA" />
+<meta itemprop="name" content="Alisp [PART 2] | SA" />
+<meta name="application-name" content="Alisp [PART 2] | SA" />
+<meta property="og:site_name" content="" />
+
+<meta name="description" content="Building Alisp from source" />
+<meta itemprop="description" content="Building Alisp from source" />
+<meta property="og:description" content="Building Alisp from source" />
+<meta name="twitter:description" content="Building Alisp from source" />
+
+<base href="https://palikar.github.io/projects/alisp_2/">
+
+<link rel="canonical" href="https://palikar.github.io/projects/alisp_2/" itemprop="url" /> 
+<meta name="url" content="https://palikar.github.io/projects/alisp_2/" />
+<meta name="twitter:url" content="https://palikar.github.io/projects/alisp_2/" /> 
+<meta property="og:url" content="https://palikar.github.io/projects/alisp_2/" />
+<meta property="og:locale" content="en">
+<meta name="language" content="">
+
+
+<meta itemprop="image" content="https://palikar.github.io/" />
+<meta property="og:image" content="https://palikar.github.io/" />
+<meta name="twitter:image" content="https://palikar.github.io/" />
+<meta name="twitter:image:src" content="https://palikar.github.io/" /> 
+
+<meta property="og:updated_time" content=2020-05-29T01:52:19&#43;0200 />
+Sitemap & RSS Feed Tags
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://palikar.github.io/sitemap.xml" /> 
+
+
+
+
+
+<link rel="manifest" href="https://palikar.github.io/manifest.json" />
+
+
+<meta name="theme-color" content="#141414" /> 
+<meta name="msapplication-TileColor" content="#141414" />
+
+<meta name="keywords" content="" />
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+<meta name="HandheldFriendly" content="True" /> 
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="apple-mobile-web-app-title" content="" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-touch-fullscreen" content="yes" />
+
+<meta name="twitter:site" content="">
+<meta name="twitter:creator" content="" />
+
+<meta name="google-site-verification" content="Dajyx2hCwYPHFFMX4gJOxXtv6swEnwmHw9cQz9pzJvg" />
+<meta name="msvalidate.01" content="16753A569B85936F07C0CFBE19FE3BC3"/>
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.3c75565bab3232e478f88f766c658c19f0636d9471239f83499bd6ceac04f66c.css" integrity="sha256-PHVWW6syMuR4&#43;I92bGWMGfBjbZRxI5&#43;DSZvWzqwE9mw=">
+
+
+<link rel="stylesheet" href="https://palikar.github.io/scss/print.e5f87aa9d406c09ad1cb0284b65f42c7e53ea92dc1fe9b6ab366bba96a1344e9.css" integrity="sha256-5fh6qdQGwJrRywKEtl9Cx&#43;U&#43;qS3B/ptqs2a7qWoTROk=" media="print">
+
+
+
+
+<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://palikar.github.io/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="https://palikar.github.io/favicon.png">
+    
+    
+
+
+    <meta charset="utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158773896-1"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-158773896-1');
+    </script>
+    
+</head>
+
+
+  <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://palikar.github.io/">SA</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="https://palikar.github.io/img/profile.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         Development, CS, AI and whatever my little heart desires 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">SA</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="https://palikar.github.io/">
+						<span>Home</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="https://palikar.github.io/portfolio/">
+						<span>Portfolio</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="https://palikar.github.io/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="https://palikar.github.io/posts/">
+						<span>Blog Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="https://palikar.github.io/projects/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="https://palikar.github.io/categories/">
+						<span>Categories</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/palikar22" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://facebook.com/stanislav.ts" rel="me"><i class="fab fa-facebook-f"></i></a>
+	
+	
+	<a href="https://github.com/palikar" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/stanislav-arnaudov-37b475164" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:stanislav_ts@abv.bg" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+
+  </div>
+</div>
+
+    <div class="content container">
+      
+    
+<article>
+  <header>
+    <h1>Alisp [PART 2]</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> May 27, 2020
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="https://palikar.github.io/categories/alisp">ALISP</a>
+              •
+          
+              <a class="badge badge-category" href="https://palikar.github.io/categories/c&#43;&#43;">C&#43;&#43;</a>
+              
+          
+      
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 9 min read
+</div>
+
+
+
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <figure>
+    <img src="https://palikar.github.io/ox-hugo/alisp.png"/> 
+</figure>
+
+<h2 id="abstract">Abstract</h2>
+<p>In this post, I want to give a little more details on how <a href="https://github.com/palikar/alisp">Alisp</a> can build from sources. ALisp is an interpreted language I&rsquo;ve developed in C++. Over the last half a year, the project has become quite big (currently around 24K LOC) and thus the build process is so trivial as in the beginning. In the process of development, I&rsquo;ve added numerous options for how the code can be compiled and all of those can be confusing at times. Depending on the purpose of the build and what you want to do with it, different options have to enabled and here I want to give a brief overview of the options and the reasoning behind them.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Alisp is written in C++ (17) and uses <a href="https://cmake.org/">CMake</a> as its build generator. The project is tested and it compiles with</p>
+<ul>
+<li>gcc 8,9</li>
+<li>clang 9</li>
+</ul>
+<p>Currently, only Linux builds are tested and I can&rsquo;t guarantee that everything will work on Windows (hopefully supports comes soon). The code requires features of C++17 so it may not be compatible with older compilers.</p>
+<p><!-- raw HTML omitted --></p>
+<p>On Debian based systems, for minimal builds the package <a href="https://packages.debian.org/sid/build-essential">build-essential</a> should be enough:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt-get install build-essential
+</code></pre></div><p><!-- raw HTML omitted --></p>
+<p>For more advanced builds, you&rsquo;ll need more things:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt-get install valgrind gcov doxygen
+</code></pre></div><p><a href="https://www.doxygen.nl/">Doxygen</a> is used to generate the documentation for the source, <a href="https://www.valgrind.org/">valgrind</a> performs some run-time checks and <a href="https://gcc.gnu.org/onlinedocs/gcc/Gcov.html">gcov</a>.</p>
+<p><!-- raw HTML omitted --></p>
+<p>Optionally, the build setup can take advantage of <a href="https://ccache.dev/">ccache</a> if you have on your system. This is a compiler cache that can reduce compilation times. For Debian systems, to install ccach, you can run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt-get install ccache
+</code></pre></div><p><!-- raw HTML omitted --></p>
+<p>The code itself should not have any external dependencies. The project&rsquo;s repository contains everything needed for building all executables and libraries of the language form source. Alisp does, however, uses third party C++ libraries and those are:</p>
+<ul>
+<li><a href="https://github.com/ChaiScript/ChaiScript/">Catch2</a> - used for testing</li>
+<li><a href="https://github.com/muellan/clipp">Clipp</a> - used for command line arguments parsing</li>
+<li><a href="https://www.google.com/search?q=c%2B%2B+rang&amp;ie=utf-8&amp;oe=utf-8&amp;client=firefox-b-e">Rang</a> - used for printing in colors on the terminal</li>
+<li><a href="https://github.com/leethomason/tinyxml2">TinyXML2</a> - used for parsing xml documents</li>
+<li><a href="https://github.com/arun11299/cpp-subprocess">Subprocess</a> - used for spawning child processes</li>
+<li><a href="https://github.com/nbsdx/SimpleJSON">SimpleJSON</a> - used for parsing json documents.</li>
+<li><a href="//fmt.dev/latest/index.html">Fmt</a> - used for formatting strings</li>
+</ul>
+<h2 id="building">Building</h2>
+<p>Once you have everything you need, you can proceed to the actual build process. The way I usually do this is to create a build folder in the source directory and build the project there. The build commands are standard for any CMake project.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://github.com/palikar/alisp
+cd alisp
+mkdir build <span style="color:#f92672">&amp;&amp;</span> cd build
+cmake .. &lt;options&gt;
+make &lt;targets&gt;
+</code></pre></div><p>Optionally, after cloning you can checkout the project to any of the <a href="https://github.com/palikar/alisp/releases">current stable version</a>.</p>
+<p><code>&lt;options&gt;</code> and <code>&lt;targets&gt;</code> are, of course, placeholder and will be discussed in the next section.</p>
+<h2 id="options">Options</h2>
+<p>As shown, options are given when executing the CMake command. The format is <code>-D&lt;OPTION&gt;=&lt;VALUE&gt;</code>. For example, <code>DOPTION_1=TRUE</code> sets the option <code>OPTION_1</code> to <code>TRUE</code>.</p>
+<p><!-- raw HTML omitted --></p>
+<p>First, we&rsquo;ll go over the project-specific options. Those have been declared in the <a href="https://github.com/palikar/alisp/blob/master/CMakeLists.txt">CMakeList.txt</a> file with the <a href="https://cmake.org/cmake/help/v3.13/command/option.html">option</a> function of CMake. Next, I&rsquo;ll also mention a couple of other general CMake options that are commonly used.</p>
+<h3 id="project-specific-options">Project-specific options</h3>
+<ul>
+<li>
+<p><code>LIBCPP</code> - when compiling with clang, this option allows you to use llvm&rsquo;s implementation of the C++ standard library <a href="https://libcxx.llvm.org/%20">libc++</a>. In certain situations, libc++ can improve the performance of a program and reduce the compilation time. For the majority of the development of Alisp, however, I&rsquo;ve used GNU&rsquo;s standard library <a href="https://gcc.gnu.org/onlinedocs/libstdc++/">libstdc++</a> and I haven&rsquo;t got any problems with it. If the <code>LIBCPP</code> option is set to <code>TRUE</code> (default <code>FALSE</code>), libc++ will be used.</p>
+</li>
+<li>
+<p><code>ENABLE_COVERAGE</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), the project will be compiled with coverage flags (<code>--coverage -O0 -g</code>) and special make targets will be created that allows you to run coverage of the code and generate nice HTML pages with the results.</p>
+</li>
+<li>
+<p><code>ENABLE_ASAN</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), the project will be compiled with address sanitizer flags (<code>-fsanitize=address</code>). When an executable is built with address sanitizer, running it will execute the program while checking for any memory issues (buffer overflows, invalid reads/ writes, etc.) More information on address sanitizers <a href="https://github.com/google/sanitizers/wiki/AddressSanitizer">here</a>.</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p><code>BUILD_SHARED_LIBS</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), all of the libraries will be built as shared libraries. This usually reduces the recompilation time but may cause some overhead on startup. By now, I use Alisp almost exclusively in shared libraries mode.</p>
+</li>
+<li>
+<p><code>ENABLE_TESTING</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), all of the tests for the project will be compiled and build. Also, several make targets will be created for running the added tests.</p>
+</li>
+<li>
+<p><code>ENABLE_CLANG_TIDY</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), <a href="https://clang.llvm.org/extra/clang-tidy/">clang-tidy</a> will be run over the source code during compilation. Clang-tidy is a code linter and static analyzer and can report on some common problems with the code.</p>
+</li>
+<li>
+<p><code>ENABLE_CPPCHECK</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), <a href="http://cppcheck.sourceforge.net/">cppcheck</a> will be run over the source code during compilation. Cppcheck is a static analysis tool for C/C++ code that detects bugs and focuses on detecting undefined behavior and dangerous coding constructs.</p>
+</li>
+<li>
+<p><code>ENABLE_LTO</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), the project is compiled with <a href="https://gcc.gnu.org/wiki/LinkTimeOptimization">link time optimizations</a> enabled.</p>
+</li>
+<li>
+<p><code>BUILD_DOC</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), a special make target is created that will generate documentation of the source code with Doxygen.</p>
+</li>
+<li>
+<p><code>FORCE_COLORED_OUTPUT</code> - if set to <code>TRUE</code> (default <code>TRUE</code>), the output of the compilation will use coloring. This is handy when compiling and looking at the output on the screen. It could be annoying when the output of the compilation is dumped into a file.</p>
+</li>
+<li>
+<p><code>ELF_HASHING</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), the default hashing algorithm that Alisp uses internally will be the <a href="https://en.wikipedia.org/wiki/PJW%5Fhash%5Ffunction">PJW hash function</a>. By default, Alisp uses the <a href="https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo%5Fhash%5Ffunction">Fowler–Noll–Vo function</a> for hashing strings.</p>
+</li>
+<li>
+<p><code>JENKINS_HASHING</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), the default hashing algorithm that Alisp uses internally will be the <a href="https://en.wikipedia.org/wiki/Jenkins%5Fhash%5Ffunction">Jenkins hash function</a>. If this option is <code>TRUE</code>, <code>ELF_HASHING</code> should be set to <code>FALSE</code>.</p>
+</li>
+<li>
+<p><code>DEBUG_LOGGING</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), the project will be compiled with support for enabling lots of logging. The interpreter will have an extra CLI flag (<code>-DL</code>) that will print lots of debugging information during execution.</p>
+</li>
+<li>
+<p><code>BUILD_EXAMPLES</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), the example scripts in the <code>scripts</code> folder will be copied in the build directory. Also, an extra make target will be created (<code>test_examples</code>) that will execute all of the examples and verify they execute without errors.</p>
+</li>
+<li>
+<p><code>VALGRIND_CHECKS</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), an extra make target (<code>valgrind_checks</code>) will be created that executes the language tests while checking the execution with various valgrind tools. This includes checking for memory leaks, running the tests with <a href="https://valgrind.org/docs/manual/ms-manual.html">massif</a>, <a href="https://valgrind.org/docs/manual/mc-manual.html">memcheck</a> and <a href="https://valgrind.org/docs/manual/cl-manual.html">callgrind</a>.</p>
+</li>
+<li>
+<p><code>RUN_PERFORMANCE_TESTS</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), the scripts in the <code>performance_tests</code> will be copied in the build directory and an extra make target will be created (<code>timing_check</code>). The target will execute the copied scripts and will create a file <code>timing_checks.txt</code> with their execution time. The scripts are designed in such a way to load the interpreter and test its performance.</p>
+</li>
+<li>
+<p><code>DISABLE_DYN_MODULES</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), the dynamic Alisp modules will not be compiled. Those are modules that are not loaded in each interpreter executable but are loaded dynamically at run time. Disabling the compilation of those can be handy when you don&rsquo;t want to compile the entirety of the project but just the core interpreter.</p>
+</li>
+<li>
+<p><code>DISABLE_DEFAULT_MODULES</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), the builtin Alisp modules will not be compiled and linked to the interpreter. The point of this is again to reduce the compilation time if you don&rsquo;t need these modules.</p>
+</li>
+<li>
+<p><code>ENABLE_STACK_TRACE</code> - if set to <code>TRUE</code> (default <code>TRUE</code>), the interpreter will keep track of each function call and will print out a stacktrace in case of an error in the execution. Disabling this option can potentially increase performance.</p>
+</li>
+<li>
+<p><code>ENABLE_LINE_TRACE</code> - if set to <code>TRUE</code> (default <code>TRUE</code>), the interpreter will keep track of the line number where a list-form object was defined in a file. This makes the stracktrace more understandable but also requires a tiny bit more memory. The line numbers will be saved as object properties (<code>--line--</code>) of list-forms that appear in the source code of an Alisp script.</p>
+</li>
+<li>
+<p><code>ENABLE_OBJECT_DOC</code> - if set to <code>TRUE</code> (default <code>TRUE</code>), the interpreter will keep the documentation for symbols. If this option is disabled, the given in the source code documentation for the symbols will be left out and won&rsquo;t be part of the symbols. The documentation for a symbol is saved in the <code>--doc--</code> property.</p>
+</li>
+<li>
+<p><code>DISABLE_RUN_TIME_CHECKS</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), a lot of run-time checks (among which arity checks by the function calling and type checks) will be removed from the code. This can potentially increase performance but will make the interpreter extremely unstable. Segmentation faults are to be expected if this option is enabled. It is, however, guarantee that a valid program in Alisp will run correctly if these checks are disabled.</p>
+</li>
+<li>
+<p><code>TIME_CHECK_SAMPLES</code> - this is an integer value (default 10) that signifies how many times the performance test scripts should be run to get a stable average value.</p>
+</li>
+<li>
+<p><code>ENABLE_MTEL</code> - if set to <code>TRUE</code> (default <code>FALSE</code>), the project will be built with a multi-threaded event loop. Usually, the event loops run on a single thread that does all of the asynchronous dispatching. With this option, multiple threads will be used to handle asynchronous events and callbacks.</p>
+</li>
+</ul>
+<h3 id="general-options-to-keep-in-mind">General Options To Keep in Mind</h3>
+<ul>
+<li>
+<p><code>CMAKE_INSTALL_PREFIX</code> - this is a path indicating where the compiled libraries and executable should be installed (copied to when everything is built) through <code>make install</code>. On Linux systems, this is usually <code>/usr</code> but I often change this to some local <code>usr</code> directory. Executable will be put in <code>CMAKE_INSTALL_PREFIX/bin</code>, libraries in <code>CMAKE_INSTALL_PREFIX/lib</code> and header files in <code>CMAKE_INSTALL_PREFIX/include/alisp</code>.</p>
+</li>
+<li>
+<p><code>CMAKE_BUILD_TYPE</code> - string variable indicating the type of build that is to be built. It can be &ldquo;Debug&rdquo;, &ldquo;Release&rdquo;, &ldquo;RelWithDebInfo&rdquo; or &ldquo;MinSizeRel&rdquo;. In most cases, I use either &ldquo;Debug&rdquo; (debug information is compiled in) or &ldquo;Release&rdquo; (the compilation is optimized fully and there is no debug information).</p>
+</li>
+</ul>
+<h2 id="make-targets-overview">Make Targets overview</h2>
+<p>With the options being enplaned now, here I&rsquo;ll give a brief overview of all possible make targets. Those can be run after Cmake has executed, build files are ready and we can proceed to compilation and testing.</p>
+<ul>
+<li>
+<p><code>all</code> - compile the project</p>
+</li>
+<li>
+<p><code>test</code> - run all of the tests. The project has to be built with <code>-DENABLE_TESTING=TRUE</code></p>
+</li>
+<li>
+<p><code>alisp_coverage_html</code> - execute the tests, gather coverage information, and generate a web site with the results. The project has to be built with <code>-DENABLE_COVERAGE=TRUE</code></p>
+</li>
+<li>
+<p><code>alisp_coverage_xml</code> - execute the tests, gather coverage information, and generate a web site with the results. The project has to be built with <code>-DENABLE_COVERAGE=TRUE</code></p>
+</li>
+<li>
+<p><code>doc</code> - build the documentation of the source code</p>
+</li>
+<li>
+<p><code>install</code> - copy the compiled executable, libraries, and public headers at the appropriate places.</p>
+</li>
+<li>
+<p><code>package</code> - package the project files with <a href="https://cmake.org/cmake/help/latest/module/CPack.html">CPack</a>. This will generate <a href="https://en.wikipedia.org/wiki/Deb%5F(file%5Fformat)">.deb</a> and .tar.gz files.</p>
+</li>
+<li>
+<p><code>test_examples</code> - execute all of the examples in the <code>scripts</code> directory. The project has to be built with <code>-DBUILD_EXAMPLES=TRUE</code></p>
+</li>
+<li>
+<p><code>valgrind_checks</code> - execute <code>./bin/alisp_language_test</code> with valgrind for all of the defined valgrind checks. The project has to be built with <code>-DVALGRIND_CHECKS=TRUE</code></p>
+</li>
+<li>
+<p><code>timing_check</code> - execute the scripts that test the performance of the interpreter. The project has to be built with <code>-DRUN_PERFORMANCE_TESTS=TRUE</code></p>
+</li>
+</ul>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="https://palikar.github.io/projects/alisp/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Alisp [PART 1]</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+
+    (function () {
+    if (location.hostname === "localhost" ||
+      location.hostname === "127.0.0.1" ||
+      location.hostname === "") {
+      return;
+    }
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    var disqus_shortname = 'palikar-github-io';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || 
+      document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<noscript>
+  Please enable JavaScript to view the
+  <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by
+  <span class="logo-disqus">Disqus</span>
+</a>
+
+    
+
+
+</article>
+
+
+    </div>
+    
+    
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-158773896-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/cmake.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/lisp.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/elisp.min.js"></script>
+            
+        
+    
+    <script type="text/javascript">
+        
+        hljs.configure({languages: ["cmake, lisp, elisp"]});
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.70.0" />
 
 
 
@@ -103,7 +103,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.b3b0c12be46e581537e5d3d1c4ca1fabaab21c72dcc8cb639a558c4b9a6f469e.css" integrity="sha256-s7DBK&#43;RuWBU35dPRxMofq6qyHHLcyMtjmlWMS5pvRp4=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.3c75565bab3232e478f88f766c658c19f0636d9471239f83499bd6ceac04f66c.css" integrity="sha256-PHVWW6syMuR4&#43;I92bGWMGfBjbZRxI5&#43;DSZvWzqwE9mw=">
 
 
 <link rel="stylesheet" href="https://palikar.github.io/scss/print.e5f87aa9d406c09ad1cb0284b65f42c7e53ea92dc1fe9b6ab366bba96a1344e9.css" integrity="sha256-5fh6qdQGwJrRywKEtl9Cx&#43;U&#43;qS3B/ptqs2a7qWoTROk=" media="print">
@@ -111,7 +111,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.126e7d75240acc946d34d6ccb2982ed4c394a5fe34e73e1a2119ca951bcf119d.css" integrity="sha256-Em59dSQKzJRtNNbMspgu1MOUpf405z4aIRnKlRvPEZ0=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
 
 
 
@@ -312,130 +312,86 @@ Sitemap & RSS Feed Tags
   
   
   <div class="post">
-    
-
-<div class="NOTES">
-  <div></div>
-
+    <!-- raw HTML omitted -->
 <p>My notes while reading <a href="https://www.tutorialspoint.com/numpy/index.htm">this</a>. More or less copy paste. Take with a grain of salt&hellip;or sugar.</p>
-
-<p></div></p>
-
+<!-- raw HTML omitted -->
 <h2 id="abstract">Abstract</h2>
-
-<p>NumPy is a Python package. It stands for &lsquo;Numerical Python&rsquo;. It is a library consisting of multidimensional array classes and a collection of routines for processing of an array. <br /> From the officials:</p>
-
+<p>NumPy is a Python package. It stands for &lsquo;Numerical Python&rsquo;. It is a library consisting of multidimensional array classes and a collection of routines for processing of an array. <!-- raw HTML omitted --> From the officials:</p>
 <blockquote>
 <p>NumPy is the fundamental package for scientific computing with Python. It contains among other things:</p>
-
 <ul>
 <li>a powerful N-dimensional array object</li>
 <li>sophisticated (broadcasting) functions</li>
 <li>tools for integrating C/C++ and Fortran code</li>
 <li>useful linear algebra, Fourier transform, and random number capabilities</li>
 </ul>
-
 <p>Besides its obvious scientific uses, NumPy can also be used as an efficient multi-dimensional container of generic data. Arbitrary data-types can be defined. This allows NumPy to seamlessly and speedily integrate with a wide variety of databases.</p>
 </blockquote>
-
 <p>In layman&rsquo;s terms (according to me) - better python-arrays with native C-code under the hood so that everything is blazingly fast. Easy array generation, generation of ranges, intervals and distributions of random numbers in some interval. Conveniently iterating over ranges and the generated arrays. <em>Numpy</em> also provides some basic/advanced statistical functions. Linear Algebra is also something that is already built-in.</p>
-
 <p>Installation:</p>
-
-<pre><code class="language-text">pip3 install numpy
-</code></pre>
-
-<h2 id="ndarray">Ndarray</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">pip3 install numpy
+</code></pre></div><h2 id="ndarray">Ndarray</h2>
 <p>The most important object defined in <em>NumPy</em> is an N-dimensional array type called <em>ndarray</em>. This is the main workhorse of the package. It describes the collection of items of the same type. Items in the collection can be accessed using a zero-based index. It&rsquo;s much better than the standard python arrays and lists. Basic construction:</p>
-
-<pre><code class="language-python">numpy.array(object, dtype = None, copy = True, order = None, subok = False, ndmin = 0)
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">numpy<span style="color:#f92672">.</span>array(object, dtype <span style="color:#f92672">=</span> None, copy <span style="color:#f92672">=</span> True, order <span style="color:#f92672">=</span> None, subok <span style="color:#f92672">=</span> False, ndmin <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</code></pre></div><ul>
 <li><code>object</code> - Any object exposing the array interface method returns an array, or any (nested) sequence.</li>
 <li><code>dtype</code> - the desired data type of array, optional</li>
 <li><code>copy</code> - Optional. By default (true), the object is copied</li>
 <li><code>order</code> - C (row-major) or F (column-major) or A (any) (default)</li>
 <li><code>subok</code> - By default, the returned array forced to be a base class array. If true, sub-classes passed through</li>
-
-<li><p><code>ndmin</code> - Specifies minimum dimensions of the resultant array</p>
-
-<pre><code class="language-python">import numpy as np
-a = np.array([1, 2,3,4])
-print(a)
-
-a = np.array([[1, 2], [3, 4]])
-print(a)
-
-a = np.array([1, 2,3,4], dtype=complex)
-print(a)
-</code></pre>
-
-<pre><code class="language-text">[1 2 3 4]
-[[1 2]
-[3 4]]
-[1.+0.j 2.+0.j 3.+0.j 4.+0.j]
-</code></pre></li>
+<li><code>ndmin</code> - Specifies minimum dimensions of the resultant array</li>
 </ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>])
+<span style="color:#66d9ef">print</span>(a)
 
-<h2 id="data-types">Data Types</h2>
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]])
+<span style="color:#66d9ef">print</span>(a)
 
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>], dtype<span style="color:#f92672">=</span>complex)
+<span style="color:#66d9ef">print</span>(a)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[1 2 3 4]
+[[1 2]
+ [3 4]]
+[1.+0.j 2.+0.j 3.+0.j 4.+0.j]
+</code></pre></div><h2 id="data-types">Data Types</h2>
 <p>There are a lot of possible data types that are supported by <em>numpy</em>. Some of the scalar types include:</p>
-
 <ul>
 <li>bool_, int_, intc, intp, int8, int16, int32, uint8, uint16, uint32</li>
 <li>float_, float16, float32, flaot64</li>
 <li>complex, complex64, complex128</li>
 </ul>
-
-<p><br /> <br /> The types can be encapsulated in <em>Data Type Object</em>.</p>
-
-<pre><code class="language-python">numpy.dtype(object, align, copy)
-</code></pre>
-
-<ul>
+<p><!-- raw HTML omitted --> <!-- raw HTML omitted --> The types can be encapsulated in <em>Data Type Object</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">numpy<span style="color:#f92672">.</span>dtype(object, align, copy)
+</code></pre></div><ul>
 <li><strong>Object</strong> − To be converted to data type object</li>
 <li><strong>Align</strong> − If true, adds padding to the field to make it similar to C-struct</li>
 <li><strong>Copy</strong> − Makes a new copy of dtype object. If false, the result is a reference to builtin data type object</li>
 </ul>
+<p><!-- raw HTML omitted --> <!-- raw HTML omitted --> The object can be later used when a given function or a constructor takes <em>dtype</em> argument. Those objects can also create struct-like types for structured data. Think of it like defining a custom struct in C++ and then creating a vector with elements of this struct.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
 
-<p><br /> <br /> The object can be later used when a given function or a constructor takes <em>dtype</em> argument. Those objects can also create struct-like types for structured data. Think of it like defining a custom struct in C++ and then creating a vector with elements of this struct.</p>
+dt <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dtype([(<span style="color:#e6db74">&#39;age&#39;</span>,np<span style="color:#f92672">.</span>int8),(<span style="color:#e6db74">&#39;time&#39;</span>, np<span style="color:#f92672">.</span>int32)])
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">30</span>),(<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">30</span>),(<span style="color:#ae81ff">30</span>,<span style="color:#ae81ff">30</span>)], dtype <span style="color:#f92672">=</span> dt)
 
-<pre><code class="language-python">import numpy as np
+<span style="color:#66d9ef">print</span>(a)
+<span style="color:#66d9ef">print</span>(a[<span style="color:#e6db74">&#39;age&#39;</span>])
+<span style="color:#66d9ef">print</span>(a[<span style="color:#e6db74">&#39;time&#39;</span>])
 
-dt = np.dtype([('age',np.int8),('time', np.int32)])
-a = np.array([(10,30),(20,30),(30,30)], dtype = dt)
-
-print(a)
-print(a['age'])
-print(a['time'])
-
-</code></pre>
-
-<p>Which yields:</p>
-
-<pre><code class="language-text">[(10, 30) (20, 30) (30, 30)]
+</code></pre></div><p>Which yields:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[(10, 30) (20, 30) (30, 30)]
 [10 20 30]
 [30 30 30]
-</code></pre>
+</code></pre></div><p><!-- raw HTML omitted --> <!-- raw HTML omitted --> This way we can define a map-like structure that contains a bunch of different arrays, each addressable with a key. The following code defines a &lsquo;human&rsquo; data type with <em>string</em> field <em>name</em>, <em>int</em> field age, and <em>float</em> field social class.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+human <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dtype([(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;S20&#39;</span>), (<span style="color:#e6db74">&#39;age&#39;</span>, <span style="color:#e6db74">&#39;i1&#39;</span>), (<span style="color:#e6db74">&#39;social_class&#39;</span>, <span style="color:#e6db74">&#39;f4&#39;</span>)])
+<span style="color:#66d9ef">print</span>(human)
 
-<p><br /> <br /> This way we can define a map-like structure that contains a bunch of different arrays, each addressable with a key. The following code defines a &lsquo;human&rsquo; data type with <em>string</em> field <em>name</em>, <em>int</em> field age, and <em>float</em> field social class.</p>
-
-<pre><code class="language-python">import numpy as np
-human = np.dtype([('name', 'S20'), ('age', 'i1'), ('social_class', 'f4')])
-print(human)
-
-a = np.array([('Lenin', 45, 100),('John', 19, 3.5)], dtype = human)
-print(a)
-</code></pre>
-
-<pre><code class="language-text">[('name', 'S20'), ('age', 'i1'), ('social_class', '&lt;f4')]
-[(b'Lenin', 45, 100. ) (b'John', 19,   3.5)]
-</code></pre>
-
-<p>This shows another important point. Each time can be specified with a single character.</p>
-
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([(<span style="color:#e6db74">&#39;Lenin&#39;</span>, <span style="color:#ae81ff">45</span>, <span style="color:#ae81ff">100</span>),(<span style="color:#e6db74">&#39;John&#39;</span>, <span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">3.5</span>)], dtype <span style="color:#f92672">=</span> human)
+<span style="color:#66d9ef">print</span>(a)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[(&#39;name&#39;, &#39;S20&#39;), (&#39;age&#39;, &#39;i1&#39;), (&#39;social_class&#39;, &#39;&lt;f4&#39;)]
+[(b&#39;Lenin&#39;, 45, 100. ) (b&#39;John&#39;, 19,   3.5)]
+</code></pre></div><p>This shows another important point. Each time can be specified with a single character.</p>
 <ul>
 <li><code>'b'</code> − boolean</li>
 <li><code>'i'</code> − (signed) integer</li>
@@ -449,182 +405,121 @@ print(a)
 <li><code>'U'</code> − Unicode</li>
 <li><code>'V'</code> − raw data (void)</li>
 </ul>
-
 <h2 id="array-attributes">Array Attributes</h2>
-
 <p>Attributes, as the name implies, give us some information about a given object. In the case of <em>numpy</em>, the most important thing about an array is its <em>shape</em> and <em>ndim</em></p>
-
 <h3 id="shape-and-dimension">Shape and dimension</h3>
-
 <p><em>Shape</em> of an array is its layout in memory. Normally <em>numpy</em> represents the ndarray as a n-dimensional array in memory. This means that that the shapes is nothing more than a tuple that consists of each dimension&rsquo;s size. For example, the array <code>[1,2,3]</code> has shape <code>(3)</code>, the array <code>[[1,2],[1,2]]</code> has shape <code>(2,2)</code> because it consists of two array and each of them contains two elements.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
 
-<pre><code class="language-python">import numpy as np
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>])
+<span style="color:#66d9ef">print</span>(a<span style="color:#f92672">.</span>shape)
 
-a = np.array([1,2,3,4])
-print(a.shape)
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>],[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]])
+<span style="color:#66d9ef">print</span>(a<span style="color:#f92672">.</span>shape)
 
-a = np.array([[1,2,3,4],[1,2,3,4]])
-print(a.shape)
-
-</code></pre>
-
-<pre><code class="language-text">(4,)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">(4,)
 (2, 4)
-</code></pre>
+</code></pre></div><p><!-- raw HTML omitted --> <!-- raw HTML omitted --> <em>Ndim</em> of an <em>numpy</em> array on the other hand is the number of dimensions. I. e. <code>[1,2]</code> has <em>ndim</em> equal to 1, and <code>[[1,3],[1.3]]</code> has <em>ndim</em> 2</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">24</span>)
+<span style="color:#66d9ef">print</span>(a<span style="color:#f92672">.</span>ndim)
 
-<p><br /> <br /> <em>Ndim</em> of an <em>numpy</em> array on the other hand is the number of dimensions. I. e. <code>[1,2]</code> has <em>ndim</em> equal to 1, and <code>[[1,3],[1.3]]</code> has <em>ndim</em> 2</p>
-
-<pre><code class="language-python">import numpy as np
-import numpy as np
-a = np.arange(24)
-print(a.ndim)
-
-a = np.array([[1,2,3,4],[1,2,3,4]])
-print(a.ndim)
-</code></pre>
-
-<pre><code class="language-text">1
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>],[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]])
+<span style="color:#66d9ef">print</span>(a<span style="color:#f92672">.</span>ndim)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">1
 2
-</code></pre>
-
-<h3 id="reshaping">Reshaping</h3>
-
+</code></pre></div><h3 id="reshaping">Reshaping</h3>
 <p>A lot of times we want to change the basic structure of and array without changing the information in it. In such cases, the <em>reshape</em> method comes to help.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">24</span>)
+<span style="color:#66d9ef">print</span>(a<span style="color:#f92672">.</span>ndim)
 
-<pre><code class="language-python">import numpy as np
-a = np.arange(24)
-print(a.ndim)
+<span style="color:#75715e"># now reshape it</span>
+b <span style="color:#f92672">=</span> a<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">3</span>)
+<span style="color:#66d9ef">print</span>(b)
 
-# now reshape it
-b = a.reshape(2,4,3)
-print(b)
-
-</code></pre>
-
-<p>The elements stay the same and occupy the same memory location but the access to them is happening in different way.** &lsquo;Size&rsquo; of an array <code>numpy.itemsize</code> - this array attribute returns the length of each element of array in bytes.</p>
-
-<pre><code class="language-python">import numpy as np
-x = np.array([1,2,3,4,5], dtype = np.int8)
-print(x.itemsize)
-</code></pre>
-
-<pre><code class="language-text">1
-</code></pre>
-
-<h3 id="num-elements">Num elements</h3>
-
+</code></pre></div><p>The elements stay the same and occupy the same memory location but the access to them is happening in different way.** &lsquo;Size&rsquo; of an array <code>numpy.itemsize</code> - this array attribute returns the length of each element of array in bytes.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>], dtype <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>int8)
+<span style="color:#66d9ef">print</span>(x<span style="color:#f92672">.</span>itemsize)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">1
+</code></pre></div><h3 id="num-elements">Num elements</h3>
 <p>The attribute that everyone has been waiting for&hellip; <code>numpy.size</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
 
-<pre><code class="language-python">import numpy as np
-
-a = np.arange(24)
-print(a.size)
-</code></pre>
-
-<pre><code class="language-text">24
-</code></pre>
-
-<h2 id="slicing">Slicing</h2>
-
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">24</span>)
+<span style="color:#66d9ef">print</span>(a<span style="color:#f92672">.</span>size)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">24
+</code></pre></div><h2 id="slicing">Slicing</h2>
 <h3 id="basic-slicing">Basic slicing</h3>
-
 <p>Basic slicing is an extension of Python&rsquo;s basic concept of slicing to <em>n</em> dimensions. A Python slice object is constructed by giving start, stop, and step parameters to the built-in slice function. This slice object is passed to the array to extract a part of array.</p>
-
-<pre><code class="language-python">import numpy as np
-a = np.arange(10)
-b = a[2:7:2]
-print(b)
-print(a[2:])
-</code></pre>
-
-<pre><code class="language-text">[2 4 6]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10</span>)
+b <span style="color:#f92672">=</span> a[<span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">7</span>:<span style="color:#ae81ff">2</span>]
+<span style="color:#66d9ef">print</span>(b)
+<span style="color:#66d9ef">print</span>(a[<span style="color:#ae81ff">2</span>:])
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[2 4 6]
 [2 3 4 5 6 7 8 9]
-</code></pre>
-
-<h3 id="advanced">Advanced</h3>
-
+</code></pre></div><h3 id="advanced">Advanced</h3>
 <p>This mechanism helps in selecting any arbitrary item in an array based on its <em>Ndimensional</em> index. Each integer array represents the number of indexes into that dimension. When the index consists of as many integer arrays as the dimensions of the target ndarray, it becomes straightforward.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
 
-<pre><code class="language-python">import numpy as np
+x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[ <span style="color:#ae81ff">0</span>,  <span style="color:#ae81ff">1</span>,  <span style="color:#ae81ff">2</span>],[ <span style="color:#ae81ff">3</span>,  <span style="color:#ae81ff">4</span>,  <span style="color:#ae81ff">5</span>],[ <span style="color:#ae81ff">6</span>,  <span style="color:#ae81ff">7</span>,  <span style="color:#ae81ff">8</span>],[ <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">11</span>]])
 
-x = np.array([[ 0,  1,  2],[ 3,  4,  5],[ 6,  7,  8],[ 9, 10, 11]])
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Our array is:&#39;</span>)
+<span style="color:#66d9ef">print</span>(x)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
 
-print('Our array is:')
-print(x)
-print('\n')
+rows <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>]])
+cols <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>]])
+y <span style="color:#f92672">=</span> x[rows,cols]
 
-rows = np.array([[0,0],[3,3]])
-cols = np.array([[0,2],[0,2]])
-y = x[rows,cols]
-
-print('The corner elements of this array are:' )
-print(y)
-</code></pre>
-
-<pre><code class="language-text">Our array is:
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;The corner elements of this array are:&#39;</span> )
+<span style="color:#66d9ef">print</span>(y)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Our array is:
 [[ 0  1  2]
  [ 3  4  5]
  [ 6  7  8]
  [ 9 10 11]]
-</code></pre>
-
-<p>The corner elements of this array are:</p>
-
-<pre><code class="language-text">[[ 0  2]
+</code></pre></div><p>The corner elements of this array are:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[[ 0  2]
  [ 9 11]]
-</code></pre>
-
-<h4 id="boolean-array-indexing">Boolean Array Indexing</h4>
-
+</code></pre></div><h4 id="boolean-array-indexing">Boolean Array Indexing</h4>
 <p>This type of advanced indexing is used when the resultant object is meant to be the result of Boolean operations, such as comparison operators.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
 
-<pre><code class="language-python">import numpy as np
-
-x = np.arange(0,20)
-print(x[x&gt;5])
-</code></pre>
-
-<pre><code class="language-text">[ 6  7  8  9 10 11 12 13 14 15 16 17 18 19]
-</code></pre>
-
-<h2 id="broadcasting">Broadcasting</h2>
-
+x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">20</span>)
+<span style="color:#66d9ef">print</span>(x[x<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">5</span>])
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[ 6  7  8  9 10 11 12 13 14 15 16 17 18 19]
+</code></pre></div><h2 id="broadcasting">Broadcasting</h2>
 <p>This refers to the way arithmetic operations are handled. <em>Numpy</em> is intelligent enough to perform arithmetical operations on arrays element-wise as long as the shapes of the objects are &lsquo;compatible&rsquo;.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
 
-<pre><code class="language-python">import numpy as np
-
-a = np.array([1,2,3,4])
-b = np.array([10,20,30,40])
-c = a * b
-print(c)
-</code></pre>
-
-<pre><code class="language-text">[ 10  40  90 160]
-</code></pre>
-
-<h2 id="iterating">Iterating</h2>
-
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>])
+b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">30</span>,<span style="color:#ae81ff">40</span>])
+c <span style="color:#f92672">=</span> a <span style="color:#f92672">*</span> b
+<span style="color:#66d9ef">print</span>(c)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[ 10  40  90 160]
+</code></pre></div><h2 id="iterating">Iterating</h2>
 <p><code>numpy.nditer()</code> is your best friend. It returns an iterable (for loop) object that can be further used to go through an array. It can also be constructed with two arrays to go through the both of them simultaneously. The array must be <em>broadcastable</em>. Constructing an iterator that can modify the values of an array happens through a flag in the constructor.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
 
-<pre><code class="language-python">import numpy as np
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">5</span>)
+b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">12</span>)
 
-a = np.arange(0, 60, 5)
-b = np.arange(0, 12)
+<span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> np<span style="color:#f92672">.</span>nditer(a):
+    <span style="color:#66d9ef">print</span>(str(num))
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
 
-for num in np.nditer(a):
-    print(str(num))
-print('\n')
+<span style="color:#66d9ef">for</span> a_num,b_num <span style="color:#f92672">in</span> np<span style="color:#f92672">.</span>nditer([a,b]):
+    <span style="color:#66d9ef">print</span>(str(a_num) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;+&#39;</span> <span style="color:#f92672">+</span> str(b_num))
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
 
-for a_num,b_num in np.nditer([a,b]):
-    print(str(a_num) + '+' + str(b_num))
-print('\n')
-
-for num in np.nditer(a, op_flags=[&quot;readwrite&quot;]):
-    num += 10
-print(a)
-</code></pre>
-
-<pre><code class="language-text">0
+<span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> np<span style="color:#f92672">.</span>nditer(a, op_flags<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;readwrite&#34;</span>]):
+    num <span style="color:#f92672">+=</span> <span style="color:#ae81ff">10</span>
+<span style="color:#66d9ef">print</span>(a)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">0
 5
 10
 15
@@ -653,12 +548,8 @@ print(a)
 
 
 [10 15 20 25 30 35 40 45 50 55 60 65]
-</code></pre>
-
-<h2 id="manipulating">Manipulating</h2>
-
+</code></pre></div><h2 id="manipulating">Manipulating</h2>
 <h3 id="changing-shape">Changing shape</h3>
-
 <table>
 <thead>
 <tr>
@@ -666,32 +557,26 @@ print(a)
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>reshape</code></td>
 <td>Change shape</td>
 </tr>
-
 <tr>
 <td><code>flat</code></td>
 <td>1D Iterator</td>
 </tr>
-
 <tr>
 <td><code>flatten</code></td>
 <td>Returns a new array</td>
 </tr>
-
 <tr>
 <td><code>revel</code></td>
 <td>Returns a contiguous flattened array</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="transpose">Transpose</h3>
-
 <table>
 <thead>
 <tr>
@@ -699,32 +584,26 @@ print(a)
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>transpose</code></td>
 <td>Permutes the dimensions of an array</td>
 </tr>
-
 <tr>
 <td><code>ndarray.T</code></td>
 <td>Same as self.transpose()</td>
 </tr>
-
 <tr>
 <td><code>rollaxis</code></td>
 <td>Rolls the specified axis backwards</td>
 </tr>
-
 <tr>
 <td><code>swapaxes</code></td>
 <td>Interchanges the two axes of an array</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="joining-arrays">Joining Arrays</h3>
-
 <table>
 <thead>
 <tr>
@@ -732,32 +611,26 @@ print(a)
 <th>Desc</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>concatenate</code></td>
 <td>Joins several arrays along an existing axes</td>
 </tr>
-
 <tr>
 <td><code>stack</code></td>
 <td>Joins several arrays along a new axes</td>
 </tr>
-
 <tr>
 <td><code>hstack</code></td>
 <td>Stacks arrays in sequence horizontally</td>
 </tr>
-
 <tr>
 <td><code>vstack</code></td>
 <td>Stacks arrays in sequence vertically</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="adding-and-removing-elements">Adding and removing elements</h3>
-
 <table>
 <thead>
 <tr>
@@ -765,56 +638,42 @@ print(a)
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>append</td>
 <td>Pushes new value at the end</td>
 </tr>
-
 <tr>
 <td>insert</td>
 <td>Inserts value along a given axis before a given index</td>
 </tr>
-
 <tr>
 <td>delete</td>
 <td>Return a new array with sub-arrays along an axis deleted</td>
 </tr>
-
 <tr>
 <td>unique</td>
 <td>Finds all unique elements in an array</td>
 </tr>
 </tbody>
 </table>
-
 <h2 id="i-o">I/O</h2>
-
 <p>There are two flavors of saving/loading a <em>ndarray</em> to/from file.</p>
-
 <h3 id="dot-npy-files"><em>.npy</em> files</h3>
-
-<p>This <em>.npy</em> file stores data, shape, <em>dtype</em> and other information required to reconstruct the <em>ndarray</em> in a disk file such that the array is correctly retrieved even if the file is on another machine with different architecture. <br /> <br /> The <em>IO</em> is simple and is done through the functions <code>numpy.save()</code> and <code>numpy.load()</code></p>
-
-<pre><code class="language-python">import numpy as np
-a = np.array([1,2,3,4,5])
-np.save('outfile',a)
-b = np.load('outfile.npy')
-</code></pre>
-
-<h3 id="dot-txt-files"><em>.txt</em> files</h3>
-
+<p>This <em>.npy</em> file stores data, shape, <em>dtype</em> and other information required to reconstruct the <em>ndarray</em> in a disk file such that the array is correctly retrieved even if the file is on another machine with different architecture. <!-- raw HTML omitted --> <!-- raw HTML omitted --> The <em>IO</em> is simple and is done through the functions <code>numpy.save()</code> and <code>numpy.load()</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>])
+np<span style="color:#f92672">.</span>save(<span style="color:#e6db74">&#39;outfile&#39;</span>,a)
+b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#39;outfile.npy&#39;</span>)
+</code></pre></div><h3 id="dot-txt-files"><em>.txt</em> files</h3>
 <p>This is just a simple, cheap and dirty way to save an array to a file &ldquo;symbolically&rdquo;. The function that come into play are <code>numpy.savetxt()</code> and <code>numpy.loadtxt()</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
 
-<pre><code class="language-python">import numpy as np
-
-a = np.array([1,2,3,4,5])
-np.savetxt('out.txt',a)
-b = np.loadtxt('out.txt')
-print(b)
-</code></pre>
-
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>])
+np<span style="color:#f92672">.</span>savetxt(<span style="color:#e6db74">&#39;out.txt&#39;</span>,a)
+b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>loadtxt(<span style="color:#e6db74">&#39;out.txt&#39;</span>)
+<span style="color:#66d9ef">print</span>(b)
+</code></pre></div>
   </div>
   
 

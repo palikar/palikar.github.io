@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.70.0" />
 
 
 
@@ -103,7 +103,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.b3b0c12be46e581537e5d3d1c4ca1fabaab21c72dcc8cb639a558c4b9a6f469e.css" integrity="sha256-s7DBK&#43;RuWBU35dPRxMofq6qyHHLcyMtjmlWMS5pvRp4=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.3c75565bab3232e478f88f766c658c19f0636d9471239f83499bd6ceac04f66c.css" integrity="sha256-PHVWW6syMuR4&#43;I92bGWMGfBjbZRxI5&#43;DSZvWzqwE9mw=">
 
 
 <link rel="stylesheet" href="https://palikar.github.io/scss/print.e5f87aa9d406c09ad1cb0284b65f42c7e53ea92dc1fe9b6ab366bba96a1344e9.css" integrity="sha256-5fh6qdQGwJrRywKEtl9Cx&#43;U&#43;qS3B/ptqs2a7qWoTROk=" media="print">
@@ -111,7 +111,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.126e7d75240acc946d34d6ccb2982ed4c394a5fe34e73e1a2119ca951bcf119d.css" integrity="sha256-Em59dSQKzJRtNNbMspgu1MOUpf405z4aIRnKlRvPEZ0=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
 
 
 
@@ -312,82 +312,53 @@ Sitemap & RSS Feed Tags
   
   
   <div class="post">
-    
-
-<h2 id="abstract">Abstract</h2>
-
+    <h2 id="abstract">Abstract</h2>
 <p>C++ is hard! C++ is even harder when you want to write good code. There are a lot of things to think about when you write code and if you don&rsquo;t think about them, you are probably going to mess things up. Recently I&rsquo;ve found that one good book (see references) that gives 42 (hehe!) concrete tips on how to be a better c++ programmer. This is my summary of sorts about the contents of said book.</p>
-
 <h2 id="the-cool-new-things">The cool new things</h2>
-
 <h3 id="rvalue-lvalue-and-move-semantics">Rvalue, lvalue and move semantics</h3>
-
-<p><a id="org1edb870"></a> &ldquo;Move semantics&rdquo; is a thing that we have in C++ now (since C++11 actually). It makes a ton of sense once you get it but it may be a little hard to wrap your head around it. At least in the beginning, of course. First off - why do we need move-semantics? For code efficiency! If you know what you are doing, your code can run faster, with fewer object copies and fewer objects created. Second, and perhaps more importantly, what are move semantics? The way I like to think about it - the ability to distinguish between an object that won&rsquo;t be needed after the evaluation of an expression and the ability to do a different thing, if you are dealing with such object.<br /> Take a look at the following code:</p>
-
-<pre><code class="language-c++">MyObject obj1, obj2;
-MyObject new_obj = obj1 + obj2;
-</code></pre>
-
-<p>Let&rsquo;s say that the part <code>obj1 + obj2</code> creates a new object. This new object then gets copied through the copy assignment operator of the class <code>MyObject</code>. This creates another object that is stored in the <code>new_object</code> variable. All in all, two objects were created in this situation. The object that was originally created by <code>obj1 + obj2</code> is&hellip; well, gone. We just copied it and threw it away. Shame on us! Wouldn&rsquo;t it have been nice, if we could have just used that object and just &ldquo;moved&rdquo; it in <code>new_obj</code>. Yes, yes it would! And yes, it is possible. Through move semantics. That kind of object that won&rsquo;t continue to live after the expression evaluation is called <strong>rvalue</strong> object. All other objects are <strong>lvalue</strong>. In the class <code>MyObject</code> we can define a special kind of constructor (move constructor) that &ldquo;creates&rdquo; object from rvalues, i. e. &ldquo;moves&rdquo; the data from the given object in <strong>*this</strong>. So,</p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --> &ldquo;Move semantics&rdquo; is a thing that we have in C++ now (since C++11 actually). It makes a ton of sense once you get it but it may be a little hard to wrap your head around it. At least in the beginning, of course. First off - why do we need move-semantics? For code efficiency! If you know what you are doing, your code can run faster, with fewer object copies and fewer objects created. Second, and perhaps more importantly, what are move semantics? The way I like to think about it - the ability to distinguish between an object that won&rsquo;t be needed after the evaluation of an expression and the ability to do a different thing, if you are dealing with such object.<!-- raw HTML omitted --> Take a look at the following code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">MyObject obj1, obj2;
+MyObject new_obj <span style="color:#f92672">=</span> obj1 <span style="color:#f92672">+</span> obj2;
+</code></pre></div><p>Let&rsquo;s say that the part <code>obj1 + obj2</code> creates a new object. This new object then gets copied through the copy assignment operator of the class <code>MyObject</code>. This creates another object that is stored in the <code>new_object</code> variable. All in all, two objects were created in this situation. The object that was originally created by <code>obj1 + obj2</code> is&hellip; well, gone. We just copied it and threw it away. Shame on us! Wouldn&rsquo;t it have been nice, if we could have just used that object and just &ldquo;moved&rdquo; it in <code>new_obj</code>. Yes, yes it would! And yes, it is possible. Through move semantics. That kind of object that won&rsquo;t continue to live after the expression evaluation is called <strong>rvalue</strong> object. All other objects are <strong>lvalue</strong>. In the class <code>MyObject</code> we can define a special kind of constructor (move constructor) that &ldquo;creates&rdquo; object from rvalues, i. e. &ldquo;moves&rdquo; the data from the given object in <strong>*this</strong>. So,</p>
 <ul>
 <li>Lvalue - an object that can be used on the left-hand side of expression; an object with identifiable address;</li>
 <li>Rvalue - an object that won&rsquo;t persist after the evaluation of a given expression; no identifiable address</li>
 </ul>
-
 <p><em>Note:</em> Every value is either an lvalue or an rvalue!</p>
-
 <h3 id="auto">Auto</h3>
-
 <p>Type deduction for variables. Almost the same rules as the template argument type deduction with one small caveat. Also, in a lot of cases, it allows you to write more efficient code. Example to get you going:</p>
-
-<pre><code class="language-c++">std::unordered_map&lt;std::string, std::string&gt; map;
-for(auto it : map){...} //just look how simple that is!!!
-</code></pre>
-
-<h3 id="smart-pointers">Smart pointers</h3>
-
-<p><a id="orgdc1a8fb"></a> For an year now, I only hear how the C++ gurus scream how raw pointers are dangerous and will probably cause memory leaks when used so&hellip; smart pointers! For the price of a tiny bit of overhead, you will make harder (but not impossible!) for yourself to do something stupid with your code. Your new two best friends are <code>shared_ptr&lt;&gt;</code> and <code>unique_ptrt&lt;&gt;</code>:</p>
-
-<pre><code class="language-c++">std::shared_ptr&lt;int&gt; int_ptr = std::maked_shared&lt;int&gt;(2);
-std::unique_ptr&lt;float&gt; float_ptr = std::make_unique&lt;float&gt;(3.3);
-</code></pre>
-
-<p>When it comes to <code>unique_ptr</code>, it&rsquo;s important to know how does one transfer the ownership of an object.</p>
-
-<pre><code class="language-c++">void take_ownership(std::unique_ptr&lt;float&gt; ptr)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, std<span style="color:#f92672">::</span>string<span style="color:#f92672">&gt;</span> map;
+<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">auto</span> it : map){...} <span style="color:#75715e">//just look how simple that is!!!
+</span></code></pre></div><h3 id="smart-pointers">Smart pointers</h3>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --> For an year now, I only hear how the C++ gurus scream how raw pointers are dangerous and will probably cause memory leaks when used so&hellip; smart pointers! For the price of a tiny bit of overhead, you will make harder (but not impossible!) for yourself to do something stupid with your code. Your new two best friends are <code>shared_ptr&lt;&gt;</code> and <code>unique_ptrt&lt;&gt;</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>shared_ptr<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> int_ptr <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>maked_shared<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">2</span>);
+std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span> float_ptr <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">3.3</span>);
+</code></pre></div><p>When it comes to <code>unique_ptr</code>, it&rsquo;s important to know how does one transfer the ownership of an object.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">take_ownership</span>(std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span> ptr)
 {
-  ... // now the pointer is mine!
-}
-std::unique_ptr&lt;int[]&gt; int_arr_ptr = std::make_unique&lt;int[]&gt;(10);
-take_ownership(std::move(int_arr_ptr));
-</code></pre>
-
-<p><code>shared_ptr</code>, on the other hand, can share their ownership. Again, it&rsquo;s good to know how is this done because you can mess it up.</p>
-
-<pre><code class="language-c++">class PtrHolder {
-public:
-  void save_ptr(std::shared_ptr&lt;int&gt; ptr)
+  ... <span style="color:#75715e">// now the pointer is mine!
+</span><span style="color:#75715e"></span>}
+std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>[]<span style="color:#f92672">&gt;</span> int_arr_ptr <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>[]<span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">10</span>);
+take_ownership(std<span style="color:#f92672">::</span>move(int_arr_ptr));
+</code></pre></div><p><code>shared_ptr</code>, on the other hand, can share their ownership. Again, it&rsquo;s good to know how is this done because you can mess it up.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PtrHolder</span> {
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">void</span> save_ptr(std<span style="color:#f92672">::</span>shared_ptr<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> ptr)
     {
-      this-&gt;ptr_ = ptr;
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>ptr_ <span style="color:#f92672">=</span> ptr;
     }
-private:
-  std::shared_ptr&lt;int&gt; ptr_;
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  std<span style="color:#f92672">::</span>shared_ptr<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> ptr_;
 }
-int main(int argc, char *argv[])
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[])
 {
   Ptrholder obj;
-  std::shared_ptr&lt;int&gt; int_ptr = std::maked_shared&lt;int&gt;(2);
-  obj.save_ptr(int_ptr); // know there are two references to the int of int_ptr
-}
-</code></pre>
-
-<p><strong>Important:</strong> <span class="underline">Do not</span> return or take smart pointers by reference! <br /> Creating factory methods is also relatively straightforward. Just return them by value! There is however one things to remember about <code>unique_ptr</code> - if the return type does not match the thing you are returning, you ought to use <code>std::move</code>. This holds true even, if the return of the function type is a base class and you are returning derived class (explained <a href="https://stackoverflow.com/questions/39478956/how-does-returning-stdmake-uniquesubclass-work/39479117">here</a>).</p>
-
+  std<span style="color:#f92672">::</span>shared_ptr<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> int_ptr <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>maked_shared<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">2</span>);
+  obj.save_ptr(int_ptr); <span style="color:#75715e">// know there are two references to the int of int_ptr
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p><strong>Important:</strong> <!-- raw HTML omitted -->Do not<!-- raw HTML omitted --> return or take smart pointers by reference! <!-- raw HTML omitted --> Creating factory methods is also relatively straightforward. Just return them by value! There is however one things to remember about <code>unique_ptr</code> - if the return type does not match the thing you are returning, you ought to use <code>std::move</code>. This holds true even, if the return of the function type is a base class and you are returning derived class (explained <a href="https://stackoverflow.com/questions/39478956/how-does-returning-stdmake-uniquesubclass-work/39479117">here</a>).</p>
 <h3 id="some-random-abbreviations">Some random abbreviations</h3>
-
 <p>It is a well-known fact that C++ programmers love their abbreviations. And you know what, it actually makes a lot of sense to know those. The abbreviations in the C++ world reveal some cool, useful and right out elegant concepts that everyone should know about. Also, just to be prepared, C++ programmers are really bad at naming things.</p>
-
 <table>
 <thead>
 <tr>
@@ -395,961 +366,716 @@ int main(int argc, char *argv[])
 <th>Expansion</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>RAII</td>
 <td>Resource acquisition is initialization</td>
 </tr>
-
 <tr>
 <td>SFINAE</td>
 <td>Substitution failure is not an error</td>
 </tr>
-
 <tr>
 <td>Pimple</td>
 <td>Pointer to implementation</td>
 </tr>
-
 <tr>
 <td>CRTP</td>
 <td>Curiously recurring template pattern</td>
 </tr>
-
 <tr>
 <td>IIFE</td>
 <td>Immediately invoked function expression</td>
 </tr>
-
 <tr>
 <td>RVO</td>
 <td>Return value optimization</td>
 </tr>
 </tbody>
 </table>
-
 <h2 id="tips">Tips</h2>
-
 <h3 id="knowing-your-template-type-deduction-is-a-blessing-dot">Knowing your template type deduction is a blessing.</h3>
-
-<p>So every C++ programmer knows how you can define generic &ldquo;templated&rdquo; functions and then you can call them with different types of arguments. The calling itself will cause the compiler to instantiate the function by replacing the generic type with the deduced type. The thing you should know in this process - how the type is being deduced when it&rsquo;s not given explicitly (i. e.the function is called without the &lt;&gt;-brackets). <br /> So, based on <code>T</code>, <code>ParamType</code> and <code>expr</code> you have to know what type would be deduced in</p>
-
-<pre><code class="language-c++">template&lt;T&gt;
-void f(ParamType arg);
+<p>So every C++ programmer knows how you can define generic &ldquo;templated&rdquo; functions and then you can call them with different types of arguments. The calling itself will cause the compiler to instantiate the function by replacing the generic type with the deduced type. The thing you should know in this process - how the type is being deduced when it&rsquo;s not given explicitly (i. e.the function is called without the &lt;&gt;-brackets). <!-- raw HTML omitted --> So, based on <code>T</code>, <code>ParamType</code> and <code>expr</code> you have to know what type would be deduced in</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> f(ParamType arg);
 
 f(expr);
-</code></pre>
-
-<p>There are several cases to look at.</p>
-
+</code></pre></div><p>There are several cases to look at.</p>
 <h4 id="paramtype-is-a-reference-or-a-pointer">ParamType is a reference or a pointer</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> f(T<span style="color:#f92672">&amp;</span> arg);
+</code></pre></div><p>In this case, if <code>expr</code> is a reference type, the reference part is ignored and the rest of the type is taken verbatim.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> cx <span style="color:#f92672">=</span> x;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> rx <span style="color:#f92672">=</span> cx;
 
-<pre><code class="language-c++">template&lt;T&gt;
-void f(T&amp; arg);
-</code></pre>
-
-<p>In this case, if <code>expr</code> is a reference type, the reference part is ignored and the rest of the type is taken verbatim.</p>
-
-<pre><code class="language-c++">int x = 42;
-const int cx = x;
-const int&amp; rx = cx;
-
-f(x); // T is is int
-
-f(cx); // T is const int
-
-f(rx); // T is again const int
-</code></pre>
-
-<p><em>Note:</em> This means that depending on how <code>f</code> is called, this may not compile</p>
-
-<pre><code class="language-c++">template&lt;T&gt;
-T f(T&amp; arg)
+f(x); <span style="color:#75715e">// T is is int
+</span><span style="color:#75715e"></span>
+f(cx); <span style="color:#75715e">// T is const int
+</span><span style="color:#75715e"></span>
+f(rx); <span style="color:#75715e">// T is again const int
+</span></code></pre></div><p><em>Note:</em> This means that depending on how <code>f</code> is called, this may not compile</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+T f(T<span style="color:#f92672">&amp;</span> arg)
 {
-  T new_var = arg;
-  new_var += 5; // if T is const int, this line here will fail
-  return new_var;
+  T new_var <span style="color:#f92672">=</span> arg;
+  new_var <span style="color:#f92672">+=</span> <span style="color:#ae81ff">5</span>; <span style="color:#75715e">// if T is const int, this line here will fail
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> new_var;
 }
-</code></pre>
-
-<p><br /> If we now change the definition of <code>f</code> to</p>
-
-<pre><code class="language-c++">template&lt;T&gt;
-void f(const T&amp; arg);
-</code></pre>
-
-<p>the things to be &ldquo;ignored&rdquo; during the deduction of T are the <em>reference</em> part <span class="underline">and</span> the <em>const</em> part. This means that in the above examples, T will be deduced to <em>int</em> every time.</p>
-
+</code></pre></div><p><!-- raw HTML omitted --> If we now change the definition of <code>f</code> to</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> f(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> arg);
+</code></pre></div><p>the things to be &ldquo;ignored&rdquo; during the deduction of T are the <em>reference</em> part <!-- raw HTML omitted -->and<!-- raw HTML omitted --> the <em>const</em> part. This means that in the above examples, T will be deduced to <em>int</em> every time.</p>
 <h4 id="paramtype-is-a-universal-reference">ParamType is a Universal Reference</h4>
-
 <p>Here we are getting a little bit fancier with come cool c++11 features. We define <strong>f</strong> like:</p>
-
-<pre><code class="language-c++">template&lt;T&gt;
-void f(T&amp;&amp; arg);
-</code></pre>
-
-<p>In this case</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> f(T<span style="color:#f92672">&amp;&amp;</span> arg);
+</code></pre></div><p>In this case</p>
 <ul>
-<li><p>if <em>expr</em> is a lvalue, <strong>T</strong> and <strong>ParamType</strong> are deduced to be lvalue reference. This is the only case where <strong>T</strong> is deduced top be a reference.</p>
-
-<pre><code class="language-c++">f(x); // T is int&amp;
-
-f(cx); // T is cont int &amp;
-
-f(rx); // T is cont int &amp;
-</code></pre></li>
-
-<li><p>if <em>expr</em> is a rvalue - the rules for reference and pointer apply.</p>
-
-<pre><code class="language-c++">f(27); // T is int
-</code></pre></li>
+<li>if <em>expr</em> is a lvalue, <strong>T</strong> and <strong>ParamType</strong> are deduced to be lvalue reference. This is the only case where <strong>T</strong> is deduced top be a reference.</li>
 </ul>
-
-<h4 id="paramtype-is-neither-a-reference-nor-a-pointer">ParamType is neither a reference, nor a pointer</h4>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">f(x); <span style="color:#75715e">// T is int&amp;
+</span><span style="color:#75715e"></span>
+f(cx); <span style="color:#75715e">// T is cont int &amp;
+</span><span style="color:#75715e"></span>
+f(rx); <span style="color:#75715e">// T is cont int &amp;
+</span></code></pre></div><ul>
+<li>if <em>expr</em> is a rvalue - the rules for reference and pointer apply.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">f(<span style="color:#ae81ff">27</span>); <span style="color:#75715e">// T is int
+</span></code></pre></div><h4 id="paramtype-is-neither-a-reference-nor-a-pointer">ParamType is neither a reference, nor a pointer</h4>
 <p>This is just pass by value.</p>
-
-<pre><code class="language-c++">template&lt;T&gt;
-void f(T arg);
-</code></pre>
-
-<p>By instantiation we ignore everything except the &ldquo;pure type&rdquo; (i.e. <em>reference</em>, <em>const</em> and/or <em>volatile</em> part are ignored)</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> f(T arg);
+</code></pre></div><p>By instantiation we ignore everything except the &ldquo;pure type&rdquo; (i.e. <em>reference</em>, <em>const</em> and/or <em>volatile</em> part are ignored)</p>
 <h4 id="bonus">Bonus</h4>
+<p>Array arguments decay to pointers so when passing arrays to a template function, the <code>T</code> will be deduced with the rules for pointers.<!-- raw HTML omitted --> One can, however, define e reference to an array so with this &ldquo;trick&rdquo; you can force your <code>T</code> to be deduced to an array type.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> f(T<span style="color:#f92672">&amp;</span> arg);
 
-<p>Array arguments decay to pointers so when passing arrays to a template function, the <code>T</code> will be deduced with the rules for pointers.<br /> One can, however, define e reference to an array so with this &ldquo;trick&rdquo; you can force your <code>T</code> to be deduced to an array type.</p>
-
-<pre><code class="language-c++">template&lt;T&gt;
-void f(T&amp; arg);
-
-int arr[13];
-f(arr) // T is int[13]
-       // and ParamType is int(&amp;)[13]
-</code></pre>
-
-<p>&ldquo;int(&amp;)[13]&rdquo; is a reference type to an array with 13 elements&hellip; myeah! With such references to arrays you can write this extraordinary function that will deduce the number of elements in an array at compile time</p>
-
-<pre><code class="language-c++">template&lt;typename T, std::size_t N&gt;
-constexpr std::size_t arraySize(T (&amp;)[N]) noexcept
+<span style="color:#66d9ef">int</span> arr[<span style="color:#ae81ff">13</span>];
+f(arr) <span style="color:#75715e">// T is int[13]
+</span><span style="color:#75715e"></span>       <span style="color:#75715e">// and ParamType is int(&amp;)[13]
+</span></code></pre></div><p>&ldquo;int(&amp;)[13]&rdquo; is a reference type to an array with 13 elements&hellip; myeah! With such references to arrays you can write this extraordinary function that will deduce the number of elements in an array at compile time</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T, std<span style="color:#f92672">::</span>size_t N<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">constexpr</span> std<span style="color:#f92672">::</span>size_t arraySize(T (<span style="color:#f92672">&amp;</span>)[N]) <span style="color:#66d9ef">noexcept</span>
 {
-  return N;
+  <span style="color:#66d9ef">return</span> N;
 }
-</code></pre>
-
-<p>And&hellip; with that knowledge, you can now punish people who claim they &ldquo;know C++&rdquo;.</p>
-
+</code></pre></div><p>And&hellip; with that knowledge, you can now punish people who claim they &ldquo;know C++&rdquo;.</p>
 <h3 id="auto-type-deduction-is-also-something-to-thinks-about">auto type deduction is also something to thinks about</h3>
-
 <p>The deduction of auto while used as a &ldquo;type&rdquo; of a local variable behaves almost exactly as the deduction of template types. This means you already know most of the rules.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> cx <span style="color:#f92672">=</span> x;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> rx <span style="color:#f92672">=</span> cx;
 
-<pre><code class="language-c++">int x = 5;
-const int cx = x;
-const int&amp; rx = cx;
+<span style="color:#75715e">//case 1
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> xx <span style="color:#f92672">=</span> x; <span style="color:#75715e">//the auto is int
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> xcx <span style="color:#f92672">=</span> cx; <span style="color:#75715e">//the auto is const int
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> xry <span style="color:#f92672">=</span> rx; <span style="color:#75715e">//the auto is const int
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> xx <span style="color:#f92672">=</span> x; <span style="color:#75715e">//the auto is int
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> xcx <span style="color:#f92672">=</span> cx; <span style="color:#75715e">//the auto is int
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> xry <span style="color:#f92672">=</span> rx; <span style="color:#75715e">//the auto is int
+</span><span style="color:#75715e"></span>
 
-//case 1
-
-auto&amp; xx = x; //the auto is int
-auto&amp; xcx = cx; //the auto is const int
-auto&amp; xry = rx; //the auto is const int
-
-const auto&amp; xx = x; //the auto is int
-const auto&amp; xcx = cx; //the auto is int
-const auto&amp; xry = rx; //the auto is int
-
-
-//case 2
-
-auto&amp;&amp; xx = x; //the auto is int&amp;
-auto&amp;&amp; xcx = cx; //the auto is const int&amp;
-auto&amp;&amp; xry = rx; //the auto is const int&amp;
-auto&amp;&amp; x_rvalue = 27; // the auto is int
-
+<span style="color:#75715e">//case 2
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;&amp;</span> xx <span style="color:#f92672">=</span> x; <span style="color:#75715e">//the auto is int&amp;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;&amp;</span> xcx <span style="color:#f92672">=</span> cx; <span style="color:#75715e">//the auto is const int&amp;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;&amp;</span> xry <span style="color:#f92672">=</span> rx; <span style="color:#75715e">//the auto is const int&amp;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;&amp;</span> x_rvalue <span style="color:#f92672">=</span> <span style="color:#ae81ff">27</span>; <span style="color:#75715e">// the auto is int
+</span><span style="color:#75715e"></span>
 .
 .
 .
-</code></pre>
-
-<p>So yeah, not much new things here. Just think about what is becoming with the <em>auto</em> in the declaration of the variable. The final type may not be the same as the thing deduced for <em>auto</em>. For that, you&rsquo;ll have to replace the deduced type for the <em>auto</em> in the declaration. <br /> There is however one caveat with <em>auto</em> type deduction. Consider the snippet:</p>
-
-<pre><code class="language-c++">auto x1(27);
-auto x2{27};
-</code></pre>
-
-<p>This compiles but the types of the variables are probably not what you expect. Both statements look the same and while the <strong>x1</strong> is &ldquo;well behaved&rdquo; and to be expected (it is an int&hellip;surprise!), the type of x2 is <code>std::initializer_list&lt;int&gt;</code>. Yes, <em>auto</em> treats bracketed expressions differently and the general deduced type for them is <code>std::initializer_list&lt;T&gt;</code>. This means that the following code won&rsquo;t compile</p>
-
-<pre><code class="language-c++">auto x{12, &quot;random string&quot;};
-</code></pre>
-
-<p>If you try using the bracketed expression with a templated function on the other side, it just won&rsquo;t compile even if the objects in the brackets are all of the same types. Template type deduction just cannot handle bracketed expressions.</p>
-
+</code></pre></div><p>So yeah, not much new things here. Just think about what is becoming with the <em>auto</em> in the declaration of the variable. The final type may not be the same as the thing deduced for <em>auto</em>. For that, you&rsquo;ll have to replace the deduced type for the <em>auto</em> in the declaration. <!-- raw HTML omitted --> There is however one caveat with <em>auto</em> type deduction. Consider the snippet:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">auto</span> <span style="color:#a6e22e">x1</span>(<span style="color:#ae81ff">27</span>);
+<span style="color:#66d9ef">auto</span> x2{<span style="color:#ae81ff">27</span>};
+</code></pre></div><p>This compiles but the types of the variables are probably not what you expect. Both statements look the same and while the <strong>x1</strong> is &ldquo;well behaved&rdquo; and to be expected (it is an int&hellip;surprise!), the type of x2 is <code>std::initializer_list&lt;int&gt;</code>. Yes, <em>auto</em> treats bracketed expressions differently and the general deduced type for them is <code>std::initializer_list&lt;T&gt;</code>. This means that the following code won&rsquo;t compile</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">auto</span> x{<span style="color:#ae81ff">12</span>, <span style="color:#e6db74">&#34;random string&#34;</span>};
+</code></pre></div><p>If you try using the bracketed expression with a templated function on the other side, it just won&rsquo;t compile even if the objects in the brackets are all of the same types. Template type deduction just cannot handle bracketed expressions.</p>
 <h3 id="decltype-is-cool-little-thing">decltype is cool little thing</h3>
-
 <p>At its core <code>decltype</code> has a simple concept. It takes a single argument and it &ldquo;returns&rdquo; its type. The quotation marks are there because the thing returned thing can be used further as a part of the code. For example, you can declare a new variable with given deduced from <code>decltype</code> type. This is possible:</p>
-
-<pre><code class="language-c++">int x = 5;
-decltype(x) xx = 23; // xx now has the type of x.... just plain int
-</code></pre>
-
-<p>This means, however, that <code>decltype</code> introduces a whole new set of rules for deducing a type from an expression. Thankfully, those rules are pretty simple and are what you expect&hellip;mostly as I understand it, <code>decltype</code> gives you exactly the type that was used when declaring the argument. It returns all the &ldquo;reference-y&rdquo; and &ldquo;const-y&rdquo; parts. Everything! <br /> The primary use of <code>decltype</code> is for specifying a return type of a function that depends on the type of the incoming arguments. Imagine we want to write a generic function that accesses a given index of a given container and returns the object at the index while before that&hellip;it does &ldquo;something&rdquo;. In this situation, you can&rsquo;t know the type of the object at the index(its constness, its referenceness&hellip;). <code>decltype</code> to the rescue. Check this out:</p>
-
-<pre><code class="language-c++">template &lt;typename Container, typename Index&gt;
-auto doSomethingAndAcess(Container&amp; c, Index i) -&gt; decltype(c[i])
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+<span style="color:#66d9ef">decltype</span>(x) xx <span style="color:#f92672">=</span> <span style="color:#ae81ff">23</span>; <span style="color:#75715e">// xx now has the type of x.... just plain int
+</span></code></pre></div><p>This means, however, that <code>decltype</code> introduces a whole new set of rules for deducing a type from an expression. Thankfully, those rules are pretty simple and are what you expect&hellip;mostly as I understand it, <code>decltype</code> gives you exactly the type that was used when declaring the argument. It returns all the &ldquo;reference-y&rdquo; and &ldquo;const-y&rdquo; parts. Everything! <!-- raw HTML omitted --> The primary use of <code>decltype</code> is for specifying a return type of a function that depends on the type of the incoming arguments. Imagine we want to write a generic function that accesses a given index of a given container and returns the object at the index while before that&hellip;it does &ldquo;something&rdquo;. In this situation, you can&rsquo;t know the type of the object at the index(its constness, its referenceness&hellip;). <code>decltype</code> to the rescue. Check this out:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Container, <span style="color:#66d9ef">typename</span> Index<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">auto</span> doSomethingAndAcess(Container<span style="color:#f92672">&amp;</span> c, Index i) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">decltype</span>(c[i])
 {
   doSomething();
-  return c[i];
+  <span style="color:#66d9ef">return</span> c[i];
 }
-</code></pre>
-
-<p>The <strong>auto</strong> at the beginning has nothing to do with auto type deduction. It just delegates the specification of the return type of the function to the end where we have access to the parameters. I believe the whole concept is called <em>trailing return type</em>. <br /> This is, however, the C++11 way of doing it. C++14 offers a sprinkle of syntactic sugar to &ldquo;turn on&rdquo; <code>decltype</code>-deduction rules for auto. Namely:</p>
-
-<pre><code class="language-c++">template &lt;typename Container, typename Index&gt;
-decltype(auto) doSomethingAndAcess(Container&amp; c, Index i)
+</code></pre></div><p>The <strong>auto</strong> at the beginning has nothing to do with auto type deduction. It just delegates the specification of the return type of the function to the end where we have access to the parameters. I believe the whole concept is called <em>trailing return type</em>. <!-- raw HTML omitted --> This is, however, the C++11 way of doing it. C++14 offers a sprinkle of syntactic sugar to &ldquo;turn on&rdquo; <code>decltype</code>-deduction rules for auto. Namely:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Container, <span style="color:#66d9ef">typename</span> Index<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">decltype</span>(<span style="color:#66d9ef">auto</span>) doSomethingAndAcess(Container<span style="color:#f92672">&amp;</span> c, Index i)
 {
   doSomething();
-  return c[i];
+  <span style="color:#66d9ef">return</span> c[i];
 }
-</code></pre>
-
-<p>This way the type of the return statement will be used as a return type and it will be done in a <code>decltype</code>-y kind of way.</p>
-
+</code></pre></div><p>This way the type of the return statement will be used as a return type and it will be done in a <code>decltype</code>-y kind of way.</p>
 <h3 id="prefer-auto-to-explicit-type-declarations">Prefer auto to explicit type declarations</h3>
-
 <h4 id="general-advantages-of-auto">General advantages of <code>auto</code></h4>
-
 <ul>
-<li><p>The first and obvious advantage of <code>auto</code> is that it spares a lot of typing. This, by extension, allows you to even not remember the types of certain things. Like&hellip; at this point who even knows what are the complete types of certain iterators! So, things like</p>
-
-<pre><code class="language-c++">template&lt;typename It&gt;
-void dwim(It b, It e)
+<li>
+<p>The first and obvious advantage of <code>auto</code> is that it spares a lot of typing. This, by extension, allows you to even not remember the types of certain things. Like&hellip; at this point who even knows what are the complete types of certain iterators! So, things like</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> It<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> dwim(It b, It e)
 {
-  while (b != e)
+  <span style="color:#66d9ef">while</span> (b <span style="color:#f92672">!=</span> e)
   {
-    typename std::iterator_traits&lt;It&gt;::value_type var = b*;
-    b++;
+    <span style="color:#66d9ef">typename</span> std<span style="color:#f92672">::</span>iterator_traits<span style="color:#f92672">&lt;</span>It<span style="color:#f92672">&gt;::</span>value_type var <span style="color:#f92672">=</span> b<span style="color:#f92672">*</span>;
+    b<span style="color:#f92672">++</span>;
   }
 }
-</code></pre>
-
-<p>become</p>
-
-<pre><code class="language-c++">template&lt;typename It&gt;
-void dwim(It b, It e)
+</code></pre></div><p>become</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> It<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> dwim(It b, It e)
 {
-  while (b != e)
+  <span style="color:#66d9ef">while</span> (b <span style="color:#f92672">!=</span> e)
   {
-    auto var = b*;
-    b++;
+    <span style="color:#66d9ef">auto</span> var <span style="color:#f92672">=</span> b<span style="color:#f92672">*</span>;
+    b<span style="color:#f92672">++</span>;
   }
 }
-</code></pre>
-
-<p>Awesome!</p></li>
-
-<li><p>With <code>auto</code> you can define types that are known only to the compiler. Lambdas! Also, since C++14 you can also use <code>auto</code> with lambada&rsquo;s parameters.</p>
-
-<pre><code class="language-c++">auto derefLess = [](const auto&amp; p1, const auto&amp; p2){return *p1 &lt; *p2};
-</code></pre></li>
-
-<li><p><code>auto</code> forces you to initialize your variables which is almost always something you should do.</p>
-
-<pre><code class="language-c++">int x1; //uninitialized..bad!
-auto x2; // wont't compile!
-auto x3 = 0; //good!
-</code></pre></li>
-
-<li><p><code>auto</code> prevents you from using the wrong type. The official return type of <code>std::vector&lt;T&gt;::size()</code> is <code>std::vector&lt;int&gt;::size_type</code> but a lot of time it is approximated with <em>unsigned</em>. This may cause problems in certain situations. The problems go away if you just use <code>auto</code> for the type of the variable holding the return value of <code>std::vector&lt;&gt;::size()</code>.</p></li>
-
-<li><p><em>foreach</em>-loops become easier to type <span class="underline">and</span> you cannot mess up the type of the iterated elements. <strong>Always</strong> use something like:</p>
-
-<pre><code class="language-c++">std::unordered_map&lt;std::string, int&gt; m;
-...
-for (const auto&amp; e : m )
-{
-// e has the &quot;most possible correct&quot; type here
-}
-</code></pre></li>
+</code></pre></div><p>Awesome!</p>
+</li>
+<li>
+<p>With <code>auto</code> you can define types that are known only to the compiler. Lambdas! Also, since C++14 you can also use <code>auto</code> with lambada&rsquo;s parameters.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">auto</span> derefLess <span style="color:#f92672">=</span> [](<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> p1, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> p2){<span style="color:#66d9ef">return</span> <span style="color:#f92672">*</span>p1 <span style="color:#f92672">&lt;</span> <span style="color:#f92672">*</span>p2};
+</code></pre></div></li>
+<li>
+<p><code>auto</code> forces you to initialize your variables which is almost always something you should do.</p>
+</li>
 </ul>
-
-<h4 id="explicitly-typed-initializer-idiom">Explicitly typed initializer idiom</h4>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> x1; <span style="color:#75715e">//uninitialized..bad!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span> x2; <span style="color:#75715e">// wont&#39;t compile!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span> x3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">//good!
+</span></code></pre></div><ul>
+<li><code>auto</code> prevents you from using the wrong type. The official return type of <code>std::vector&lt;T&gt;::size()</code> is <code>std::vector&lt;int&gt;::size_type</code> but a lot of time it is approximated with <em>unsigned</em>. This may cause problems in certain situations. The problems go away if you just use <code>auto</code> for the type of the variable holding the return value of <code>std::vector&lt;&gt;::size()</code>.</li>
+<li><em>foreach</em>-loops become easier to type <!-- raw HTML omitted -->and<!-- raw HTML omitted --> you cannot mess up the type of the iterated elements. <strong>Always</strong> use something like:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> m;
+...
+<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> e : m )
+{
+  <span style="color:#75715e">// e has the &#34;most possible correct&#34; type here
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h4 id="explicitly-typed-initializer-idiom">Explicitly typed initializer idiom</h4>
 <p>Sometimes <code>auto</code> won&rsquo;t give you the type you desire. In those situations, it&rsquo;s preferable to cast the thing you are assigning to a variable to the desired type and continue with the use of auto.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">auto</span> ep <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span>(calcEpsilon()); <span style="color:#75715e">// explicitly reducing double to float... good!
+</span></code></pre></div><h3 id="nullptr-is-a-pointer-to-nothing-0-and-null-are-not-that">nullptr is a pointer to nothing, 0 and NULL are not that</h3>
+<p><code>O</code> and <code>NULL</code> sound so logical but they are not what you probably think they are. <code>0</code> is an <em>int</em>. If the compiler sees <code>0</code> in the context of a pointer it will be interpreted as the null-pointer. There are, however, many situations where the context is not that clear. In a lot of cases, <code>0</code> will be treated as a simple int. <!-- raw HTML omitted --> The same story with <code>NULL</code>. Depending on the implementation it is usually some integral type and it will be treated as a number in situations where you don&rsquo;t expect it to behave like this. <!-- raw HTML omitted --> All problems can be solved, if you just forget about the existence of <code>NULL</code> and <code>0</code> and start using <code>nullptr</code>. <code>nullptr</code> is designed to be a pointer to nothing and pointer is the only way it can be interpreted. The following snippet demonstrates everything:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>);
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span>(<span style="color:#66d9ef">int</span>);
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span>(<span style="color:#66d9ef">bool</span>);
 
-<pre><code class="language-c++">auto ep = static_cast&lt;float&gt;(calcEpsilon()); // explicitly reducing double to float... good!
-</code></pre>
-
-<h3 id="nullptr-is-a-pointer-to-nothing-0-and-null-are-not-that">nullptr is a pointer to nothing, 0 and NULL are not that</h3>
-
-<p><code>O</code> and <code>NULL</code> sound so logical but they are not what you probably think they are. <code>0</code> is an <em>int</em>. If the compiler sees <code>0</code> in the context of a pointer it will be interpreted as the null-pointer. There are, however, many situations where the context is not that clear. In a lot of cases, <code>0</code> will be treated as a simple int. <br /> The same story with <code>NULL</code>. Depending on the implementation it is usually some integral type and it will be treated as a number in situations where you don&rsquo;t expect it to behave like this. <br /> All problems can be solved, if you just forget about the existence of <code>NULL</code> and <code>0</code> and start using <code>nullptr</code>. <code>nullptr</code> is designed to be a pointer to nothing and pointer is the only way it can be interpreted. The following snippet demonstrates everything:</p>
-
-<pre><code class="language-c++">void f(void*);
-void f(int);
-void f(bool);
-
-f(NULL); // calls f(int)
-
-f(0); // calls f(int)
-
-f(nullptr); // correctly calls f(void*)
-</code></pre>
-
-<p>Also, another added bonus to the usage of <code>nullptr</code> is that it is the only thing that gets properly deduced with template functions.</p>
-
-<pre><code class="language-c++">void f(void*);
-template&lt;typename Func,
-         typename Mux,
-         typename Ptr&gt;
-decltype(auto) loackAndCall(Func func, Mux&amp; mutex, Ptr ptr)
+f(NULL); <span style="color:#75715e">// calls f(int)
+</span><span style="color:#75715e"></span>
+f(<span style="color:#ae81ff">0</span>); <span style="color:#75715e">// calls f(int)
+</span><span style="color:#75715e"></span>
+f(<span style="color:#66d9ef">nullptr</span>); <span style="color:#75715e">// correctly calls f(void*)
+</span></code></pre></div><p>Also, another added bonus to the usage of <code>nullptr</code> is that it is the only thing that gets properly deduced with template functions.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>);
+<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Func,
+         <span style="color:#66d9ef">typename</span> Mux,
+         <span style="color:#66d9ef">typename</span> Ptr<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">decltype</span>(<span style="color:#66d9ef">auto</span>) loackAndCall(Func func, Mux<span style="color:#f92672">&amp;</span> mutex, Ptr ptr)
 {
-  MuxGuard g(mutex);
-  return func(ptr);
+  MuxGuard <span style="color:#a6e22e">g</span>(mutex);
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">func</span>(ptr);
 }
 
-lockAndCall(f1,f1m, 0);       // error!
-lockAndCall(f1,f1m, NULL);    // error!
-lockAndCall(f1,f1m, nullptr); // finex
-</code></pre>
-
-<h3 id="alias-declarations-are-better-than-typedef">Alias declarations are better than typedef</h3>
-
+lockAndCall(f1,f1m, <span style="color:#ae81ff">0</span>);       <span style="color:#75715e">// error!
+</span><span style="color:#75715e"></span>lockAndCall(f1,f1m, NULL);    <span style="color:#75715e">// error!
+</span><span style="color:#75715e"></span>lockAndCall(f1,f1m, <span style="color:#66d9ef">nullptr</span>); <span style="color:#75715e">// finex
+</span></code></pre></div><h3 id="alias-declarations-are-better-than-typedef">Alias declarations are better than typedef</h3>
 <h4 id="what-even-i-am-talking-about">What even I am talking about</h4>
-
 <p>Brief refresher. This is <code>typedef</code>:</p>
-
-<pre><code class="language-c++">typedef std::unique_ptr&lt;std::vector&lt;int&gt;&gt; VecPtr;
-</code></pre>
-
-<p>And this is the new cool way of doing the same thing using <code>using</code> (alias declaration)</p>
-
-<pre><code class="language-c++">using VecPtr std::unique_ptr&lt;std::vector&lt;int&gt;&gt;;
-</code></pre>
-
-<h4 id="advantages-of-using">Advantages of <code>using</code></h4>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">typedef</span> std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> VecPtr;
+</code></pre></div><p>And this is the new cool way of doing the same thing using <code>using</code> (alias declaration)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">using</span> VecPtr std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span>;
+</code></pre></div><h4 id="advantages-of-using">Advantages of <code>using</code></h4>
 <ul>
-<li><p>When dealing with types involving function pointers, <code>using</code> is much easier to swallow.</p>
-
-<pre><code class="language-c++">// which one of those look like the easier to type out and remember
-
-typedef void (*FP)(int, const std::string&amp;);
-
-using FP = void (*) (int, const std::string&amp;);
-</code></pre></li>
-
-<li><p>Alias declarations can be templetized while <code>typedef</code> cannot. If you want to write template type with <code>typedef</code>, you&rsquo;ll have to define some underling <em>struct</em>. <code>using</code> does not suffer from the same problem.</p>
-
-<pre><code class="language-c++">template&lt;typename T&gt;
-using MyAllocList = std::list&lt;T, MyAlloc&lt;T&gt;&gt;
-
-// VS.
-template&lt;typename T&gt;
-struct MyAllocList {
-typedef std::list&lt;T, MyAlloc&lt;T&gt;&gt; type;
-}
-</code></pre></li>
+<li>When dealing with types involving function pointers, <code>using</code> is much easier to swallow.</li>
 </ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// which one of those look like the easier to type out and remember
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">typedef</span> <span style="color:#a6e22e">void</span> (<span style="color:#f92672">*</span>FP)(<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string<span style="color:#f92672">&amp;</span>);
 
-<p>It gets even worse when you want to use the type defined with <code>typedef</code>. Then you&rsquo;ll have to use the trailing <code>::type</code> after the type.</p>
+<span style="color:#66d9ef">using</span> FP <span style="color:#f92672">=</span> <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>) (<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string<span style="color:#f92672">&amp;</span>);
+</code></pre></div><ul>
+<li>Alias declarations can be templetized while <code>typedef</code> cannot. If you want to write template type with <code>typedef</code>, you&rsquo;ll have to define some underling <em>struct</em>. <code>using</code> does not suffer from the same problem.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">using</span> MyAllocList <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>list<span style="color:#f92672">&lt;</span>T, MyAlloc<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span>
 
-<pre><code class="language-c++">template&lt;typename T&gt;
-class Widget
-{
-private:
-  typename MyAllocList&lt;T&gt;::type list;
+<span style="color:#75715e">// VS.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyAllocList</span> {
+  <span style="color:#66d9ef">typedef</span> std<span style="color:#f92672">::</span>list<span style="color:#f92672">&lt;</span>T, MyAlloc<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span> type;
 }
-</code></pre>
-
-<p>Do yourself a favor, use <code>using</code>!</p>
-
+</code></pre></div><p>It gets even worse when you want to use the type defined with <code>typedef</code>. Then you&rsquo;ll have to use the trailing <code>::type</code> after the type.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Widget</span>
+{
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">typename</span> MyAllocList<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>type list;
+}
+</code></pre></div><p>Do yourself a favor, use <code>using</code>!</p>
 <h3 id="type-transformations-that-come-in-handy">Type transformations that come in handy</h3>
-
 <p>Sometimes you want to &ldquo;cook&rdquo; yourself some type from some already given template types. For those purposes the standard library offers some predefined type transformations:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>remove_const<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>type;
+std<span style="color:#f92672">::</span>remove_const_t<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>;
 
-<pre><code class="language-c++">std::remove_const&lt;T&gt;::type;
-std::remove_const_t&lt;T&gt;;
+std<span style="color:#f92672">::</span>remove_reference<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>type;
+std<span style="color:#f92672">::</span>remove_reference_t<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>;
 
-std::remove_reference&lt;T&gt;::type;
-std::remove_reference_t&lt;T&gt;;
-
-std::add_lvalue_reference&lt;T&gt;::type;
-std::add_lvalue_reference_t&lt;T&gt;;
+std<span style="color:#f92672">::</span>add_lvalue_reference<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>type;
+std<span style="color:#f92672">::</span>add_lvalue_reference_t<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>;
 
 ...
-</code></pre>
-
-<h3 id="deleted-functions-are-to-be-used-instead-of-private-ones">Deleted functions are to be used instead of private ones</h3>
-
+</code></pre></div><h3 id="deleted-functions-are-to-be-used-instead-of-private-ones">Deleted functions are to be used instead of private ones</h3>
 <p>In some cases what you want is to prevent certain functions from being called from user code. In the good old day programmers just defined such functions private. The smarter way to do the same thing nowadays is to delete the function. This can even be done from a derived class that wants to &ldquo;hide&rdquo; some of the functions from its base class.</p>
-
-<pre><code class="language-c++">class basic_ios: public ios_base
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">basic_ios</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> ios_base
 {
-public:
-  basic_ios(const basic_ios&amp;) = delete;
-  basic_ios&amp; operator=(const basic_ios&amp;) = delete;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+  basic_ios(<span style="color:#66d9ef">const</span> basic_ios<span style="color:#f92672">&amp;</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
+  basic_ios<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> basic_ios<span style="color:#f92672">&amp;</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
 }
-//this deletes the copy constrctor and the assgiment operator but only for the derived class
-</code></pre>
+<span style="color:#75715e">//this deletes the copy constrctor and the assgiment operator but only for the derived class
+</span></code></pre></div><p>By convention deleted functions are to be declared <em>public</em> and not <em>private</em>. <!-- raw HTML omitted --> Also <!-- raw HTML omitted -->any<!-- raw HTML omitted --> function could be deleted, not only member functions of a given class. With deletion you could &ldquo;turn off&rdquo; certain overloads of functions.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isLucky</span>(<span style="color:#66d9ef">int</span> number);
+<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isLucky</span>(<span style="color:#66d9ef">char</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
+<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isLucky</span>(<span style="color:#66d9ef">bool</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
+<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isLucky</span>(<span style="color:#66d9ef">double</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
 
-<p>By convention deleted functions are to be declared <em>public</em> and not <em>private</em>. <br /> Also <span class="underline">any</span> function could be deleted, not only member functions of a given class. With deletion you could &ldquo;turn off&rdquo; certain overloads of functions.</p>
-
-<pre><code class="language-c++">bool isLucky(int number);
-bool isLucky(char) = delete;
-bool isLucky(bool) = delete;
-bool isLucky(double) = delete;
-
-if(isLucky(2)){...} // fine
-if(isLucky('2')){...} // error!
-if(isLucky(true)){...} // error!
-if(isLucky(2.5)){...} // error!
-</code></pre>
-
-<p>Without the deletions the function calls will compile and may not behave the way you expect them to because of the implicit conversations to <em>int</em>.</p>
-
+<span style="color:#66d9ef">if</span>(isLucky(<span style="color:#ae81ff">2</span>)){...} <span style="color:#75715e">// fine
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(isLucky(<span style="color:#e6db74">&#39;2&#39;</span>)){...} <span style="color:#75715e">// error!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(isLucky(true)){...} <span style="color:#75715e">// error!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(isLucky(<span style="color:#ae81ff">2.5</span>)){...} <span style="color:#75715e">// error!
+</span></code></pre></div><p>Without the deletions the function calls will compile and may not behave the way you expect them to because of the implicit conversations to <em>int</em>.</p>
 <h3 id="use-override">Use override</h3>
-
 <h4 id="virtual-functions">Virtual functions</h4>
-
 <p>Refresher again. Which functions are to be considered virtual.</p>
-
 <ul>
 <li>the base class function must be declared virtual.</li>
-<li>The base and derived function names must be <span class="underline">identical</span>.</li>
-<li>Parameter types of the baser and derived function must be <span class="underline">identical</span>.</li>
-<li>The <em>constness</em> of the base and derived functions must be <span class="underline">identical</span>.</li>
-<li>The return types and exception specifications of the base and derived functions must be <span class="underline">compatible</span></li>
+<li>The base and derived function names must be <!-- raw HTML omitted -->identical<!-- raw HTML omitted -->.</li>
+<li>Parameter types of the baser and derived function must be <!-- raw HTML omitted -->identical<!-- raw HTML omitted -->.</li>
+<li>The <em>constness</em> of the base and derived functions must be <!-- raw HTML omitted -->identical<!-- raw HTML omitted -->.</li>
+<li>The return types and exception specifications of the base and derived functions must be <!-- raw HTML omitted -->compatible<!-- raw HTML omitted --></li>
 </ul>
-
 <p>Inevitably you will forget those rules and you will think that you are overriding something in a &ldquo;virtual&rdquo; way but you really won&rsquo;t be doing that. So, the advice goes, use <code>override</code> to be explicit. Then you&rsquo;ll have compiler tell you&rsquo;ve done something wrong.</p>
-
-<pre><code class="language-c++">class Base
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Base</span>
 {
-private:
-  virtual void mf1() const;
-  virtual void mf2(int x);
-  virtual void mf3() &amp;;
-  void mf4() const;
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> mf1() <span style="color:#66d9ef">const</span>;
+  <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mf2</span>(<span style="color:#66d9ef">int</span> x);
+  <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mf3</span>() <span style="color:#f92672">&amp;</span>;
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mf4</span>() <span style="color:#66d9ef">const</span>;
 }
 
-class Derived : public Base
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Derived</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Base
 {
-private:
-  virtual void mf1() override;               // won't compile
-  virtual void mf2(unsigned int x) override; // won't compile
-  virtual void mf3() &amp;&amp; override;            // won't compile
-  virtual void mf4() const override;         // won't compile
-}
-</code></pre>
-
-<h4 id="overloading-on-rvalue-and-lvalue">Overloading on rvalue and lvalue</h4>
-
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> mf1() <span style="color:#66d9ef">override</span>;               <span style="color:#75715e">// won&#39;t compile
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mf2</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> x) <span style="color:#66d9ef">override</span>; <span style="color:#75715e">// won&#39;t compile
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mf3</span>() <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">override</span>;            <span style="color:#75715e">// won&#39;t compile
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mf4</span>() <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">override</span>;         <span style="color:#75715e">// won&#39;t compile
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h4 id="overloading-on-rvalue-and-lvalue">Overloading on rvalue and lvalue</h4>
 <p>You can also overload a function based on weather the <code>*this</code> object is a r- or lvalue:</p>
-
-<pre><code class="language-c++">class Widget
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Widget</span>
 {
-public:
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
   ...
-  std::vector&lt;double&gt;&amp; data() &amp; // for lvalue Widgets
-    {
-      return values; // return lvalue
-    }
+  std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;&amp;</span> data() <span style="color:#f92672">&amp;</span> <span style="color:#75715e">// for lvalue Widgets
+</span><span style="color:#75715e"></span>    {
+      <span style="color:#66d9ef">return</span> values; <span style="color:#75715e">// return lvalue
+</span><span style="color:#75715e"></span>    }
 
-  std::vector&lt;double&gt; data() &amp;&amp; // for rvalue Widgets
-    {
-      return std::move(values); // return rvalue
-    }
+  std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span> data() <span style="color:#f92672">&amp;&amp;</span> <span style="color:#75715e">// for rvalue Widgets
+</span><span style="color:#75715e"></span>    {
+      <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>move(values); <span style="color:#75715e">// return rvalue
+</span><span style="color:#75715e"></span>    }
 };
 
-</code></pre>
-
-<h3 id="think-when-you-need-const-iterator-and-when-iterator">Think when you need const_iterator and when iterator</h3>
-
+</code></pre></div><h3 id="think-when-you-need-const-iterator-and-when-iterator">Think when you need const_iterator and when iterator</h3>
 <h4 id="const-iterators">Const iterators</h4>
-
 <p>Not that much to say. C++ can optimize the code much better if it deals with <em>constness</em>. Remember to put <code>const</code> before <code>auto</code> when you don&rsquo;t need to change the objects that you iterate.</p>
-
-<pre><code class="language-c++">for(const auto&amp; e : container){}
-</code></pre>
-
-<p>Also, when you use a function that takes iterators to perform something that does not modify the container, use <code>std::cbegin()</code> and <code>std::cend()</code> which are the const versions of <code>std::begin()</code> and <code>std::end()</code></p>
-
-<pre><code class="language-c++">auto it = std::find(values.cbegin(), values.cend(), 1986);
-auto it = std::find(std::cbegin(values), std::cend(values), 1986);
-</code></pre>
-
-<p>This brings the next point.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> e : container){}
+</code></pre></div><p>Also, when you use a function that takes iterators to perform something that does not modify the container, use <code>std::cbegin()</code> and <code>std::cend()</code> which are the const versions of <code>std::begin()</code> and <code>std::end()</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>find(values.cbegin(), values.cend(), <span style="color:#ae81ff">1986</span>);
+<span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>find(std<span style="color:#f92672">::</span>cbegin(values), std<span style="color:#f92672">::</span>cend(values), <span style="color:#ae81ff">1986</span>);
+</code></pre></div><p>This brings the next point.</p>
 <h4 id="want-generic-code-use-std-begin-std-end-dot-dot-dot-etc">Want generic code, use std::begin(), std::end(),&hellip; etc</h4>
-
 <p>Sometimes you know that your incoming object is a container but you don&rsquo;t have the guarantee that the <code>container::begin()</code> and <code>container::end()</code> methods are provided. This is the reasons to get in the habit of using <code>std::begin()</code> and <code>std::end()</code>. This makes the things a lot more generic. With them you can do this:</p>
-
-<pre><code class="language-c++">template&lt;typename C, typename V&gt;
-void findAndInsert(C&amp; container, const V&amp; target, const V&amp; insert)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> C, <span style="color:#66d9ef">typename</span> V<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> findAndInsert(C<span style="color:#f92672">&amp;</span> container, <span style="color:#66d9ef">const</span> V<span style="color:#f92672">&amp;</span> target, <span style="color:#66d9ef">const</span> V<span style="color:#f92672">&amp;</span> insert)
 {
-  auto it = std::find(std::cbegin(container), values::cend(container), target);
+  <span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>find(std<span style="color:#f92672">::</span>cbegin(container), values<span style="color:#f92672">::</span>cend(container), target);
   container.insert(insert, it);
 }
-</code></pre>
-
-<h3 id="noexcept-is-good-and-it-is-to-be-used-carefully">noexcept is good and it is to be used carefully</h3>
-
-<p>Today the C++ compilers are quite the smart little things. Much smarter than before. Therefore they can optimize a lot of things and produce a more efficient binary. <code>noexcept</code> is one of the conditions that must be met for a function to be &ldquo;most optimizable&rdquo;. It means that the function <span class="underline">cannot</span> and <span class="underline">won&rsquo;t</span> emit exception at runtime,</p>
-
-<pre><code class="language-c++">void fun(int x) noexcept;
-</code></pre>
-
-<p><br /> Right off the start, we need to say that <code>noexcept</code> is a part of a function&rsquo;s interface. Callers may examine if a function is <code>noexcept</code> and their behavior may depend on it. <code>noexcept</code> is almost as important as <code>const</code>. Think about <code>noexcept</code> in the definition of each function. To not declare a function <code>noexcept</code> is a missed opportunity to tell the compiler and everyone else that your function meets certain conditions. However, be careful, as said before <code>noexcept</code> is part of the interface. Whatever your choice might be, it must not be changed in the long term. Removing <code>noexcept</code> (or adding for that matter) to a function definition may break binary compatibility with other parts of the program that use said function. <br /> If an exception is emitted from a <code>noexcept</code> function at the runtime, the program will simply terminate. So again, be careful with defining functions <code>noexcept</code>. If your function is <code>noexcept</code> but in the body usage of no-<code>noexcept</code> function is present, you might be in trouble. <br /> A function may conditionally be <code>noexcept</code>.</p>
-
-<pre><code class="language-c++">template&lt;class T, size_t N&gt;
-void swap(T (&amp;a)[N], T (&amp;b)[N]) noexcept(noexcept(swap_el(*a,*b)));
-</code></pre>
-
-<p>This function is noexcept only if the condition in the <code>noexcept</code> block is true. In this case, only if the function swap_el applied on two elements of the arrays a and b is <code>noexcept</code>.</p>
-
+</code></pre></div><h3 id="noexcept-is-good-and-it-is-to-be-used-carefully">noexcept is good and it is to be used carefully</h3>
+<p>Today the C++ compilers are quite the smart little things. Much smarter than before. Therefore they can optimize a lot of things and produce a more efficient binary. <code>noexcept</code> is one of the conditions that must be met for a function to be &ldquo;most optimizable&rdquo;. It means that the function <!-- raw HTML omitted -->cannot<!-- raw HTML omitted --> and <!-- raw HTML omitted -->won&rsquo;t<!-- raw HTML omitted --> emit exception at runtime,</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fun</span>(<span style="color:#66d9ef">int</span> x) <span style="color:#66d9ef">noexcept</span>;
+</code></pre></div><p><!-- raw HTML omitted --> Right off the start, we need to say that <code>noexcept</code> is a part of a function&rsquo;s interface. Callers may examine if a function is <code>noexcept</code> and their behavior may depend on it. <code>noexcept</code> is almost as important as <code>const</code>. Think about <code>noexcept</code> in the definition of each function. To not declare a function <code>noexcept</code> is a missed opportunity to tell the compiler and everyone else that your function meets certain conditions. However, be careful, as said before <code>noexcept</code> is part of the interface. Whatever your choice might be, it must not be changed in the long term. Removing <code>noexcept</code> (or adding for that matter) to a function definition may break binary compatibility with other parts of the program that use said function. <!-- raw HTML omitted --> If an exception is emitted from a <code>noexcept</code> function at the runtime, the program will simply terminate. So again, be careful with defining functions <code>noexcept</code>. If your function is <code>noexcept</code> but in the body usage of no-<code>noexcept</code> function is present, you might be in trouble. <!-- raw HTML omitted --> A function may conditionally be <code>noexcept</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>, size_t N<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> swap(T (<span style="color:#f92672">&amp;</span>a)[N], T (<span style="color:#f92672">&amp;</span>b)[N]) <span style="color:#66d9ef">noexcept</span>(<span style="color:#66d9ef">noexcept</span>(swap_el(<span style="color:#f92672">*</span>a,<span style="color:#f92672">*</span>b)));
+</code></pre></div><p>This function is noexcept only if the condition in the <code>noexcept</code> block is true. In this case, only if the function swap_el applied on two elements of the arrays a and b is <code>noexcept</code>.</p>
 <h3 id="constexpr-is-the-new-hot-thing">constexpr is the new hot thing!</h3>
-
 <p><code>constexpr</code> indicates a value(when used for variable definition) that is known during compilation. This is quite different from simply being <em>const</em>. Function parameters can be <em>const</em> but are not known during compilation. This:</p>
-
-<pre><code class="language-c++">constexpr int x = 5;
-</code></pre>
-
-<p>is on the other hand known during compilation. In this example <em>x</em> is a <em>compile-time constant</em>. It can be used in interesting ways. For example:</p>
-
-<pre><code class="language-c++">std::array&lt;int, x&gt; arr; // defines array with 5 int elements
-</code></pre>
-
-<p>At this point, I&rsquo;ll have to mention that, of course, all <code>constexpr</code> objects are <em>const</em> by extension. Not all <em>const</em> objects are <code>constexpr</code> however. <br /> Things become a lot more interesting once <code>constexpr</code> functions are involved. Those create what is called a <code>constexpr</code> <em>context</em>. This means that those functions could be parsed and executed during compilation given that the provided arguments are known during compilation(i. e. they are defined as <code>constexpr</code>). When the conditions for compile-time executions are not met, the function can also act like a normal function. In C++11 those <code>constexpr</code> functions were limited to a single statement - the return statement. In C++14 however, this limitation is drooped. Simple example:</p>
-
-<pre><code class="language-c++">constexpr int pow(int base, int exp) noexcept
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</code></pre></div><p>is on the other hand known during compilation. In this example <em>x</em> is a <em>compile-time constant</em>. It can be used in interesting ways. For example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>array<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, x<span style="color:#f92672">&gt;</span> arr; <span style="color:#75715e">// defines array with 5 int elements
+</span></code></pre></div><p>At this point, I&rsquo;ll have to mention that, of course, all <code>constexpr</code> objects are <em>const</em> by extension. Not all <em>const</em> objects are <code>constexpr</code> however. <!-- raw HTML omitted --> Things become a lot more interesting once <code>constexpr</code> functions are involved. Those create what is called a <code>constexpr</code> <em>context</em>. This means that those functions could be parsed and executed during compilation given that the provided arguments are known during compilation(i. e. they are defined as <code>constexpr</code>). When the conditions for compile-time executions are not met, the function can also act like a normal function. In C++11 those <code>constexpr</code> functions were limited to a single statement - the return statement. In C++14 however, this limitation is drooped. Simple example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">pow</span>(<span style="color:#66d9ef">int</span> base, <span style="color:#66d9ef">int</span> exp) <span style="color:#66d9ef">noexcept</span>
 {
-  auto res = 1;
-  for(int i = 0; i &lt; exp; i++) res *= base;
-  return res;
+  <span style="color:#66d9ef">auto</span> res <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> exp; i<span style="color:#f92672">++</span>) res <span style="color:#f92672">*=</span> base;
+  <span style="color:#66d9ef">return</span> res;
 }
-constexpr size = 3;
-std::array&lt;double, pow(3,2)&gt; arr; // array of size 9
-</code></pre>
-
-<p>When I first saw this, it blew my mind! <code>constexpr</code> functions may be executed in <code>constexpr</code> contents only if take literal type. Those include all base types except void but user defined types may also be literal if the define <code>constexpr</code> constructor and may be used in <code>constexpr</code> context if some of their methods are <code>constexpr</code>. This is absolutely valid:</p>
-
-<pre><code class="language-c++">class Point
+<span style="color:#66d9ef">constexpr</span> size <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+std<span style="color:#f92672">::</span>array<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span>, pow(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)<span style="color:#f92672">&gt;</span> arr; <span style="color:#75715e">// array of size 9
+</span></code></pre></div><p>When I first saw this, it blew my mind! <code>constexpr</code> functions may be executed in <code>constexpr</code> contents only if take literal type. Those include all base types except void but user defined types may also be literal if the define <code>constexpr</code> constructor and may be used in <code>constexpr</code> context if some of their methods are <code>constexpr</code>. This is absolutely valid:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Point</span>
 {
-public:
-  constexpr Point(int xval = 0, int yval = 0) noexcept
-    :x(xval), y(yval)
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">constexpr</span> Point(<span style="color:#66d9ef">int</span> xval <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">int</span> yval <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">noexcept</span>
+    <span style="color:#f92672">:</span>x(xval), y(yval)
     {}
 
-  constexpr int getX() const noexcept{return this-&gt;x;}
-  constexpr int getY() const noexcept{return this-&gt;y;}
-private:
-  int x, y;
+  <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getX</span>() <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">noexcept</span>{<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>x;}
+  <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getY</span>() <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">noexcept</span>{<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>y;}
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">int</span> x, y;
 }
-int main(int argc, char *argv[])
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[])
 {
 
-  constexpr Point point(5,3);
+  <span style="color:#66d9ef">constexpr</span> Point point(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">3</span>);
 }
-</code></pre>
-
-<p><code>point</code> can be further used in <code>constexpr</code> functions and those could be executed during compilation. To note is that in C++11 setters for the <em>Point</em>-Class can&rsquo;t be <code>constexpr</code> as they modify the object and therefore they are not even <em>const</em>. Further more, the return types of those are <em>void</em> which is not literal type. C++14 lifts both of these restrictions. So..</p>
-
-<pre><code class="language-c++">class Point
+</code></pre></div><p><code>point</code> can be further used in <code>constexpr</code> functions and those could be executed during compilation. To note is that in C++11 setters for the <em>Point</em>-Class can&rsquo;t be <code>constexpr</code> as they modify the object and therefore they are not even <em>const</em>. Further more, the return types of those are <em>void</em> which is not literal type. C++14 lifts both of these restrictions. So..</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Point</span>
 {
-public:
-  constexpr Point(int xval = 0, int yval = 0) noexcept
-    :x(xval), y(yval)
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">constexpr</span> Point(<span style="color:#66d9ef">int</span> xval <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">int</span> yval <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">noexcept</span>
+    <span style="color:#f92672">:</span>x(xval), y(yval)
     {}
 
-  constexpr int getX() const noexcept{return this-&gt;x;}
-  constexpr int getY() const noexcept{return this-&gt;y;}
+  <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getX</span>() <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">noexcept</span>{<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>x;}
+  <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getY</span>() <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">noexcept</span>{<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>y;}
 
-  constexpr void setX(int val) noexcept{this-&gt;x = val;}
-  constexpr void setY(int val) noexcept{this-&gt;y = val;}
-private:
-  int x, y;
+  <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setX</span>(<span style="color:#66d9ef">int</span> val) <span style="color:#66d9ef">noexcept</span>{<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>x <span style="color:#f92672">=</span> val;}
+  <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setY</span>(<span style="color:#66d9ef">int</span> val) <span style="color:#66d9ef">noexcept</span>{<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>y <span style="color:#f92672">=</span> val;}
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">int</span> x, y;
 }
-</code></pre>
-
-<p>This gives us the ability to write something like this:</p>
-
-<pre><code class="language-c++">constexpr Point reflection(const Point&amp; p) noexcept
+</code></pre></div><p>This gives us the ability to write something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">constexpr</span> Point <span style="color:#a6e22e">reflection</span>(<span style="color:#66d9ef">const</span> Point<span style="color:#f92672">&amp;</span> p) <span style="color:#66d9ef">noexcept</span>
 {
   Point result;
-  result.setX(-p.getX());
-  result.setY(-p.getY());
-  return result; // returning copy of the object
-}
-</code></pre>
-
-<p>If invoked with a <code>constexpr</code> variable of type <em>Point</em> the function will be evaluated at compile time. <br /> It&rsquo;s important to keep in mind that <code>constexpr</code> is a part of a function&rsquo;s interface. Again, as <code>noexcept</code>, users may rely on this interface. Also, if <code>constexpr</code> is used with <code>constexpr</code> variables in <code>constexpr</code> context <span class="underline"><strong>and</strong></span> it has some side effects(as I/O or simply logging something to the standard output) it will cause a compile-time error. So yeah, be careful. <code>constexpr</code> is pretty close to the new <code>const</code> but not quite! <br /> One final thing. Please do yourself a favor and check out <a href="https://www.youtube.com/watch?v=PJwd4JLYJJY">this</a>! A talk with <a href="https://articles.emptycrate.com/about.html">Jason Turnen</a> and <a href="https://github.com/elbeno">Ben Deane</a> that shows exactly what you can do with <code>constexpr</code>.</p>
-
+  result.setX(<span style="color:#f92672">-</span>p.getX());
+  result.setY(<span style="color:#f92672">-</span>p.getY());
+  <span style="color:#66d9ef">return</span> result; <span style="color:#75715e">// returning copy of the object
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>If invoked with a <code>constexpr</code> variable of type <em>Point</em> the function will be evaluated at compile time. <!-- raw HTML omitted --> It&rsquo;s important to keep in mind that <code>constexpr</code> is a part of a function&rsquo;s interface. Again, as <code>noexcept</code>, users may rely on this interface. Also, if <code>constexpr</code> is used with <code>constexpr</code> variables in <code>constexpr</code> context <!-- raw HTML omitted --><strong>and</strong><!-- raw HTML omitted --> it has some side effects(as I/O or simply logging something to the standard output) it will cause a compile-time error. So yeah, be careful. <code>constexpr</code> is pretty close to the new <code>const</code> but not quite! <!-- raw HTML omitted --> One final thing. Please do yourself a favor and check out <a href="https://www.youtube.com/watch?v=PJwd4JLYJJY">this</a>! A talk with <a href="https://articles.emptycrate.com/about.html">Jason Turnen</a> and <a href="https://github.com/elbeno">Ben Deane</a> that shows exactly what you can do with <code>constexpr</code>.</p>
 <h3 id="the-mutable-keyword-exists-and-you-should-know-about-it">The mutable keyword exists and you should know about it!</h3>
-
 <p>So let&rsquo;s say you have the following class that is used not only by you but by someone that is not you and over whom you have to direct control.</p>
-
-<pre><code class="language-c++">class ResourceProvider
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResourceProvider</span>
 {
-public:
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
   ResourceProvider(...){}
 
-  void changeState(int x, int y)
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changeState</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y)
     {
-      this-&gt;x = x;
-      this-&gt;y = y;
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>x <span style="color:#f92672">=</span> x;
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>y <span style="color:#f92672">=</span> y;
     }
 
-  double getResource() const
+  <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getResource</span>() <span style="color:#66d9ef">const</span>
     {
-      return this-&gt;expensivecomputation();
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>expensivecomputation();
     }
-private:
-  double expensiveComputation(int x, int y) const {...}
-  double x,y;
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">double</span> expensiveComputation(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) <span style="color:#66d9ef">const</span> {...}
+  <span style="color:#66d9ef">double</span> x,y;
 }
-</code></pre>
-
-<p>Everything is perfect. The <em>getResource</em> function is <code>const</code> and it has no side effect. This is as good as it gets with C++ functions. It&rsquo;s optimizable AF. <br /> One they, however, one of the clients of the class writes you an email with the complaint that the <code>getResources</code> function is too slow and <code>changeState</code> gets called relatively seldom so they end up caching the result of <code>getResource</code>. &ldquo;Wouldn&rsquo;t it be convenient if the class did that on its own automatically,&rdquo; they say. And yes! It certainly would be nice. So you change your class to:</p>
-
-<pre><code class="language-c++">class ResourceProvider
+</code></pre></div><p>Everything is perfect. The <em>getResource</em> function is <code>const</code> and it has no side effect. This is as good as it gets with C++ functions. It&rsquo;s optimizable AF. <!-- raw HTML omitted --> One they, however, one of the clients of the class writes you an email with the complaint that the <code>getResources</code> function is too slow and <code>changeState</code> gets called relatively seldom so they end up caching the result of <code>getResource</code>. &ldquo;Wouldn&rsquo;t it be convenient if the class did that on its own automatically,&rdquo; they say. And yes! It certainly would be nice. So you change your class to:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResourceProvider</span>
 {
-public:
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
   ResourceProvider(...){}
 
-  void changeState(int x, int y)
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changeState</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y)
     {
-      this-&gt;x = x;
-      this-&gt;y = y;
-      this-&gt;state_changed = true;
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>x <span style="color:#f92672">=</span> x;
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>y <span style="color:#f92672">=</span> y;
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>state_changed <span style="color:#f92672">=</span> true;
     }
 
-  double getResource() const
+  <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getResource</span>() <span style="color:#66d9ef">const</span>
     {
-      if (state_changed)
+      <span style="color:#66d9ef">if</span> (state_changed)
       {
-        cached_value = this-&gt;expensivecomputation();
-        state_changed = false;
+        cached_value <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>expensivecomputation();
+        state_changed <span style="color:#f92672">=</span> false;
       }
 
-      return cached_value;
+      <span style="color:#66d9ef">return</span> cached_value;
     }
-private:
-  double expensiveComputation(int x, int y) const {...}
-  double x,y;
-  bool state_changed = true;
-  double cached_value;
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">double</span> expensiveComputation(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) <span style="color:#66d9ef">const</span> {...}
+  <span style="color:#66d9ef">double</span> x,y;
+  <span style="color:#66d9ef">bool</span> state_changed <span style="color:#f92672">=</span> true;
+  <span style="color:#66d9ef">double</span> cached_value;
 }
-</code></pre>
-
-<p>And&hellip;.it doesn&rsquo;t compile. Sad! <code>getResource</code> has side effects now. It isn&rsquo;t <code>const</code>! It can&rsquo;t <code>const</code>! BAD! You have a few options now:</p>
-
+</code></pre></div><p>And&hellip;.it doesn&rsquo;t compile. Sad! <code>getResource</code> has side effects now. It isn&rsquo;t <code>const</code>! It can&rsquo;t <code>const</code>! BAD! You have a few options now:</p>
 <ul>
 <li>remove the <code>const</code> from the function declaration and the hell breaks loose</li>
 <li>use something like <code>const_cast</code> and feel&hellip; like a horrible human being after the fact (plus it&rsquo;s really ugly to do that). I mean&hellip; you are lying with your function interface if you do that</li>
 <li>use <code>mutable</code>!!</li>
 </ul>
-
 <p>Yes <code>mutable</code> is completely different beast. If you define variable as <code>mutable</code> it can be changed from <em>const</em> functions. Myeah! You rewrite your class.</p>
-
-<pre><code class="language-c++">class ResourceProvider
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResourceProvider</span>
 {
-public:
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
   ResourceProvider(...){}
 
-  void changeState(int x, int y)
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changeState</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y)
     {
-      this-&gt;x = x;
-      this-&gt;y = y;
-      this-&gt;state_changed = true;
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>x <span style="color:#f92672">=</span> x;
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>y <span style="color:#f92672">=</span> y;
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>state_changed <span style="color:#f92672">=</span> true;
     }
 
-  double getResource() const
+  <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getResource</span>() <span style="color:#66d9ef">const</span>
     {
-      if (state_changed)
+      <span style="color:#66d9ef">if</span> (state_changed)
       {
-        cached_value = this-&gt;expensivecomputation();
-        state_changed = false;
+        cached_value <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>expensivecomputation();
+        state_changed <span style="color:#f92672">=</span> false;
       }
 
-      return cached_value;
+      <span style="color:#66d9ef">return</span> cached_value;
     }
-private:
-  double expensiveComputation(int x, int y) const {...}
-  double x,y;
-  mutable bool state_changed = true;
-  mutable double cached_value;
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">double</span> expensiveComputation(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) <span style="color:#66d9ef">const</span> {...}
+  <span style="color:#66d9ef">double</span> x,y;
+  <span style="color:#66d9ef">mutable</span> <span style="color:#66d9ef">bool</span> state_changed <span style="color:#f92672">=</span> true;
+  <span style="color:#66d9ef">mutable</span> <span style="color:#66d9ef">double</span> cached_value;
 }
-</code></pre>
-
-<p>You ship it. Everyone is happy. The code is clean. You can live in peace with the new knowledge now! Also, watch <a href="https://www.youtube.com/watch?v=tTexD26jIN4">this</a> talk by <a href="http://www.gregcons.com/kateblog/">Kate Gregory</a>. She goes over the problem presented here in much more engaging fashion.</p>
-
+</code></pre></div><p>You ship it. Everyone is happy. The code is clean. You can live in peace with the new knowledge now! Also, watch <a href="https://www.youtube.com/watch?v=tTexD26jIN4">this</a> talk by <a href="http://www.gregcons.com/kateblog/">Kate Gregory</a>. She goes over the problem presented here in much more engaging fashion.</p>
 <h3 id="std-unique-ptr-is-for-exclusive-ownership">std::unique_ptr is for exclusive ownership!</h3>
-
-<p>Generally, when you want to use a pointer in the new modern C++ world, your first thought should be &ldquo;Can I use <code>unique_ptr</code> here?&ldquo;. And yes, this is the preferred way of using &ldquo;pointers&rdquo; these days. <code>unique_ptr</code> can be viewed as small as a raw pointer and for most operations, they behave exactly the same way as raw pointers. <br /> There are few things to keep in mind while using <code>unique_ptr</code>.</p>
-
+<p>Generally, when you want to use a pointer in the new modern C++ world, your first thought should be &ldquo;Can I use <code>unique_ptr</code> here?&quot;. And yes, this is the preferred way of using &ldquo;pointers&rdquo; these days. <code>unique_ptr</code> can be viewed as small as a raw pointer and for most operations, they behave exactly the same way as raw pointers. <!-- raw HTML omitted --> There are few things to keep in mind while using <code>unique_ptr</code>.</p>
 <ul>
 <li><code>unique_ptr</code> embodies exclusive ownership. Every <code>unique_ptr</code> that is not empty &ldquo;owns&rdquo; the resource it&rsquo;s holding and you have a guarantee (generally) that this is the only object holding a pointer to the underlying object. The <code>unique_ptr</code> cannot be copied as this would create another holder of the resource so <code>unique_ptr</code>-s are only movable</li>
-<li>You can know <span class="underline">exactly</span> when an <code>unique_ptr</code> object would be destroyed and with that the resource released. It is said that one of the greatest features of C++ is the closing brackets <code>}</code>. In order words, the fact that you know the exact moment at which an object will be destroyed and the destructor of the class will be executed for this object. The ramifications for <code>unique_ptr</code> is that the object will be destroyed when the enclosing scope comes to an end. Of course, you could move the <code>unique_ptr</code> before that and transfer its ownership to some other part of the program. The moving was talked about in the <a href="#orgdc1a8fb">beginning</a>.</li>
+<li>You can know <!-- raw HTML omitted -->exactly<!-- raw HTML omitted --> when an <code>unique_ptr</code> object would be destroyed and with that the resource released. It is said that one of the greatest features of C++ is the closing brackets <code>}</code>. In order words, the fact that you know the exact moment at which an object will be destroyed and the destructor of the class will be executed for this object. The ramifications for <code>unique_ptr</code> is that the object will be destroyed when the enclosing scope comes to an end. Of course, you could move the <code>unique_ptr</code> before that and transfer its ownership to some other part of the program. The moving was talked about in the <a href="#orgdc1a8fb">beginning</a>.</li>
 </ul>
+<p><!-- raw HTML omitted --> A typical use of <code>unique_ptr</code> are the factory methods. The factory function could even return different type (from some hierarchy, of course) of an object depending on the inputs input parameters.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Base</span> {}
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">D1</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Base {}
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">D2</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Base {}
 
-<p><br /> A typical use of <code>unique_ptr</code> are the factory methods. The factory function could even return different type (from some hierarchy, of course) of an object depending on the inputs input parameters.</p>
-
-<pre><code class="language-c++">class Base {}
-class D1 : public Base {}
-class D2 : public Base {}
-
-std::unique_ptr&lt;Base&gt; createObj(int param1, double param2)
+std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Base<span style="color:#f92672">&gt;</span> createObj(<span style="color:#66d9ef">int</span> param1, <span style="color:#66d9ef">double</span> param2)
 {
-  if (...)
-    return std::make_unique&lt;D1&gt;();
-  else
-    return std::make_unique&lt;D2&gt;();
+  <span style="color:#66d9ef">if</span> (...)
+    <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span>D1<span style="color:#f92672">&gt;</span>();
+  <span style="color:#66d9ef">else</span>
+    <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span>D2<span style="color:#f92672">&gt;</span>();
 }
-</code></pre>
-
-<p><br /> Another thing to know about <code>unique_ptr</code> is its ability to define custom deleter for the object. Normally <code>unique_ptr</code> uses simple <code>delete</code> to destroy the resource it&rsquo;s holding to but this behavior could be overridden.</p>
-
-<pre><code class="language-c++">auto del_base = [](Base *object){
+</code></pre></div><p><!-- raw HTML omitted --> Another thing to know about <code>unique_ptr</code> is its ability to define custom deleter for the object. Normally <code>unique_ptr</code> uses simple <code>delete</code> to destroy the resource it&rsquo;s holding to but this behavior could be overridden.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">auto</span> del_base <span style="color:#f92672">=</span> [](Base <span style="color:#f92672">*</span>object){
                  makeLog(object);
                  ...
-                 delete object;
+                 <span style="color:#66d9ef">delete</span> object;
                };
-std::unique_ptr&lt;Base, decltype(del_base)&gt; ptr(new Base(), del_base);
-</code></pre>
-
-<h3 id="std-shared-ptr-is-for-shared-ownership">std::shared_ptr is for shared ownership!</h3>
-
-<p>Not having garbage collection in C++ is a curse and a blessing at the same time. The knowledge of when exactly your objects are being destroyed and memory released gives you quite the freedom to write high performing code. On the other hand, this freedom comes with a lot of pitfalls and potential problems that you can introduce into your program. <code>shared_ptr</code> aims to provide you with &ldquo;garbage collection&rdquo;-like solution while staying true to the C++ &ldquo;optimize everything&rdquo; principles. <br /> <code>shared_ptr</code> implements a reference counting system. Several different <code>shared_ptr</code> objects can hold a pointer to the same underlying resource. The resource will be destroyed only then when all <code>shared_ptr</code> have exited their respective scopes (i.e. are destroyed). There is a little bit of overhead once you bring the whole <em>reference</em>-spiel. The important things to keep in mind:</p>
-
+std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Base, <span style="color:#66d9ef">decltype</span>(del_base)<span style="color:#f92672">&gt;</span> ptr(<span style="color:#66d9ef">new</span> Base(), del_base);
+</code></pre></div><h3 id="std-shared-ptr-is-for-shared-ownership">std::shared_ptr is for shared ownership!</h3>
+<p>Not having garbage collection in C++ is a curse and a blessing at the same time. The knowledge of when exactly your objects are being destroyed and memory released gives you quite the freedom to write high performing code. On the other hand, this freedom comes with a lot of pitfalls and potential problems that you can introduce into your program. <code>shared_ptr</code> aims to provide you with &ldquo;garbage collection&rdquo;-like solution while staying true to the C++ &ldquo;optimize everything&rdquo; principles. <!-- raw HTML omitted --> <code>shared_ptr</code> implements a reference counting system. Several different <code>shared_ptr</code> objects can hold a pointer to the same underlying resource. The resource will be destroyed only then when all <code>shared_ptr</code> have exited their respective scopes (i.e. are destroyed). There is a little bit of overhead once you bring the whole <em>reference</em>-spiel. The important things to keep in mind:</p>
 <ul>
 <li><code>shared_ptr</code> are twice the size of a raw pointer</li>
 <li>memory for the reference count must be dynamically allocated</li>
 <li>Increments and decrements of the reference count must be atomic</li>
 <li>Constructing a <code>shared_ptr</code> usually increments the reference count. Why usually? Because move-construction is also construction but it doesn&rsquo;t actually produce &ldquo;new object&rdquo;. The pointer of the old object (the one we are moving from) is just set to <em>null</em>. and the new object takes its place in the world so no new reference is actually created.</li>
 <li>Each resource that is managed through <code>shared_ptr</code> has what is called a <em>control block</em>. There the <code>shared_ptr</code> meta-information about he pointer it holds(reference count, custom delete&hellip; ). The <em>control block</em> is allocated on the heap
-
 <ul>
 <li><code>std::make_shared</code> always creates new <em>control block</em></li>
 <li>A <em>control block</em> is also created when the <code>shared_ptr</code> object is constructed from a unique-ownership pointer (<code>unique_ptr</code>).</li>
 <li>A <em>control block</em> is created even when you pass a raw pointer to the constructor of the <code>shared_ptr</code>. If you want a new <code>shared_ptr</code> that manages the same resource, you should copy-construct it from another <code>shared_ptr</code></li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>The last point is kinda important. You have to think about the control blocks that are created or else you could end up with several control blocks for the same resource which is a perfect recipe for undefined behavior. Look the following code</p>
-
-<pre><code class="language-c++">std::vector&lt;std::shared_ptr&lt;Widget&gt;&gt; processed;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>shared_ptr<span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;&gt;</span> processed;
 ...
-class Widget
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Widget</span>
 {
-public:
-  void process()
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">void</span> process()
     {
-      processed.emplace_back(this);// bad!!!
-    }
+      processed.emplace_back(<span style="color:#66d9ef">this</span>);<span style="color:#75715e">// bad!!!
+</span><span style="color:#75715e"></span>    }
 }
-</code></pre>
-
-<p>The part that is wrong is the passing of a raw pointer to a container of <code>shared_ptr</code>-s. This will create a new control block which <span class="underline">could</span> be not bad but if there are other <code>sahred_ptr</code>-s in some other part of the program that already have control block for the <code>*this</code> object&hellip; <strong>undefined behavior</strong>!! This is, however, a problem that was thought about and a solution exists. Introducing <code>std::enable_shared_from_this&lt;T&gt;</code>. Weird name but it does the trick. If a class inherits from this thing, then it is safe to create <code>shared_ptr</code> from the <code>this</code> pointer. The safe code looks like:</p>
-
-<pre><code class="language-c++">class Widget : public std::enable_shared_fro_this&lt;Widget&gt;
+</code></pre></div><p>The part that is wrong is the passing of a raw pointer to a container of <code>shared_ptr</code>-s. This will create a new control block which <!-- raw HTML omitted -->could<!-- raw HTML omitted --> be not bad but if there are other <code>sahred_ptr</code>-s in some other part of the program that already have control block for the <code>*this</code> object&hellip; <strong>undefined behavior</strong>!! This is, however, a problem that was thought about and a solution exists. Introducing <code>std::enable_shared_from_this&lt;T&gt;</code>. Weird name but it does the trick. If a class inherits from this thing, then it is safe to create <code>shared_ptr</code> from the <code>this</code> pointer. The safe code looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Widget</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> std<span style="color:#f92672">::</span>enable_shared_fro_this<span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>
 {
-public:
-  void process()
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">void</span> process()
     {
-      processed.emplace_back(shared_from_this());// good!!!
-    }
+      processed.emplace_back(shared_from_this());<span style="color:#75715e">// good!!!
+</span><span style="color:#75715e"></span>    }
 }
-</code></pre>
-
-<h3 id="pimpl-and-the-proper-way-to-use-it-dot">Pimpl and the proper way to use it.</h3>
-
+</code></pre></div><h3 id="pimpl-and-the-proper-way-to-use-it-dot">Pimpl and the proper way to use it.</h3>
 <p>Ever heard of <a href="http://www.learncpp.com/cpp-tutorial/17-forward-declarations/">forward declaration</a>. If not go check it out. The Pimpl idiom kinda solves the same problem. If you don&rsquo;t want to clutter your header files with the header files of the classes that you use, you can &ldquo;deffer&rdquo; this &ldquo;implementation detail&rdquo; to the <code>.cpp</code> file. Check this out:</p>
-
-<pre><code class="language-c++">//Wifget.hpp
-class Widget
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">//Wifget.hpp
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Widget</span>
 {
   Widget();
-  ~Widget();
+  <span style="color:#f92672">~</span>Widget();
 
-private:
-  struct Impl;
-  Impl impl*;
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Impl</span>;
+  Impl impl<span style="color:#f92672">*</span>;
 }
-//Wifget.cpp
-
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-
-#include &quot;Gadget.hpp&quot;
-#include &quot;Widget.hpp&quot;
-
-struct Widget::Impl
+<span style="color:#75715e">//Wifget.cpp
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Gadget.hpp&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Widget.hpp&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Widget</span><span style="color:#f92672">::</span>Impl
 {
-  std::sting name;
+  std<span style="color:#f92672">::</span>sting name;
   Gadget g1, g2, g3;
-  std::vecotr&lt;double&gt; data;
+  std<span style="color:#f92672">::</span>vecotr<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span> data;
 }
 
-Widget::Widget()
-  :impl(new Impl);
+Widget<span style="color:#f92672">::</span>Widget()
+  <span style="color:#f92672">:</span>impl(<span style="color:#66d9ef">new</span> Impl);
 
-Widget::~Widget()
+Widget<span style="color:#f92672">::~</span>Widget()
 {
-  delete impl;
+  <span style="color:#66d9ef">delete</span> impl;
 }
-</code></pre>
-
-<p>Notice how in <code>Widget.hpp</code> we didn&rsquo;t have to include a single header. There is no mention of the headers for the fields in the implementation of the class. The implementation appears only in the <code>.cpp</code> file. This can potentially speed up compilation times as it reduces the compile-dependencies between the classes. <br /> Now to utilize C++14 we can rewrite the class to use <code>uniqe_ptr</code> for the implementation and write our necessary constructors.</p>
-
-<pre><code class="language-c++">//Wifget.hpp
-class Widget
+</code></pre></div><p>Notice how in <code>Widget.hpp</code> we didn&rsquo;t have to include a single header. There is no mention of the headers for the fields in the implementation of the class. The implementation appears only in the <code>.cpp</code> file. This can potentially speed up compilation times as it reduces the compile-dependencies between the classes. <!-- raw HTML omitted --> Now to utilize C++14 we can rewrite the class to use <code>uniqe_ptr</code> for the implementation and write our necessary constructors.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">//Wifget.hpp
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Widget</span>
 {
   Widget();
-  Widget(const Widget&amp; rhs);
-  Widget&amp; operator=(const Widget&amp; rhs);
-  Widget(const Widget&amp;&amp; rhs);
-  Widget&amp; operator=(Widget&amp;&amp; rhs);
-  ~Widget();
+  Widget(<span style="color:#66d9ef">const</span> Widget<span style="color:#f92672">&amp;</span> rhs);
+  Widget<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> Widget<span style="color:#f92672">&amp;</span> rhs);
+  Widget(<span style="color:#66d9ef">const</span> Widget<span style="color:#f92672">&amp;&amp;</span> rhs);
+  Widget<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(Widget<span style="color:#f92672">&amp;&amp;</span> rhs);
+  <span style="color:#f92672">~</span>Widget();
 
-private:
-  struct Impl;
-  std::uniqe_ptr&lt;Impl&gt; impl;
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Impl</span>;
+  std<span style="color:#f92672">::</span>uniqe_ptr<span style="color:#f92672">&lt;</span>Impl<span style="color:#f92672">&gt;</span> impl;
 }
-//Wifget.cpp
+<span style="color:#75715e">//Wifget.cpp
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Gadget.hpp&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Widget.hpp&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Widget</span><span style="color:#f92672">::</span>Impl{..}
 
-#include &lt;iostream&gt;
-#include &lt;string&gt;
+    Widget<span style="color:#f92672">::</span>Widget()
+      <span style="color:#f92672">:</span>impl(std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">::</span>Impl<span style="color:#f92672">&gt;</span>()){};
 
-#include &quot;Gadget.hpp&quot;
-#include &quot;Widget.hpp&quot;
+Widget<span style="color:#f92672">::</span>Widget(<span style="color:#66d9ef">const</span> Widget<span style="color:#f92672">&amp;&amp;</span> rhs) <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+Widget<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(Widget<span style="color:#f92672">&amp;&amp;</span> rhs) <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+Widget<span style="color:#f92672">::~</span>Widget() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
 
-  struct Widget::Impl{..}
+Widget<span style="color:#f92672">::</span>Widget(<span style="color:#66d9ef">const</span> Widget<span style="color:#f92672">&amp;</span> rhs) <span style="color:#f92672">:</span>
+  impl(std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">::</span>Impl<span style="color:#f92672">&gt;</span>(<span style="color:#f92672">*</span>rhs.impl)){}
 
-    Widget::Widget()
-      :impl(std::make_unique&lt;Widget::Impl&gt;()){};
-
-Widget::Widget(const Widget&amp;&amp; rhs) = default;
-Widget::operator=(Widget&amp;&amp; rhs) = default;
-Widget::~Widget() = default;
-
-Widget::Widget(const Widget&amp; rhs) :
-  impl(std::make_unique&lt;Widget::Impl&gt;(*rhs.impl)){}
-
-Widget&amp; Widget::operator=(const Widget&amp; rhs)
+Widget<span style="color:#f92672">&amp;</span> Widget<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> Widget<span style="color:#f92672">&amp;</span> rhs)
 {
-  *impl = *rhs.impl;
-  return *this;
+  <span style="color:#f92672">*</span>impl <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>rhs.impl;
+  <span style="color:#66d9ef">return</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>;
 }
-</code></pre>
-
-<p><em>Note:</em> Use your header only for a declaration when possible. Also, <code>= defualt</code> is <span class="underline">implementation</span> so put in the <code>.cpp</code> file, not in the header. If in this case, you did that in the header file, the compiler would not how to generate the move constructor and the move assignment operator as an implementation of the calls is <span class="underline">not</span> in the header. In the header the <code>struct Impl</code> is incomplete and <code>*impl</code> is a pointer to incomplete type so the compiler could not deal with that. <br /> The compiler happily generates the move constructors for us as the default implementation is exactly the thing we want. Just perform <em>move</em> on the implementation. The default copy constructors, however, would only perform a shallow copy of the object so we have to write them ourselves. <br /> The detractor is also the default one because we have no code to put in it. The <code>unique_ptr</code> automatically deletes its contents once it is destroyed.</p>
-
+</code></pre></div><p><em>Note:</em> Use your header only for a declaration when possible. Also, <code>= defualt</code> is <!-- raw HTML omitted -->implementation<!-- raw HTML omitted --> so put in the <code>.cpp</code> file, not in the header. If in this case, you did that in the header file, the compiler would not how to generate the move constructor and the move assignment operator as an implementation of the calls is <!-- raw HTML omitted -->not<!-- raw HTML omitted --> in the header. In the header the <code>struct Impl</code> is incomplete and <code>*impl</code> is a pointer to incomplete type so the compiler could not deal with that. <!-- raw HTML omitted --> The compiler happily generates the move constructors for us as the default implementation is exactly the thing we want. Just perform <em>move</em> on the implementation. The default copy constructors, however, would only perform a shallow copy of the object so we have to write them ourselves. <!-- raw HTML omitted --> The detractor is also the default one because we have no code to put in it. The <code>unique_ptr</code> automatically deletes its contents once it is destroyed.</p>
 <h3 id="std-forward-and-std-move-are-quite-interesting-dot">std::forward and std::move are quite interesting.</h3>
-
-<p><a id="org2e5602b"></a> Ok, hopefully by now you at least have heard of <strong>move semantics</strong>. Inevitably you&rsquo;ve also probably seen <code>std::move()</code> and <code>std::forward&lt;T&gt;()</code> used in some weird way and wondered &ldquo;What the hell is happening here?&rdquo;. The first thing to understand about hose functions - they are functions that don&rsquo;t do much in run-time. They don&rsquo;t generate code. They don&rsquo;t &ldquo;move&rdquo;. At their core, those functions are casts. They cast <em>rvalue</em> object to <em>lvalue</em> ones. Refer to one of the <a href="#org1edb870">intro sections</a> for more information about what are those. The difference between <code>std::move()</code> and <code>std::forward&lt;T&gt;()</code> is that they perform the cast under different conditions. <code>std::move()</code> performs it always with no conditions. <code>std::forward&lt;T&gt;()</code> casts to revalue only if a certain condition is met - if the argument is bind to rvalue. <br /> Yes, it is well known and by this point accepted fact that <code>std::move()</code> has confusing AF name but&hellip; just roll with it and it will grow on you. <code>std::move()</code> doesn&rsquo;t actually move anything. <code>std::move()</code> merely makes an object eligible for moving. This is no guarantee however that an object will be moved from. Consider this:</p>
-
-<pre><code class="language-c++">class Anotation
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --> Ok, hopefully by now you at least have heard of <strong>move semantics</strong>. Inevitably you&rsquo;ve also probably seen <code>std::move()</code> and <code>std::forward&lt;T&gt;()</code> used in some weird way and wondered &ldquo;What the hell is happening here?&quot;. The first thing to understand about hose functions - they are functions that don&rsquo;t do much in run-time. They don&rsquo;t generate code. They don&rsquo;t &ldquo;move&rdquo;. At their core, those functions are casts. They cast <em>rvalue</em> object to <em>lvalue</em> ones. Refer to one of the <a href="#org1edb870">intro sections</a> for more information about what are those. The difference between <code>std::move()</code> and <code>std::forward&lt;T&gt;()</code> is that they perform the cast under different conditions. <code>std::move()</code> performs it always with no conditions. <code>std::forward&lt;T&gt;()</code> casts to revalue only if a certain condition is met - if the argument is bind to rvalue. <!-- raw HTML omitted --> Yes, it is well known and by this point accepted fact that <code>std::move()</code> has confusing AF name but&hellip; just roll with it and it will grow on you. <code>std::move()</code> doesn&rsquo;t actually move anything. <code>std::move()</code> merely makes an object eligible for moving. This is no guarantee however that an object will be moved from. Consider this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Anotation</span>
 {
-private:
-  std::string text;
-public:
-  Anotation(const std::string name): text(std::move(name)){}
-  //this doesn't do what it seems to do
-}
-Anotation(&quot;ano&quot;);
-</code></pre>
-
-<p>Think about what is happening here. We are passing a string to the constructor which takes it by value and &ldquo;moves&rdquo; its content inside the <code>text</code> field. But there is also <code>const</code>. This means that the result of the <code>std::move(name)</code> is <em>rvalue const std::string</em>. The constness is still there. This means that the move constructor of <code>std::string</code> <span class="underline">cannot</span> be used as it will change the object that it takes which is <em>const</em>. For that reason, the ordinary constructor is called and the value is just copied and not moved. The lesson to be learned here - rvalue objects will not be moved sorely on the fact that they are <em>rvalue/s. They also must be /const</em>. <br /> As already said <code>std::forward&lt;T&gt;()</code> only casts to rvalue if the argument is bound to rvalue object. <code>std::forward&lt;T&gt;()</code> is typically used in cases where <em>perfect forwarding</em> is required. That is, a function takes some arguments and those are automatically <em>lvalue</em> in the function body even if the fiction is invoked with <em>rvalue/s. In the body, however, you may want to &ldquo;forward&rdquo; the argument to other functions that may need to differentiate between /r-</em> and <em>lvalues</em>. In this case, one would use <code>std::forward&lt;T&gt;()</code>. Example:</p>
-
-<pre><code class="language-c++">template&lt;typename T&gt;
-void logAndProcess(T&amp;&amp; param)
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  std<span style="color:#f92672">::</span>string text;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+  Anotation(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string name)<span style="color:#f92672">:</span> text(std<span style="color:#f92672">::</span>move(name)){}
+  <span style="color:#75715e">//this doesn&#39;t do what it seems to do
+</span><span style="color:#75715e"></span>}
+Anotation(<span style="color:#e6db74">&#34;ano&#34;</span>);
+</code></pre></div><p>Think about what is happening here. We are passing a string to the constructor which takes it by value and &ldquo;moves&rdquo; its content inside the <code>text</code> field. But there is also <code>const</code>. This means that the result of the <code>std::move(name)</code> is <em>rvalue const std::string</em>. The constness is still there. This means that the move constructor of <code>std::string</code> <!-- raw HTML omitted -->cannot<!-- raw HTML omitted --> be used as it will change the object that it takes which is <em>const</em>. For that reason, the ordinary constructor is called and the value is just copied and not moved. The lesson to be learned here - rvalue objects will not be moved sorely on the fact that they are <em>rvalue/s. They also must be /const</em>. <!-- raw HTML omitted --> As already said <code>std::forward&lt;T&gt;()</code> only casts to rvalue if the argument is bound to rvalue object. <code>std::forward&lt;T&gt;()</code> is typically used in cases where <em>perfect forwarding</em> is required. That is, a function takes some arguments and those are automatically <em>lvalue</em> in the function body even if the fiction is invoked with <em>rvalue/s. In the body, however, you may want to &ldquo;forward&rdquo; the argument to other functions that may need to differentiate between /r-</em> and <em>lvalues</em>. In this case, one would use <code>std::forward&lt;T&gt;()</code>. Example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> logAndProcess(T<span style="color:#f92672">&amp;&amp;</span> param)
 {
-  auto now = std::chrono::system_clock::now();
-  makeEntry(&quot;Calling process&quot;, now);
-  /* Here we dont't know whether the function was invoed
-   with rvalue or lvalue. Therefore we forward the
-   argument perfectly */
-  process(std::forward&lt;T&gt;(param));
+  <span style="color:#66d9ef">auto</span> now <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>system_clock<span style="color:#f92672">::</span>now();
+  makeEntry(<span style="color:#e6db74">&#34;Calling process&#34;</span>, now);
+  <span style="color:#75715e">/* Here we dont&#39;t know whether the function was invoed
+</span><span style="color:#75715e">   with rvalue or lvalue. Therefore we forward the
+</span><span style="color:#75715e">   argument perfectly */</span>
+  process(std<span style="color:#f92672">::</span>forward<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>(param));
 }
-</code></pre>
-
-<h3 id="universal-references-and-rvalue-references">Universal references and rvalue references</h3>
-
-<p>First things first - &ldquo;universal reference&rdquo; is a lie. There is no such thing in the official C++ specification. There there is &ldquo;forwarding reference&rdquo;. &ldquo;Forwarding reference&rdquo; is absolutely the same thing as what Scott Meyers means with &ldquo;universal reference&rdquo; in his book. Here I will also use universal reference. OK? OK. Good that now this is out of the way. <br /> We know that we can define functions that take rvalue references like:</p>
-
-<pre><code class="language-c++">void f(Widget&amp;&amp; param);
-</code></pre>
-
-<p>Here <code>param</code> is <em>rvalue</em> reference and it binds only to <em>rvalue</em> objects. Consider on the other hand this function:</p>
-
-<pre><code class="language-c++">template&lt;typename T&gt;
-void g(T&amp;&amp; param);
-</code></pre>
-
-<p>Here param can bind to <em>rvalues</em> <span class="underline">and</span> to <em>lvalues</em>. This is what makes it <em>universal reference</em>. <br /> For a reference to be universal one certain condition must be met</p>
-
+</code></pre></div><h3 id="universal-references-and-rvalue-references">Universal references and rvalue references</h3>
+<p>First things first - &ldquo;universal reference&rdquo; is a lie. There is no such thing in the official C++ specification. There there is &ldquo;forwarding reference&rdquo;. &ldquo;Forwarding reference&rdquo; is absolutely the same thing as what Scott Meyers means with &ldquo;universal reference&rdquo; in his book. Here I will also use universal reference. OK? OK. Good that now this is out of the way. <!-- raw HTML omitted --> We know that we can define functions that take rvalue references like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span>(Widget<span style="color:#f92672">&amp;&amp;</span> param);
+</code></pre></div><p>Here <code>param</code> is <em>rvalue</em> reference and it binds only to <em>rvalue</em> objects. Consider on the other hand this function:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> g(T<span style="color:#f92672">&amp;&amp;</span> param);
+</code></pre></div><p>Here param can bind to <em>rvalues</em> <!-- raw HTML omitted -->and<!-- raw HTML omitted --> to <em>lvalues</em>. This is what makes it <em>universal reference</em>. <!-- raw HTML omitted --> For a reference to be universal one certain condition must be met</p>
 <ol>
 <li>Type deduction must occur</li>
-<li>The reference must have exactly the form &ldquo;T&amp;&amp;&ldquo;. No <code>const</code>, no nothing. Just &ldquo;T&amp;&amp;&ldquo;.</li>
+<li>The reference must have exactly the form &ldquo;T&amp;&amp;&quot;. No <code>const</code>, no nothing. Just &ldquo;T&amp;&amp;&quot;.</li>
 </ol>
-
-<p>If the <code>const</code> qualifier is used for the function parameter, it(the parameter) will &ldquo;collapse&rdquo; <em>rvalue const reference</em> which pretty useless on itself as we say in the <a href="#org2e5602b">previous tip</a>. <br /> As stated if universal reference is bound to &ldquo;rvalue&rdquo;, it is an &ldquo;rvalue&rdquo;-reference and &ldquo;lvalue&rdquo;-reference if it&rsquo;s bound to an &ldquo;lvalue&rdquo;. This means that universal references are exactly the things to be used with <code>std::forward&lt;T&gt;()</code>.</p>
-
+<p>If the <code>const</code> qualifier is used for the function parameter, it(the parameter) will &ldquo;collapse&rdquo; <em>rvalue const reference</em> which pretty useless on itself as we say in the <a href="#org2e5602b">previous tip</a>. <!-- raw HTML omitted --> As stated if universal reference is bound to &ldquo;rvalue&rdquo;, it is an &ldquo;rvalue&rdquo;-reference and &ldquo;lvalue&rdquo;-reference if it&rsquo;s bound to an &ldquo;lvalue&rdquo;. This means that universal references are exactly the things to be used with <code>std::forward&lt;T&gt;()</code>.</p>
 <h3 id="pass-by-value-is-not-what-your-first-c-book-would-have-you-believe"><em>Pass by value</em> is not what your first C++ book would have you believe</h3>
-
 <p>Maybe this is exclusive to me but when I was learning C++ I was left with the impression that passing things by value is kinda dumb if you can pass it by reference. I mean, who needs the extra copy, right?! Not quite. Consider the case of a simple setter</p>
-
-<pre><code class="language-c++">class Widget
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Widget</span>
 {
-  void setName(const std::string&amp; name)
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setName</span>(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string<span style="color:#f92672">&amp;</span> name)
     {
-      this-&gt;name = name;
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>name <span style="color:#f92672">=</span> name;
     }
 }
-</code></pre>
-
-<p>What you actually are doing is:</p>
-
+</code></pre></div><p>What you actually are doing is:</p>
 <ul>
 <li>take a string by reference</li>
 <li>copy it in the field <code>name</code></li>
 </ul>
-
-<p>The copy is still there! It&rsquo;s just that <span class="underline">you</span> performed the copying and not the compiler. Now, this is kinda sub-optimal. The compiler <span class="underline">is</span> smarter than you. After the compiler has copied the value from the caller in the function&rsquo;s parameter we can - enter modern C++ - <em>move</em> it in the corresponding field:</p>
-
-<pre><code class="language-c++">class Widget
+<p>The copy is still there! It&rsquo;s just that <!-- raw HTML omitted -->you<!-- raw HTML omitted --> performed the copying and not the compiler. Now, this is kinda sub-optimal. The compiler <!-- raw HTML omitted -->is<!-- raw HTML omitted --> smarter than you. After the compiler has copied the value from the caller in the function&rsquo;s parameter we can - enter modern C++ - <em>move</em> it in the corresponding field:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Widget</span>
 {
-  void setName(std::string name)
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setName</span>(std<span style="color:#f92672">::</span>string name)
     {
-      this-&gt;name = std::move(name);
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>name <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>move(name);
     }
 }
-</code></pre>
-
-<p>This looks like good modern c++. Copying&hellip; is not that bad as might you think. Compilers are pretty good these days. Do not be mislead. A copy of a single string has virtually no overhead. <br /> Still, there still exists a time and place for passing by <em>const references</em>. If you actually don&rsquo;t need a copy of the passed argument, then there is no reason for pass-by-value</p>
-
-<pre><code class="language-c++">class Widget
+</code></pre></div><p>This looks like good modern c++. Copying&hellip; is not that bad as might you think. Compilers are pretty good these days. Do not be mislead. A copy of a single string has virtually no overhead. <!-- raw HTML omitted --> Still, there still exists a time and place for passing by <em>const references</em>. If you actually don&rsquo;t need a copy of the passed argument, then there is no reason for pass-by-value</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Widget</span>
 {
-  void process(const Gadget&amp; gadget)
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">process</span>(<span style="color:#66d9ef">const</span> Gadget<span style="color:#f92672">&amp;</span> gadget)
     {
-      // now we can only use const functions of Gadget
-      if(gadget.getNumberOfTicks){....}
+      <span style="color:#75715e">// now we can only use const functions of Gadget
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span>(gadget.getNumberOfTicks){....}
     }
 }
-</code></pre>
-
-<p>Passing pure references also makes sense in some situations:</p>
-
-<pre><code class="language-c++">std::vector&lt;std::string&gt; names;
-void populate(std::string&amp; name)
+</code></pre></div><p>Passing pure references also makes sense in some situations:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string<span style="color:#f92672">&gt;</span> names;
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">populate</span>(std<span style="color:#f92672">::</span>string<span style="color:#f92672">&amp;</span> name)
 {
-  name.pusb_back(&quot;Stanislv&quot;);
-  name.pusb_back(&quot;Marina&quot;);
+  name.pusb_back(<span style="color:#e6db74">&#34;Stanislv&#34;</span>);
+  name.pusb_back(<span style="color:#e6db74">&#34;Marina&#34;</span>);
 }
 populete(names);
-</code></pre>
-
-<p>To summarize (taken from an answer from <a href="https://stackoverflow.com/questions/7592630/is-pass-by-value-a-reasonable-default-in-c11">this</a> StackOverflow question)</p>
-
+</code></pre></div><p>To summarize (taken from an answer from <a href="https://stackoverflow.com/questions/7592630/is-pass-by-value-a-reasonable-default-in-c11">this</a> StackOverflow question)</p>
 <table>
 <thead>
 <tr>
@@ -1357,115 +1083,82 @@ populete(names);
 <th>Use</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>bar(foo f);</td>
 <td>want to obtain a copy of</td>
 </tr>
-
 <tr>
 <td>bar(const foo&amp; f);</td>
 <td>want to read f</td>
 </tr>
-
 <tr>
 <td>bar(foo&amp; f);</td>
 <td>want to modify f</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="return-value-optimization--rvo--don-t-return-std-move-of-local-variable">Return value optimization(RVO) - don&rsquo;t return std:::move of local variable</h3>
-
-<p>With your awesome new knowledge about move-semantics you can now write highly optimized, highly performant code that will go \*whoosh\* past those pesky languages running on virtual machines. You will, however, be tempted to make some &ldquo;optimizations&rdquo; at places where you really shouldn&rsquo;t mess with the compiler. Please always repeat to yourself &ldquo;The compiler is smarter than me!&rdquo;. <br /> Consider the following snippet:</p>
-
-<pre><code class="language-c++">Widget makeWIdget()
+<p>With your awesome new knowledge about move-semantics you can now write highly optimized, highly performant code that will go \*whoosh\* past those pesky languages running on virtual machines. You will, however, be tempted to make some &ldquo;optimizations&rdquo; at places where you really shouldn&rsquo;t mess with the compiler. Please always repeat to yourself &ldquo;The compiler is smarter than me!&quot;. <!-- raw HTML omitted --> Consider the following snippet:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">Widget <span style="color:#a6e22e">makeWIdget</span>()
 {
   Widget w;
   ...;
-  return w;
+  <span style="color:#66d9ef">return</span> w;
 }
-</code></pre>
-
-<p>We are creating a local variable in a function and we are returning it by value. We think about what is happening. The object is created - construction, the object is returned by value - we <span class="underline">copy</span> our new object and return the copy because the local object will be destroyed once the scope of the function ends. Copy! We know what <em>rvlaues</em> are. We don&rsquo;t need any copy. We can move! We rewrite the code like:</p>
-
-<pre><code class="language-c++">Widget makeWIdget()
+</code></pre></div><p>We are creating a local variable in a function and we are returning it by value. We think about what is happening. The object is created - construction, the object is returned by value - we <!-- raw HTML omitted -->copy<!-- raw HTML omitted --> our new object and return the copy because the local object will be destroyed once the scope of the function ends. Copy! We know what <em>rvlaues</em> are. We don&rsquo;t need any copy. We can move! We rewrite the code like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">Widget <span style="color:#a6e22e">makeWIdget</span>()
 {
   Widget w;
   ...;
-  return std::move(w);
+  <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>move(w);
 }
-</code></pre>
-
-<p>Awesome, we saved ourselves one copy! <strong>Wrong!!!</strong> <br /> Introducing <em>Return Value Optimization</em>. In some situations(most of them) the compiler will notice that you are returning a local variable by value. If certain conditions are met, the compiler will construct this local object in the exact place in memory where the return value of the function will reside after the function is invoked. In such cases, the return statement won&rsquo;t produce copy <span class="underline">nor</span> will move construction would be necessary. This is good! The conditions that should be met for RVO to occur:</p>
-
+</code></pre></div><p>Awesome, we saved ourselves one copy! <strong>Wrong!!!</strong> <!-- raw HTML omitted --> Introducing <em>Return Value Optimization</em>. In some situations(most of them) the compiler will notice that you are returning a local variable by value. If certain conditions are met, the compiler will construct this local object in the exact place in memory where the return value of the function will reside after the function is invoked. In such cases, the return statement won&rsquo;t produce copy <!-- raw HTML omitted -->nor<!-- raw HTML omitted --> will move construction would be necessary. This is good! The conditions that should be met for RVO to occur:</p>
 <ol>
 <li>The type of the local object must be the same as the return value.</li>
 <li>The local object is being returned.</li>
 <li>The type is move-constructible.</li>
 </ol>
-
-<p>What happens when we <code>std::move</code> the local object - we crate reference to it and RVO can&rsquo;t be performed. So, <strong>don&rsquo;t</strong> return <code>std::move</code>! <br /> Ok, but still. RVO is just an optimization. Maybe the compiler won&rsquo;t be able to figure out which local object we want to return and will punish us with a copy while returning. No! Again - &ldquo;The compiler is smarter than me!&rdquo;. Return values are <span class="underline">always</span> treated as <em>rvalues</em>. So when your function is:</p>
-
-<pre><code class="language-c++">Widget makeWIdget()
+<p>What happens when we <code>std::move</code> the local object - we crate reference to it and RVO can&rsquo;t be performed. So, <strong>don&rsquo;t</strong> return <code>std::move</code>! <!-- raw HTML omitted --> Ok, but still. RVO is just an optimization. Maybe the compiler won&rsquo;t be able to figure out which local object we want to return and will punish us with a copy while returning. No! Again - &ldquo;The compiler is smarter than me!&quot;. Return values are <!-- raw HTML omitted -->always<!-- raw HTML omitted --> treated as <em>rvalues</em>. So when your function is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">Widget <span style="color:#a6e22e">makeWIdget</span>()
 {
   Widget w;
   ...;
-  return w;
+  <span style="color:#66d9ef">return</span> w;
 }
-</code></pre>
-
-<p><span class="underline">and</span> the compiler can&rsquo;t do RVO, what it effectively sees is :</p>
-
-<pre><code class="language-c++">Widget makeWIdget()
+</code></pre></div><p><!-- raw HTML omitted -->and<!-- raw HTML omitted --> the compiler can&rsquo;t do RVO, what it effectively sees is :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">Widget <span style="color:#a6e22e">makeWIdget</span>()
 {
   Widget w;
   ...;
-  return std::move(w);
+  <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>move(w);
 }
-</code></pre>
-
-<p>So no. You would never need to return with <code>std::move</code> of local object.</p>
-
+</code></pre></div><p>So no. You would never need to return with <code>std::move</code> of local object.</p>
 <h3 id="std-async-is-something-that-exists-and-it-s-generally-to-be-preferred-over-std-thread-dot">std::async is something that exists and it&rsquo;s generally to be preferred over std::thread.</h3>
-
 <p>A lot of times you will want to run something asynchronously in your program. C++ and the standard library make this relatively easy and give you two approaches.</p>
-
 <ul>
 <li><code>std::thread</code> - for <em>thread-based</em> strategy</li>
 <li><code>std::async</code> - for <em>task-based</em> strategy</li>
 </ul>
-
 <p>In general, you should prefer <code>std::async</code>. It works on a higher level of abstraction than <code>std::thread</code> and it hides some of the details that you can mess up and delegates them to the implementation. The basic asynchronous call goes like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">doAsyncWork</span>();
 
-<pre><code class="language-c++">int doAsyncWork();
-
-auto fut = std::async(doAsyncWork); // fut is a future
-</code></pre>
-
-<p>A further reason why <code>std::async</code> is better is because with it we can get the result from the function that we are calling asynchronously through the future&rsquo;s <em>get</em> method. There isn&rsquo;t really a straight forward way of extracting a result from a separate thread constructed with <code>std::thread</code>. <br /> If you opt to use thread-based programming you&rsquo;ll have to deal with thread exhaustion, over-subscription, load balancing, and adaptation to new platforms. And you know&hellip;all of these are super fun to deal with. You may have to do it sometimes thou. As stated, threads are lower level concurrency API. Threads may allow you to write more efficient code suited to your specific needs. Cases where threads may be necessary</p>
-
+<span style="color:#66d9ef">auto</span> fut <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>async(doAsyncWork); <span style="color:#75715e">// fut is a future
+</span></code></pre></div><p>A further reason why <code>std::async</code> is better is because with it we can get the result from the function that we are calling asynchronously through the future&rsquo;s <em>get</em> method. There isn&rsquo;t really a straight forward way of extracting a result from a separate thread constructed with <code>std::thread</code>. <!-- raw HTML omitted --> If you opt to use thread-based programming you&rsquo;ll have to deal with thread exhaustion, over-subscription, load balancing, and adaptation to new platforms. And you know&hellip;all of these are super fun to deal with. You may have to do it sometimes thou. As stated, threads are lower level concurrency API. Threads may allow you to write more efficient code suited to your specific needs. Cases where threads may be necessary</p>
 <ul>
 <li>You want to mess directly with the concurrency API provided by the OS. Given this would be pretty hard, it could potentially lead to tremendous speed when done right. Essentially you would have to define the way how your program communicates with the OS as &ldquo;real&rdquo; threads are managed by it.</li>
 <li>You know exactly what your needs are and you want to deal with threads and build the whole multi-threading and asynchronous code/system yourself. This is pretty doable and could be a nice learning experience. You probably will implement something that already exists but hey, that&rsquo;s how you learn new things and I would actually encourage this.</li>
 <li>If you are implementing some concurrency technology that is not offered by C++, yeah, you bet you&rsquo;ll need to use threads and deal with them.</li>
 </ul>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>I just want to say one thing. Never, never say that you &ldquo;know C++&rdquo; and be deeply skeptical of people who use the said expression. C++ is complex and you can do everything in a lot of different ways and probably things are going to work no matter what. However, some solutions in C++ are very clearly better than others and a lot of times it is not clear what is the &ldquo;optimal&rdquo; way of achieving your goal. Do not be mislead by your knowledge! C++ offers you an ever-expanding world of good\bad solutions and knowing everything that there is to know is most likely infeasible. And you know what, that&rsquo;s actually OK. Because let&rsquo;s face it, software engineering is all about learning something new every day in the process of horribly breaking your code.</p>
-
 <h2 id="references">References</h2>
-
 <p>I&rsquo;m very thankful to these sources:</p>
-
 <ul>
 <li><a href="https://www.amazon.de/Effective-Modern-Specific-Ways-Improve/dp/1491903996">Effective modern C++</a> - the book am talking about in this post</li>
 <li><a href="https://www.chromium.org/developers/smart-pointer-guidelines">Smart pointers guidelines</a> - a very useful guide on how to be smart with your smart pointers</li>
 <li><a href="https://www.internalpointers.com/post/understanding-meaning-lvalues-and-rvalues-c">Understanding the meaning of lvalue or rvalues</a> - a good blog post that will walk you through the usages and the meaning of move semantics and how are they implemented through <em>rvalue</em> and <em>lvalue</em>.</li>
 </ul>
-
 <p>Check them out if you want to be a better C++ programmer.</p>
 
   </div>

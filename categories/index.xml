@@ -6,15 +6,24 @@
     <description>Recent content in Categories on SA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Feb 2020 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2020 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://palikar.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>alisp</title>
+      <link>https://palikar.github.io/categories/alisp/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0200</pubDate>
+      
+      <guid>https://palikar.github.io/categories/alisp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>c&#43;&#43;</title>
       <link>https://palikar.github.io/categories/c&#43;&#43;/</link>
-      <pubDate>Thu, 20 Feb 2020 00:00:00 +0100</pubDate>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0200</pubDate>
       
       <guid>https://palikar.github.io/categories/c&#43;&#43;/</guid>
       <description></description>

@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.70.0" />
 
 
 
@@ -103,7 +103,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.b3b0c12be46e581537e5d3d1c4ca1fabaab21c72dcc8cb639a558c4b9a6f469e.css" integrity="sha256-s7DBK&#43;RuWBU35dPRxMofq6qyHHLcyMtjmlWMS5pvRp4=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.3c75565bab3232e478f88f766c658c19f0636d9471239f83499bd6ceac04f66c.css" integrity="sha256-PHVWW6syMuR4&#43;I92bGWMGfBjbZRxI5&#43;DSZvWzqwE9mw=">
 
 
 <link rel="stylesheet" href="https://palikar.github.io/scss/print.e5f87aa9d406c09ad1cb0284b65f42c7e53ea92dc1fe9b6ab366bba96a1344e9.css" integrity="sha256-5fh6qdQGwJrRywKEtl9Cx&#43;U&#43;qS3B/ptqs2a7qWoTROk=" media="print">
@@ -111,7 +111,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.126e7d75240acc946d34d6ccb2982ed4c394a5fe34e73e1a2119ca951bcf119d.css" integrity="sha256-Em59dSQKzJRtNNbMspgu1MOUpf405z4aIRnKlRvPEZ0=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
 
 
 
@@ -325,111 +325,95 @@ Sitemap & RSS Feed Tags
   
   
   <div class="post">
-    
-
-<h2 id="abstract">Abstract</h2>
-
+    <h2 id="abstract">Abstract</h2>
 <p><a href="https://pytorch.org/">PyTorch</a> is great! It offers tons of utilities that make every ML project a little bit less daunting. It&rsquo;s easy to have your DNN-model up and running in almost no time. At the same time, the framework is still relatively unopinionated and lets you decide on the exact structure of your project. I&rsquo;ve been playing around with PyTorch recently and the one thing I&rsquo;ve been missing so far is to be able to create a train-validation-test split of my data in an &ldquo;out of the box&rdquo; manner. It&rsquo;s not that it is impossible but it requires some boilerplate code. In this post, I present a small utility class for doing exactly this.</p>
-
 <h2 id="the-datasplit-class">The <em>DataSplit</em> class</h2>
-
 <p>The data loading process in PyTorch involves defining a dataset class that inherits from <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.Dataset">data.Dataset</a>. The class defines only what the data point at a given index is and how much data points there are. PyTorch can then handle a good portion of the other data loading tasks &ndash; for example batching.</p>
-
-<p><br /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>My utility class <em>DataSplit</em> presupposes that a dataset exists. It takes a dataset as an argument during initialization as well as the ration of the train to test data (<code>test_train_split</code>) and the ration of validation to train data (<code>val_train_split</code>). The data can also be optionally shuffled through the use of the <code>shuffle</code> argument (it defaults to false). With the default parameters, the test set will be 20% of the whole data, the training set will be 70% and the validation 10%. To note is that <code>val_train_split</code> gives the fraction of the training data to be used as a validation set. The split is performed by first splitting the data according to the <code>test_train_split</code> fraction and then splitting the train data according to <code>val_train_split</code>.</p>
-
-<p><br /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>The full source code of the class is in the following snippet.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> logging
+<span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> lru_cache
 
-<pre><code class="language-python">import logging
-from functools import lru_cache
+<span style="color:#f92672">import</span> torch
+<span style="color:#f92672">from</span> torch.utils.data <span style="color:#f92672">import</span> DataLoader
+<span style="color:#f92672">from</span> torch.utils.data <span style="color:#f92672">import</span> Dataset
+<span style="color:#f92672">from</span> torch.utils.data.sampler <span style="color:#f92672">import</span> SubsetRandomSampler
 
-import torch
-from torch.utils.data import DataLoader
-from torch.utils.data import Dataset
-from torch.utils.data.sampler import SubsetRandomSampler
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
 
-import numpy as np
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DataSplit</span>:
 
-class DataSplit:
+    <span style="color:#66d9ef">def</span> __init__(self, dataset, test_train_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.8</span>, val_train_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, shuffle<span style="color:#f92672">=</span>False):
+        self<span style="color:#f92672">.</span>dataset <span style="color:#f92672">=</span> dataset
 
-    def __init__(self, dataset, test_train_split=0.8, val_train_split=0.1, shuffle=False):
-        self.dataset = dataset
+        dataset_size <span style="color:#f92672">=</span> len(dataset)
+        self<span style="color:#f92672">.</span>indices <span style="color:#f92672">=</span> list(range(dataset_size))
+        test_split <span style="color:#f92672">=</span> int(np<span style="color:#f92672">.</span>floor(test_train_split <span style="color:#f92672">*</span> dataset_size))
 
-        dataset_size = len(dataset)
-        self.indices = list(range(dataset_size))
-        test_split = int(np.floor(test_train_split * dataset_size))
+        <span style="color:#66d9ef">if</span> shuffle:
+            np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>shuffle(self<span style="color:#f92672">.</span>indices)
 
-        if shuffle:
-            np.random.shuffle(self.indices)
+        train_indices, self<span style="color:#f92672">.</span>test_indices <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>indices[:test_split], self<span style="color:#f92672">.</span>indices[test_split:]
+        train_size <span style="color:#f92672">=</span> len(train_indices)
+        validation_split <span style="color:#f92672">=</span> int(np<span style="color:#f92672">.</span>floor((<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> val_train_split) <span style="color:#f92672">*</span> train_size))
 
-        train_indices, self.test_indices = self.indices[:test_split], self.indices[test_split:]
-        train_size = len(train_indices)
-        validation_split = int(np.floor((1 - val_train_split) * train_size))
+        self<span style="color:#f92672">.</span>train_indices, self<span style="color:#f92672">.</span>val_indices <span style="color:#f92672">=</span> train_indices[ : validation_split], train_indices[validation_split:]
 
-        self.train_indices, self.val_indices = train_indices[ : validation_split], train_indices[validation_split:]
+        self<span style="color:#f92672">.</span>train_sampler <span style="color:#f92672">=</span> SubsetRandomSampler(self<span style="color:#f92672">.</span>train_indices)
+        self<span style="color:#f92672">.</span>val_sampler <span style="color:#f92672">=</span> SubsetRandomSampler(self<span style="color:#f92672">.</span>val_indices)
+        self<span style="color:#f92672">.</span>test_sampler <span style="color:#f92672">=</span> SubsetRandomSampler(self<span style="color:#f92672">.</span>test_indices)
 
-        self.train_sampler = SubsetRandomSampler(self.train_indices)
-        self.val_sampler = SubsetRandomSampler(self.val_indices)
-        self.test_sampler = SubsetRandomSampler(self.test_indices)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_train_split_point</span>(self):
+        <span style="color:#66d9ef">return</span> len(self<span style="color:#f92672">.</span>train_sampler) <span style="color:#f92672">+</span> len(self<span style="color:#f92672">.</span>val_indices)
 
-    def get_train_split_point(self):
-        return len(self.train_sampler) + len(self.val_indices)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_validation_split_point</span>(self):
+        <span style="color:#66d9ef">return</span> len(self<span style="color:#f92672">.</span>train_sampler)
 
-    def get_validation_split_point(self):
-        return len(self.train_sampler)
+    <span style="color:#a6e22e">@lru_cache</span>(maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_split</span>(self, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>):
+        logging<span style="color:#f92672">.</span>debug(<span style="color:#e6db74">&#39;Initializing train-validation-test dataloaders&#39;</span>)
+        self<span style="color:#f92672">.</span>train_loader <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>get_train_loader(batch_size<span style="color:#f92672">=</span>batch_size, num_workers<span style="color:#f92672">=</span>num_workers)
+        self<span style="color:#f92672">.</span>val_loader <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>get_validation_loader(batch_size<span style="color:#f92672">=</span>batch_size, num_workers<span style="color:#f92672">=</span>num_workers)
+        self<span style="color:#f92672">.</span>test_loader <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>get_test_loader(batch_size<span style="color:#f92672">=</span>batch_size, num_workers<span style="color:#f92672">=</span>num_workers)
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>train_loader, self<span style="color:#f92672">.</span>val_loader, self<span style="color:#f92672">.</span>test_loader
 
-    @lru_cache(maxsize=4)
-    def get_split(self, batch_size=50, num_workers=4):
-        logging.debug('Initializing train-validation-test dataloaders')
-        self.train_loader = self.get_train_loader(batch_size=batch_size, num_workers=num_workers)
-        self.val_loader = self.get_validation_loader(batch_size=batch_size, num_workers=num_workers)
-        self.test_loader = self.get_test_loader(batch_size=batch_size, num_workers=num_workers)
-        return self.train_loader, self.val_loader, self.test_loader
+    <span style="color:#a6e22e">@lru_cache</span>(maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_train_loader</span>(self, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>):
+        logging<span style="color:#f92672">.</span>debug(<span style="color:#e6db74">&#39;Initializing train dataloader&#39;</span>)
+        self<span style="color:#f92672">.</span>train_loader <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(self<span style="color:#f92672">.</span>dataset, batch_size<span style="color:#f92672">=</span>batch_size, sampler<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>train_sampler, shuffle<span style="color:#f92672">=</span>False, num_workers<span style="color:#f92672">=</span>num_workers)
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>train_loader
 
-    @lru_cache(maxsize=4)
-    def get_train_loader(self, batch_size=50, num_workers=4):
-        logging.debug('Initializing train dataloader')
-        self.train_loader = torch.utils.data.DataLoader(self.dataset, batch_size=batch_size, sampler=self.train_sampler, shuffle=False, num_workers=num_workers)
-        return self.train_loader
+    <span style="color:#a6e22e">@lru_cache</span>(maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_validation_loader</span>(self, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>):
+        logging<span style="color:#f92672">.</span>debug(<span style="color:#e6db74">&#39;Initializing validation dataloader&#39;</span>)
+        self<span style="color:#f92672">.</span>val_loader <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(self<span style="color:#f92672">.</span>dataset, batch_size<span style="color:#f92672">=</span>batch_size, sampler<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>val_sampler, shuffle<span style="color:#f92672">=</span>False, num_workers<span style="color:#f92672">=</span>num_workers)
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>val_loader
 
-    @lru_cache(maxsize=4)
-    def get_validation_loader(self, batch_size=50, num_workers=4):
-        logging.debug('Initializing validation dataloader')
-        self.val_loader = torch.utils.data.DataLoader(self.dataset, batch_size=batch_size, sampler=self.val_sampler, shuffle=False, num_workers=num_workers)
-        return self.val_loader
-
-    @lru_cache(maxsize=4)
-    def get_test_loader(self, batch_size=50, num_workers=4):
-        logging.debug('Initializing test dataloader')
-        self.test_loader = torch.utils.data.DataLoader(self.dataset, batch_size=batch_size, sampler=self.test_sampler, shuffle=False, num_workers=num_workers)
-        return self.test_loader
-</code></pre>
-
-<p>After an instance of the class is created, the <code>get_split</code> method can be used to get a tuple of three <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader">data.DataLoader</a> objects &ndash; one for the train, validation, and test sets. The method has a couple of keyword arguments for the batch size(<code>batch_size</code>) and the number of threads to be used while loading the data (<code>num_workers</code>). Both arguments are passed to the created <em>DataLoader</em> object.</p>
-
-<p><br /></p>
-
+    <span style="color:#a6e22e">@lru_cache</span>(maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_test_loader</span>(self, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>):
+        logging<span style="color:#f92672">.</span>debug(<span style="color:#e6db74">&#39;Initializing test dataloader&#39;</span>)
+        self<span style="color:#f92672">.</span>test_loader <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(self<span style="color:#f92672">.</span>dataset, batch_size<span style="color:#f92672">=</span>batch_size, sampler<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>test_sampler, shuffle<span style="color:#f92672">=</span>False, num_workers<span style="color:#f92672">=</span>num_workers)
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>test_loader
+</code></pre></div><p>After an instance of the class is created, the <code>get_split</code> method can be used to get a tuple of three <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader">data.DataLoader</a> objects &ndash; one for the train, validation, and test sets. The method has a couple of keyword arguments for the batch size(<code>batch_size</code>) and the number of threads to be used while loading the data (<code>num_workers</code>). Both arguments are passed to the created <em>DataLoader</em> object.</p>
+<p><!-- raw HTML omitted --></p>
 <p>A possible use case is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PlainDataSet</span>(Dataset):
+    <span style="color:#66d9ef">def</span> __init__(self):
+        self<span style="color:#f92672">.</span>arr <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1.0</span>]<span style="color:#f92672">*</span><span style="color:#ae81ff">1000</span>)
+    <span style="color:#66d9ef">def</span> __getitem__(self, index):
+        <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array([self<span style="color:#f92672">.</span>arr[index]])
+    <span style="color:#66d9ef">def</span> __len__(self):
+        <span style="color:#66d9ef">return</span> len(self<span style="color:#f92672">.</span>arr)
 
-<pre><code class="language-python">class PlainDataSet(Dataset):
-    def __init__(self):
-        self.arr = np.array([1.0]*1000)
-    def __getitem__(self, index):
-        return np.array([self.arr[index]])
-    def __len__(self):
-        return len(self.arr)
+dataset <span style="color:#f92672">=</span> PlainDataSet()
+split <span style="color:#f92672">=</span> DataSplit(dataset, shuffle<span style="color:#f92672">=</span>True)
+train_loader, val_loader, test_loader <span style="color:#f92672">=</span> split<span style="color:#f92672">.</span>get_split(batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">75</span>, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>)
 
-dataset = PlainDataSet()
-split = DataSplit(dataset, shuffle=True)
-train_loader, val_loader, test_loader = split.get_split(batch_size=75, num_workers=8)
-
-for iteration, batch in enumerate(train_loader,1):
-    print('{} : {}'.format(iteration, str(batch.size())))
-</code></pre>
-
+<span style="color:#66d9ef">for</span> iteration, batch <span style="color:#f92672">in</span> enumerate(train_loader,<span style="color:#ae81ff">1</span>):
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;{} : {}&#39;</span><span style="color:#f92672">.</span>format(iteration, str(batch<span style="color:#f92672">.</span>size())))
+</code></pre></div>
   </div>
   
 

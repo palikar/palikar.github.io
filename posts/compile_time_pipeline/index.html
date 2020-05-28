@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.70.0" />
 
 
 
@@ -103,7 +103,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.b3b0c12be46e581537e5d3d1c4ca1fabaab21c72dcc8cb639a558c4b9a6f469e.css" integrity="sha256-s7DBK&#43;RuWBU35dPRxMofq6qyHHLcyMtjmlWMS5pvRp4=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/hyde-hyde.3c75565bab3232e478f88f766c658c19f0636d9471239f83499bd6ceac04f66c.css" integrity="sha256-PHVWW6syMuR4&#43;I92bGWMGfBjbZRxI5&#43;DSZvWzqwE9mw=">
 
 
 <link rel="stylesheet" href="https://palikar.github.io/scss/print.e5f87aa9d406c09ad1cb0284b65f42c7e53ea92dc1fe9b6ab366bba96a1344e9.css" integrity="sha256-5fh6qdQGwJrRywKEtl9Cx&#43;U&#43;qS3B/ptqs2a7qWoTROk=" media="print">
@@ -111,7 +111,7 @@ Sitemap & RSS Feed Tags
 
 
 
-<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.126e7d75240acc946d34d6ccb2982ed4c394a5fe34e73e1a2119ca951bcf119d.css" integrity="sha256-Em59dSQKzJRtNNbMspgu1MOUpf405z4aIRnKlRvPEZ0=">
+<link rel="stylesheet" href="https://palikar.github.io/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
 
 
 
@@ -312,120 +312,88 @@ Sitemap & RSS Feed Tags
   
   
   <div class="post">
-    
-
-<h2 id="abstract">Abstract</h2>
-
+    <h2 id="abstract">Abstract</h2>
 <p>Recently I&rsquo;ve been looking into the code of <a href="https://github.com/ChaiScript/ChaiScript/">ChaiScript</a> &ndash; a scripting language written by <a href="https://github.com/lefticus">Jason Turner</a> that integrates seamlessly with C++. It&rsquo;s a great project and you can learn a ton on parsing, general scripting language design and overall C++ from it. In its code, I&rsquo;ve found several gems and idioms that I didn&rsquo;t know before. Here I want to very briefly present a certain pattern that particularly caught my eye. The pattern addresses the problem of piping functions one after another. We cat assume that each function does its own thing independent of the others. The beauty, in my opinion, lies within the fact that there is almost no run time overhead and the whole thing is &ldquo;configured&rdquo; at compile time. The ability to extend or alter the pipeline is, however, still there and a change can be easily made (after recompilation, of course).</p>
-
 <h2 id="pipelining-methods">Pipelining methods</h2>
-
 <h3 id="the-first-thing-in-google-way">The &ldquo;first thing in google&rdquo; way</h3>
-
 <p>I was interested in this pattern so I tried searching for it. With a quick google search, I found this <a href="https://helloacm.com/how-to-pipeline-the-functions-in-c/">this</a>. The blog post describes a way of generating a pipeline of functions that will be executed one after another. To note is, however, that in this case everything is done at run time. The post describes a function similar to:</p>
-
-<pre><code class="language-c++">template&lt;class T&gt;
-std::function&lt;T (void)&gt; make_pipeline(const std::vector&lt;std::function&lt;T (void)&gt;&gt;&amp; funcs)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+std<span style="color:#f92672">::</span>function<span style="color:#f92672">&lt;</span>T (<span style="color:#66d9ef">void</span>)<span style="color:#f92672">&gt;</span> make_pipeline(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>function<span style="color:#f92672">&lt;</span>T (<span style="color:#66d9ef">void</span>)<span style="color:#f92672">&gt;&gt;&amp;</span> funcs)
 {
-    return [&amp;funcs] (const T&amp; arg)
+    <span style="color:#66d9ef">return</span> [<span style="color:#f92672">&amp;</span>funcs] (<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> arg)
            {
-               T v = arg;
-               for (const auto &amp;f: funcs) { v = f(v); }
-               return v;
+               T v <span style="color:#f92672">=</span> arg;
+               <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>f: funcs) { v <span style="color:#f92672">=</span> f(v); }
+               <span style="color:#66d9ef">return</span> v;
            };
 }
-</code></pre>
+</code></pre></div><p>This is just a function that returns a lambda that will execute every function in the <code>funcs</code> vector. If you are not familiar with template programming, I believe this is the most intuitive way of achieving your pipeline-goal. <code>make_pipeline</code> can then be used as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>function<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span> (<span style="color:#66d9ef">void</span>)<span style="color:#f92672">&gt;&gt;</span> functions;
+functions.push_back([](<span style="color:#66d9ef">int</span> x){ <span style="color:#66d9ef">return</span> api.do_work_1(x); });
+functions.push_back([](<span style="color:#66d9ef">int</span> x){ <span style="color:#66d9ef">return</span> api.do_work_2(x); });
+functions.push_back([](<span style="color:#66d9ef">int</span> x){ <span style="color:#66d9ef">return</span> api.do_work_3(x); });
 
-<p>This is just a function that returns a lambda that will execute every function in the <code>funcs</code> vector. If you are not familiar with template programming, I believe this is the most intuitive way of achieving your pipeline-goal. <code>make_pipeline</code> can then be used as:</p>
+std<span style="color:#f92672">::</span>function<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span> (<span style="color:#66d9ef">void</span>)<span style="color:#f92672">&gt;</span> func <span style="color:#f92672">=</span> makePipeline(functions);
 
-<pre><code class="language-c++">std::vector&lt;std::function&lt;int (void)&gt;&gt; functions;
-functions.push_back([](int x){ return api.do_work_1(x); });
-functions.push_back([](int x){ return api.do_work_2(x); });
-functions.push_back([](int x){ return api.do_work_3(x); });
-
-std::function&lt;int (void)&gt; func = makePipeline(functions);
-
-func(10);
-</code></pre>
-
-<p>Now, again at run time, the process has to create a vector, add the three lambdas to it, then construct the final function <code>func</code> with the <code>makePipeline</code> method and finally call the function. The whole thing introduces a lot of run time overhead. Before performing the actual call to the pipeline, we must configure it. It doesn&rsquo;t necessarily need to be this way and in the next section we&rsquo;ll how we can address this problem.</p>
-
+func(<span style="color:#ae81ff">10</span>);
+</code></pre></div><p>Now, again at run time, the process has to create a vector, add the three lambdas to it, then construct the final function <code>func</code> with the <code>makePipeline</code> method and finally call the function. The whole thing introduces a lot of run time overhead. Before performing the actual call to the pipeline, we must configure it. It doesn&rsquo;t necessarily need to be this way and in the next section we&rsquo;ll how we can address this problem.</p>
 <h3 id="the-chaiscript-way">The ChaiScript way</h3>
-
 <p>Let&rsquo;s now look the ChaiScript&rsquo;s &ldquo;compile-time&rdquo; approach to pipeline. A little bit of background - we&rsquo;ll look at the optimizer of ChaiScript. This is class with a single method <code>optimize</code> that takes an object of type <code>AST_Node_Impl_Ptr&lt;Tracer&gt;</code>, does its magic and returns a new, optimized object. What exactly <code>AST_Node_Impl_Ptr&lt;Tracer&gt;</code> is not the point here. The main thing is - call <code>optimize</code>, perform a bunch of optimizations, return the object. The tricky thing is that we want a whole bunch of optimizers to be available. Then, when we call <code>optimize</code> on our main, container-like, optimizer, every inner is run.</p>
-
-<p><br /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>The main Optimizer class looks like this:</p>
-
-<pre><code class="language-c++">template&lt;typename ... T&gt;
-struct Optimizer : T...
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> ... T<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Optimizer</span> <span style="color:#f92672">:</span> T...
 {
-    Optimizer() = default;
-    explicit Optimizer(T ... t)
-        : T(std::move(t))...
+    Optimizer() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+    <span style="color:#66d9ef">explicit</span> <span style="color:#a6e22e">Optimizer</span>(T ... t)
+        <span style="color:#f92672">:</span> T(std<span style="color:#f92672">::</span>move(t))...
     {
     }
 
-    template&lt;typename Tracer&gt;
-        auto optimize(eval::AST_Node_Impl_Ptr&lt;Tracer&gt; p) {
-        ((p=static_cast&lt;T&amp;&gt;(*this).optimize(std::move(p))), ... );
-        return p;
+    <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Tracer<span style="color:#f92672">&gt;</span>
+        <span style="color:#66d9ef">auto</span> optimize(eval<span style="color:#f92672">::</span>AST_Node_Impl_Ptr<span style="color:#f92672">&lt;</span>Tracer<span style="color:#f92672">&gt;</span> p) {
+        ((p<span style="color:#f92672">=</span><span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&amp;&gt;</span>(<span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>).optimize(std<span style="color:#f92672">::</span>move(p))), ... );
+        <span style="color:#66d9ef">return</span> p;
     }
 };
-</code></pre>
-
-<p>A class templatized by a variadic template. As per the <a href="https://www.fluentcpp.com/2017/05/12/curiously-recurring-template-pattern/">The Curiously Recurring Template Pattern (CRTP)</a>, the class inherits every one of the passed template types. This means that the <code>Optimizer</code> class will have every public method of its template parameters. In the <code>optimized</code> method, the <code>...</code> operator is used. This is variadic template expansions and can be used to operate on every passed template parameter. In this case, cast <code>this</code> to a reference of the parameter (this is ok as we inherit from it), call the <code>optimize</code> method on this object and saves the result in <code>p</code>. All we have to ensure that each template parameter <code>T</code> has an <code>optimize</code> method with the same(ish?) signature. For example, we can have two optimizers like:</p>
-
-<pre><code class="language-c++">struct Optmizer1
+</code></pre></div><p>A class templatized by a variadic template. As per the <a href="https://www.fluentcpp.com/2017/05/12/curiously-recurring-template-pattern/">The Curiously Recurring Template Pattern (CRTP)</a>, the class inherits every one of the passed template types. This means that the <code>Optimizer</code> class will have every public method of its template parameters. In the <code>optimized</code> method, the <code>...</code> operator is used. This is variadic template expansions and can be used to operate on every passed template parameter. In this case, cast <code>this</code> to a reference of the parameter (this is ok as we inherit from it), call the <code>optimize</code> method on this object and saves the result in <code>p</code>. All we have to ensure that each template parameter <code>T</code> has an <code>optimize</code> method with the same(ish?) signature. For example, we can have two optimizers like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Optmizer1</span>
 {
-    template&lt;typename T&gt;
-    auto optimize(eval::AST_Node_Impl_Ptr&lt;T&gt; node)
+    <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+    <span style="color:#66d9ef">auto</span> optimize(eval<span style="color:#f92672">::</span>AST_Node_Impl_Ptr<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> node)
     {
-        //magic 1
-        return node;
+        <span style="color:#75715e">//magic 1
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> node;
     }
 };
 
-struct Optmizer2
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Optmizer2</span>
 {
-    template&lt;typename T&gt;
-    auto optimize(eval::AST_Node_Impl_Ptr&lt;T&gt; node)
+    <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+    <span style="color:#66d9ef">auto</span> optimize(eval<span style="color:#f92672">::</span>AST_Node_Impl_Ptr<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> node)
     {
-        //magic 2
-        return node;
+        <span style="color:#75715e">//magic 2
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> node;
     }
 };
 
-</code></pre>
-
-<p>At the end, everything comes together in a <code>typedef</code> for the final optimizer type:</p>
-
-<pre><code class="language-c++">typedef Optimizer&lt;Optimizer1,
-                  Optimizer2&gt; Optimizer_Default;
-</code></pre>
-
-<p>An we that we have it. Now we can just create a new object of type <code>Optimizer_Default</code> and call <code>optimize</code> on it. This will call the optimize method on <code>Optimize1</code> and <code>Optimize2</code>. The pipeline is constructed at compile time and the compiler can optimize everything optimally.</p>
-
-<p><br /></p>
-
+</code></pre></div><p>At the end, everything comes together in a <code>typedef</code> for the final optimizer type:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">typedef</span> Optimizer<span style="color:#f92672">&lt;</span>Optimizer1,
+                  Optimizer2<span style="color:#f92672">&gt;</span> Optimizer_Default;
+</code></pre></div><p>An we that we have it. Now we can just create a new object of type <code>Optimizer_Default</code> and call <code>optimize</code> on it. This will call the optimize method on <code>Optimize1</code> and <code>Optimize2</code>. The pipeline is constructed at compile time and the compiler can optimize everything optimally.</p>
+<p><!-- raw HTML omitted --></p>
 <p>With this setup, we can change the executed optimizers only at compile time though. This means that every change will need a rebuild of the project. Although we cannot avoid the rebuilding, we can make out lives easier with a few macros. Say, if the project is compiled with defined <code>HEAVY_OTPIMIZATION</code> macro, we could construct our optimizer one way, if the macro is not defined, we construct it another way.</p>
-
-<pre><code class="language-c++">#ifdef HEAVY_OTPIMIZATION
-typedef Optimizer&lt;Optimizer1,
-                  Optimizer2&gt; DefaultOptimizer;
-#else
-typedef Optimizer&lt;BigOptimizer1,
-                  BigOptimizer2&gt; DefaultOptimizer;
-#endif
-</code></pre>
-
-<h2 id="conclusion">Conclusion</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#ifdef HEAVY_OTPIMIZATION
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> Optimizer<span style="color:#f92672">&lt;</span>Optimizer1,
+                  Optimizer2<span style="color:#f92672">&gt;</span> DefaultOptimizer;
+<span style="color:#75715e">#else
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> Optimizer<span style="color:#f92672">&lt;</span>BigOptimizer1,
+                  BigOptimizer2<span style="color:#f92672">&gt;</span> DefaultOptimizer;
+<span style="color:#75715e">#endif
+</span></code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>I don&rsquo;t have that much closing words. I can only say that variadic templates are one of the things that truly make C++ an interesting language. That one quote really stands true.</p>
-
 <blockquote>
-<p>Dot dot dot is where fun begins <br /> <br /> &ndash; Someone, Somewhere</p>
+<p>Dot dot dot is where fun begins <!-- raw HTML omitted --> <!-- raw HTML omitted --> &ndash; Someone, Somewhere</p>
 </blockquote>
 
   </div>
