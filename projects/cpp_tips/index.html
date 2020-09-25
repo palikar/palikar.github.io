@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.70.0" />
+<meta name="generator" content="Hugo 0.72.0" />
 
 
 
@@ -868,7 +868,7 @@ std<span style="color:#f92672">::</span>array<span style="color:#f92672">&lt;</s
 }
 </code></pre></div><p>You ship it. Everyone is happy. The code is clean. You can live in peace with the new knowledge now! Also, watch <a href="https://www.youtube.com/watch?v=tTexD26jIN4">this</a> talk by <a href="http://www.gregcons.com/kateblog/">Kate Gregory</a>. She goes over the problem presented here in much more engaging fashion.</p>
 <h3 id="std-unique-ptr-is-for-exclusive-ownership">std::unique_ptr is for exclusive ownership!</h3>
-<p>Generally, when you want to use a pointer in the new modern C++ world, your first thought should be &ldquo;Can I use <code>unique_ptr</code> here?&quot;. And yes, this is the preferred way of using &ldquo;pointers&rdquo; these days. <code>unique_ptr</code> can be viewed as small as a raw pointer and for most operations, they behave exactly the same way as raw pointers. <!-- raw HTML omitted --> There are few things to keep in mind while using <code>unique_ptr</code>.</p>
+<p>Generally, when you want to use a pointer in the new modern C++ world, your first thought should be &ldquo;Can I use <code>unique_ptr</code> here?&rdquo;. And yes, this is the preferred way of using &ldquo;pointers&rdquo; these days. <code>unique_ptr</code> can be viewed as small as a raw pointer and for most operations, they behave exactly the same way as raw pointers. <!-- raw HTML omitted --> There are few things to keep in mind while using <code>unique_ptr</code>.</p>
 <ul>
 <li><code>unique_ptr</code> embodies exclusive ownership. Every <code>unique_ptr</code> that is not empty &ldquo;owns&rdquo; the resource it&rsquo;s holding and you have a guarantee (generally) that this is the only object holding a pointer to the underlying object. The <code>unique_ptr</code> cannot be copied as this would create another holder of the resource so <code>unique_ptr</code>-s are only movable</li>
 <li>You can know <!-- raw HTML omitted -->exactly<!-- raw HTML omitted --> when an <code>unique_ptr</code> object would be destroyed and with that the resource released. It is said that one of the greatest features of C++ is the closing brackets <code>}</code>. In order words, the fact that you know the exact moment at which an object will be destroyed and the destructor of the class will be executed for this object. The ramifications for <code>unique_ptr</code> is that the object will be destroyed when the enclosing scope comes to an end. Of course, you could move the <code>unique_ptr</code> before that and transfer its ownership to some other part of the program. The moving was talked about in the <a href="#orgdc1a8fb">beginning</a>.</li>
@@ -1003,7 +1003,7 @@ Widget<span style="color:#f92672">&amp;</span> Widget<span style="color:#f92672"
 }
 </code></pre></div><p><em>Note:</em> Use your header only for a declaration when possible. Also, <code>= defualt</code> is <!-- raw HTML omitted -->implementation<!-- raw HTML omitted --> so put in the <code>.cpp</code> file, not in the header. If in this case, you did that in the header file, the compiler would not how to generate the move constructor and the move assignment operator as an implementation of the calls is <!-- raw HTML omitted -->not<!-- raw HTML omitted --> in the header. In the header the <code>struct Impl</code> is incomplete and <code>*impl</code> is a pointer to incomplete type so the compiler could not deal with that. <!-- raw HTML omitted --> The compiler happily generates the move constructors for us as the default implementation is exactly the thing we want. Just perform <em>move</em> on the implementation. The default copy constructors, however, would only perform a shallow copy of the object so we have to write them ourselves. <!-- raw HTML omitted --> The detractor is also the default one because we have no code to put in it. The <code>unique_ptr</code> automatically deletes its contents once it is destroyed.</p>
 <h3 id="std-forward-and-std-move-are-quite-interesting-dot">std::forward and std::move are quite interesting.</h3>
-<p><!-- raw HTML omitted --><!-- raw HTML omitted --> Ok, hopefully by now you at least have heard of <strong>move semantics</strong>. Inevitably you&rsquo;ve also probably seen <code>std::move()</code> and <code>std::forward&lt;T&gt;()</code> used in some weird way and wondered &ldquo;What the hell is happening here?&quot;. The first thing to understand about hose functions - they are functions that don&rsquo;t do much in run-time. They don&rsquo;t generate code. They don&rsquo;t &ldquo;move&rdquo;. At their core, those functions are casts. They cast <em>rvalue</em> object to <em>lvalue</em> ones. Refer to one of the <a href="#org1edb870">intro sections</a> for more information about what are those. The difference between <code>std::move()</code> and <code>std::forward&lt;T&gt;()</code> is that they perform the cast under different conditions. <code>std::move()</code> performs it always with no conditions. <code>std::forward&lt;T&gt;()</code> casts to revalue only if a certain condition is met - if the argument is bind to rvalue. <!-- raw HTML omitted --> Yes, it is well known and by this point accepted fact that <code>std::move()</code> has confusing AF name but&hellip; just roll with it and it will grow on you. <code>std::move()</code> doesn&rsquo;t actually move anything. <code>std::move()</code> merely makes an object eligible for moving. This is no guarantee however that an object will be moved from. Consider this:</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --> Ok, hopefully by now you at least have heard of <strong>move semantics</strong>. Inevitably you&rsquo;ve also probably seen <code>std::move()</code> and <code>std::forward&lt;T&gt;()</code> used in some weird way and wondered &ldquo;What the hell is happening here?&rdquo;. The first thing to understand about hose functions - they are functions that don&rsquo;t do much in run-time. They don&rsquo;t generate code. They don&rsquo;t &ldquo;move&rdquo;. At their core, those functions are casts. They cast <em>rvalue</em> object to <em>lvalue</em> ones. Refer to one of the <a href="#org1edb870">intro sections</a> for more information about what are those. The difference between <code>std::move()</code> and <code>std::forward&lt;T&gt;()</code> is that they perform the cast under different conditions. <code>std::move()</code> performs it always with no conditions. <code>std::forward&lt;T&gt;()</code> casts to revalue only if a certain condition is met - if the argument is bind to rvalue. <!-- raw HTML omitted --> Yes, it is well known and by this point accepted fact that <code>std::move()</code> has confusing AF name but&hellip; just roll with it and it will grow on you. <code>std::move()</code> doesn&rsquo;t actually move anything. <code>std::move()</code> merely makes an object eligible for moving. This is no guarantee however that an object will be moved from. Consider this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Anotation</span>
 {
 <span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
@@ -1033,7 +1033,7 @@ Anotation(<span style="color:#e6db74">&#34;ano&#34;</span>);
 </code></pre></div><p>Here param can bind to <em>rvalues</em> <!-- raw HTML omitted -->and<!-- raw HTML omitted --> to <em>lvalues</em>. This is what makes it <em>universal reference</em>. <!-- raw HTML omitted --> For a reference to be universal one certain condition must be met</p>
 <ol>
 <li>Type deduction must occur</li>
-<li>The reference must have exactly the form &ldquo;T&amp;&amp;&quot;. No <code>const</code>, no nothing. Just &ldquo;T&amp;&amp;&quot;.</li>
+<li>The reference must have exactly the form &ldquo;T&amp;&amp;&rdquo;. No <code>const</code>, no nothing. Just &ldquo;T&amp;&amp;&rdquo;.</li>
 </ol>
 <p>If the <code>const</code> qualifier is used for the function parameter, it(the parameter) will &ldquo;collapse&rdquo; <em>rvalue const reference</em> which pretty useless on itself as we say in the <a href="#org2e5602b">previous tip</a>. <!-- raw HTML omitted --> As stated if universal reference is bound to &ldquo;rvalue&rdquo;, it is an &ldquo;rvalue&rdquo;-reference and &ldquo;lvalue&rdquo;-reference if it&rsquo;s bound to an &ldquo;lvalue&rdquo;. This means that universal references are exactly the things to be used with <code>std::forward&lt;T&gt;()</code>.</p>
 <h3 id="pass-by-value-is-not-what-your-first-c-book-would-have-you-believe"><em>Pass by value</em> is not what your first C++ book would have you believe</h3>
@@ -1099,7 +1099,7 @@ populete(names);
 </tbody>
 </table>
 <h3 id="return-value-optimization--rvo--don-t-return-std-move-of-local-variable">Return value optimization(RVO) - don&rsquo;t return std:::move of local variable</h3>
-<p>With your awesome new knowledge about move-semantics you can now write highly optimized, highly performant code that will go \*whoosh\* past those pesky languages running on virtual machines. You will, however, be tempted to make some &ldquo;optimizations&rdquo; at places where you really shouldn&rsquo;t mess with the compiler. Please always repeat to yourself &ldquo;The compiler is smarter than me!&quot;. <!-- raw HTML omitted --> Consider the following snippet:</p>
+<p>With your awesome new knowledge about move-semantics you can now write highly optimized, highly performant code that will go \*whoosh\* past those pesky languages running on virtual machines. You will, however, be tempted to make some &ldquo;optimizations&rdquo; at places where you really shouldn&rsquo;t mess with the compiler. Please always repeat to yourself &ldquo;The compiler is smarter than me!&rdquo;. <!-- raw HTML omitted --> Consider the following snippet:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">Widget <span style="color:#a6e22e">makeWIdget</span>()
 {
   Widget w;
@@ -1119,7 +1119,7 @@ populete(names);
 <li>The local object is being returned.</li>
 <li>The type is move-constructible.</li>
 </ol>
-<p>What happens when we <code>std::move</code> the local object - we crate reference to it and RVO can&rsquo;t be performed. So, <strong>don&rsquo;t</strong> return <code>std::move</code>! <!-- raw HTML omitted --> Ok, but still. RVO is just an optimization. Maybe the compiler won&rsquo;t be able to figure out which local object we want to return and will punish us with a copy while returning. No! Again - &ldquo;The compiler is smarter than me!&quot;. Return values are <!-- raw HTML omitted -->always<!-- raw HTML omitted --> treated as <em>rvalues</em>. So when your function is:</p>
+<p>What happens when we <code>std::move</code> the local object - we crate reference to it and RVO can&rsquo;t be performed. So, <strong>don&rsquo;t</strong> return <code>std::move</code>! <!-- raw HTML omitted --> Ok, but still. RVO is just an optimization. Maybe the compiler won&rsquo;t be able to figure out which local object we want to return and will punish us with a copy while returning. No! Again - &ldquo;The compiler is smarter than me!&rdquo;. Return values are <!-- raw HTML omitted -->always<!-- raw HTML omitted --> treated as <em>rvalues</em>. So when your function is:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">Widget <span style="color:#a6e22e">makeWIdget</span>()
 {
   Widget w;
@@ -1234,10 +1234,10 @@ if (!doNotTrack) {
 <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 
 
-    
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+
             
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/cmake.min.js"></script>
             
